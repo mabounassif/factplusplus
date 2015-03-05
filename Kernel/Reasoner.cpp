@@ -550,9 +550,8 @@ void DlSatTester :: restoreBC ( void )
 	if ( unlikely ( !SessionGCIs.empty() ) )
 		SessionGCIs.resize(bContext->SGsize);
 
-	// update branch dep-set
-	updateBranchDep();
-	bContext->nextOption();
+	// we here after the clash so choose the next branching option
+	nextBranchingOption();
 }
 
 void DlSatTester :: save ( void )

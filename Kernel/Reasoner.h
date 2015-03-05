@@ -872,8 +872,6 @@ protected:	// methods
 	DepSet& getBranchDep ( void ) { return bContext->branchDep; }
 		/// get RO access to current branching dep-set
 	const DepSet& getBranchDep ( void ) const { return bContext->branchDep; }
-		/// update cumulative branch-dep with current clash-set
-	void updateBranchDep ( void ) { getBranchDep().add(getClashSet()); }
 		/// prepare cumulative dep-set to usage
 	void prepareBranchDep ( void ) { getBranchDep().restrict(getCurLevel()); }
 		/// prepare cumulative dep-set and copy itto general clash-set

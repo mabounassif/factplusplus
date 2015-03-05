@@ -1018,8 +1018,7 @@ bool DlSatTester :: commonTacticBodyLE ( const DLVertex& cur )	// for <=nR.C con
 				// both clash-sets are now in common clash-set
 			}
 
-			updateBranchDep();
-			bContext->nextOption();
+			nextBranchingOption();
 			fpp_assert(!isFirstBranchCall());
 			continue;
 		}
@@ -1195,8 +1194,7 @@ DlSatTester :: processTopRoleLE ( const DLVertex& cur )	// for <=nR.C concepts
 				// both clash-sets are now in common clash-set
 			}
 
-			updateBranchDep();
-			bContext->nextOption();
+			nextBranchingOption();
 			fpp_assert(!isFirstBranchCall());
 			continue;
 		}
