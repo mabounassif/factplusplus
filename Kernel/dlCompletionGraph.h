@@ -449,9 +449,9 @@ public:		// interface
 		const TRole* r,		// name of role (arc label)
 		const DepSet& dep )	// dep-set of the arc label
 	{
-#	ifdef RKG_IMPROVE_SAVE_RESTORE_DEPSET
-		fpp_assert ( branchingLevel == r.getDep().level()+1 );
-#	endif
+		if ( RKG_USE_DYNAMIC_BACKJUMPING )
+			fpp_assert ( branchingLevel == dep.level()+1 );
+
 		return createEdge ( from, getNewNode(), isPredEdge, r, dep );
 	}
 		/// Create an R-loop of NODE wrt dep-set DEP; @return a loop edge

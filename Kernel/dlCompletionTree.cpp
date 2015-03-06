@@ -170,16 +170,17 @@ void DlCompletionTree :: restore ( SaveState* nss )
 	Label.restore ( nss->lab, getCurLevel() );
 
 	// remove new neighbours
-#ifndef RKG_USE_DYNAMIC_BACKJUMPING
-	Neighbour.resize(nss->nNeighbours);
-#else
-	for ( int j = Neighbour.size()-1; j >= 0; --j )
-		if ( Neighbour[j]->Node->creLevel <= getCurLevel() )
-		{
-			Neighbour.resize(j+1);
-			break;
-		}
-#endif
+	if ( RKG_USE_DYNAMIC_BACKJUMPING )
+	{	// FIXME!! do nothing for now
+//	for ( int j = Neighbour.size()-1; j >= 0; --j )
+//		if ( Neighbour[j]->getNode()->creLevel <= getCurLevel() )
+//		{
+//			Neighbour.resize(j+1);
+//			break;
+//		}
+	}
+	else
+		Neighbour.resize(nss->nNeighbours);
 
 	// it's cheaper to dirty affected flag than to consistently save nodes
 	affected = true;
