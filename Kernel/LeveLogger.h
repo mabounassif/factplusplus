@@ -46,13 +46,12 @@ public:		// interface
 	bool initLogger ( Configuration& Config );
 
 		/// @return true if LEVEL will be allowed
-	bool isWritable ( unsigned int level ATTR_UNUSED ) const
+	bool isWritable ( unsigned int level ) const
 	{
-#	ifdef _USE_LOGGING
-		return level <= allowedLevel;
-#	else
-		return false;
-#	endif
+		if ( USE_LOGGING )
+			return level <= allowedLevel;
+		else
+			return false;
 	}
 }; // LeveLogger
 

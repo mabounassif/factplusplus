@@ -32,7 +32,11 @@ protected:	// members
 		/// the singleton itself
 	BipolarPointer Singleton;
 
-public:
+protected:	// methods
+		/// log a particular implementation of a cache entry
+	virtual void logCacheEntryImpl ( void ) const override { LL << "\nSingleton cache: element " << getValue(); }
+
+public:		// interface
 		/// c'tor: no nominals can be here
 	modelCacheSingleton ( BipolarPointer bp )
 		: modelCacheInterface{/*flagNominals=*/false}
@@ -65,14 +69,6 @@ public:
 		// more complex cache: ask them to check
 		return cache->canMerge(this);
 	}
-#ifdef _USE_LOGGING
-		/// log this cache entry (with given level)
-	virtual void logCacheEntry ( unsigned int level ) const override
-	{
-		if ( LLM.isWritable(level) )
-			LL << "\nSingleton cache: element " << getValue();
-	}
-#endif
 }; // modelCacheSingleton
 
 #endif

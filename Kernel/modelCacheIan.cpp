@@ -211,10 +211,9 @@ modelCacheIan :: mergeIan ( const modelCacheIan* cache )
 }
 
 // logging
-#ifdef _USE_LOGGING
-void modelCacheIan :: logCacheEntry ( unsigned int level ) const
+void
+modelCacheIan :: logCacheEntryImpl ( void ) const
 {
-	CHECK_LL_RETURN(level);
 	LL << "\nIan cache: posDConcepts = ";
 	posDConcepts.print(LL);
 	LL << ", posNConcepts = ";
@@ -236,4 +235,3 @@ void modelCacheIan :: logCacheEntry ( unsigned int level ) const
 	LL << ", funcRoles = ";
 	funcRoles.print(LL);
 }
-#endif

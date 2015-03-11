@@ -19,9 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef MODELCACHEINTERFACE_H
 #define MODELCACHEINTERFACE_H
 
-#ifdef _USE_LOGGING
-#	include "logging.h"
-#endif
+#include "globaldef.h"
+#include "logging.h"
 
 /// status of model cache or merge operation
 enum modelCacheState
@@ -55,6 +54,10 @@ protected:	// members
 		/// flag to show that model contains nominals
 	bool hasNominalNode;
 
+protected:	// methods
+		/// log a particular implementation of a cache entry
+	virtual void logCacheEntryImpl ( void ) const = 0;
+
 public:		// interface
 		/// Create cache model with given presence of nominals
 	modelCacheInterface ( bool flagNominals ) : hasNominalNode{flagNominals} {}
@@ -76,10 +79,12 @@ public:		// interface
 
 		/// get type of cache (deep or shallow)
 	virtual bool shallowCache ( void ) const { return true; }
-#ifdef _USE_LOGGING
 		/// log this cache entry (with given level)
-	virtual void logCacheEntry ( unsigned int ) const {}
-#endif
+	void logCacheEntry ( unsigned int level ) const
+	{
+		if ( LLM.isWritable(level) )
+			logCacheEntryImpl();
+	}
 }; // modelCacheInterface
 
 #endif

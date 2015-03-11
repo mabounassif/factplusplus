@@ -101,10 +101,11 @@ JNIEXPORT void JNICALL Java_uk_ac_manchester_cs_factplusplus_FaCTPlusPlus_initKe
 
 	TRACE_JNI("initKernel");
 
-#ifdef _USE_LOGGING
-	// initialize LeveLogger
-	//LLM.initLogger ( 20, "reasoning.log" );
-#endif
+	if ( USE_LOGGING )
+	{
+		// initialize LeveLogger
+		//LLM.initLogger ( 20, "reasoning.log" );
+	}
 }
 
 /*

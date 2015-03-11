@@ -30,6 +30,11 @@ protected:	// members
 		/// the const itself
 	bool isTop;
 
+protected:	// methods
+		/// log a particular implementation of a cache entry
+	virtual void logCacheEntryImpl ( void ) const override
+		{ LL << "\nConst cache: element " << (isTop ? "TOP" : "BOTTOM"); }
+
 public:
 		/// c'tor: no nominals can be here
 	modelCacheConst ( bool top )
@@ -59,14 +64,6 @@ public:
 		else
 			return cache->canMerge(this);
 	}
-#ifdef _USE_LOGGING
-		/// log this cache entry (with given level)
-	virtual void logCacheEntry ( unsigned int level ) const override
-	{
-		if ( LLM.isWritable(level) )
-			LL << "\nConst cache: element " << (isTop ? "TOP" : "BOTTOM");
-	}
-#endif
 }; // modelCacheConst
 
 // create const cache by BP; BP should be either bpTOP or bpBOTTOM
