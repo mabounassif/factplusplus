@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <vector>
 #include <cstring>	// memset
+#include <iosfwd>
 
 #include "globaldef.h"
 #include "BiPointer.h"
