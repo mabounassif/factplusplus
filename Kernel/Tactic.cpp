@@ -406,8 +406,10 @@ bool DlSatTester :: commonTacticBodyAllComplex ( const DLVertex& cur )
 	// apply all top-role transitions
 	if ( unlikely(RST.hasTopTransition()) )
 		for ( const auto& trans: RST )
+		{
 			if ( trans.isTop() )
 				switchResult ( addSessionGCI ( C+BipolarPointer(trans.final()), dep ) );
+		}
 
 	// apply final-state rule
 	if ( state == 1 )
@@ -418,8 +420,10 @@ bool DlSatTester :: commonTacticBodyAllComplex ( const DLVertex& cur )
 
 	// check all neighbours
 	for ( const auto& neighbour: *curNode )
+	{
 		if ( RST.recognise(neighbour->getRole()) )
 			switchResult ( applyTransitions ( neighbour, RST, C, dep+neighbour->getDep() ) );
+	}
 
 	return false;
 }
@@ -435,8 +439,10 @@ bool DlSatTester :: commonTacticBodyAllSimple ( const DLVertex& cur )
 
 	// check all neighbours; as the role is simple then recognise() == applicable()
 	for ( const auto& neighbour: *curNode )
+	{
 		if ( RST.recognise(neighbour->getRole()) )
 			switchResult ( addToDoEntry ( neighbour->getArcEnd(), C, dep+neighbour->getDep() ) );
+	}
 
 	return false;
 }
@@ -1489,8 +1495,10 @@ bool DlSatTester :: commonTacticBodyChoose ( const TRole* R, BipolarPointer C )
 {
 	// apply choose-rule for every R-neighbour
 	for ( auto& edge: *curNode )
+	{
 		if ( edge->isNeighbour(R) )
 			switchResult ( applyChooseRule ( edge->getArcEnd(), C ) );
+	}
 
 	return false;
 }
@@ -1500,8 +1508,10 @@ bool
 DlSatTester :: applyChooseRuleGlobally ( BipolarPointer C )
 {
 	for ( auto& node: CGraph )
+	{
 		if ( isObjectNodeUnblocked(node) )	// FIXME!! think about d-blocked nodes
 			switchResult ( applyChooseRule ( node, C ) );
+	}
 
 	return false;
 }
