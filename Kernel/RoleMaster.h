@@ -1,5 +1,5 @@
 /* This file is part of the FaCT++ DL reasoner
-Copyright (C) 2003-2015 by Dmitry Tsarkov
+Copyright (C) 2003-2016 by Dmitry Tsarkov
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -70,7 +70,7 @@ protected:	// methods
 		/// @return true if P is a role that is registered in the RM
 	bool isRegisteredRole ( const TNamedEntry* p ) const
 	{
-		const TRole* R = reinterpret_cast<const TRole*>(p);
+		const TRole* R = dynamic_cast<const TRole*>(p);
 		if ( R == nullptr )
 			return false;
 		unsigned int ind = R->getIndex();

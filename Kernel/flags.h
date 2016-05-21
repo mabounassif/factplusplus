@@ -1,5 +1,5 @@
 /* This file is part of the FaCT++ DL reasoner
-Copyright (C) 2005-2015 by Dmitry Tsarkov
+Copyright (C) 2005-2016 by Dmitry Tsarkov
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -32,7 +32,7 @@ private:	// members
 
 protected:	// methods for flags maintainance
 		/// get given flag value
-	bool getFlag ( IntType mask ) const { return flags & mask; }
+	bool getFlag ( IntType mask ) const { return (flags & mask) != 0; }
 		/// set given flag to 1
 	void setFlag ( IntType mask ) { flags |= mask; }
 		/// set given flag to 0

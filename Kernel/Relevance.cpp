@@ -128,7 +128,7 @@ void TBox :: gatherRelevanceInfo ( void )
 
 	for ( c_iterator pc = c_begin(); pc != c_end(); ++pc )
 		setConceptRelevant(*pc);
-	long cSize = ( c_end() - c_begin() ) + ( i_end() - i_begin() );
+	auto cSize = ( c_end() - c_begin() ) + ( i_end() - i_begin() );
 	size_t bSize = DLHeap.size()-2;
 
 	curFeature = nullptr;

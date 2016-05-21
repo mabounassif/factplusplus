@@ -1,5 +1,5 @@
 /* This file is part of the FaCT++ DL reasoner
-Copyright (C) 2013-2015 by Dmitry Tsarkov
+Copyright (C) 2013-2016 by Dmitry Tsarkov
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -288,10 +288,10 @@ protected:	// methods
 	template<class C>
 	int getOrValue ( const TDLNAryExpression<C>& expr )
 	{
-		int sum = 0, n;
+		int sum = 0;
 		for ( typename TDLNAryExpression<C>::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 		{
-			n = getUpperBoundDirect(*p);
+			int n = getUpperBoundDirect(*p);
 			if ( n == noUpperValue() )
 				return noUpperValue();
 			sum += n;
@@ -314,7 +314,7 @@ public:		// visitor implementation
 	virtual void visit ( const TDLConceptNot& expr ) { value = getUpperBoundComplement(expr.getC()); }
 	virtual void visit ( const TDLConceptAnd& expr ) { value = getAndValue(expr); dumpValue(expr); }
 	virtual void visit ( const TDLConceptOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLConceptOneOf& expr ) { value = (int)expr.size(); }
+	virtual void visit ( const TDLConceptOneOf& expr ) { value = int(expr.size()); }
 	virtual void visit ( const TDLConceptObjectSelf& expr ) { value = getAllNoneUpper(isBotEquivalent(expr.getOR())); }
 	virtual void visit ( const TDLConceptObjectValue& expr ) { value = getAllNoneUpper(isBotEquivalent(expr.getOR())); }
 	virtual void visit ( const TDLConceptDataValue& expr ) { value = getAllNoneUpper(isBotEquivalent(expr.getDR())); }

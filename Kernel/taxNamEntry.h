@@ -139,7 +139,7 @@ resolveSynonym ( T* p )
 	return !p ? nullptr : p->isSynonym() ? resolveSynonym(static_cast<T*>(p->getSynonym())) : p;
 }
 
-/// general RW resolving synonym operator
+/// general RO resolving synonym operator
 template<class T>
 inline const T*
 resolveSynonym ( const T* p )
