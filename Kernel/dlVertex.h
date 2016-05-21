@@ -143,7 +143,7 @@ public:		// static methods
 
 public:		// interface
 		/// default c'tor
-	DLVertexStatistic ( void ) { std::memset ( &stat, 0, sizeof(stat) ); }
+	DLVertexStatistic ( void ) { std::memset ( stat, 0, sizeof(stat) ); }
 		/// empty d'tor
 	virtual ~DLVertexStatistic ( void ) {}
 
