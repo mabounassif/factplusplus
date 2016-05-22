@@ -43,7 +43,7 @@ protected:	// members
 		/// locality checker
 	LocalityChecker* Checker;
 		/// sets of axioms non-local wrt the empty signature
-	AxiomVec NonLocal[2];
+	AxiomVec topNonLocal, botNonLocal;
 		/// empty signature to test the non-locality
 	TSignature emptySig;
 		/// number of registered axioms
@@ -71,7 +71,7 @@ protected:	// methods
 		emptySig.setLocality(top);
 		Checker->setSignatureValue(emptySig);
 		if ( !Checker->local(ax) )
-			add ( NonLocal[!top], ax );
+			add ( top ? topNonLocal : botNonLocal, ax );
 	}
 
 	// work with axioms
@@ -92,8 +92,8 @@ protected:	// methods
 		for ( TSignature::iterator p = ax->getSignature().begin(), p_end = ax->getSignature().end(); p != p_end; ++p )
 			remove ( Base[*p], ax );
 		// remove from the non-locality
-		remove ( NonLocal[false], ax );
-		remove ( NonLocal[true], ax );
+		remove ( topNonLocal, ax );
+		remove ( botNonLocal, ax );
 		++nUnregistered;
 	}
 
@@ -123,8 +123,8 @@ public:		// interface
 	void clear ( void )
 	{
 		Base.clear();
-		NonLocal[0].clear();
-		NonLocal[1].clear();
+		topNonLocal.clear();
+		botNonLocal.clear();
 	}
 
 	// get the set by the index
@@ -132,7 +132,7 @@ public:		// interface
 		/// given an entity, return a set of all axioms that tontain this entity in a signature
 	const AxiomVec& getAxioms ( const TNamedEntity* entity ) { return Base[entity]; }
 		/// get the non-local axioms with top-locality value TOP
-	const AxiomVec& getNonLocal ( bool top ) const { return NonLocal[!top]; }
+	const AxiomVec& getNonLocal ( bool top ) const { return top ? topNonLocal : botNonLocal; }
 
 	// access to statistics
 
