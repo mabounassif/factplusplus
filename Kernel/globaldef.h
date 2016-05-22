@@ -1,5 +1,5 @@
 /* This file is part of the FaCT++ DL reasoner
-Copyright (C) 2003-2015 by Dmitry Tsarkov
+Copyright (C) 2003-2016 by Dmitry Tsarkov
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -42,9 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #ifndef USE_LOGGING
 #	define USE_LOGGING 0
-#else
-#	undef USE_LOGGING
-#	define USE_LOGGING 1
 #endif
 
 //#define ENABLE_CHECKING
@@ -62,8 +59,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // uncomment this to allow simple rules processing
 //#define RKG_USE_SIMPLE_RULES
 
-// uncomment this to support fairness constraints
-//#define RKG_USE_FAIRNESS
+// set to 1 to support fairness constraints
+#ifndef RKG_USE_FAIRNESS
+#	define RKG_USE_FAIRNESS 0
+#endif
 
 // uncomment the following line if IR is defined as a list of elements in node label
 #define RKG_IR_IN_NODE_LABEL

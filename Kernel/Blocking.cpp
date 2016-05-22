@@ -407,11 +407,9 @@ void DlCompletionGraph :: findDAncestorBlocker ( DlCompletionTree* node )
 {
 	const DlCompletionTree* p = node;
 
-#ifdef RKG_USE_FAIRNESS
-	if ( nSkipBeforeBlock )
+	if ( RKG_USE_FAIRNESS && nSkipBeforeBlock )
 		for ( int n = nSkipBeforeBlock-1; n >= 0 && p->hasParent() && p->isBlockableNode(); --n )
 			p = p->getParentNode();
-#endif
 
 	while ( p->hasParent() )
 	{

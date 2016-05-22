@@ -507,9 +507,8 @@ DlSatTester :: performAfterReasoning ( void )
 	if ( !TODO.empty() )
 		return false;
 
-#ifdef RKG_USE_FAIRNESS
 	// check fairness constraints
-	if ( tBox.hasFC() )
+	if ( RKG_USE_FAIRNESS && tBox.hasFC() )
 	{
 		DlCompletionTree* violator = nullptr;
 		// for every given FC, if it is violated, reject current model
@@ -518,7 +517,7 @@ DlSatTester :: performAfterReasoning ( void )
 			violator = CGraph.getFCViolator((*p)->pName);
 			if ( violator )
 			{
-				nFairnessViolations.inc();
+				incStat(nFairnessViolations);
 				// try to fix violators
 				if ( addToDoEntry ( violator, (*p)->pName, getCurDepSet(), "fair" ) )
 					return true;
@@ -528,7 +527,6 @@ DlSatTester :: performAfterReasoning ( void )
 		if ( !TODO.empty() )
 			return false;
 	}
-#endif
 
 	return false;
 }
@@ -673,9 +671,8 @@ void DlSatTester :: logStatisticData ( std::ostream& o, bool needLocal ) const
 	nNodeSaves.Print		( o, needLocal, "\nThere were made ", " save(s) of tree state" );
 	nNodeRestores.Print		( o, needLocal, "\nThere were made ", " restore(s) of tree state" );
 	nLookups.Print			( o, needLocal, "\nThere were made ", " concept lookups" );
-#ifdef RKG_USE_FAIRNESS
-	nFairnessViolations.Print	( o, needLocal, "\nThere were ", " fairness constraints violation" );
-#endif
+	if ( RKG_USE_FAIRNESS )
+		nFairnessViolations.Print	( o, needLocal, "\nThere were ", " fairness constraints violation" );
 
 	nCacheTry.Print				( o, needLocal, "\nThere were made ", " tries to cache completion tree node, of which:" );
 	nCacheFailedNoCache.Print	( o, needLocal, "\n                ", " fails due to cache absence" );
