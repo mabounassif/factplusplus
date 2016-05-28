@@ -1,5 +1,5 @@
 /* This file is part of the FaCT++ DL reasoner
-Copyright (C) 2008-2015 by Dmitry Tsarkov
+Copyright (C) 2008-2016 by Dmitry Tsarkov
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -52,15 +52,19 @@ public:		// interface
 		/// ensure that the index can cope with sets not larger that SIZE
 	void ensureMaxSetSize ( size_t size ) { Index.resize(size); }
 		/// empty c'tor
-	TFastSet ( void ) {}
+	TFastSet ( void ) = default;
 		/// c'tor with a given max set SIZE
 	TFastSet ( size_t size ) { ensureMaxSetSize(size); }
 		/// copy c'tor
-	TFastSet ( const TFastSet& copy ) : Value(copy.Value), Index(copy.Index) {}
+	TFastSet ( const TFastSet& ) = default;
+		/// move c'tor
+	TFastSet ( TFastSet&& ) = default;
 		/// assignment
-	TFastSet& operator = ( const TFastSet& copy ) { Value = copy.Value; Index = copy.Index; return *this; }
+	TFastSet& operator = ( const TFastSet& ) = default;
+		/// move assignment
+	TFastSet& operator = ( TFastSet && ) = default;
 		/// empty d'tor
-	~TFastSet ( void ) {}
+	~TFastSet ( void ) = default;
 		/// reserve the set size to the SIZE elements
 	void reserve ( size_t size ) { Value.reserve(size); }
 
