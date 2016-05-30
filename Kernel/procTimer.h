@@ -1,5 +1,6 @@
 /* This file is part of the FaCT++ DL reasoner
-Copyright (C) 2003-2014 by Dmitry Tsarkov
+Copyright (C) 2003-2015 Dmitry Tsarkov and The University of Manchester
+Copyright (C) 2015-2016 Dmitry Tsarkov
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -25,8 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
   * Class TsProcTimer definition & implementation
   *
   * Useful for calculating processor time intervals up to 10^-3 sec
-  *
-  * Copyright (C) by Tsarkov Dmitry, 2003
   *
   */
 class TsProcTimer

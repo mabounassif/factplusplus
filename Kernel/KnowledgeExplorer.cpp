@@ -1,5 +1,6 @@
 /* This file is part of the FaCT++ DL reasoner
-Copyright (C) 2011-2016 by Dmitry Tsarkov
+Copyright (C) 2011-2015 Dmitry Tsarkov and The University of Manchester
+Copyright (C) 2015-2016 Dmitry Tsarkov
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
