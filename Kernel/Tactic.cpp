@@ -1661,7 +1661,7 @@ bool DlSatTester :: commonTacticBodyProj ( const TRole* R, BipolarPointer C, con
 	// checkProjection() might change curNode's edge vector and thusly invalidate iterators
 	DlCompletionTree::const_edge_iterator p = curNode->begin(), p_end = curNode->end();
 
-	for ( ptrdiff_t i = 0, n = p_end - p; i < n; ++i )
+	for ( std::ptrdiff_t i = 0, n = p_end - p; i < n; ++i )
 	{
 		p = curNode->begin() + i;
 		if ( (*p)->isNeighbour(R) )
