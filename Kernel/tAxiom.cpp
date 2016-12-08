@@ -18,7 +18,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 #include "tAxiom.h"
-#include "tRole.h"
 #include "dlTBox.h"
 
 // this is to define the hard cycle in concepts: C = \exists R D, D = \exists S C

@@ -19,10 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <iostream>
 
-#include "globaldef.h"
 #include "dumpInterface.h"
 #include "dlTBox.h"
-#include "RoleMaster.h"
 
 //-------------------------------------------------------------------------------
 // General dumping methods -- dumping relevant parts of ontology

@@ -24,7 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <iosfwd>
 
 #include "globaldef.h"
-#include "fpp_assert.h"
 #include "tLexeme.h"
 #include "tsttree.h"
 

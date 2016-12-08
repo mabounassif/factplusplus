@@ -22,8 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "uk_ac_manchester_cs_factplusplus_FaCTPlusPlus.h"
 #include "Kernel.h"
 #include "tJNICache.h"
-#include "JNIActor.h"
-#include "eFPPTimeout.h"
 
 #ifdef __cplusplus
 extern "C" {

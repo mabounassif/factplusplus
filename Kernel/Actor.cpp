@@ -19,7 +19,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "Actor.h"
 #include "tConcept.h"
-#include "tIndividual.h"
 
 	/// check whether actor is applicable to the ENTRY
 bool
