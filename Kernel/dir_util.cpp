@@ -22,6 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "dir_util.h"
 
+// MinGW GCC up to version 6.2 does not have permissions parameter in mkdir()
+#if defined(__MINGW32__) || defined(__MINGW64__)
+#	define mkdir(path, permissions) mkdir(path)
+#endif
+
 /// create a directory by a path; @return 0 if success, -1 if not
 int dirCreate ( const char *path )
 {
