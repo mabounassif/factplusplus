@@ -155,17 +155,18 @@ ReasoningKernel :: doIncremental ( void )
 	TsProcTimer t;
 	t.Start();
 	LocalityChecker* lc = getModExtractor(SYN_LOC_STD)->getModularizer()->getLocalityChecker();
-	TOntology::iterator p, nb = Ontology.beginUnprocessed(), ne = Ontology.end(), rb = Ontology.beginRetracted(), re = Ontology.endRetracted();
+	TOntology::iterator nb = Ontology.beginUnprocessed(), ne = Ontology.end(), rb = Ontology.beginRetracted(), re = Ontology.endRetracted();
 //	TLISPOntologyPrinter pr(std::cout);
-//	for ( p = nb; p != ne; ++p )
+//	TOntology::iterator q;
+//	for ( q = nb; q != ne; ++q )
 //	{
 //		std::cout << "Add:";
-//		(*p)->accept(pr);
+//		(*q)->accept(pr);
 //	}
-//	for ( p = rb; p != re; ++p )
+//	for ( q = rb; q != re; ++q )
 //	{
 //		std::cout << "Del:";
-//		(*p)->accept(pr);
+//		(*q)->accept(pr);
 //	}
 	for ( NameSigMap::iterator p = Name2Sig.begin(), p_end = Name2Sig.end(); p != p_end; ++p )
 	{

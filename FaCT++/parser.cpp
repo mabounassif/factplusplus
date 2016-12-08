@@ -451,7 +451,6 @@ DLLispParser :: getComplexConceptExpression ( void )
 		else
 		{
 			TORoleExpr* S = dynamic_cast<TORoleExpr*>(R);
-			TConceptExpr* C = nullptr;
 
 			// second argument -- data expression
 			if ( Current == RBRACK )
