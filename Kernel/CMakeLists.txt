@@ -87,8 +87,6 @@ set(SOURCE_FILES
 	ModuleMethod.h
 	ModuleType.h
 	OntologyBasedModularizer.h
-	parseTime.cpp
-	parseTime.h
 	Preprocess.cpp
 	PriorityMatrix.h
 	procTimer.h
