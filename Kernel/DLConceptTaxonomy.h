@@ -195,7 +195,7 @@ protected:	// methods
 		/// prepare told subsumers for given entry if necessary
 	virtual KnownSubsumers* buildKnownSubsumers ( ClassifiableEntry* p );
 		/// prepare signature for given entry
-	virtual TSignature* buildSignature ( ClassifiableEntry* p );
+	virtual const TSignature* buildSignature ( ClassifiableEntry* p );
 		/// check if no classification needed (synonym, orphan, unsatisfiable)
 	virtual bool immediatelyClassified ( void );
 		/// check if no BU classification is required as C=TOP

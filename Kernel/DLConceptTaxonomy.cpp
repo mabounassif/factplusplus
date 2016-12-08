@@ -111,7 +111,7 @@ DLConceptTaxonomy :: buildKnownSubsumers ( ClassifiableEntry* ce )
 }
 
 /// prepare signature for given entry
-TSignature*
+const TSignature*
 DLConceptTaxonomy :: buildSignature ( ClassifiableEntry* p )
 {
 	if ( tBox.pName2Sig == nullptr )
