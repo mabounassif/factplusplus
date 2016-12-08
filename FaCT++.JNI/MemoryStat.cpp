@@ -20,6 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <fstream>
 
 #include "MemoryStat.h"
+#include "globaldef.h"
 
 // set to 1 for memory logging
 #ifndef USE_MEMORY_LOG
@@ -32,22 +33,14 @@ std::ofstream StatLogFile
 #endif
 ;
 
-#ifdef __linux__
-#	include <sys/sysinfo.h>
-#endif
-
-#ifdef __APPLE__
+#if defined(__APPLE__)
 #	include <mach/mach.h>
-#endif
-
-#ifdef _WINDOWS
+#elif defined(_WINDOWS)
 #	include <windows.h>
 #	include <psapi.h>
-#else
-#	include <sys/resource.h>
 #endif
 
-static size_t getProcessMemory ( bool resident = true )
+static size_t getProcessMemory ( bool resident ATTR_UNUSED = true )
 {
 #ifdef __APPLE__
 	struct task_basic_info t_info;
