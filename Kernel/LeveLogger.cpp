@@ -27,7 +27,7 @@ namespace {
 	std::ofstream LLprivate;
 }
 // define LL as a reference to the real ofstream
-std::ostream& LL { LLprivate };
+std::ostream& LL = LLprivate;
 
 bool LeveLogger :: initLogger ( unsigned int l, const char* filename )
 {
