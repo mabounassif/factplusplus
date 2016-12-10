@@ -39,9 +39,9 @@ public:
 	// interface
 
 		/// informs about beginning of classification with number of concepts to be classified
-	virtual void setClassificationStarted ( unsigned int nConcepts ) { ind.setLimit(nConcepts); }
+	virtual void setClassificationStarted ( unsigned int nConcepts ) override { ind.setLimit(nConcepts); }
 		/// informs about beginning of classification of a given CONCEPT
-	virtual void nextClass ( void ) { ind.incIndicator(); }
+	virtual void nextClass ( void ) override { ind.incIndicator(); }
 }; // ConsoleProgressMonitor
 
 #endif

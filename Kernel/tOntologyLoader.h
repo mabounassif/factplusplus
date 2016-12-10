@@ -83,7 +83,7 @@ protected:	// methods
 	}
 
 public:		// visitor interface
-	virtual void visit ( const TDLAxiomDeclaration& axiom )
+	virtual void visit ( const TDLAxiomDeclaration& axiom ) override
 	{
 		ensureNames(axiom.getDeclaration());
 		TreeDeleter(e(axiom.getDeclaration()));	// register names in the KB
@@ -91,17 +91,17 @@ public:		// visitor interface
 
 	// n-ary axioms
 
-	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom )
+	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.processEquivalentC(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomDisjointConcepts& axiom )
+	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.processDisjointC(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomDisjointUnion& axiom )
+	virtual void visit ( const TDLAxiomDisjointUnion& axiom ) override
 	{
 		// first make a disjoint axiom
 		prepareArgList(axiom);
@@ -116,37 +116,37 @@ public:		// visitor interface
 		ArgList.push_back(acc);
 		kb.processEquivalentC(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomEquivalentORoles& axiom )
+	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.processEquivalentR(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom )
+	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.processEquivalentR(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomDisjointORoles& axiom )
+	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.processDisjointR(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomDisjointDRoles& axiom )
+	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.processDisjointR(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomSameIndividuals& axiom )
+	virtual void visit ( const TDLAxiomSameIndividuals& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.processSame(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomDifferentIndividuals& axiom )
+	virtual void visit ( const TDLAxiomDifferentIndividuals& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.processDifferent(ArgList.begin(),ArgList.end());
 	}
-	virtual void visit ( const TDLAxiomFairnessConstraint& axiom )
+	virtual void visit ( const TDLAxiomFairnessConstraint& axiom ) override
 	{
 		prepareArgList(axiom);
 		kb.setFairnessConstraint(ArgList.begin(),ArgList.end());
@@ -154,7 +154,7 @@ public:		// visitor interface
 
 	// role axioms
 
-	virtual void visit ( const TDLAxiomRoleInverse& axiom )
+	virtual void visit ( const TDLAxiomRoleInverse& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		ensureNames(axiom.getInvRole());
@@ -162,7 +162,7 @@ public:		// visitor interface
 		TRole* iR = getRole ( axiom.getInvRole(), "Role expression expected in Role Inverse axiom" );
 		kb.getRM(R).addRoleSynonym ( iR->inverse(), R );
 	}
-	virtual void visit ( const TDLAxiomORoleSubsumption& axiom )
+	virtual void visit ( const TDLAxiomORoleSubsumption& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		ensureNames(axiom.getSubRole());
@@ -170,7 +170,7 @@ public:		// visitor interface
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Object Roles Subsumption axiom" );
 		kb.getRM(R).addRoleParent ( Sub, R );
 	}
-	virtual void visit ( const TDLAxiomDRoleSubsumption& axiom )
+	virtual void visit ( const TDLAxiomDRoleSubsumption& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		ensureNames(axiom.getSubRole());
@@ -178,7 +178,7 @@ public:		// visitor interface
 		TRole* S = getRole ( axiom.getSubRole(), "Role expression expected in Data Roles Subsumption axiom" );
 		kb.getDRM().addRoleParent ( S, R );
 	}
-	virtual void visit ( const TDLAxiomORoleDomain& axiom )
+	virtual void visit ( const TDLAxiomORoleDomain& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		ensureNames(axiom.getDomain());
@@ -190,7 +190,7 @@ public:		// visitor interface
 		else if ( likely(!R->isBottom()) )	// nothing to do for bottom
 			R->setDomain(C);
 	}
-	virtual void visit ( const TDLAxiomDRoleDomain& axiom )
+	virtual void visit ( const TDLAxiomDRoleDomain& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		ensureNames(axiom.getDomain());
@@ -202,7 +202,7 @@ public:		// visitor interface
 		else if ( likely(!R->isBottom()) )	// nothing to do for bottom
 			R->setDomain(C);
 	}
-	virtual void visit ( const TDLAxiomORoleRange& axiom )
+	virtual void visit ( const TDLAxiomORoleRange& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		ensureNames(axiom.getRange());
@@ -214,20 +214,20 @@ public:		// visitor interface
 		else if ( likely(!R->isBottom()) )	// nothing to do for bottom
 			R->setRange(C);
 	}
-	virtual void visit ( const TDLAxiomDRoleRange& axiom )
+	virtual void visit ( const TDLAxiomDRoleRange& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		ensureNames(axiom.getRange());
 		getRole ( axiom.getRole(), "Role expression expected in Data Role Range axiom" )->setRange(e(axiom.getRange()));
 	}
-	virtual void visit ( const TDLAxiomRoleTransitive& axiom )
+	virtual void visit ( const TDLAxiomRoleTransitive& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Role Transitivity axiom" );
 		if ( !R->isTop() && !R->isBottom() )	// top/bottom roles are always transitive
 			R->setTransitive();
 	}
-	virtual void visit ( const TDLAxiomRoleReflexive& axiom )
+	virtual void visit ( const TDLAxiomRoleReflexive& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Role Reflexivity axiom" );
@@ -236,7 +236,7 @@ public:		// visitor interface
 		if ( !R->isTop() )	// universal role always reflexive
 			R->setReflexive(true);
 	}
-	virtual void visit ( const TDLAxiomRoleIrreflexive& axiom )
+	virtual void visit ( const TDLAxiomRoleIrreflexive& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Role Irreflexivity axiom" );
@@ -248,7 +248,7 @@ public:		// visitor interface
 			R->setIrreflexive(true);
 		}
 	}
-	virtual void visit ( const TDLAxiomRoleSymmetric& axiom )
+	virtual void visit ( const TDLAxiomRoleSymmetric& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Role Symmetry axiom" );
@@ -258,7 +258,7 @@ public:		// visitor interface
 			kb.getORM().addRoleParent ( R, R->inverse() );
 		}
 	}
-	virtual void visit ( const TDLAxiomRoleAsymmetric& axiom )
+	virtual void visit ( const TDLAxiomRoleAsymmetric& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Role Asymmetry axiom" );
@@ -270,7 +270,7 @@ public:		// visitor interface
 			kb.getORM().addDisjointRoles ( R, R->inverse() );
 		}
 	}
-	virtual void visit ( const TDLAxiomORoleFunctional& axiom )
+	virtual void visit ( const TDLAxiomORoleFunctional& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Object Role Functionality axiom" );
@@ -279,7 +279,7 @@ public:		// visitor interface
 		if ( !R->isBottom() )
 			R->setFunctional();
 	}
-	virtual void visit ( const TDLAxiomDRoleFunctional& axiom )
+	virtual void visit ( const TDLAxiomDRoleFunctional& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Data Role Functionality axiom" );
@@ -288,7 +288,7 @@ public:		// visitor interface
 		if ( !R->isBottom() )
 			R->setFunctional();
 	}
-	virtual void visit ( const TDLAxiomRoleInverseFunctional& axiom )
+	virtual void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override
 	{
 		ensureNames(axiom.getRole());
 		TRole* R = getRole ( axiom.getRole(), "Role expression expected in Role Inverse Functionality axiom" );
@@ -300,7 +300,7 @@ public:		// visitor interface
 
 	// concept/individual axioms
 
-	virtual void visit ( const TDLAxiomConceptInclusion& axiom )
+	virtual void visit ( const TDLAxiomConceptInclusion& axiom ) override
 	{
 		ensureNames(axiom.getSubC());
 		ensureNames(axiom.getSupC());
@@ -308,7 +308,7 @@ public:		// visitor interface
 		DLTree* D = e(axiom.getSupC());
 		kb.addSubsumeAxiom ( C, D );
 	}
-	virtual void visit ( const TDLAxiomInstanceOf& axiom )
+	virtual void visit ( const TDLAxiomInstanceOf& axiom ) override
 	{
 		ensureNames(axiom.getIndividual());
 		ensureNames(axiom.getC());
@@ -317,7 +317,7 @@ public:		// visitor interface
 		DLTree* C = e(axiom.getC());
 		kb.addSubsumeAxiom ( I, C );
 	}
-	virtual void visit ( const TDLAxiomRelatedTo& axiom )
+	virtual void visit ( const TDLAxiomRelatedTo& axiom ) override
 	{
 		ensureNames(axiom.getIndividual());
 		ensureNames(axiom.getRelation());
@@ -332,7 +332,7 @@ public:		// visitor interface
 			kb.RegisterIndividualRelation ( I, R, J );
 		}
 	}
-	virtual void visit ( const TDLAxiomRelatedToNot& axiom )
+	virtual void visit ( const TDLAxiomRelatedToNot& axiom ) override
 	{
 		ensureNames(axiom.getIndividual());
 		ensureNames(axiom.getRelation());
@@ -348,7 +348,7 @@ public:		// visitor interface
 				e(axiom.getIndividual()),
 				createSNFForall ( e(axiom.getRelation()), createSNFNot(e(axiom.getRelatedIndividual())) ) );
 	}
-	virtual void visit ( const TDLAxiomValueOf& axiom )
+	virtual void visit ( const TDLAxiomValueOf& axiom ) override
 	{
 		ensureNames(axiom.getIndividual());
 		ensureNames(axiom.getAttribute());
@@ -362,7 +362,7 @@ public:		// visitor interface
 				e(axiom.getIndividual()),
 				createSNFExists ( e(axiom.getAttribute()), e(axiom.getValue())) );
 	}
-	virtual void visit ( const TDLAxiomValueOfNot& axiom )
+	virtual void visit ( const TDLAxiomValueOfNot& axiom ) override
 	{
 		ensureNames(axiom.getIndividual());
 		ensureNames(axiom.getAttribute());

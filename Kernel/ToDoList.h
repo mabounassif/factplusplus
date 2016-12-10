@@ -91,7 +91,7 @@ protected:	// classes
 				/// empty d'tor
 			virtual ~QueueRestorer () {}
 				/// restore: copy the queue back, adjust pointers
-			virtual void restore () { std::swap(queue->Wait, Wait); queue->sPointer = sp; }
+			virtual void restore () override { std::swap(queue->Wait, Wait); queue->sPointer = sp; }
 		};
 
 	public:		// interface
@@ -142,7 +142,7 @@ protected:	// classes
 		virtual ~queueQueue() {}
 
 			/// add entry to a queue
-		virtual void add ( DlCompletionTree* Node, int offset )
+		virtual void add ( DlCompletionTree* Node, int offset ) override
 		{
 			auto nominalLevel = Node->getNominalLevel();
 			auto greaterNominalLevel = [=] (const ToDoEntry& entry) { return entry.Node->getNominalLevel() > nominalLevel; };

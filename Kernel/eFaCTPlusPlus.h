@@ -44,7 +44,7 @@ public:
 	virtual ~EFaCTPlusPlus ( void ) noexcept {}
 
 		/// reason
-	virtual const char* what ( void ) const noexcept { return reason; }
+	virtual const char* what ( void ) const noexcept override { return reason; }
 }; // EFaCTPlusPlus
 
 #endif

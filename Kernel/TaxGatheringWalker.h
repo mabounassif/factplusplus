@@ -62,7 +62,7 @@ public:		// interface
 		/// taxonomy walking method.
 		/// @return true if node was processed
 		/// @return false if node can not be processed in current settings
-	virtual bool apply ( const TaxonomyVertex& v )
+	virtual bool apply ( const TaxonomyVertex& v ) override
 	{
 		if ( tryVertex(v) )
 		{

@@ -79,35 +79,35 @@ public:		// interface
 
 public:		// visitor interface
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) { o << " *TOP*"; }
-	virtual void visit ( const TDLConceptBottom& ) { o << " *BOTTOM*"; }
-	virtual void visit ( const TDLConceptName& expr ) { o << " " << expr.getName(); }
-	virtual void visit ( const TDLConceptNot& expr ) { BR b(o,"not"); expr.getC()->accept(*this); }
-	virtual void visit ( const TDLConceptAnd& expr ) { BR b(o,"and"); printArray(expr); }
-	virtual void visit ( const TDLConceptOr& expr ) { BR b(o,"or"); printArray(expr); }
-	virtual void visit ( const TDLConceptOneOf& expr ) { BR b(o,"one-of"); printArray(expr); }
-	virtual void visit ( const TDLConceptObjectSelf& expr ) { BR b(o,"self-ref"); expr.getOR()->accept(*this); }
-	virtual void visit ( const TDLConceptObjectValue& expr ) { BR b(o,"some"); expr.getOR()->accept(*this); BR i(o,"one-of"); expr.getI()->accept(*this); }
-	virtual void visit ( const TDLConceptObjectExists& expr ) { BR b(o,"some"); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
-	virtual void visit ( const TDLConceptObjectForall& expr ) { BR b(o,"all"); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
-	virtual void visit ( const TDLConceptObjectMinCardinality& expr )
+	virtual void visit ( const TDLConceptTop& ) override { o << " *TOP*"; }
+	virtual void visit ( const TDLConceptBottom& ) override { o << " *BOTTOM*"; }
+	virtual void visit ( const TDLConceptName& expr ) override { o << " " << expr.getName(); }
+	virtual void visit ( const TDLConceptNot& expr ) override { BR b(o,"not"); expr.getC()->accept(*this); }
+	virtual void visit ( const TDLConceptAnd& expr ) override { BR b(o,"and"); printArray(expr); }
+	virtual void visit ( const TDLConceptOr& expr ) override { BR b(o,"or"); printArray(expr); }
+	virtual void visit ( const TDLConceptOneOf& expr ) override { BR b(o,"one-of"); printArray(expr); }
+	virtual void visit ( const TDLConceptObjectSelf& expr ) override { BR b(o,"self-ref"); expr.getOR()->accept(*this); }
+	virtual void visit ( const TDLConceptObjectValue& expr ) override { BR b(o,"some"); expr.getOR()->accept(*this); BR i(o,"one-of"); expr.getI()->accept(*this); }
+	virtual void visit ( const TDLConceptObjectExists& expr ) override { BR b(o,"some"); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
+	virtual void visit ( const TDLConceptObjectForall& expr ) override { BR b(o,"all"); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
+	virtual void visit ( const TDLConceptObjectMinCardinality& expr ) override
 		{ BR b(o,"atleast"); o << " " << expr.getNumber(); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
-	virtual void visit ( const TDLConceptObjectMaxCardinality& expr )
+	virtual void visit ( const TDLConceptObjectMaxCardinality& expr ) override
 		{ BR b(o,"atmost"); o << " " << expr.getNumber(); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
-	virtual void visit ( const TDLConceptObjectExactCardinality& expr )
+	virtual void visit ( const TDLConceptObjectExactCardinality& expr ) override
 	{
 		BR a(o,"and");
 		{ BR b(o,"atleast"); o << " " << expr.getNumber(); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
 		{ BR b(o,"atmost"); o << " " << expr.getNumber(); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
 	}
-	virtual void visit ( const TDLConceptDataValue& expr ) { BR b(o,"some"); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLConceptDataExists& expr ) { BR b(o,"some"); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLConceptDataForall& expr ) { BR b(o,"all"); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLConceptDataMinCardinality& expr )
+	virtual void visit ( const TDLConceptDataValue& expr ) override { BR b(o,"some"); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
+	virtual void visit ( const TDLConceptDataExists& expr ) override { BR b(o,"some"); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
+	virtual void visit ( const TDLConceptDataForall& expr ) override { BR b(o,"all"); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
+	virtual void visit ( const TDLConceptDataMinCardinality& expr ) override
 		{ BR b(o,"atleast"); o << " " << expr.getNumber(); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLConceptDataMaxCardinality& expr )
+	virtual void visit ( const TDLConceptDataMaxCardinality& expr ) override
 		{ BR b(o,"atmost"); o << " " << expr.getNumber(); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLConceptDataExactCardinality& expr )
+	virtual void visit ( const TDLConceptDataExactCardinality& expr ) override
 	{
 		BR a(o,"and");
 		{ BR b(o,"atleast"); o << " " << expr.getNumber(); expr.getDR()->accept(*this); expr.getExpr()->accept(*this); }
@@ -115,42 +115,42 @@ public:		// visitor interface
 	}
 
 	// individual expressions
-	virtual void visit ( const TDLIndividualName& expr ) { o << " " << expr.getName(); }
+	virtual void visit ( const TDLIndividualName& expr ) override { o << " " << expr.getName(); }
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) { o << " *UROLE*"; }
-	virtual void visit ( const TDLObjectRoleBottom& ) { o << " *EROLE*"; }
-	virtual void visit ( const TDLObjectRoleName& expr ) { o << " " << expr.getName(); }
-	virtual void visit ( const TDLObjectRoleInverse& expr ) { BR b(o,"inv"); expr.getOR()->accept(*this); }
-	virtual void visit ( const TDLObjectRoleChain& expr ) { BR b(o,"compose"); printArray(expr); }
-	virtual void visit ( const TDLObjectRoleProjectionFrom& expr )
+	virtual void visit ( const TDLObjectRoleTop& ) override { o << " *UROLE*"; }
+	virtual void visit ( const TDLObjectRoleBottom& ) override { o << " *EROLE*"; }
+	virtual void visit ( const TDLObjectRoleName& expr ) override { o << " " << expr.getName(); }
+	virtual void visit ( const TDLObjectRoleInverse& expr ) override { BR b(o,"inv"); expr.getOR()->accept(*this); }
+	virtual void visit ( const TDLObjectRoleChain& expr ) override { BR b(o,"compose"); printArray(expr); }
+	virtual void visit ( const TDLObjectRoleProjectionFrom& expr ) override
 		{ BR b(o,"project_from"); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
-	virtual void visit ( const TDLObjectRoleProjectionInto& expr )
+	virtual void visit ( const TDLObjectRoleProjectionInto& expr ) override
 		{ BR b(o,"project_into"); expr.getOR()->accept(*this); expr.getC()->accept(*this); }
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) { o << " *UDROLE*";  }
-	virtual void visit ( const TDLDataRoleBottom& ) { o << " *EDROLE*"; }
-	virtual void visit ( const TDLDataRoleName& expr ) { o << " " << expr.getName(); }
+	virtual void visit ( const TDLDataRoleTop& ) override { o << " *UDROLE*";  }
+	virtual void visit ( const TDLDataRoleBottom& ) override { o << " *EDROLE*"; }
+	virtual void visit ( const TDLDataRoleName& expr ) override { o << " " << expr.getName(); }
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) { o << " *TOP*"; }
-	virtual void visit ( const TDLDataBottom& ) { o << " *BOTTOM*"; }
-	virtual void visit ( const TDLDataTypeName& expr ) { o << " (" << getDTName(expr.getName()) << ")"; }
+	virtual void visit ( const TDLDataTop& ) override { o << " *TOP*"; }
+	virtual void visit ( const TDLDataBottom& ) override { o << " *BOTTOM*"; }
+	virtual void visit ( const TDLDataTypeName& expr ) override { o << " (" << getDTName(expr.getName()) << ")"; }
 		// no need to use a type of a restriction here, as all contains in constants
-	virtual void visit ( const TDLDataTypeRestriction& expr ) { BR b(o,"and"); printArray(expr); }
-	virtual void visit ( const TDLDataValue& expr )
+	virtual void visit ( const TDLDataTypeRestriction& expr ) override { BR b(o,"and"); printArray(expr); }
+	virtual void visit ( const TDLDataValue& expr ) override
 		{ o << " (" << getDTName(getBasicDataType(const_cast<TDLDataTypeExpression*>(expr.getExpr()))->getName()) << " " << expr.getName() << ")"; }
-	virtual void visit ( const TDLDataNot& expr ) { BR b(o,"not"); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLDataAnd& expr ) { BR b(o,"and"); printArray(expr); }
-	virtual void visit ( const TDLDataOr& expr ) { BR b(o,"or"); printArray(expr); }
-	virtual void visit ( const TDLDataOneOf& expr ) { BR b(o,"d-one-of"); printArray(expr); }
+	virtual void visit ( const TDLDataNot& expr ) override { BR b(o,"not"); expr.getExpr()->accept(*this); }
+	virtual void visit ( const TDLDataAnd& expr ) override { BR b(o,"and"); printArray(expr); }
+	virtual void visit ( const TDLDataOr& expr ) override { BR b(o,"or"); printArray(expr); }
+	virtual void visit ( const TDLDataOneOf& expr ) override { BR b(o,"d-one-of"); printArray(expr); }
 
 	// facets
-	virtual void visit ( const TDLFacetMinInclusive& expr ) { BR b(o,"ge"); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLFacetMinExclusive& expr ) { BR b(o,"gt"); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLFacetMaxInclusive& expr ) { BR b(o,"le"); expr.getExpr()->accept(*this); }
-	virtual void visit ( const TDLFacetMaxExclusive& expr ) { BR b(o,"lt"); expr.getExpr()->accept(*this); }
+	virtual void visit ( const TDLFacetMinInclusive& expr ) override { BR b(o,"ge"); expr.getExpr()->accept(*this); }
+	virtual void visit ( const TDLFacetMinExclusive& expr ) override { BR b(o,"gt"); expr.getExpr()->accept(*this); }
+	virtual void visit ( const TDLFacetMaxInclusive& expr ) override { BR b(o,"le"); expr.getExpr()->accept(*this); }
+	virtual void visit ( const TDLFacetMaxExclusive& expr ) override { BR b(o,"lt"); expr.getExpr()->accept(*this); }
 }; // TLISPExpressionPrinter
 
 #endif

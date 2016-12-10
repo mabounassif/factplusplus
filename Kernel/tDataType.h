@@ -34,7 +34,7 @@ protected:	// members
 
 protected:	// methods
 		/// register data value in the datatype
-	virtual void registerNew ( TDataEntry* p ) { p->setHostType(Type); }
+	virtual void registerNew ( TDataEntry* p ) override { p->setHostType(Type); }
 
 public:		// interface
 		/// c'tor: create the TYPE entry

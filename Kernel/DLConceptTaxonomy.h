@@ -55,13 +55,13 @@ protected:	// types
 		// iterators
 
 			/// begin of the Sure subsumers interval
-		virtual ss_iterator s_begin ( void ) { return Sure.begin(); }
+		virtual ss_iterator s_begin ( void ) override { return Sure.begin(); }
 			/// end of the Sure subsumers interval
-		virtual ss_iterator s_end ( void ) { return Sure.end(); }
+		virtual ss_iterator s_end ( void ) override { return Sure.end(); }
 			/// begin of the Possible subsumers interval
-		virtual ss_iterator p_begin ( void ) { return Possible.begin(); }
+		virtual ss_iterator p_begin ( void ) override { return Possible.begin(); }
 			/// end of the Possible subsumers interval
-		virtual ss_iterator p_end ( void ) { return Possible.end(); }
+		virtual ss_iterator p_end ( void ) override { return Possible.end(); }
 	}; // DerivedSubsumers
 
 protected:	// members
@@ -193,21 +193,21 @@ protected:	// methods
 	//-----------------------------------------------------------------
 
 		/// prepare told subsumers for given entry if necessary
-	virtual KnownSubsumers* buildKnownSubsumers ( ClassifiableEntry* p );
+	virtual KnownSubsumers* buildKnownSubsumers ( ClassifiableEntry* p ) override;
 		/// prepare signature for given entry
-	virtual const TSignature* buildSignature ( ClassifiableEntry* p );
+	virtual const TSignature* buildSignature ( ClassifiableEntry* p ) override;
 		/// check if no classification needed (synonym, orphan, unsatisfiable)
-	virtual bool immediatelyClassified ( void );
+	virtual bool immediatelyClassified ( void ) override;
 		/// check if no BU classification is required as C=TOP
 	bool isEqualToTop ( void );
 
 		/// check if it is possible to skip TD phase
-	virtual bool needTopDown ( void ) const
+	virtual bool needTopDown ( void ) const override
 		{ return !(useCompletelyDefined && curEntry->isCompletelyDefined ()); }
 		/// explicitly run TD phase
-	virtual void runTopDown ( void ) { searchBaader(pTax->getTopVertex()); }
+	virtual void runTopDown ( void ) override { searchBaader(pTax->getTopVertex()); }
 		/// check if it is possible to skip BU phase
-	virtual bool needBottomUp ( void ) const
+	virtual bool needBottomUp ( void ) const override
 	{
 		// we DON'T need bottom-up phase for primitive concepts during CD-like reasoning
 		// if no GCIs are in the TBox (C [= T, T [= X or Y, X [= D, Y [= D) or (T [= {o})
@@ -215,7 +215,7 @@ protected:	// methods
 		return flagNeedBottomUp || !useCompletelyDefined || curConcept()->isNonPrimitive();
 	}
 		/// explicitly run BU phase
-	virtual void runBottomUp ( void )
+	virtual void runBottomUp ( void ) override
 	{
 		if ( propagateUp() )	// Common is set up here
 			return;
@@ -230,17 +230,17 @@ protected:	// methods
 	}
 
 		/// actions that to be done BEFORE entry will be classified
-	virtual void preClassificationActions ( void )
+	virtual void preClassificationActions ( void ) override
 	{
 		++nConcepts;
 		if ( pTaxProgress != nullptr )
 			pTaxProgress->nextClass();
 	}
 		/// @return true iff curEntry is classified as a synonym
-	virtual bool classifySynonym ( void );
+	virtual bool classifySynonym ( void ) override;
 
 		/// check if it is necessary to log taxonomy action
-	virtual bool needLogging ( void ) const { return true; }
+	virtual bool needLogging ( void ) const override { return true; }
 
 public:		// interface
 		/// the only c'tor
@@ -274,7 +274,7 @@ public:		// interface
 		/// set progress indicator
 	void setProgressIndicator ( TProgressMonitor* pMon ) { pTaxProgress = pMon; }
 		/// output taxonomy to a stream
-	virtual void print ( std::ostream& o ) const;
+	virtual void print ( std::ostream& o ) const override;
 }; // DLConceptTaxonomy
 
 //

@@ -46,7 +46,7 @@ protected:	// methods
 	TLISPOntologyPrinter& operator << ( const TDLExpression* expr ) { expr->accept(LEP); return *this; }
 
 public:		// visitor interface
-	virtual void visit ( const TDLAxiomDeclaration& axiom )
+	virtual void visit ( const TDLAxiomDeclaration& axiom ) override
 	{
 		const TDLExpression* decl = axiom.getDeclaration();
 		bool cname = dynamic_cast<const TDLConceptName*>(decl) != nullptr;
@@ -66,43 +66,43 @@ public:		// visitor interface
 			  << decl << ")\n";
 	}
 
-	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) { o << "(equal_c"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) { o << "(disjoint_c"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointUnion& axiom )
+	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { o << "(equal_c"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) override { o << "(disjoint_c"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomDisjointUnion& axiom ) override
 		{ o << "(disjoint_c"; print(axiom); o << ")\n(equal_c" << axiom.getC() << " (or"; print(axiom); o << "))\n"; }
-	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) { o << "(equal_r"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) { o << "(equal_r"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) { o << "(disjoint_r"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) { o << "(disjoint_r"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomSameIndividuals& axiom ) { o << "(same"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDifferentIndividuals& axiom ) { o << "(different"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomFairnessConstraint& axiom ) { o << "(fairness"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) override { o << "(equal_r"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { o << "(equal_r"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) override { o << "(disjoint_r"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) override { o << "(disjoint_r"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomSameIndividuals& axiom ) override { o << "(same"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomDifferentIndividuals& axiom ) override { o << "(different"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomFairnessConstraint& axiom ) override { o << "(fairness"; print(axiom); o << ")\n"; }
 
-	virtual void visit ( const TDLAxiomRoleInverse& axiom ) { *this << "(equal_r" << axiom.getRole() << " (inv" << axiom.getInvRole() << "))\n"; }
-	virtual void visit ( const TDLAxiomORoleSubsumption& axiom ) { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomDRoleSubsumption& axiom ) { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomORoleDomain& axiom ) { *this << "(domain" << axiom.getRole() << axiom.getDomain() << ")\n"; }
-	virtual void visit ( const TDLAxiomDRoleDomain& axiom ) { *this << "(domain" << axiom.getRole() << axiom.getDomain() << ")\n"; }
-	virtual void visit ( const TDLAxiomORoleRange& axiom ) { *this << "(range" << axiom.getRole() << axiom.getRange() << ")\n"; }
-	virtual void visit ( const TDLAxiomDRoleRange& axiom ) { *this << "(range" << axiom.getRole() << axiom.getRange() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleTransitive& axiom ) { *this << "(transitive" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleReflexive& axiom ) { *this << "(reflexive" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleIrreflexive& axiom ) { *this << "(irreflexive" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleSymmetric& axiom ) { *this << "(symmetric" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleAsymmetric& axiom ) { *this << "(asymmetric" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomORoleFunctional& axiom ) { *this << "(functional" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomDRoleFunctional& axiom ) { *this << "(functional" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleInverseFunctional& axiom ) { *this << "(functional (inv" << axiom.getRole() << "))\n"; }
+	virtual void visit ( const TDLAxiomRoleInverse& axiom ) override { *this << "(equal_r" << axiom.getRole() << " (inv" << axiom.getInvRole() << "))\n"; }
+	virtual void visit ( const TDLAxiomORoleSubsumption& axiom ) override { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomORoleDomain& axiom ) override { *this << "(domain" << axiom.getRole() << axiom.getDomain() << ")\n"; }
+	virtual void visit ( const TDLAxiomDRoleDomain& axiom ) override { *this << "(domain" << axiom.getRole() << axiom.getDomain() << ")\n"; }
+	virtual void visit ( const TDLAxiomORoleRange& axiom ) override { *this << "(range" << axiom.getRole() << axiom.getRange() << ")\n"; }
+	virtual void visit ( const TDLAxiomDRoleRange& axiom ) override { *this << "(range" << axiom.getRole() << axiom.getRange() << ")\n"; }
+	virtual void visit ( const TDLAxiomRoleTransitive& axiom ) override { *this << "(transitive" << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomRoleReflexive& axiom ) override { *this << "(reflexive" << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { *this << "(irreflexive" << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomRoleSymmetric& axiom ) override { *this << "(symmetric" << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomRoleAsymmetric& axiom ) override { *this << "(asymmetric" << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomORoleFunctional& axiom ) override { *this << "(functional" << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomDRoleFunctional& axiom ) override { *this << "(functional" << axiom.getRole() << ")\n"; }
+	virtual void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { *this << "(functional (inv" << axiom.getRole() << "))\n"; }
 
-	virtual void visit ( const TDLAxiomConceptInclusion& axiom ) { *this << "(implies_c" << axiom.getSubC() << axiom.getSupC() << ")\n"; }
-	virtual void visit ( const TDLAxiomInstanceOf& axiom ) { *this << "(instance" << axiom.getIndividual()  << axiom.getC() << ")\n"; }
-	virtual void visit ( const TDLAxiomRelatedTo& axiom )
+	virtual void visit ( const TDLAxiomConceptInclusion& axiom ) override { *this << "(implies_c" << axiom.getSubC() << axiom.getSupC() << ")\n"; }
+	virtual void visit ( const TDLAxiomInstanceOf& axiom ) override { *this << "(instance" << axiom.getIndividual()  << axiom.getC() << ")\n"; }
+	virtual void visit ( const TDLAxiomRelatedTo& axiom ) override
 		{ *this << "(related" << axiom.getIndividual() << axiom.getRelation() << axiom.getRelatedIndividual() << ")\n"; }
-	virtual void visit ( const TDLAxiomRelatedToNot& axiom )
+	virtual void visit ( const TDLAxiomRelatedToNot& axiom ) override
 		{ *this<< "(instance" << axiom.getIndividual() << " (all" << axiom.getRelation() << "(not" << axiom.getRelatedIndividual() << ")))\n"; }
-	virtual void visit ( const TDLAxiomValueOf& axiom )
+	virtual void visit ( const TDLAxiomValueOf& axiom ) override
 		{ *this << "(instance" << axiom.getIndividual() << " (some" << axiom.getAttribute() << axiom.getValue() << "))\n"; }
-	virtual void visit ( const TDLAxiomValueOfNot& axiom )
+	virtual void visit ( const TDLAxiomValueOfNot& axiom ) override
 		{ *this << "(instance" << axiom.getIndividual() << " (all" << axiom.getAttribute() << "(not " << axiom.getValue() << ")))\n"; }
 
 public:		// interface

@@ -197,41 +197,41 @@ public:		// interface
 
 public:		// visitor implementation: common cases
 	// concept expressions
-	virtual void visit ( const TDLConceptName& expr )
+	virtual void visit ( const TDLConceptName& expr ) override
 		{ value = getEntityValue(expr.getEntity()); }
-	virtual void visit ( const TDLConceptObjectExists& expr )
+	virtual void visit ( const TDLConceptObjectExists& expr ) override
 		{ value = getMinValue ( 1, expr.getOR(), expr.getC() ); dumpValue(expr); }
-	virtual void visit ( const TDLConceptObjectForall& expr )
+	virtual void visit ( const TDLConceptObjectForall& expr ) override
 		{ value = getForallValue ( expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectMinCardinality& expr )
+	virtual void visit ( const TDLConceptObjectMinCardinality& expr ) override
 		{ value = getMinValue ( expr.getNumber(), expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectMaxCardinality& expr )
+	virtual void visit ( const TDLConceptObjectMaxCardinality& expr ) override
 		{ value = getMaxValue ( expr.getNumber(), expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectExactCardinality& expr )
+	virtual void visit ( const TDLConceptObjectExactCardinality& expr ) override
 		{ value = getExactValue ( expr.getNumber(), expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptDataExists& expr )
+	virtual void visit ( const TDLConceptDataExists& expr ) override
 		{ value = getMinValue ( 1, expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataForall& expr )
+	virtual void visit ( const TDLConceptDataForall& expr ) override
 		{ value = getForallValue ( expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataMinCardinality& expr )
+	virtual void visit ( const TDLConceptDataMinCardinality& expr ) override
 		{ value = getMinValue ( expr.getNumber(), expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataMaxCardinality& expr )
+	virtual void visit ( const TDLConceptDataMaxCardinality& expr ) override
 		{ value = getMaxValue ( expr.getNumber(), expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataExactCardinality& expr )
+	virtual void visit ( const TDLConceptDataExactCardinality& expr ) override
 		{ value = getExactValue ( expr.getNumber(), expr.getDR(), expr.getExpr() ); }
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleName& expr )
+	virtual void visit ( const TDLObjectRoleName& expr ) override
 		{ value = getEntityValue(expr.getEntity()); }
 		// FaCT++ extension: equivalent to R(x,y) and C(x), so copy behaviour from ER.X
-	virtual void visit ( const TDLObjectRoleProjectionFrom& expr )
+	virtual void visit ( const TDLObjectRoleProjectionFrom& expr ) override
 		{ value = getMinValue ( 1, expr.getOR(), expr.getC() ); }
 		// FaCT++ extension: equivalent to R(x,y) and C(y), so copy behaviour from ER.X
-	virtual void visit ( const TDLObjectRoleProjectionInto& expr )
+	virtual void visit ( const TDLObjectRoleProjectionInto& expr ) override
 		{ value = getMinValue ( 1, expr.getOR(), expr.getC() ); }
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleName& expr )
+	virtual void visit ( const TDLDataRoleName& expr ) override
 		{ value = getEntityValue(expr.getEntity()); }
 }; // CardinalityEvaluatorBase
 
@@ -241,13 +241,13 @@ class UpperBoundDirectEvaluator: public CardinalityEvaluatorBase
 {
 protected:	// methods
 		/// helper for entities TODO: checks only C top-locality, not R
-	virtual int getEntityValue ( const TNamedEntity* entity )
+	virtual int getEntityValue ( const TNamedEntity* entity ) override
 		{ return getAllNoneUpper ( botCLocal() && nc(entity) ); }
 		/// helper for All
-	virtual int getForallValue ( const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getForallValue ( const TDLRoleExpression* R, const TDLExpression* C ) override
 		{ return getAllNoneUpper ( isTopEquivalent(R) && isLowerGE ( getLowerBoundComplement(C), 1 ) ); }
 		/// helper for things like >= m R.C
-	virtual int getMinValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getMinValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// m > 0 and...
 		if ( m <= 0 )
@@ -259,7 +259,7 @@ protected:	// methods
 		return getAllNoneUpper ( isUpperLT ( getUpperBoundDirect(C), m ) );
 	}
 		/// helper for things like <= m R.C
-	virtual int getMaxValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getMaxValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// R = \top and...
 		if ( !isTopEquivalent(R) )
@@ -268,7 +268,7 @@ protected:	// methods
 		return getAllNoneUpper ( isLowerGT ( getLowerBoundDirect(C), m ) );
 	}
 		/// helper for = m R.C
-	virtual int getExactValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getExactValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// conjunction of Min and Max values
 		return minUpperValue ( getMinValue ( m, R, C ), getMaxValue ( m, R, C ) );
@@ -310,22 +310,22 @@ public:		// visitor implementation
 	// make all other visit() methods from the base implementation visible
 	using CardinalityEvaluatorBase::visit;
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLConceptBottom& ) { value = anyUpperValue(); }
-	virtual void visit ( const TDLConceptNot& expr ) { value = getUpperBoundComplement(expr.getC()); }
-	virtual void visit ( const TDLConceptAnd& expr ) { value = getAndValue(expr); dumpValue(expr); }
-	virtual void visit ( const TDLConceptOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLConceptOneOf& expr ) { value = int(expr.size()); }
-	virtual void visit ( const TDLConceptObjectSelf& expr ) { value = getAllNoneUpper(isBotEquivalent(expr.getOR())); }
-	virtual void visit ( const TDLConceptObjectValue& expr ) { value = getAllNoneUpper(isBotEquivalent(expr.getOR())); }
-	virtual void visit ( const TDLConceptDataValue& expr ) { value = getAllNoneUpper(isBotEquivalent(expr.getDR())); }
+	virtual void visit ( const TDLConceptTop& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLConceptBottom& ) override { value = anyUpperValue(); }
+	virtual void visit ( const TDLConceptNot& expr ) override { value = getUpperBoundComplement(expr.getC()); }
+	virtual void visit ( const TDLConceptAnd& expr ) override { value = getAndValue(expr); dumpValue(expr); }
+	virtual void visit ( const TDLConceptOr& expr ) override { value = getOrValue(expr); }
+	virtual void visit ( const TDLConceptOneOf& expr ) override { value = int(expr.size()); }
+	virtual void visit ( const TDLConceptObjectSelf& expr ) override { value = getAllNoneUpper(isBotEquivalent(expr.getOR())); }
+	virtual void visit ( const TDLConceptObjectValue& expr ) override { value = getAllNoneUpper(isBotEquivalent(expr.getOR())); }
+	virtual void visit ( const TDLConceptDataValue& expr ) override { value = getAllNoneUpper(isBotEquivalent(expr.getDR())); }
 
 	// object role expressions
 	// TODO!! properly process roles that are isTop/isot
-	virtual void visit ( const TDLObjectRoleTop& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLObjectRoleBottom& ) { value = anyUpperValue(); }
-	virtual void visit ( const TDLObjectRoleInverse& expr ) { value = getUpperBoundDirect(expr.getOR()); }
-	virtual void visit ( const TDLObjectRoleChain& expr )
+	virtual void visit ( const TDLObjectRoleTop& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLObjectRoleBottom& ) override { value = anyUpperValue(); }
+	virtual void visit ( const TDLObjectRoleInverse& expr ) override { value = getUpperBoundDirect(expr.getOR()); }
+	virtual void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( isBotEquivalent(*p) )
@@ -337,21 +337,21 @@ public:		// visitor implementation
 	}
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLDataRoleBottom& ) { value = anyUpperValue(); }
+	virtual void visit ( const TDLDataRoleTop& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLDataRoleBottom& ) override { value = anyUpperValue(); }
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLDataBottom& ) { value = anyUpperValue(); }
+	virtual void visit ( const TDLDataTop& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLDataBottom& ) override { value = anyUpperValue(); }
 	// FIXME!! not ready
-	//virtual void visit ( const TDLDataTypeName& ) { isBotEq = false; }
+	//virtual void visit ( const TDLDataTypeName& ) override { isBotEq = false; }
 	// FIXME!! not ready
-	//virtual void visit ( const TDLDataTypeRestriction& ) { isBotEq = false; }
-	virtual void visit ( const TDLDataValue& ) { value = 1; }
-	virtual void visit ( const TDLDataNot& expr ) { value = getUpperBoundComplement(expr.getExpr()); }
-	virtual void visit ( const TDLDataAnd& expr ) { value = getAndValue(expr); }
-	virtual void visit ( const TDLDataOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLDataOneOf& expr ) { value = (int)expr.size(); }
+	//virtual void visit ( const TDLDataTypeRestriction& ) override { isBotEq = false; }
+	virtual void visit ( const TDLDataValue& ) override { value = 1; }
+	virtual void visit ( const TDLDataNot& expr ) override { value = getUpperBoundComplement(expr.getExpr()); }
+	virtual void visit ( const TDLDataAnd& expr ) override { value = getAndValue(expr); }
+	virtual void visit ( const TDLDataOr& expr ) override { value = getOrValue(expr); }
+	virtual void visit ( const TDLDataOneOf& expr ) override { value = (int)expr.size(); }
 }; // UpperBoundDirectEvaluator
 
 /// determine how many instances can a complement of expression have;
@@ -360,13 +360,13 @@ class UpperBoundComplementEvaluator: public CardinalityEvaluatorBase
 {
 protected:	// methods
 		/// helper for entities TODO: checks only C top-locality, not R
-	virtual int getEntityValue ( const TNamedEntity* entity )
+	virtual int getEntityValue ( const TNamedEntity* entity ) override
 		{ return getAllNoneUpper ( topCLocal() && nc(entity) ); }
 		/// helper for All
-	virtual int getForallValue ( const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getForallValue ( const TDLRoleExpression* R, const TDLExpression* C ) override
 		{ return getAllNoneUpper ( isBotEquivalent(R) || isUpperLE ( getUpperBoundComplement(C), 0 ) ); }
 		/// helper for things like >= m R.C
-	virtual int getMinValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getMinValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// m == 0 or...
 		if ( m == 0 )
@@ -378,7 +378,7 @@ protected:	// methods
 		return getAllNoneUpper ( isLowerGE ( getLowerBoundDirect(C), m ) );
 	}
 		/// helper for things like <= m R.C
-	virtual int getMaxValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getMaxValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// R = \bot or...
 		if ( isBotEquivalent(R)  )
@@ -387,7 +387,7 @@ protected:	// methods
 		return getAllNoneUpper ( isUpperLE ( getUpperBoundDirect(C), m ) );
 	}
 		/// helper for things like = m R.C
-	virtual int getExactValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getExactValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// here the minimal value between Mix and Max is an answer. The -1 case will be dealt with automagically
 		return std::min ( getMinValue ( m, R, C ), getMaxValue ( m, R, C ) );
@@ -429,21 +429,21 @@ public:		// visitor interface
 	// make all other visit() methods from the base implementation visible
 	using CardinalityEvaluatorBase::visit;
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) { value = anyUpperValue(); }
-	virtual void visit ( const TDLConceptBottom& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLConceptNot& expr ) { value = getUpperBoundDirect(expr.getC()); }
-	virtual void visit ( const TDLConceptAnd& expr ) { value = getAndValue(expr); dumpValue(expr); }
-	virtual void visit ( const TDLConceptOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLConceptOneOf& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLConceptObjectSelf& expr ) { value = getAllNoneUpper(isTopEquivalent(expr.getOR())); }
-	virtual void visit ( const TDLConceptObjectValue& expr ) { value = getAllNoneUpper(isTopEquivalent(expr.getOR())); }
-	virtual void visit ( const TDLConceptDataValue& expr ) { value = getAllNoneUpper(isTopEquivalent(expr.getDR())); }
+	virtual void visit ( const TDLConceptTop& ) override { value = anyUpperValue(); }
+	virtual void visit ( const TDLConceptBottom& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLConceptNot& expr ) override { value = getUpperBoundDirect(expr.getC()); }
+	virtual void visit ( const TDLConceptAnd& expr ) override { value = getAndValue(expr); dumpValue(expr); }
+	virtual void visit ( const TDLConceptOr& expr ) override { value = getOrValue(expr); }
+	virtual void visit ( const TDLConceptOneOf& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLConceptObjectSelf& expr ) override { value = getAllNoneUpper(isTopEquivalent(expr.getOR())); }
+	virtual void visit ( const TDLConceptObjectValue& expr ) override { value = getAllNoneUpper(isTopEquivalent(expr.getOR())); }
+	virtual void visit ( const TDLConceptDataValue& expr ) override { value = getAllNoneUpper(isTopEquivalent(expr.getDR())); }
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) { value = anyUpperValue(); }
-	virtual void visit ( const TDLObjectRoleBottom& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLObjectRoleInverse& expr ) { value = getUpperBoundComplement(expr.getOR()); }
-	virtual void visit ( const TDLObjectRoleChain& expr )
+	virtual void visit ( const TDLObjectRoleTop& ) override { value = anyUpperValue(); }
+	virtual void visit ( const TDLObjectRoleBottom& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLObjectRoleInverse& expr ) override { value = getUpperBoundComplement(expr.getOR()); }
+	virtual void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( !isTopEquivalent(*p) )
@@ -455,21 +455,21 @@ public:		// visitor interface
 	}
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) { value = anyUpperValue(); }
-	virtual void visit ( const TDLDataRoleBottom& ) { value = noUpperValue(); }
+	virtual void visit ( const TDLDataRoleTop& ) override { value = anyUpperValue(); }
+	virtual void visit ( const TDLDataRoleBottom& ) override { value = noUpperValue(); }
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) { value = anyUpperValue(); }
-	virtual void visit ( const TDLDataBottom& ) { value = noUpperValue(); }
+	virtual void visit ( const TDLDataTop& ) override { value = anyUpperValue(); }
+	virtual void visit ( const TDLDataBottom& ) override { value = noUpperValue(); }
 	// negated datatype is a union of all other DTs that are infinite
-	virtual void visit ( const TDLDataTypeName& ) { value = noUpperValue(); }
+	virtual void visit ( const TDLDataTypeName& ) override { value = noUpperValue(); }
 	// negated restriction include negated DT
-	virtual void visit ( const TDLDataTypeRestriction& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLDataValue& ) { value = noUpperValue(); }
-	virtual void visit ( const TDLDataNot& expr ) { value = getUpperBoundDirect(expr.getExpr()); }
-	virtual void visit ( const TDLDataAnd& expr ) { value = getAndValue(expr); }
-	virtual void visit ( const TDLDataOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLDataOneOf& ) { value = noUpperValue(); }
+	virtual void visit ( const TDLDataTypeRestriction& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLDataValue& ) override { value = noUpperValue(); }
+	virtual void visit ( const TDLDataNot& expr ) override { value = getUpperBoundDirect(expr.getExpr()); }
+	virtual void visit ( const TDLDataAnd& expr ) override { value = getAndValue(expr); }
+	virtual void visit ( const TDLDataOr& expr ) override { value = getOrValue(expr); }
+	virtual void visit ( const TDLDataOneOf& ) override { value = noUpperValue(); }
 }; // UpperBoundComplementEvaluator
 
 /// determine how many instances can an expression have;
@@ -478,13 +478,13 @@ class LowerBoundDirectEvaluator: public CardinalityEvaluatorBase
 {
 protected:	// methods
 		/// helper for entities TODO: checks only C top-locality, not R
-	virtual int getEntityValue ( const TNamedEntity* entity )
+	virtual int getEntityValue ( const TNamedEntity* entity ) override
 		{ return getOneNoneLower ( topCLocal() && nc(entity) ); }
 		/// helper for All
-	virtual int getForallValue ( const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getForallValue ( const TDLRoleExpression* R, const TDLExpression* C ) override
 		{ return getOneNoneLower ( isBotEquivalent(R) || isUpperLE ( getUpperBoundComplement(C), 0 ) ); }
 		/// helper for things like >= m R.C
-	virtual int getMinValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getMinValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// m == 0 or...
 		if ( m == 0 )
@@ -496,7 +496,7 @@ protected:	// methods
 		return isLowerGE ( getLowerBoundDirect(C), m ) ? (int)m : noLowerValue();
 	}
 		/// helper for things like <= m R.C
-	virtual int getMaxValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getMaxValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// R = \bot or...
 		if ( isBotEquivalent(R) )
@@ -505,7 +505,7 @@ protected:	// methods
 		return getOneNoneLower ( isUpperLE ( getUpperBoundDirect(C), m ) );
 	}
 		/// helper for things like = m R.C
-	virtual int getExactValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getExactValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		int min = getMinValue ( m, R, C ), max = getMaxValue ( m, R, C );
 		// we need to take the lowest value
@@ -601,22 +601,22 @@ public:		// visitor interface
 	// make all other visit() methods from the base implementation visible
 	using CardinalityEvaluatorBase::visit;
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) { value = 1; }
-	virtual void visit ( const TDLConceptBottom& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLConceptNot& expr ) { value = getLowerBoundComplement(expr.getC()); }
-	virtual void visit ( const TDLConceptAnd& expr ) { value = getAndValue(expr); dumpValue(expr); }
-	virtual void visit ( const TDLConceptOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLConceptOneOf& expr ) { value = getOneNoneLower(expr.size() > 0); }
-	virtual void visit ( const TDLConceptObjectSelf& expr ) { value = getOneNoneLower(isTopEquivalent(expr.getOR())); }
+	virtual void visit ( const TDLConceptTop& ) override { value = 1; }
+	virtual void visit ( const TDLConceptBottom& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLConceptNot& expr ) override { value = getLowerBoundComplement(expr.getC()); }
+	virtual void visit ( const TDLConceptAnd& expr ) override { value = getAndValue(expr); dumpValue(expr); }
+	virtual void visit ( const TDLConceptOr& expr ) override { value = getOrValue(expr); }
+	virtual void visit ( const TDLConceptOneOf& expr ) override { value = getOneNoneLower(expr.size() > 0); }
+	virtual void visit ( const TDLConceptObjectSelf& expr ) override { value = getOneNoneLower(isTopEquivalent(expr.getOR())); }
 	// FIXME!! differ from the paper
-	virtual void visit ( const TDLConceptObjectValue& expr ) { value = getOneNoneLower(isTopEquivalent(expr.getOR())); }
-	virtual void visit ( const TDLConceptDataValue& expr ) { value = getOneNoneLower(isTopEquivalent(expr.getDR())); }
+	virtual void visit ( const TDLConceptObjectValue& expr ) override { value = getOneNoneLower(isTopEquivalent(expr.getOR())); }
+	virtual void visit ( const TDLConceptDataValue& expr ) override { value = getOneNoneLower(isTopEquivalent(expr.getDR())); }
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) { value = anyLowerValue(); }
-	virtual void visit ( const TDLObjectRoleBottom& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLObjectRoleInverse& expr ) { value = getLowerBoundDirect(expr.getOR()); }
-	virtual void visit ( const TDLObjectRoleChain& expr )
+	virtual void visit ( const TDLObjectRoleTop& ) override { value = anyLowerValue(); }
+	virtual void visit ( const TDLObjectRoleBottom& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLObjectRoleInverse& expr ) override { value = getLowerBoundDirect(expr.getOR()); }
+	virtual void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( !isTopEquivalent(*p) )
@@ -628,21 +628,21 @@ public:		// visitor interface
 	}
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) { value = anyLowerValue(); }
-	virtual void visit ( const TDLDataRoleBottom& ) { value = noLowerValue(); }
+	virtual void visit ( const TDLDataRoleTop& ) override { value = anyLowerValue(); }
+	virtual void visit ( const TDLDataRoleBottom& ) override { value = noLowerValue(); }
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) { value = anyLowerValue(); }
-	virtual void visit ( const TDLDataBottom& ) { value = noLowerValue(); }
+	virtual void visit ( const TDLDataTop& ) override { value = anyLowerValue(); }
+	virtual void visit ( const TDLDataBottom& ) override { value = noLowerValue(); }
 	// negated datatype is a union of all other DTs that are infinite
-	virtual void visit ( const TDLDataTypeName& ) { value = noLowerValue(); }
+	virtual void visit ( const TDLDataTypeName& ) override { value = noLowerValue(); }
 	// negated restriction include negated DT
-	virtual void visit ( const TDLDataTypeRestriction& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLDataValue& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLDataNot& expr ) { value = getLowerBoundComplement(expr.getExpr()); }
-	virtual void visit ( const TDLDataAnd& expr ) { value = getAndValue(expr); }
-	virtual void visit ( const TDLDataOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLDataOneOf& expr ) { value = getOneNoneLower(expr.size() > 0); }
+	virtual void visit ( const TDLDataTypeRestriction& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLDataValue& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLDataNot& expr ) override { value = getLowerBoundComplement(expr.getExpr()); }
+	virtual void visit ( const TDLDataAnd& expr ) override { value = getAndValue(expr); }
+	virtual void visit ( const TDLDataOr& expr ) override { value = getOrValue(expr); }
+	virtual void visit ( const TDLDataOneOf& expr ) override { value = getOneNoneLower(expr.size() > 0); }
 }; // LowerBoundDirectEvaluator
 
 /// determine how many instances can an expression have;
@@ -651,13 +651,13 @@ class LowerBoundComplementEvaluator: public CardinalityEvaluatorBase
 {
 protected:	// methods
 		/// helper for entities TODO: checks only C top-locality, not R
-	virtual int getEntityValue ( const TNamedEntity* entity )
+	virtual int getEntityValue ( const TNamedEntity* entity ) override
 		{ return getOneNoneLower ( botCLocal() && nc(entity) ); }
 		/// helper for All
-	virtual int getForallValue ( const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getForallValue ( const TDLRoleExpression* R, const TDLExpression* C ) override
 		{ return getOneNoneLower ( isTopEquivalent(R) && isLowerGE ( getLowerBoundComplement(C), 1 ) ); }
 		/// helper for things like >= m R.C
-	virtual int getMinValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getMinValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// m > 0 and...
 		if ( m <= 0 )
@@ -669,7 +669,7 @@ protected:	// methods
 		return getOneNoneLower ( isUpperLT ( getUpperBoundDirect(C), m ) );
 	}
 		/// helper for things like <= m R.C
-	virtual int getMaxValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getMaxValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// R = \top and...
 		if ( !isTopEquivalent(R) )
@@ -681,7 +681,7 @@ protected:	// methods
 			return noLowerValue();
 	}
 		/// helper for things like = m R.C
-	virtual int getExactValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C )
+	virtual int getExactValue ( unsigned int m, const TDLRoleExpression* R, const TDLExpression* C ) override
 	{
 		// here the maximal value between Mix and Max is an answer. The -1 case will be dealt with automagically
 		// because both min and max are between 0 and m+1
@@ -770,21 +770,21 @@ public:		// visitor implementation
 	// make all other visit() methods from the base implementation visible
 	using CardinalityEvaluatorBase::visit;
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLConceptBottom& ) { value = 1; }
-	virtual void visit ( const TDLConceptNot& expr ) { value = getLowerBoundDirect(expr.getC()); }
-	virtual void visit ( const TDLConceptAnd& expr ) { value = getAndValue(expr); dumpValue(expr); }
-	virtual void visit ( const TDLConceptOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLConceptOneOf& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLConceptObjectSelf& expr ) { value = getOneNoneLower(isBotEquivalent(expr.getOR())); }
-	virtual void visit ( const TDLConceptObjectValue& expr ) { value = getOneNoneLower(isBotEquivalent(expr.getOR())); }
-	virtual void visit ( const TDLConceptDataValue& expr ) { value = getOneNoneLower(isBotEquivalent(expr.getDR())); }
+	virtual void visit ( const TDLConceptTop& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLConceptBottom& ) override { value = 1; }
+	virtual void visit ( const TDLConceptNot& expr ) override { value = getLowerBoundDirect(expr.getC()); }
+	virtual void visit ( const TDLConceptAnd& expr ) override { value = getAndValue(expr); dumpValue(expr); }
+	virtual void visit ( const TDLConceptOr& expr ) override { value = getOrValue(expr); }
+	virtual void visit ( const TDLConceptOneOf& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLConceptObjectSelf& expr ) override { value = getOneNoneLower(isBotEquivalent(expr.getOR())); }
+	virtual void visit ( const TDLConceptObjectValue& expr ) override { value = getOneNoneLower(isBotEquivalent(expr.getOR())); }
+	virtual void visit ( const TDLConceptDataValue& expr ) override { value = getOneNoneLower(isBotEquivalent(expr.getDR())); }
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLObjectRoleBottom& ) { value = anyLowerValue(); }
-	virtual void visit ( const TDLObjectRoleInverse& expr ) { value = getLowerBoundComplement(expr.getOR()); }
-	virtual void visit ( const TDLObjectRoleChain& expr )
+	virtual void visit ( const TDLObjectRoleTop& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLObjectRoleBottom& ) override { value = anyLowerValue(); }
+	virtual void visit ( const TDLObjectRoleInverse& expr ) override { value = getLowerBoundComplement(expr.getOR()); }
+	virtual void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( isBotEquivalent(*p) )
@@ -796,21 +796,21 @@ public:		// visitor implementation
 	}
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLDataRoleBottom& ) { value = anyLowerValue(); }
+	virtual void visit ( const TDLDataRoleTop& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLDataRoleBottom& ) override { value = anyLowerValue(); }
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) { value = noLowerValue(); }
-	virtual void visit ( const TDLDataBottom& ) { value = anyLowerValue(); }
+	virtual void visit ( const TDLDataTop& ) override { value = noLowerValue(); }
+	virtual void visit ( const TDLDataBottom& ) override { value = anyLowerValue(); }
 	// FIXME!! not ready
-	//virtual void visit ( const TDLDataTypeName& ) { isBotEq = false; }
+	//virtual void visit ( const TDLDataTypeName& ) override { isBotEq = false; }
 	// FIXME!! not ready
-	//virtual void visit ( const TDLDataTypeRestriction& ) { isBotEq = false; }
-	virtual void visit ( const TDLDataValue& ) { value = 1; }
-	virtual void visit ( const TDLDataNot& expr ) { value = getLowerBoundDirect(expr.getExpr()); }
-	virtual void visit ( const TDLDataAnd& expr ) { value = getAndValue(expr); }
-	virtual void visit ( const TDLDataOr& expr ) { value = getOrValue(expr); }
-	virtual void visit ( const TDLDataOneOf& ) { value = noLowerValue(); }
+	//virtual void visit ( const TDLDataTypeRestriction& ) override { isBotEq = false; }
+	virtual void visit ( const TDLDataValue& ) override { value = 1; }
+	virtual void visit ( const TDLDataNot& expr ) override { value = getLowerBoundDirect(expr.getExpr()); }
+	virtual void visit ( const TDLDataAnd& expr ) override { value = getAndValue(expr); }
+	virtual void visit ( const TDLDataOr& expr ) override { value = getOrValue(expr); }
+	virtual void visit ( const TDLDataOneOf& ) override { value = noLowerValue(); }
 }; // LowerBoundComplementEvaluator
 
 /// implementation of evaluation
@@ -840,7 +840,7 @@ protected:	// members
 
 protected:	// methods
 		/// @return true iff EXPR is top equivalent
-	virtual bool isTopEquivalent ( const TDLExpression* expr ) {
+	virtual bool isTopEquivalent ( const TDLExpression* expr ) override {
 #	ifdef FPP_DEBUG_EXTENDED_LOCALITY
 		std::cout << "Checking top locality of";
 		expr->accept(lp);
@@ -853,7 +853,7 @@ protected:	// methods
 		return ret;
 	}
 		/// @return true iff EXPR is bottom equivalent
-	virtual bool isBotEquivalent ( const TDLExpression* expr ) {
+	virtual bool isBotEquivalent ( const TDLExpression* expr ) override {
 #	ifdef FPP_DEBUG_EXTENDED_LOCALITY
 		std::cout << "Checking bot locality of";
 		expr->accept(lp);

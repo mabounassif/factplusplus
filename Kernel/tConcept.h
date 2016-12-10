@@ -286,9 +286,9 @@ public:		// methods
 	// save/load interface; implementation is in SaveLoad.cpp
 
 		/// save entry
-	virtual void Save ( SaveLoadManager& m ) const;
+	virtual void Save ( SaveLoadManager& m ) const override;
 		/// load entry
-	virtual void Load ( SaveLoadManager& m );
+	virtual void Load ( SaveLoadManager& m ) override;
 }; // TConcept
 
 /// Class for comparison of TConcepts wrt told subsumer depth

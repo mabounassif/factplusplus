@@ -158,7 +158,7 @@ protected:	// classes
 
 	protected:	// methods
 			/// specialise new method as the one doing nothing
-		virtual BranchingContext* createNew ( void ) { return nullptr; }
+		virtual BranchingContext* createNew ( void ) override { return nullptr; }
 			/// push method to use
 		BranchingContext* push ( BranchingContext* p )
 		{
@@ -205,7 +205,7 @@ protected:	// classes
 			PoolCh.clear();
 		}
 			/// clear the stack and pools
-		virtual void clear ( void )
+		virtual void clear ( void ) override
 		{
 			clearPools();
 			TSaveStack<BranchingContext>::clear();

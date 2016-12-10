@@ -484,14 +484,14 @@ public:		// interface
 	// output
 
 		/// print role to given stream
-	void Print ( std::ostream& o ) const;
+	void Print ( std::ostream& o ) const override;
 
 	// save/load interface; implementation is in SaveLoad.cpp
 
 		/// save entry
-	virtual void Save ( SaveLoadManager& m ) const;
+	virtual void Save ( SaveLoadManager& m ) const override;
 		/// load entry
-	virtual void Load ( SaveLoadManager& m );
+	virtual void Load ( SaveLoadManager& m ) override;
 }; // TRole
 
 /// @return R or -R for T in the form (inv ... (inv R)...)

@@ -168,60 +168,60 @@ class DLExpressionVisitorEmpty: public DLExpressionVisitor
 {
 public:		// visitor interface
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) {}
-	virtual void visit ( const TDLConceptBottom& ) {}
-	virtual void visit ( const TDLConceptName& ) {}
-	virtual void visit ( const TDLConceptNot& ) {}
-	virtual void visit ( const TDLConceptAnd& ) {}
-	virtual void visit ( const TDLConceptOr& ) {}
-	virtual void visit ( const TDLConceptOneOf& ) {}
-	virtual void visit ( const TDLConceptObjectSelf& ) {}
-	virtual void visit ( const TDLConceptObjectValue& ) {}
-	virtual void visit ( const TDLConceptObjectExists& ) {}
-	virtual void visit ( const TDLConceptObjectForall& ) {}
-	virtual void visit ( const TDLConceptObjectMinCardinality& ) {}
-	virtual void visit ( const TDLConceptObjectMaxCardinality& ) {}
-	virtual void visit ( const TDLConceptObjectExactCardinality& ) {}
-	virtual void visit ( const TDLConceptDataValue& ) {}
-	virtual void visit ( const TDLConceptDataExists& ) {}
-	virtual void visit ( const TDLConceptDataForall& ) {}
-	virtual void visit ( const TDLConceptDataMinCardinality& ) {}
-	virtual void visit ( const TDLConceptDataMaxCardinality& ) {}
-	virtual void visit ( const TDLConceptDataExactCardinality& ) {}
+	virtual void visit ( const TDLConceptTop& ) override {}
+	virtual void visit ( const TDLConceptBottom& ) override {}
+	virtual void visit ( const TDLConceptName& ) override {}
+	virtual void visit ( const TDLConceptNot& ) override {}
+	virtual void visit ( const TDLConceptAnd& ) override {}
+	virtual void visit ( const TDLConceptOr& ) override {}
+	virtual void visit ( const TDLConceptOneOf& ) override {}
+	virtual void visit ( const TDLConceptObjectSelf& ) override {}
+	virtual void visit ( const TDLConceptObjectValue& ) override {}
+	virtual void visit ( const TDLConceptObjectExists& ) override {}
+	virtual void visit ( const TDLConceptObjectForall& ) override {}
+	virtual void visit ( const TDLConceptObjectMinCardinality& ) override {}
+	virtual void visit ( const TDLConceptObjectMaxCardinality& ) override {}
+	virtual void visit ( const TDLConceptObjectExactCardinality& ) override {}
+	virtual void visit ( const TDLConceptDataValue& ) override {}
+	virtual void visit ( const TDLConceptDataExists& ) override {}
+	virtual void visit ( const TDLConceptDataForall& ) override {}
+	virtual void visit ( const TDLConceptDataMinCardinality& ) override {}
+	virtual void visit ( const TDLConceptDataMaxCardinality& ) override {}
+	virtual void visit ( const TDLConceptDataExactCardinality& ) override {}
 
 	// individual expressions
-	virtual void visit ( const TDLIndividualName& ) {}
+	virtual void visit ( const TDLIndividualName& ) override {}
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) {}
-	virtual void visit ( const TDLObjectRoleBottom& ) {}
-	virtual void visit ( const TDLObjectRoleName& ) {}
-	virtual void visit ( const TDLObjectRoleInverse& ) {}
-	virtual void visit ( const TDLObjectRoleChain& ) {}
-	virtual void visit ( const TDLObjectRoleProjectionFrom& ) {}
-	virtual void visit ( const TDLObjectRoleProjectionInto& ) {}
+	virtual void visit ( const TDLObjectRoleTop& ) override {}
+	virtual void visit ( const TDLObjectRoleBottom& ) override {}
+	virtual void visit ( const TDLObjectRoleName& ) override {}
+	virtual void visit ( const TDLObjectRoleInverse& ) override {}
+	virtual void visit ( const TDLObjectRoleChain& ) override {}
+	virtual void visit ( const TDLObjectRoleProjectionFrom& ) override {}
+	virtual void visit ( const TDLObjectRoleProjectionInto& ) override {}
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) {}
-	virtual void visit ( const TDLDataRoleBottom& ) {}
-	virtual void visit ( const TDLDataRoleName& ) {}
+	virtual void visit ( const TDLDataRoleTop& ) override {}
+	virtual void visit ( const TDLDataRoleBottom& ) override {}
+	virtual void visit ( const TDLDataRoleName& ) override {}
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) {}
-	virtual void visit ( const TDLDataBottom& ) {}
-	virtual void visit ( const TDLDataTypeName& ) {}
-	virtual void visit ( const TDLDataTypeRestriction& ) {}
-	virtual void visit ( const TDLDataValue& ) {}
-	virtual void visit ( const TDLDataNot& ) {}
-	virtual void visit ( const TDLDataAnd& ) {}
-	virtual void visit ( const TDLDataOr& ) {}
-	virtual void visit ( const TDLDataOneOf& ) {}
+	virtual void visit ( const TDLDataTop& ) override {}
+	virtual void visit ( const TDLDataBottom& ) override {}
+	virtual void visit ( const TDLDataTypeName& ) override {}
+	virtual void visit ( const TDLDataTypeRestriction& ) override {}
+	virtual void visit ( const TDLDataValue& ) override {}
+	virtual void visit ( const TDLDataNot& ) override {}
+	virtual void visit ( const TDLDataAnd& ) override {}
+	virtual void visit ( const TDLDataOr& ) override {}
+	virtual void visit ( const TDLDataOneOf& ) override {}
 
 	// facets
-	virtual void visit ( const TDLFacetMinInclusive& ) {}
-	virtual void visit ( const TDLFacetMinExclusive& ) {}
-	virtual void visit ( const TDLFacetMaxInclusive& ) {}
-	virtual void visit ( const TDLFacetMaxExclusive& ) {}
+	virtual void visit ( const TDLFacetMinInclusive& ) override {}
+	virtual void visit ( const TDLFacetMinExclusive& ) override {}
+	virtual void visit ( const TDLFacetMaxInclusive& ) override {}
+	virtual void visit ( const TDLFacetMaxExclusive& ) override {}
 
 	// other methods
 	virtual ~DLExpressionVisitorEmpty ( void ) {}
@@ -480,7 +480,7 @@ public:		// interface
 	virtual ~TDLConceptExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLConceptExpression
 
 //------------------------------------------------------------------
@@ -495,7 +495,7 @@ public:		// interface
 	virtual ~TDLConceptTop ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptTop
 
 //------------------------------------------------------------------
@@ -510,7 +510,7 @@ public:		// interface
 	virtual ~TDLConceptBottom ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptBottom
 
 //------------------------------------------------------------------
@@ -525,7 +525,7 @@ public:		// interface
 	virtual ~TDLConceptName ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptName
 
 //------------------------------------------------------------------
@@ -543,7 +543,7 @@ public:		// interface
 	virtual ~TDLConceptNot ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptNot
 
 //------------------------------------------------------------------
@@ -573,7 +573,7 @@ public:		// interface
 		return true;
 	}
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptAnd
 
 //------------------------------------------------------------------
@@ -593,7 +593,7 @@ public:		// interface
 	virtual ~TDLConceptOr ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptOr
 
 //------------------------------------------------------------------
@@ -613,7 +613,7 @@ public:		// interface
 	virtual ~TDLConceptOneOf ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptOneOf
 
 //------------------------------------------------------------------
@@ -631,7 +631,7 @@ public:		// interface
 	virtual ~TDLConceptObjectRoleExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLConceptObjectRoleExpression
 
 //------------------------------------------------------------------
@@ -648,7 +648,7 @@ public:		// interface
 	virtual ~TDLConceptObjectSelf ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptObjectSelf
 
 //------------------------------------------------------------------
@@ -666,7 +666,7 @@ public:		// interface
 	virtual ~TDLConceptObjectValue ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptObjectValue
 
 //------------------------------------------------------------------
@@ -684,7 +684,7 @@ public:		// interface
 	virtual ~TDLConceptObjectRCExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLConceptObjectRCExpression
 
 //------------------------------------------------------------------
@@ -701,7 +701,7 @@ public:		// interface
 	virtual ~TDLConceptObjectExists ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptObjectExists
 
 //------------------------------------------------------------------
@@ -718,7 +718,7 @@ public:		// interface
 	virtual ~TDLConceptObjectForall ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptObjectForall
 
 //------------------------------------------------------------------
@@ -736,7 +736,7 @@ public:		// interface
 	virtual ~TDLConceptObjectCardinalityExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLConceptObjectCardinalityExpression
 
 //------------------------------------------------------------------
@@ -753,7 +753,7 @@ public:		// interface
 	virtual ~TDLConceptObjectMinCardinality ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptObjectMinCardinality
 
 //------------------------------------------------------------------
@@ -770,7 +770,7 @@ public:		// interface
 	virtual ~TDLConceptObjectMaxCardinality ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptObjectMaxCardinality
 
 //------------------------------------------------------------------
@@ -787,7 +787,7 @@ public:		// interface
 	virtual ~TDLConceptObjectExactCardinality ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptObjectExactCardinality
 
 //------------------------------------------------------------------
@@ -805,7 +805,7 @@ public:		// interface
 	virtual ~TDLConceptDataRoleExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLConceptDataRoleExpression
 
 //------------------------------------------------------------------
@@ -823,7 +823,7 @@ public:		// interface
 	virtual ~TDLConceptDataValue ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptDataValue
 
 //------------------------------------------------------------------
@@ -841,7 +841,7 @@ public:		// interface
 	virtual ~TDLConceptDataRVExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLConceptDataRVExpression
 
 //------------------------------------------------------------------
@@ -858,7 +858,7 @@ public:		// interface
 	virtual ~TDLConceptDataExists ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptDataExists
 
 //------------------------------------------------------------------
@@ -875,7 +875,7 @@ public:		// interface
 	virtual ~TDLConceptDataForall ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptDataForall
 
 //------------------------------------------------------------------
@@ -893,7 +893,7 @@ public:		// interface
 	virtual ~TDLConceptDataCardinalityExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLConceptDataCardinalityExpression
 
 //------------------------------------------------------------------
@@ -910,7 +910,7 @@ public:		// interface
 	virtual ~TDLConceptDataMinCardinality ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptDataMinCardinality
 
 //------------------------------------------------------------------
@@ -927,7 +927,7 @@ public:		// interface
 	virtual ~TDLConceptDataMaxCardinality ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptDataMaxCardinality
 
 //------------------------------------------------------------------
@@ -944,7 +944,7 @@ public:		// interface
 	virtual ~TDLConceptDataExactCardinality ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLConceptDataExactCardinality
 
 
@@ -965,7 +965,7 @@ public:		// interface
 	virtual ~TDLIndividualExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLIndividualExpression
 
 //------------------------------------------------------------------
@@ -980,7 +980,7 @@ public:		// interface
 	virtual ~TDLIndividualName ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLIndividualName
 
 
@@ -1001,7 +1001,7 @@ public:		// interface
 	virtual ~TDLRoleExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLRoleExpression
 
 
@@ -1022,7 +1022,7 @@ public:		// interface
 	virtual ~TDLObjectRoleComplexExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLObjectRoleComplexExpression
 
 //------------------------------------------------------------------
@@ -1037,7 +1037,7 @@ public:		// interface
 	virtual ~TDLObjectRoleExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLObjectRoleExpression
 
 //------------------------------------------------------------------
@@ -1052,7 +1052,7 @@ public:		// interface
 	virtual ~TDLObjectRoleTop ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLObjectRoleTop
 
 //------------------------------------------------------------------
@@ -1067,7 +1067,7 @@ public:		// interface
 	virtual ~TDLObjectRoleBottom ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLObjectRoleBottom
 
 //------------------------------------------------------------------
@@ -1082,7 +1082,7 @@ public:		// interface
 	virtual ~TDLObjectRoleName ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLObjectRoleName
 
 //------------------------------------------------------------------
@@ -1100,7 +1100,7 @@ public:		// interface
 	virtual ~TDLObjectRoleInverse ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLObjectRoleInverse
 
 //------------------------------------------------------------------
@@ -1120,7 +1120,7 @@ public:		// interface
 	virtual ~TDLObjectRoleChain ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLObjectRoleChain
 
 //------------------------------------------------------------------
@@ -1142,7 +1142,7 @@ public:		// interface
 	virtual ~TDLObjectRoleProjectionFrom ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLObjectRoleProjectionFrom
 
 //------------------------------------------------------------------
@@ -1164,7 +1164,7 @@ public:		// interface
 	virtual ~TDLObjectRoleProjectionInto ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLObjectRoleProjectionInto
 
 
@@ -1185,7 +1185,7 @@ public:		// interface
 	virtual ~TDLDataRoleExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLDataRoleExpression
 
 //------------------------------------------------------------------
@@ -1200,7 +1200,7 @@ public:		// interface
 	virtual ~TDLDataRoleTop ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataRoleTop
 
 //------------------------------------------------------------------
@@ -1215,7 +1215,7 @@ public:		// interface
 	virtual ~TDLDataRoleBottom ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataRoleBottom
 
 //------------------------------------------------------------------
@@ -1230,7 +1230,7 @@ public:		// interface
 	virtual ~TDLDataRoleName ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataRoleName
 
 
@@ -1251,7 +1251,7 @@ public:		// interface
 	virtual ~TDLDataExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLDataExpression
 
 //------------------------------------------------------------------
@@ -1266,7 +1266,7 @@ public:		// interface
 	virtual ~TDLDataTop ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataTop
 
 //------------------------------------------------------------------
@@ -1281,7 +1281,7 @@ public:		// interface
 	virtual ~TDLDataBottom ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataBottom
 
 //------------------------------------------------------------------
@@ -1296,7 +1296,7 @@ public:		// interface
 	virtual ~TDLDataTypeExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLDataTypeExpression
 
 //------------------------------------------------------------------
@@ -1315,7 +1315,7 @@ public:		// interface
 	virtual ~TDLDataTypeRestriction ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataTypeRestriction
 
 //------------------------------------------------------------------
@@ -1340,7 +1340,7 @@ public:		// interface
 	virtual ~TDLDataValue ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataValue
 
 //------------------------------------------------------------------
@@ -1358,7 +1358,7 @@ public:		// interface
 	virtual ~TDLDataNot ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataNot
 
 //------------------------------------------------------------------
@@ -1378,7 +1378,7 @@ public:		// interface
 	virtual ~TDLDataAnd ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataAnd
 
 //------------------------------------------------------------------
@@ -1398,7 +1398,7 @@ public:		// interface
 	virtual ~TDLDataOr ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataOr
 
 //------------------------------------------------------------------
@@ -1418,7 +1418,7 @@ public:		// interface
 	virtual ~TDLDataOneOf ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataOneOf
 
 //------------------------------------------------------------------
@@ -1436,7 +1436,7 @@ public:		// interface
 	virtual ~TDLFacetExpression ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const = 0;
+	void accept ( DLExpressionVisitor& visitor ) const override = 0;
 }; // TDLFacetExpression
 
 //------------------------------------------------------------------
@@ -1451,7 +1451,7 @@ public:		// interface
 	virtual ~TDLFacetMinInclusive ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLFacetMinInclusive
 
 //------------------------------------------------------------------
@@ -1466,7 +1466,7 @@ public:		// interface
 	virtual ~TDLFacetMinExclusive ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLFacetMinExclusive
 
 //------------------------------------------------------------------
@@ -1481,7 +1481,7 @@ public:		// interface
 	virtual ~TDLFacetMaxInclusive ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLFacetMaxInclusive
 
 //------------------------------------------------------------------
@@ -1496,7 +1496,7 @@ public:		// interface
 	virtual ~TDLFacetMaxExclusive ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLFacetMaxExclusive
 
 
@@ -1520,7 +1520,7 @@ protected:	// classes
 			/// empty d'tor
 		virtual ~DVCreator ( void ) {}
 			/// create new value of a given type
-		virtual TDLDataValue* makeEntry ( const std::string& name ) const { return new TDLDataValue(name,type); }
+		virtual TDLDataValue* makeEntry ( const std::string& name ) const override { return new TDLDataValue(name,type); }
 	}; // DVCreator
 
 protected:	// members
@@ -1550,7 +1550,7 @@ public:		// interface
 	virtual ~TDLDataTypeName ( void ) {}
 
 		/// accept method for the visitor pattern
-	void accept ( DLExpressionVisitor& visitor ) const { visitor.visit(*this); }
+	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
 }; // TDLDataTypeName
 
 /// @return named data type that is the most basic datatype underlying TYPE

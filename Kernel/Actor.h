@@ -44,7 +44,7 @@ protected:	// members
 
 protected:	// methods
 		/// check whether actor is applicable to the ENTRY
-	virtual bool applicable ( const EntryType* entry ) const;
+	virtual bool applicable ( const EntryType* entry ) const override;
 		/// fills an array with all suitable data from the vertex
 	void fillArray ( const TaxonomyVertex& v, Array1D& array ) const
 	{

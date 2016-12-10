@@ -73,9 +73,9 @@ public:		// interface
 
 public:		// visitor interface
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) { tree = createTop(); }
-	virtual void visit ( const TDLConceptBottom& ) { tree = createBottom(); }
-	virtual void visit ( const TDLConceptName& expr )
+	virtual void visit ( const TDLConceptTop& ) override { tree = createTop(); }
+	virtual void visit ( const TDLConceptBottom& ) override { tree = createBottom(); }
+	virtual void visit ( const TDLConceptName& expr ) override
 	{
 		if ( nc(&expr) )
 			tree = sig->topCLocal() ? createTop() : createBottom();
@@ -87,8 +87,8 @@ public:		// visitor interface
 			tree = createEntry(CNAME,entry);
 		}
 	}
-	virtual void visit ( const TDLConceptNot& expr ) { expr.getC()->accept(*this); tree = createSNFNot(*this); }
-	virtual void visit ( const TDLConceptAnd& expr )
+	virtual void visit ( const TDLConceptNot& expr ) override { expr.getC()->accept(*this); tree = createSNFNot(*this); }
+	virtual void visit ( const TDLConceptAnd& expr ) override
 	{
 		DLTree* acc = createTop();
 
@@ -100,7 +100,7 @@ public:		// visitor interface
 
 		tree = acc;
 	}
-	virtual void visit ( const TDLConceptOr& expr )
+	virtual void visit ( const TDLConceptOr& expr ) override
 	{
 		DLTree* acc = createBottom();
 
@@ -112,7 +112,7 @@ public:		// visitor interface
 
 		tree = acc;
 	}
-	virtual void visit ( const TDLConceptOneOf& expr )
+	virtual void visit ( const TDLConceptOneOf& expr ) override
 	{
 		DLTree* acc = createBottom();
 
@@ -124,47 +124,47 @@ public:		// visitor interface
 
 		tree = acc;
 	}
-	virtual void visit ( const TDLConceptObjectSelf& expr )
+	virtual void visit ( const TDLConceptObjectSelf& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		tree = createSNFSelf(*this);
 	}
-	virtual void visit ( const TDLConceptObjectValue& expr )
+	virtual void visit ( const TDLConceptObjectValue& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		DLTree* R = *this;
 		expr.getI()->accept(*this);
 		tree = createSNFExists ( R, *this );
 	}
-	virtual void visit ( const TDLConceptObjectExists& expr )
+	virtual void visit ( const TDLConceptObjectExists& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		DLTree* R = *this;
 		expr.getC()->accept(*this);
 		tree = createSNFExists ( R, *this );
 	}
-	virtual void visit ( const TDLConceptObjectForall& expr )
+	virtual void visit ( const TDLConceptObjectForall& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		DLTree* R = *this;
 		expr.getC()->accept(*this);
 		tree = createSNFForall ( R, *this );
 	}
-	virtual void visit ( const TDLConceptObjectMinCardinality& expr )
+	virtual void visit ( const TDLConceptObjectMinCardinality& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		DLTree* R = *this;
 		expr.getC()->accept(*this);
 		tree = createSNFGE ( expr.getNumber(), R, *this );
 	}
-	virtual void visit ( const TDLConceptObjectMaxCardinality& expr )
+	virtual void visit ( const TDLConceptObjectMaxCardinality& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		DLTree* R = *this;
 		expr.getC()->accept(*this);
 		tree = createSNFLE ( expr.getNumber(), R, *this );
 	}
-	virtual void visit ( const TDLConceptObjectExactCardinality& expr )
+	virtual void visit ( const TDLConceptObjectExactCardinality& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		DLTree* R = *this;
@@ -174,42 +174,42 @@ public:		// visitor interface
 		DLTree* GE = createSNFGE ( expr.getNumber(), R, C );
 		tree = createSNFAnd ( GE, LE );
 	}
-	virtual void visit ( const TDLConceptDataValue& expr )
+	virtual void visit ( const TDLConceptDataValue& expr ) override
 	{
 		expr.getDR()->accept(*this);
 		DLTree* R = *this;
 		expr.getExpr()->accept(*this);
 		tree = createSNFExists ( R, *this );
 	}
-	virtual void visit ( const TDLConceptDataExists& expr )
+	virtual void visit ( const TDLConceptDataExists& expr ) override
 	{
 		expr.getDR()->accept(*this);
 		DLTree* R = *this;
 		expr.getExpr()->accept(*this);
 		tree = createSNFExists ( R, *this );
 	}
-	virtual void visit ( const TDLConceptDataForall& expr )
+	virtual void visit ( const TDLConceptDataForall& expr ) override
 	{
 		expr.getDR()->accept(*this);
 		DLTree* R = *this;
 		expr.getExpr()->accept(*this);
 		tree = createSNFForall ( R, *this );
 	}
-	virtual void visit ( const TDLConceptDataMinCardinality& expr )
+	virtual void visit ( const TDLConceptDataMinCardinality& expr ) override
 	{
 		expr.getDR()->accept(*this);
 		DLTree* R = *this;
 		expr.getExpr()->accept(*this);
 		tree = createSNFGE ( expr.getNumber(), R, *this );
 	}
-	virtual void visit ( const TDLConceptDataMaxCardinality& expr )
+	virtual void visit ( const TDLConceptDataMaxCardinality& expr ) override
 	{
 		expr.getDR()->accept(*this);
 		DLTree* R = *this;
 		expr.getExpr()->accept(*this);
 		tree = createSNFLE ( expr.getNumber(), R, *this );
 	}
-	virtual void visit ( const TDLConceptDataExactCardinality& expr )
+	virtual void visit ( const TDLConceptDataExactCardinality& expr ) override
 	{
 		expr.getDR()->accept(*this);
 		DLTree* R = *this;
@@ -221,7 +221,7 @@ public:		// visitor interface
 	}
 
 	// individual expressions
-	virtual void visit ( const TDLIndividualName& expr )
+	virtual void visit ( const TDLIndividualName& expr ) override
 	{
 		TNamedEntry* entry = expr.getEntry();
 		if ( entry == nullptr )
@@ -230,15 +230,15 @@ public:		// visitor interface
 	}
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) { THROW_UNSUPPORTED("top object role"); }
-	virtual void visit ( const TDLObjectRoleBottom& ) { THROW_UNSUPPORTED("bottom object role"); }
-	virtual void visit ( const TDLObjectRoleName& expr )
+	virtual void visit ( const TDLObjectRoleTop& ) override { THROW_UNSUPPORTED("top object role"); }
+	virtual void visit ( const TDLObjectRoleBottom& ) override { THROW_UNSUPPORTED("bottom object role"); }
+	virtual void visit ( const TDLObjectRoleName& expr ) override
 	{
 		auto role = getRoleEntry ( KB.getORM(), &expr );
 		tree = createEntry(RNAME,role);
 	}
-	virtual void visit ( const TDLObjectRoleInverse& expr ) { expr.getOR()->accept(*this); tree = createInverse(*this); }
-	virtual void visit ( const TDLObjectRoleChain& expr )
+	virtual void visit ( const TDLObjectRoleInverse& expr ) override { expr.getOR()->accept(*this); tree = createInverse(*this); }
+	virtual void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end();
 		if ( p == p_end )
@@ -255,7 +255,7 @@ public:		// visitor interface
 
 		tree = acc;
 	}
-	virtual void visit ( const TDLObjectRoleProjectionFrom& expr )
+	virtual void visit ( const TDLObjectRoleProjectionFrom& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		DLTree* R = *this;
@@ -263,7 +263,7 @@ public:		// visitor interface
 		DLTree* C = *this;
 		tree = new DLTree ( TLexeme(PROJFROM), R, C );
 	}
-	virtual void visit ( const TDLObjectRoleProjectionInto& expr )
+	virtual void visit ( const TDLObjectRoleProjectionInto& expr ) override
 	{
 		expr.getOR()->accept(*this);
 		DLTree* R = *this;
@@ -273,18 +273,18 @@ public:		// visitor interface
 	}
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) { THROW_UNSUPPORTED("top data role");  }
-	virtual void visit ( const TDLDataRoleBottom& ) { THROW_UNSUPPORTED("bottom data role"); }
-	virtual void visit ( const TDLDataRoleName& expr )
+	virtual void visit ( const TDLDataRoleTop& ) override { THROW_UNSUPPORTED("top data role");  }
+	virtual void visit ( const TDLDataRoleBottom& ) override { THROW_UNSUPPORTED("bottom data role"); }
+	virtual void visit ( const TDLDataRoleName& expr ) override
 	{
 		auto role = getRoleEntry ( KB.getDRM(), &expr );
 		tree = createEntry(DNAME,role);
 	}
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) { tree = createTop(); }
-	virtual void visit ( const TDLDataBottom& ) { tree = createBottom(); }
-	virtual void visit ( const TDLDataTypeName& expr )
+	virtual void visit ( const TDLDataTop& ) override { tree = createTop(); }
+	virtual void visit ( const TDLDataBottom& ) override { tree = createBottom(); }
+	virtual void visit ( const TDLDataTypeName& expr ) override
 	{
 		DataTypeCenter& DTC = KB.getDataTypeCenter();
 		if ( isStrDataType(&expr) )
@@ -300,7 +300,7 @@ public:		// visitor interface
 		else
 			THROW_UNSUPPORTED("data type name");
 	}
-	virtual void visit ( const TDLDataTypeRestriction& expr )
+	virtual void visit ( const TDLDataTypeRestriction& expr ) override
 	{
 		DLTree* acc = createTop();
 
@@ -312,15 +312,15 @@ public:		// visitor interface
 
 		tree = acc;
 	}
-	virtual void visit ( const TDLDataValue& expr )
+	virtual void visit ( const TDLDataValue& expr ) override
 	{
 		expr.getExpr()->accept(*this);	// process type
 		DLTree* type = *this;
 		tree = KB.getDataTypeCenter().getDataValue(expr.getName(),type);
 		deleteTree(type);
 	}
-	virtual void visit ( const TDLDataNot& expr ) { expr.getExpr()->accept(*this); tree = createSNFNot(*this); }
-	virtual void visit ( const TDLDataAnd& expr )
+	virtual void visit ( const TDLDataNot& expr ) override { expr.getExpr()->accept(*this); tree = createSNFNot(*this); }
+	virtual void visit ( const TDLDataAnd& expr ) override
 	{
 		DLTree* acc = createTop();
 
@@ -332,7 +332,7 @@ public:		// visitor interface
 
 		tree = acc;
 	}
-	virtual void visit ( const TDLDataOr& expr )
+	virtual void visit ( const TDLDataOr& expr ) override
 	{
 		DLTree* acc = createBottom();
 
@@ -344,7 +344,7 @@ public:		// visitor interface
 
 		tree = acc;
 	}
-	virtual void visit ( const TDLDataOneOf& expr )
+	virtual void visit ( const TDLDataOneOf& expr ) override
 	{
 		DLTree* acc = createBottom();
 
@@ -358,22 +358,22 @@ public:		// visitor interface
 	}
 
 	// facets
-	virtual void visit ( const TDLFacetMinInclusive& expr )
+	virtual void visit ( const TDLFacetMinInclusive& expr ) override
 	{
 		expr.getExpr()->accept(*this);
 		tree = KB.getDataTypeCenter().getIntervalFacetExpr ( tree, /*min=*/true, /*excl=*/false );
 	}
-	virtual void visit ( const TDLFacetMinExclusive& expr )
+	virtual void visit ( const TDLFacetMinExclusive& expr ) override
 	{
 		expr.getExpr()->accept(*this);
 		tree = KB.getDataTypeCenter().getIntervalFacetExpr ( tree, /*min=*/true, /*excl=*/true );
 	}
-	virtual void visit ( const TDLFacetMaxInclusive& expr )
+	virtual void visit ( const TDLFacetMaxInclusive& expr ) override
 	{
 		expr.getExpr()->accept(*this);
 		tree = KB.getDataTypeCenter().getIntervalFacetExpr ( tree, /*min=*/false, /*excl=*/false );
 	}
-	virtual void visit ( const TDLFacetMaxExclusive& expr )
+	virtual void visit ( const TDLFacetMaxExclusive& expr ) override
 	{
 		expr.getExpr()->accept(*this);
 		tree = KB.getDataTypeCenter().getIntervalFacetExpr ( tree, /*min=*/false, /*excl=*/true );
