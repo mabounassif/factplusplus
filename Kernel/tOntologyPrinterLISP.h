@@ -34,11 +34,12 @@ protected:	// members
 
 protected:	// methods
 		/// helper to print several expressions in a row
-	template<class Container>
-	void print ( const Container& c )
+	template<class Expression>
+	TLISPOntologyPrinter& operator << ( const TDLNAryExpression<Expression>& c )
 	{
 		for ( const auto& expr: c )
 			expr->accept(LEP);
+		return *this;
 	}
 		/// helper to print a string
 	TLISPOntologyPrinter& operator << ( const char* str ) { o << str; o.flush(); return *this; }
@@ -66,17 +67,17 @@ public:		// visitor interface
 			  << decl << ")\n";
 	}
 
-	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { o << "(equal_c"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) override { o << "(disjoint_c"; print(axiom); o << ")\n"; }
+	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { *this << "(equal_c" << axiom << ")\n"; }
+	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) override { *this  << "(disjoint_c" << axiom << ")\n"; }
 	virtual void visit ( const TDLAxiomDisjointUnion& axiom ) override
-		{ o << "(disjoint_c"; print(axiom); o << ")\n(equal_c" << axiom.getC() << " (or"; print(axiom); o << "))\n"; }
-	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) override { o << "(equal_r"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { o << "(equal_r"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) override { o << "(disjoint_r"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) override { o << "(disjoint_r"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomSameIndividuals& axiom ) override { o << "(same"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomDifferentIndividuals& axiom ) override { o << "(different"; print(axiom); o << ")\n"; }
-	virtual void visit ( const TDLAxiomFairnessConstraint& axiom ) override { o << "(fairness"; print(axiom); o << ")\n"; }
+		{ *this << "(disjoint_c" << axiom << ")\n(equal_c" << axiom.getC() << " (or" << axiom << "))\n"; }
+	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) override { *this << "(equal_r" << axiom << ")\n"; }
+	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { *this << "(equal_r" << axiom << ")\n"; }
+	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) override { *this << "(disjoint_r" << axiom << ")\n"; }
+	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) override { *this << "(disjoint_r" << axiom << ")\n"; }
+	virtual void visit ( const TDLAxiomSameIndividuals& axiom ) override { *this << "(same" << axiom << ")\n"; }
+	virtual void visit ( const TDLAxiomDifferentIndividuals& axiom ) override { *this << "(different" << axiom << ")\n"; }
+	virtual void visit ( const TDLAxiomFairnessConstraint& axiom ) override { *this << "(fairness" << axiom << ")\n"; }
 
 	virtual void visit ( const TDLAxiomRoleInverse& axiom ) override { *this << "(equal_r" << axiom.getRole() << " (inv" << axiom.getInvRole() << "))\n"; }
 	virtual void visit ( const TDLAxiomORoleSubsumption& axiom ) override { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
