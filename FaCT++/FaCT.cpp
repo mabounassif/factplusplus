@@ -273,6 +273,9 @@ int main ( int argc, char *argv[] )
 	// init undefined names
 	Kernel.setUseUndefinedNames(false);
 
+	// dump ontology if requested
+	Kernel.setDumpOntology(Kernel.getOptions()->getBool("dumpOntology"));
+
 	// Load the ontology
 	DLLispParser TBoxParser ( &iTBox, &Kernel );
 	Kernel.setVerboseOutput(true);

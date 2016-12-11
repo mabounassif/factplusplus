@@ -141,7 +141,11 @@ ReasoningKernel :: forceReload ( void )
 	if ( dumpOntology )
 	{
 		TLISPOntologyPrinter OntologyPrinter(std::cout);
-		//DRoles.fill(OntologyPrinter);
+		// First print all the declaration (as datarole declarations should be before usages)
+		OntologyPrinter.setPrintFlags(/*declarations=*/true, /*axioms=*/false);
+		Ontology.visitOntology(OntologyPrinter);
+		// Then print logical axioms
+		OntologyPrinter.setPrintFlags(/*declarations=*/false, /*axioms=*/true);
 		Ontology.visitOntology(OntologyPrinter);
 	}
 

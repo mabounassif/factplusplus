@@ -126,19 +126,7 @@ private:	// constants
 protected:	// types
 		/// enumeration for the cache
 	enum cacheStatus { csEmpty, csSat, csClassified };
-		/// set of TreeNE
-/*	class TreeNESet: public TNameSet<TTreeNamedEntry>
-	{
-	public:
-			/// dirty hack for the LISP ontology printing
-		template<class T>
-		void fill ( T& x ) const
-		{
-			for ( const_iterator p = Base.begin(); p != Base.end(); ++p )
-				x.recordDataRole(p->second->getName());
-		}
-	}; // TreeNESet
-*/
+
 protected:	// members
 		/// local TBox (to be created)
 	TBox* pTBox;

@@ -133,7 +133,6 @@ public:		// interface
 		printDeclarations = declarations;
 		printAxioms = axioms;
 	}
-	void recordDataRole ( const char* name ) { o << "(defdatarole " << name << ")\n"; }
 }; // TLISPOntologyPrinter
 
 #endif
