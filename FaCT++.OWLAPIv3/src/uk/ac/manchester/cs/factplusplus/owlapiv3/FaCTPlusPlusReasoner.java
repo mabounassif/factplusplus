@@ -805,7 +805,7 @@ public class FaCTPlusPlusReasoner implements OWLReasoner, OWLOntologyChangeListe
 				calendar.setTimezone(0);
 			}
 			long l = calendar.toGregorianCalendar().getTimeInMillis();
-			System.out.println("FaCTPlusPlusReasoner.convertToLongDateTime()\n" + input + "\n" + Long.toString(l));
+			// System.out.println("FaCTPlusPlusReasoner.convertToLongDateTime()\n" + input + "\n" + Long.toString(l));
 			return Long.toString(l);
 		} catch (DatatypeConfigurationException e) {
 			throw new OWLRuntimeException("Error: the datatype support in the Java VM is broken! Cannot parse: "
