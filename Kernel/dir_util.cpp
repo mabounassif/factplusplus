@@ -32,7 +32,7 @@ int dirCreate ( const char *path )
 {
     struct stat st;
     int status = 0;
-
+#ifndef _MSC_VER
     if (stat(path, &st) != 0)
     {
         /* Directory does not exist. EEXIST for race condition */
@@ -44,7 +44,7 @@ int dirCreate ( const char *path )
         errno = ENOTDIR;
         status = -1;
     }
-
+#endif
     return status;
 }
 
