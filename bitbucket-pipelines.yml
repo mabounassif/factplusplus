@@ -1,0 +1,19 @@
+# This is a pipeline to build and test FaCT++
+# Only use spaces to indent your .yml configuration.
+# -----
+# Use custom image to build FaCT++
+image: dtsarkov/factplusplus-dev:latest
+
+pipelines:
+  default:
+    - step:
+        script:
+          # run CMake to build a make project
+          - cmake --version
+          - mkdir build
+          - cd build
+          - cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles".. 
+          # build a project
+          - make -j3
+          #- make test
+          
