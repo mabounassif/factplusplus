@@ -12,7 +12,7 @@ pipelines:
           - cmake --version
           - mkdir build
           - cd build
-          - cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles".. 
+          - cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" .. 
           # build a project
           - make -j3
           #- make test
