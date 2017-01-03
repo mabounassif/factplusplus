@@ -10,7 +10,7 @@ import org.junit.Test;
 import testbase.TestBase;
 
 @SuppressWarnings("javadoc")
-public class RDFBased extends TestBase {
+public class RDFBasedTestCase extends TestBase {
 
     @Test
     @Changed

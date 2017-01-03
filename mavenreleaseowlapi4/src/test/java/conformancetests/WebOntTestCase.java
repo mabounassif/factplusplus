@@ -28,7 +28,7 @@ import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import testbase.TestBase;
 
 @SuppressWarnings("javadoc")
-public class WebOnt extends TestBase {
+public class WebOntTestCase extends TestBase {
 
     @Test
     public void testWebOnt_AnnotationProperty_003() {

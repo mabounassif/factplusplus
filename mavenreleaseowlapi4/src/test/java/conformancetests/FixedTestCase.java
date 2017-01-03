@@ -44,7 +44,7 @@ import org.semanticweb.owlapi.vocab.XSDVocabulary;
 import testbase.TestBase;
 
 @SuppressWarnings("javadoc")
-public class Fixed extends TestBase {
+public class FixedTestCase extends TestBase {
 
     @Test
     public void testConsistent_owl_real_range_with_DataOneOf() {

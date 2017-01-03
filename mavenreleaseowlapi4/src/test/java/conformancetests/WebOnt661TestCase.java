@@ -12,7 +12,7 @@ import testbase.TestBase;
 
 @Ignore("takes too long to test")
 @SuppressWarnings("javadoc")
-public class WebOnt661 extends TestBase {
+public class WebOnt661TestCase extends TestBase {
 
     @Test
     @Changed

@@ -32,7 +32,7 @@ import conformancetests.TestClasses;
 
 @Ignore("disabling for release")
 @SuppressWarnings("javadoc")
-public class Broken extends TestBase {
+public class BrokenTestCase extends TestBase {
 
     @Test
     public void testQualified_cardinality_boolean() {

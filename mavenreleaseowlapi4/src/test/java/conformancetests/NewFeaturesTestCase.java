@@ -12,7 +12,7 @@ import testbase.TestBase;
 
 @SuppressWarnings("javadoc")
 @Ignore
-public class NewFeatures extends TestBase {
+public class NewFeaturesTestCase extends TestBase {
 
     @Test
     public void testInconsistent_Disjoint_Dataproperties() {

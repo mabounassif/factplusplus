@@ -10,7 +10,7 @@ import org.junit.Test;
 import testbase.TestBase;
 
 @SuppressWarnings("javadoc")
-public class OWL2 extends TestBase {
+public class OWL2TestCase extends TestBase {
 
     @Test
     public void testowl2_rl_anonymous_individual() {
