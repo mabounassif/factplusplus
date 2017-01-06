@@ -1,5 +1,6 @@
 package conformancetests;
 
+import org.junit.Ignore;
 /* This file is part of the JFact DL reasoner
  Copyright 2011-2013 by Ignazio Palmisano, Dmitry Tsarkov, University of Manchester
  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.
@@ -13,6 +14,7 @@ import testbase.TestBase;
 public class WebOnt_AnnotationProperty_002_TestCase extends TestBase {
 
     @Test
+    @Ignore("FaCT++ vs OWL API mismatch")
     public void testWebOnt_AnnotationProperty_002() {
         String premise = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:owl=\"http://www.w3.org/2002/07/owl#\" xmlns:first=\"http://www.w3.org/2002/03owlt/AnnotationProperty/premises002#\"\n"
                 + "xml:base=\"http://www.w3.org/2002/03owlt/AnnotationProperty/premises002\" >\n"

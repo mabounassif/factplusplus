@@ -1,5 +1,6 @@
 package conformancetests;
 
+import org.junit.Ignore;
 /* This file is part of the JFact DL reasoner
  Copyright 2011-2013 by Ignazio Palmisano, Dmitry Tsarkov, University of Manchester
  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.
@@ -46,6 +47,7 @@ public class WebOnt_allValuesFrom_001_TestCase extends TestBase {
     }
 
     @Test
+    @Ignore("FaCT++ datatype problems")
     public void testWebOnt_miscellaneous_202() {
         String premise =
         // "<rdf:RDF\n"
@@ -174,6 +176,7 @@ public class WebOnt_allValuesFrom_001_TestCase extends TestBase {
     }
 
     @Test
+    @Ignore("FaCT++ does not accept new individuals in queries")
     public void testWebOnt_I4_6_004() {
         String premise = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n"
                 + "    xml:base=\"http://www.w3.org/2002/03owlt/I4.6/premises004\" >\n"

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 
 import javax.annotation.Nonnull;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -400,6 +401,7 @@ public class VerifyCompliancePeopleTestCase extends VerifyComplianceBase {
     }
 
     @Test
+    @Ignore("FaCT++ traversal error")
     public void shouldPassgetSuperClassesmad_cowtrue() {
         equal(reasoner.getSuperClasses(mad_cow, true), truck, lorry,
                 white_van_man, car, tiger, cat, van, magazine, pet, dog,
