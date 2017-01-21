@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Factplusplus Plug-in
 Bundle-SymbolicName: uk.ac.manchester.cs.owl.factplusplus;singleton:=true
-Bundle-Version: 1.5.3
+Bundle-Version: 1.7.0
 Bundle-Vendor: University of Manchester
 Bundle-Description: A Protege OWL wrapper for FaCT++
-Update-Url: http://factplusplus.googlecode.com/svn/trunk/update.properties.p4.1
-Bundle-ClassPath: .,lib/FaCTPlusPlus.jar
+Update-Url: https://bitbucket.org/dtsarkov/factplusplus/downloads/config.autoupdate.Protege-5.0.txt
+Bundle-ClassPath: .
 Import-Package: org.osgi.framework,
  org.apache.log4j,
  javax.swing,
@@ -16,6 +16,7 @@ Require-Bundle: org.protege.common,
  org.protege.editor.owl,
  org.semanticweb.owl.owlapi
 Bundle-NativeCode: lib/native/64bit/FaCTPlusPlusJNI.dll;
+ osname=win ;
  osname=WindowsNT ;
  osname=Windows NT ;
  osname=WinNT ;
@@ -26,13 +27,18 @@ Bundle-NativeCode: lib/native/64bit/FaCTPlusPlusJNI.dll;
  osname=Windows Vista ;
  osname=Windows2003 ;
  osname=Windows2008 ;
- osname=Windows 7 ;
- osname=Windows7 ;
  osname=Win7 ;
+ osname=Windows7 ;
+ osname=Windows 7 ;
+ osname=Win8 ;
+ osname=Windows8 ;
+ osname=Windows 8 ;
+ osname=Windows8.1 ;
+ osname=Windows 8.1 ;
  processor=x86_64 ;
- processor=AMD64 ;
  processor=amd64 ,
  lib/native/32bit/FaCTPlusPlusJNI.dll;
+ osname=win ;
  osname=Windows95 ;
  osname=Windows 95 ;
  osname=Win95 ;
@@ -52,9 +58,14 @@ Bundle-NativeCode: lib/native/64bit/FaCTPlusPlusJNI.dll;
  osname=Windows Vista ;
  osname=Windows2003 ;
  osname=Windows2008 ;
- osname=Windows 7 ;
- osname=Windows7 ;
  osname=Win7 ;
+ osname=Windows7 ;
+ osname=Windows 7 ;
+ osname=Win8 ;
+ osname=Windows8 ;
+ osname=Windows 8 ;
+ osname=Windows8.1 ;
+ osname=Windows 8.1 ;
  processor=i386 ;
  processor=x86 ,
  lib/native/64bit/libFaCTPlusPlusJNI.so;
@@ -67,10 +78,8 @@ Bundle-NativeCode: lib/native/64bit/FaCTPlusPlusJNI.dll;
  lib/native/64bit/libFaCTPlusPlusJNI.jnilib;
  osname=MacOSX ;
  osname=Mac OS X ;
- processor=ppc64 ;
  processor=x86_64 ,
  lib/native/32bit/libFaCTPlusPlusJNI.jnilib;
  osname=MacOSX ;
  osname=Mac OS X ;
- processor=ppc ;
  processor=i386
