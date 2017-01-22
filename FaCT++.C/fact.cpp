@@ -17,6 +17,9 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+// inform interface that we are building library here
+#define FPP_BUILD_SHARED
+
 #include "fact.h"
 #include "Kernel.h"
 #include "Actor.h"
