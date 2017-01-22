@@ -22,11 +22,10 @@ package uk.ac.manchester.cs.factplusplus.protege;
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
-
 import javax.swing.JOptionPane;
 
 import org.protege.editor.owl.model.inference.AbstractProtegeOWLReasonerInfo;
+
 import org.semanticweb.owlapi.model.OWLRuntimeException;
 import org.semanticweb.owlapi.reasoner.BufferingMode;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
@@ -38,60 +37,52 @@ import uk.ac.manchester.cs.factplusplus.owlapiv3.FaCTPlusPlusReasonerFactory;
  * Author: Matthew Horridge<br>
  * The University Of Manchester<br>
  * Bio-Health Informatics Group<br>
- * Date: 11-May-2007<br><br>
+ * Date: 11-May-2007<br>
+ * <br>
  */
 public class FaCTPlusPlusFactory extends AbstractProtegeOWLReasonerInfo {
 
     private FaCTPlusPlusReasonerFactory fac;
 
-// previous interface implementation
-//    public OWLReasoner createReasoner(OWLOntology owlOntology, ReasonerProgressMonitor reasonerProgressMonitor) {
-//        try {
-//            OWLReasonerConfiguration conf = new SimpleConfiguration(reasonerProgressMonitor);
-//            return fac.createNonBufferingReasoner(owlOntology, conf);
-//        }
-//        catch (UnsatisfiedLinkError e) {
-//            JOptionPane.showMessageDialog(null,
-//                                          "FaCT++ requires platform specific libraries which cannot be found.\n" +
-//                                          "Supported platforms are OS X, Windows and Linux.",
-//                                          "Missing libraries or platform not supported",
-//                                          JOptionPane.ERROR_MESSAGE);
-//            throw new OWLRuntimeException(e);
-//        }
-//        catch (Exception e) {
-//            throw new OWLRuntimeException(e);
-//        }
-//    }
-
-
-    public void initialise() throws Exception {
+    /**
+     * initialize factory
+     */
+    public void initialise() {
         fac = new FaCTPlusPlusReasonerFactory();
     }
 
-
-    public void dispose() throws Exception {
+    /**
+     * Dispose factory.
+     */
+    public void dispose() {
         fac = null;
     }
 
+    /**
+     * @return buffering mode
+     */
+    public BufferingMode getRecommendedBuffering() {
+        return BufferingMode.BUFFERING;
+    }
 
-	public BufferingMode getRecommendedBuffering() {
-		return BufferingMode.BUFFERING;
-	}
-
-
-	public OWLReasonerFactory getReasonerFactory() {
-		try {
-			// refer to the FaCTPlusPlus class so the static block that loads the native library is loaded
-        	FaCTPlusPlus.test();
-        }
-        catch (UnsatisfiedLinkError e) {
-            JOptionPane.showMessageDialog(null,
-                                          "FaCT++ requires platform specific libraries which cannot be found.\n" +
-                                          "Supported platforms are OS X, Windows and Linux.",
-                                          "Missing libraries or platform not supported",
-                                          JOptionPane.ERROR_MESSAGE);
+    /**
+     * @return reasoner factory
+     */
+    public OWLReasonerFactory getReasonerFactory() {
+        try {
+            // refer to the FaCTPlusPlus class so the static block that loads
+            // the native library is loaded
+            FaCTPlusPlus.test();
+        } catch (UnsatisfiedLinkError e) {
+            JOptionPane
+                    .showMessageDialog(
+                            null,
+                            "FaCT++ requires platform specific libraries which cannot be found.\n"
+                                    + "Supported platforms are OS X, Windows and Linux.",
+                            "Missing libraries or platform not supported",
+                            JOptionPane.ERROR_MESSAGE);
             throw new OWLRuntimeException(e);
         }
-		return fac;
-	}
+        return fac;
+    }
 }

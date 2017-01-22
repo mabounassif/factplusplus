@@ -22,35 +22,42 @@ package uk.ac.manchester.cs.factplusplus;
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
+/**
+ * @author Matthew Horridge, The University Of Manchester, Medical Informatics
+ *         Group, 10-Jul-2006
+ */
 public class Pointer {
-	private long node = 0;
 
-	public long getNode() {
-		return node;
-	}
+    private long node = 0;
 
-	@Override
-	public int hashCode() {
-		return (int) node;
-	}
+    /**
+     * @return node pointer
+     */
+    public long getNode() {
+        return node;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof Pointer)) {
-			return false;
-		}
-		return ((Pointer) obj).node == node;
-	}
+    @Override
+    public int hashCode() {
+        return (int) node;
+    }
 
-	@Override
-	public final String toString() {
-		return this.getClass().getSimpleName()+"[" + node + "]";
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Pointer)) {
+            return false;
+        }
+        return ((Pointer) obj).node == node;
+    }
+
+    @Override
+    public final String toString() {
+        return this.getClass().getSimpleName() + "[" + node + "]";
+    }
 }

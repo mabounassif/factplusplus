@@ -1,4 +1,5 @@
 package uk.ac.manchester.cs.factplusplus;
+
 /*
  * Copyright (C) 2006, University of Manchester
  *
@@ -21,28 +22,22 @@ package uk.ac.manchester.cs.factplusplus;
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
-
 /**
- * Author: Matthew Horridge<br>
- * The University Of Manchester<br>
- * Bio-Health Informatics Group<br>
- * Date: 28-Nov-2006<br><br>
+ * @author Matthew Horridge, The University Of Manchester, Medical Informatics
+ *         Group, 10-Jul-2006
  */
 public class QuietProgressMonitor implements FaCTPlusPlusProgressMonitor {
 
-    public void setClassificationStarted(int classCount) {
-    }
+    @Override
+    public void setClassificationStarted(int classCount) {}
 
+    @Override
+    public void nextClass() {}
 
-    public void nextClass() {
-    }
+    @Override
+    public void setFinished() {}
 
-
-    public void setFinished() {
-    }
-
-
+    @Override
     public boolean isCancelled() {
         return false;
     }

@@ -4,6 +4,7 @@ import org.protege.editor.owl.ui.view.ontology.AbstractOntologyRenderingViewComp
 import org.semanticweb.owlapi.model.OWLOntology;
 
 import java.io.Writer;
+
 /*
  * Copyright (C) 2007, University of Manchester
  *
@@ -26,21 +27,21 @@ import java.io.Writer;
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
-
 /**
  * Author: Matthew Horridge<br>
  * The University Of Manchester<br>
  * Bio-Health Informatics Group<br>
- * Date: 08-Aug-2007<br><br>
+ * Date: 08-Aug-2007<br>
+ * <br>
  */
-public class FaCTPlusPlusRenderingViewComponent extends AbstractOntologyRenderingViewComponent {
+public class FaCTPlusPlusRenderingViewComponent extends
+        AbstractOntologyRenderingViewComponent {
 
-
-    protected void renderOntology(OWLOntology ontology, Writer writer) throws Exception {
+    protected void renderOntology(OWLOntology ontology, Writer writer)
+            throws Exception {
         writer.append("Not implemented for owlapi v3");
-//        FaCTPlusPlusRenderer renderer = new FaCTPlusPlusRenderer(writer);
-//        ontology.accept(renderer);
-//        writer.flush();
+        // FaCTPlusPlusRenderer renderer = new FaCTPlusPlusRenderer(writer);
+        // ontology.accept(renderer);
+        // writer.flush();
     }
 }

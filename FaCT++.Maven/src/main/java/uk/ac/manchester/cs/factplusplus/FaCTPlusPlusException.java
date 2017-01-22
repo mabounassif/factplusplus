@@ -24,28 +24,36 @@ import org.semanticweb.owlapi.model.OWLRuntimeException;
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
-
 /**
- * Author: Matthew Horridge<br>
- * The University Of Manchester<br>
- * Bio-Health Informatics Group<br>
- * Date: 21-Sep-2007<br><br>
+ * @author Matthew Horridge, The University Of Manchester, Medical Informatics
+ *         Group, 10-Jul-2006
  */
 public class FaCTPlusPlusException extends OWLRuntimeException {
 
-    
+    private static final long serialVersionUID = 1L;
 
+    /**
+     * @param message
+     *        message
+     */
     public FaCTPlusPlusException(String message) {
         super(message);
     }
 
-
+    /**
+     * @param message
+     *        message
+     * @param cause
+     *        cause
+     */
     public FaCTPlusPlusException(String message, Throwable cause) {
         super(message, cause);
     }
 
-
+    /**
+     * @param cause
+     *        cause
+     */
     public FaCTPlusPlusException(Throwable cause) {
         super(cause);
     }

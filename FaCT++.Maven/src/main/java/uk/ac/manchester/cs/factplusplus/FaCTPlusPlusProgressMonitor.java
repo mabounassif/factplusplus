@@ -1,22 +1,29 @@
 package uk.ac.manchester.cs.factplusplus;
 
-
 /**
- * Author: Matthew Horridge<br>
- * The University Of Manchester<br>
- * Medical Informatics Group<br>
- * Date: 15-Oct-2006<br><br>
- * <p/>
- * matthew.horridge@cs.man.ac.uk<br>
- * www.cs.man.ac.uk/~horridgm<br><br>
+ * @author Matthew Horridge, The University Of Manchester, Medical Informatics
+ *         Group, 10-Jul-2006
  */
 public interface FaCTPlusPlusProgressMonitor {
 
-    public void setClassificationStarted(int classCount);
+    /**
+     * @param classCount
+     *        number of classes
+     */
+    void setClassificationStarted(int classCount);
 
-    public void nextClass();
+    /**
+     * move to next class
+     */
+    void nextClass();
 
-    public void setFinished();
+    /**
+     * finish classification
+     */
+    void setFinished();
 
-    public boolean isCancelled();
+    /**
+     * @return true if cancelled
+     */
+    boolean isCancelled();
 }

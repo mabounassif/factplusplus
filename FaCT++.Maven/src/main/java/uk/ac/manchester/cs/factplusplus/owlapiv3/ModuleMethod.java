@@ -17,10 +17,10 @@ package uk.ac.manchester.cs.factplusplus.owlapiv3;
  * modularisation and atomic decomposition, as implemented in FaCT++/OWLAPITOOLS
  */
 public enum ModuleMethod {
-	/** Standard syntactic modules */
-	SYNTACTIC_STANDARD,
-	/** Syntactic modules with counting */
-	SYNTACTIC_COUNTING,
-	/** Semantic modules */
-	SEMANTIC
+    /** Standard syntactic modules */
+    SYNTACTIC_STANDARD,
+    /** Syntactic modules with counting */
+    SYNTACTIC_COUNTING,
+    /** Semantic modules */
+    SEMANTIC
 }

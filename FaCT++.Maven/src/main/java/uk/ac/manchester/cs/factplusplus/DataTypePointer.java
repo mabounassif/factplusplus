@@ -22,6 +22,8 @@ package uk.ac.manchester.cs.factplusplus;
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-public class DataTypePointer extends DataTypeExpressionPointer {
-
-}
+/**
+ * @author Matthew Horridge, The University Of Manchester, Medical Informatics
+ *         Group, 10-Jul-2006
+ */
+public class DataTypePointer extends DataTypeExpressionPointer {}
