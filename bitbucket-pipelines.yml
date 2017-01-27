@@ -14,6 +14,8 @@ pipelines:
           - cd build
           - cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" .. 
           # build a project
-          - make -j3
-          #- make test
-          
+          - cmake --build . --config Release -- -j3
+          # make tests
+          - cd ../FaCT++.Java
+          - mvn -o clean install
+          - cd ../build
