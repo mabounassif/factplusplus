@@ -11,6 +11,9 @@ if (NOT MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -ffast-math -fPIC -fomit-frame-pointer")
 	# Additional warnings (from GCC 6.2)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wpedantic -Wsuggest-override")
+else()
+	# Disable warning about treating int as bool in VC++
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4800")
 endif()
 
 if (FPP_USE_LOGGING)
