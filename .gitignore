@@ -1,4 +1,9 @@
-*~
-*.so.*
+*/.deps
+*/obj
 *.a
-.deps
+*.so
+FaCT++/FaCT++
+/bin
+.project
+.classpath
+*~
