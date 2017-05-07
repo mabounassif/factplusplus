@@ -151,10 +151,6 @@ protected:	// members
 	DlSatTester* stdReasoner;
 		/// reasoner for TBox-related queries with nominals
 	DlSatTester* nomReasoner;
-		/// use this macro to do the same action with all available reasoners
-#	define REASONERS_DO(ACT) do {	\
-		nomReasoner->ACT;			\
-		stdReasoner->ACT; } while(0)
 
 		/// progress monitor
 	TProgressMonitor* pMonitor;

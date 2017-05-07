@@ -86,8 +86,6 @@ inline bool isCNameTag ( DagTag tag ) { return isPNameTag(tag) || isNNameTag(tag
 // define complex switch labels
 #define dtConcept dtPConcept: case dtNConcept
 #define dtSingleton dtPSingleton: case dtNSingleton
-#define dtPrimName dtPConcept: case dtPSingleton
-#define dtNonPrimName dtNConcept: case dtNSingleton
 #define dtName dtConcept: case dtSingleton
 #define dtData dtDataType: case dtDataValue: case dtDataExpr
 

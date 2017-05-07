@@ -33,7 +33,6 @@ KnowledgeExplorer :: KnowledgeExplorer ( const TBox* box, TExpressionManager* pE
 	// init all individuals
 	for ( TBox::i_const_iterator i = box->i_begin(), i_end = box->i_end(); i != i_end; ++i )
 		addE ( Is, *i );
-	RoleMaster::const_iterator r, r_end;
 	// init all object roles
 	for ( const auto& R: box->getORM() )
 	{
