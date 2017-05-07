@@ -33,41 +33,41 @@ public:		// interface
 	virtual ~dumpLisp ( void ) {}
 
 	// global prologue/epilogue
-	virtual void prologue ( void ) override {}
-	virtual void epilogue ( void ) override {}
+	void prologue ( void ) override {}
+	void epilogue ( void ) override {}
 
 	// general concept expression
-	virtual void dumpTop ( void ) override { o << "*TOP*"; }
-	virtual void dumpBottom ( void ) override { o << "*BOTTOM*"; }
-	virtual void dumpNumber ( unsigned int n ) override { o << n << " "; }
+	void dumpTop ( void ) override { o << "*TOP*"; }
+	void dumpBottom ( void ) override { o << "*BOTTOM*"; }
+	void dumpNumber ( unsigned int n ) override { o << n << " "; }
 
-	virtual void startOp ( diOp Op ) override;
+	void startOp ( diOp Op ) override;
 		/// start operation >=/<= with number
-	virtual void startOp ( diOp Op, unsigned int n ) override { startOp(Op); dumpNumber(n); }
-	virtual void contOp ( diOp Op ) override
+	void startOp ( diOp Op, unsigned int n ) override { startOp(Op); dumpNumber(n); }
+	void contOp ( diOp Op ) override
 	{
 		if ( Op == diAnd || Op == diOr )
 			skipIndent();
 		else
 			o << " ";
 	}
-	virtual void finishOp ( diOp Op ) override
+	void finishOp ( diOp Op ) override
 	{
 		if ( Op == diAnd || Op == diOr )
 			decIndent();
 		o << ")";
 	}
 
-	virtual void startAx ( diAx Ax ) override;
-	virtual void contAx ( diAx ) override { o << " "; }
-	virtual void finishAx ( diAx ) override { o << ")\n"; }
+	void startAx ( diAx Ax ) override;
+	void contAx ( diAx ) override { o << " "; }
+	void finishAx ( diAx ) override { o << ")\n"; }
 
 		/// obtain name by the named entry
-	virtual void dumpName ( const TNamedEntry* p ) override { o << "|" << p->getName() << "|"; }
+	void dumpName ( const TNamedEntry* p ) override { o << "|" << p->getName() << "|"; }
 		/// dump concept atom (as used in expression)
-	virtual void dumpConcept ( const TConcept* p ) override { dumpName(p); }
+	void dumpConcept ( const TConcept* p ) override { dumpName(p); }
 		/// dump role atom (as used in expression)
-	virtual void dumpRole ( const TRole* p ) override
+	void dumpRole ( const TRole* p ) override
 	{
 		if ( p->getId() < 0 )	// inverse
 		{

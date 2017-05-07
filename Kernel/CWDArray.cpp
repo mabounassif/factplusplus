@@ -34,7 +34,7 @@ public:
 		, dep(p->getDep())
 	{}
 	virtual ~UnMerge ( void ) {}
-	virtual void restore ( void ) override
+	void restore ( void ) override
 	{
 		CWDArray::iterator p = label.Base.begin() + offset;
 		*p = ConceptWDep(p->bp(),dep);

@@ -74,7 +74,7 @@ public:		// interface
 	virtual ~SemanticLocalityChecker ( void ) {}
 
 		/// init kernel with the ontology signature and init expression map
-	virtual void preprocessOntology ( const AxiomVec& Axioms ) override
+	void preprocessOntology ( const AxiomVec& Axioms ) override
 	{
 		TSignature s;
 		ExprMap.clear();
@@ -97,9 +97,9 @@ public:		// interface
 	}
 
 public:		// visitor interface
-	virtual void visit ( const TDLAxiomDeclaration& ) override { isLocal = true; }
+	void visit ( const TDLAxiomDeclaration& ) override { isLocal = true; }
 
-	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) override
+	void visit ( const TDLAxiomEquivalentConcepts& axiom ) override
 	{
 		isLocal = false;
 		TDLAxiomEquivalentConcepts::iterator p = axiom.begin(), p_end = axiom.end();
@@ -109,7 +109,7 @@ public:		// visitor interface
 				return;
 		isLocal = true;
 	}
-	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) override
+	void visit ( const TDLAxiomDisjointConcepts& axiom ) override
 	{
 		isLocal = false;
 		for ( TDLAxiomDisjointConcepts::iterator p = axiom.begin(), q, p_end = axiom.end(); p != p_end; ++p )
@@ -118,7 +118,7 @@ public:		// visitor interface
 					return;
 		isLocal = true;
 	}
-	virtual void visit ( const TDLAxiomDisjointUnion& axiom ) override
+	void visit ( const TDLAxiomDisjointUnion& axiom ) override
 	{
 		isLocal = false;
 		// check A = (or C1... Cn)
@@ -135,7 +135,7 @@ public:		// visitor interface
 					return;
 		isLocal = true;
 	}
-	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) override
+	void visit ( const TDLAxiomEquivalentORoles& axiom ) override
 	{
 		isLocal = false;
 		TDLAxiomEquivalentORoles::iterator p = axiom.begin(), p_end = axiom.end();
@@ -146,7 +146,7 @@ public:		// visitor interface
 		isLocal = true;
 	}
 		// tautology if all the subsumptions Ri [= Rj holds
-	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) override
+	void visit ( const TDLAxiomEquivalentDRoles& axiom ) override
 	{
 		isLocal = false;
 		TDLAxiomEquivalentDRoles::iterator p = axiom.begin(), p_end = axiom.end();
@@ -156,14 +156,14 @@ public:		// visitor interface
 				return;
 		isLocal = true;
 	}
-	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) override
+	void visit ( const TDLAxiomDisjointORoles& axiom ) override
 	{
 		pEM->newArgList();
 		for ( TDLAxiomDisjointORoles::iterator p = axiom.begin(), p_end = axiom.end(); p != p_end; ++p )
 			pEM->addArg(*p);
 		isLocal = Kernel.isDisjointRoles();
 	}
-	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) override
+	void visit ( const TDLAxiomDisjointDRoles& axiom ) override
 	{
 		pEM->newArgList();
 		for ( TDLAxiomDisjointDRoles::iterator p = axiom.begin(), p_end = axiom.end(); p != p_end; ++p )
@@ -171,19 +171,19 @@ public:		// visitor interface
 		isLocal = Kernel.isDisjointRoles();
 	}
 		// never local
-	virtual void visit ( const TDLAxiomSameIndividuals& ) override { isLocal = false; }
+	void visit ( const TDLAxiomSameIndividuals& ) override { isLocal = false; }
 		// never local
-	virtual void visit ( const TDLAxiomDifferentIndividuals& ) override { isLocal = false; }
+	void visit ( const TDLAxiomDifferentIndividuals& ) override { isLocal = false; }
 		/// there is no such axiom in OWL API, but I hope nobody would use Fairness here
-	virtual void visit ( const TDLAxiomFairnessConstraint& ) override { isLocal = true; }
+	void visit ( const TDLAxiomFairnessConstraint& ) override { isLocal = true; }
 
 		// R = inverse(S) is tautology iff R [= S- and S [= R-
-	virtual void visit ( const TDLAxiomRoleInverse& axiom ) override
+	void visit ( const TDLAxiomRoleInverse& axiom ) override
 	{
 		isLocal = Kernel.isSubRoles ( axiom.getRole(), pEM->Inverse(axiom.getInvRole()) ) &&
 				Kernel.isSubRoles ( axiom.getInvRole(), pEM->Inverse(axiom.getRole()) );
 	}
-	virtual void visit ( const TDLAxiomORoleSubsumption& axiom ) override
+	void visit ( const TDLAxiomORoleSubsumption& axiom ) override
 	{
 		// check whether the LHS is a role chain
 		if ( const TDLObjectRoleChain* Chain = dynamic_cast<const TDLObjectRoleChain*>(axiom.getSubRole()) )
@@ -199,33 +199,33 @@ public:		// visitor interface
 		else	// here we have a projection expression. FIXME!! for now
 			isLocal = true;
 	}
-	virtual void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { isLocal = Kernel.isSubRoles ( axiom.getSubRole(), axiom.getRole() ); }
+	void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { isLocal = Kernel.isSubRoles ( axiom.getSubRole(), axiom.getRole() ); }
 		// Domain(R) = C is tautology iff ER.Top [= C
-	virtual void visit ( const TDLAxiomORoleDomain& axiom ) override { isLocal = Kernel.isSubsumedBy ( ExprMap[&axiom], axiom.getDomain() ); }
-	virtual void visit ( const TDLAxiomDRoleDomain& axiom ) override { isLocal = Kernel.isSubsumedBy ( ExprMap[&axiom], axiom.getDomain() ); }
+	void visit ( const TDLAxiomORoleDomain& axiom ) override { isLocal = Kernel.isSubsumedBy ( ExprMap[&axiom], axiom.getDomain() ); }
+	void visit ( const TDLAxiomDRoleDomain& axiom ) override { isLocal = Kernel.isSubsumedBy ( ExprMap[&axiom], axiom.getDomain() ); }
 		// Range(R) = C is tautology iff ER.~C is unsatisfiable
-	virtual void visit ( const TDLAxiomORoleRange& axiom ) override { isLocal = !Kernel.isSatisfiable(ExprMap[&axiom]); }
-	virtual void visit ( const TDLAxiomDRoleRange& axiom ) override { isLocal = !Kernel.isSatisfiable(ExprMap[&axiom]); }
-	virtual void visit ( const TDLAxiomRoleTransitive& axiom ) override { isLocal = Kernel.isTransitive(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleReflexive& axiom ) override { isLocal = Kernel.isReflexive(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { isLocal = Kernel.isIrreflexive(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleSymmetric& axiom ) override { isLocal = Kernel.isSymmetric(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleAsymmetric& axiom ) override { isLocal = Kernel.isAsymmetric(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomORoleFunctional& axiom ) override { isLocal = Kernel.isFunctional(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomDRoleFunctional& axiom ) override { isLocal = Kernel.isFunctional(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { isLocal = Kernel.isInverseFunctional(axiom.getRole()); }
+	void visit ( const TDLAxiomORoleRange& axiom ) override { isLocal = !Kernel.isSatisfiable(ExprMap[&axiom]); }
+	void visit ( const TDLAxiomDRoleRange& axiom ) override { isLocal = !Kernel.isSatisfiable(ExprMap[&axiom]); }
+	void visit ( const TDLAxiomRoleTransitive& axiom ) override { isLocal = Kernel.isTransitive(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleReflexive& axiom ) override { isLocal = Kernel.isReflexive(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { isLocal = Kernel.isIrreflexive(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleSymmetric& axiom ) override { isLocal = Kernel.isSymmetric(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleAsymmetric& axiom ) override { isLocal = Kernel.isAsymmetric(axiom.getRole()); }
+	void visit ( const TDLAxiomORoleFunctional& axiom ) override { isLocal = Kernel.isFunctional(axiom.getRole()); }
+	void visit ( const TDLAxiomDRoleFunctional& axiom ) override { isLocal = Kernel.isFunctional(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { isLocal = Kernel.isInverseFunctional(axiom.getRole()); }
 
-	virtual void visit ( const TDLAxiomConceptInclusion& axiom ) override { isLocal = Kernel.isSubsumedBy ( axiom.getSubC(), axiom.getSupC() ); }
+	void visit ( const TDLAxiomConceptInclusion& axiom ) override { isLocal = Kernel.isSubsumedBy ( axiom.getSubC(), axiom.getSupC() ); }
 		// for top locality, this might be local
-	virtual void visit ( const TDLAxiomInstanceOf& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), axiom.getC() ); }
+	void visit ( const TDLAxiomInstanceOf& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), axiom.getC() ); }
 		// R(i,j) holds if {i} [= \ER.{j}
-	virtual void visit ( const TDLAxiomRelatedTo& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), ExprMap[&axiom] ); }
+	void visit ( const TDLAxiomRelatedTo& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), ExprMap[&axiom] ); }
 		///!R(i,j) holds if {i} [= \AR.!{j}=!\ER.{j}
-	virtual void visit ( const TDLAxiomRelatedToNot& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), ExprMap[&axiom] ); }
+	void visit ( const TDLAxiomRelatedToNot& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), ExprMap[&axiom] ); }
 		// R(i,v) holds if {i} [= \ER.{v}
-	virtual void visit ( const TDLAxiomValueOf& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), ExprMap[&axiom] ); }
+	void visit ( const TDLAxiomValueOf& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), ExprMap[&axiom] ); }
 		// !R(i,v) holds if {i} [= !\ER.{v}
-	virtual void visit ( const TDLAxiomValueOfNot& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), ExprMap[&axiom] ); }
+	void visit ( const TDLAxiomValueOfNot& axiom ) override { isLocal = Kernel.isInstance ( axiom.getIndividual(), ExprMap[&axiom] ); }
 }; // SemanticLocalityChecker
 
 #endif

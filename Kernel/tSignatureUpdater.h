@@ -57,60 +57,60 @@ public:		// interface
 
 public:		// visitor interface
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) override {}
-	virtual void visit ( const TDLConceptBottom& ) override {}
-	virtual void visit ( const TDLConceptName& expr ) override { vE(expr); }
-	virtual void visit ( const TDLConceptNot& expr ) override { vC(expr); }
-	virtual void visit ( const TDLConceptAnd& expr ) override { processArray(expr); }
-	virtual void visit ( const TDLConceptOr& expr ) override { processArray(expr); }
-	virtual void visit ( const TDLConceptOneOf& expr ) override { processArray(expr); }
-	virtual void visit ( const TDLConceptObjectSelf& expr ) override { vOR(expr); }
-	virtual void visit ( const TDLConceptObjectValue& expr ) override { vOR(expr); vI(expr); }
-	virtual void visit ( const TDLConceptObjectExists& expr ) override { vOR(expr); vC(expr); }
-	virtual void visit ( const TDLConceptObjectForall& expr ) override { vOR(expr); vC(expr); }
-	virtual void visit ( const TDLConceptObjectMinCardinality& expr ) override { vOR(expr); vC(expr); }
-	virtual void visit ( const TDLConceptObjectMaxCardinality& expr ) override { vOR(expr); vC(expr); }
-	virtual void visit ( const TDLConceptObjectExactCardinality& expr ) override { vOR(expr); vC(expr); }
-	virtual void visit ( const TDLConceptDataValue& expr ) override { vDR(expr); }
-	virtual void visit ( const TDLConceptDataExists& expr ) override { vDR(expr); }
-	virtual void visit ( const TDLConceptDataForall& expr ) override { vDR(expr); }
-	virtual void visit ( const TDLConceptDataMinCardinality& expr ) override { vDR(expr); }
-	virtual void visit ( const TDLConceptDataMaxCardinality& expr ) override { vDR(expr); }
-	virtual void visit ( const TDLConceptDataExactCardinality& expr ) override { vDR(expr); }
+	void visit ( const TDLConceptTop& ) override {}
+	void visit ( const TDLConceptBottom& ) override {}
+	void visit ( const TDLConceptName& expr ) override { vE(expr); }
+	void visit ( const TDLConceptNot& expr ) override { vC(expr); }
+	void visit ( const TDLConceptAnd& expr ) override { processArray(expr); }
+	void visit ( const TDLConceptOr& expr ) override { processArray(expr); }
+	void visit ( const TDLConceptOneOf& expr ) override { processArray(expr); }
+	void visit ( const TDLConceptObjectSelf& expr ) override { vOR(expr); }
+	void visit ( const TDLConceptObjectValue& expr ) override { vOR(expr); vI(expr); }
+	void visit ( const TDLConceptObjectExists& expr ) override { vOR(expr); vC(expr); }
+	void visit ( const TDLConceptObjectForall& expr ) override { vOR(expr); vC(expr); }
+	void visit ( const TDLConceptObjectMinCardinality& expr ) override { vOR(expr); vC(expr); }
+	void visit ( const TDLConceptObjectMaxCardinality& expr ) override { vOR(expr); vC(expr); }
+	void visit ( const TDLConceptObjectExactCardinality& expr ) override { vOR(expr); vC(expr); }
+	void visit ( const TDLConceptDataValue& expr ) override { vDR(expr); }
+	void visit ( const TDLConceptDataExists& expr ) override { vDR(expr); }
+	void visit ( const TDLConceptDataForall& expr ) override { vDR(expr); }
+	void visit ( const TDLConceptDataMinCardinality& expr ) override { vDR(expr); }
+	void visit ( const TDLConceptDataMaxCardinality& expr ) override { vDR(expr); }
+	void visit ( const TDLConceptDataExactCardinality& expr ) override { vDR(expr); }
 
 	// individual expressions
-	virtual void visit ( const TDLIndividualName& expr ) override { vE(expr); }
+	void visit ( const TDLIndividualName& expr ) override { vE(expr); }
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) override {}
-	virtual void visit ( const TDLObjectRoleBottom& ) override {}
-	virtual void visit ( const TDLObjectRoleName& expr ) override { vE(expr); }
-	virtual void visit ( const TDLObjectRoleInverse& expr ) override { vOR(expr); }
-	virtual void visit ( const TDLObjectRoleChain& expr ) override { processArray(expr); }
-	virtual void visit ( const TDLObjectRoleProjectionFrom& expr ) override { vOR(expr); vC(expr); }
-	virtual void visit ( const TDLObjectRoleProjectionInto& expr ) override { vOR(expr); vC(expr); }
+	void visit ( const TDLObjectRoleTop& ) override {}
+	void visit ( const TDLObjectRoleBottom& ) override {}
+	void visit ( const TDLObjectRoleName& expr ) override { vE(expr); }
+	void visit ( const TDLObjectRoleInverse& expr ) override { vOR(expr); }
+	void visit ( const TDLObjectRoleChain& expr ) override { processArray(expr); }
+	void visit ( const TDLObjectRoleProjectionFrom& expr ) override { vOR(expr); vC(expr); }
+	void visit ( const TDLObjectRoleProjectionInto& expr ) override { vOR(expr); vC(expr); }
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) override {}
-	virtual void visit ( const TDLDataRoleBottom& ) override {}
-	virtual void visit ( const TDLDataRoleName& expr ) override { vE(expr); }
+	void visit ( const TDLDataRoleTop& ) override {}
+	void visit ( const TDLDataRoleBottom& ) override {}
+	void visit ( const TDLDataRoleName& expr ) override { vE(expr); }
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) override {}
-	virtual void visit ( const TDLDataBottom& ) override {}
-	virtual void visit ( const TDLDataTypeName& ) override {}
-	virtual void visit ( const TDLDataTypeRestriction& ) override {}
-	virtual void visit ( const TDLDataValue& ) override {}
-	virtual void visit ( const TDLDataNot& ) override {}
-	virtual void visit ( const TDLDataAnd& ) override {}
-	virtual void visit ( const TDLDataOr& ) override {}
-	virtual void visit ( const TDLDataOneOf& ) override {}
+	void visit ( const TDLDataTop& ) override {}
+	void visit ( const TDLDataBottom& ) override {}
+	void visit ( const TDLDataTypeName& ) override {}
+	void visit ( const TDLDataTypeRestriction& ) override {}
+	void visit ( const TDLDataValue& ) override {}
+	void visit ( const TDLDataNot& ) override {}
+	void visit ( const TDLDataAnd& ) override {}
+	void visit ( const TDLDataOr& ) override {}
+	void visit ( const TDLDataOneOf& ) override {}
 
 	// facets
-	virtual void visit ( const TDLFacetMinInclusive& ) override {}
-	virtual void visit ( const TDLFacetMinExclusive& ) override {}
-	virtual void visit ( const TDLFacetMaxInclusive& ) override {}
-	virtual void visit ( const TDLFacetMaxExclusive& ) override {}
+	void visit ( const TDLFacetMinInclusive& ) override {}
+	void visit ( const TDLFacetMinExclusive& ) override {}
+	void visit ( const TDLFacetMaxInclusive& ) override {}
+	void visit ( const TDLFacetMaxExclusive& ) override {}
 }; // TExpressionSignatureUpdater
 
 /// update signature by adding the signature of a given axiom to it
@@ -132,41 +132,41 @@ protected:	// methods
 	}
 
 public:		// visitor interface
-	virtual void visit ( const TDLAxiomDeclaration& axiom ) override { v(axiom.getDeclaration()); }
+	void visit ( const TDLAxiomDeclaration& axiom ) override { v(axiom.getDeclaration()); }
 
-	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) override { v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomDisjointUnion& axiom ) override { v(axiom.getC()); v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) override { v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) override { v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) override { v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomSameIndividuals& axiom ) override { v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomDifferentIndividuals& axiom ) override { v ( axiom.begin(), axiom.end() ); }
-	virtual void visit ( const TDLAxiomFairnessConstraint& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomDisjointConcepts& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomDisjointUnion& axiom ) override { v(axiom.getC()); v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomEquivalentORoles& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomDisjointORoles& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomDisjointDRoles& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomSameIndividuals& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomDifferentIndividuals& axiom ) override { v ( axiom.begin(), axiom.end() ); }
+	void visit ( const TDLAxiomFairnessConstraint& axiom ) override { v ( axiom.begin(), axiom.end() ); }
 
-	virtual void visit ( const TDLAxiomRoleInverse& axiom ) override { v(axiom.getRole()); v(axiom.getInvRole()); }
-	virtual void visit ( const TDLAxiomORoleSubsumption& axiom ) override { v(axiom.getRole()); v(axiom.getSubRole()); }
-	virtual void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { v(axiom.getRole()); v(axiom.getSubRole()); }
-	virtual void visit ( const TDLAxiomORoleDomain& axiom ) override { v(axiom.getRole()); v(axiom.getDomain()); }
-	virtual void visit ( const TDLAxiomDRoleDomain& axiom ) override { v(axiom.getRole()); v(axiom.getDomain()); }
-	virtual void visit ( const TDLAxiomORoleRange& axiom ) override { v(axiom.getRole()); v(axiom.getRange()); }
-	virtual void visit ( const TDLAxiomDRoleRange& axiom ) override { v(axiom.getRole()); v(axiom.getRange()); }
-	virtual void visit ( const TDLAxiomRoleTransitive& axiom ) override { v(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleReflexive& axiom ) override { v(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { v(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleSymmetric& axiom ) override { v(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleAsymmetric& axiom ) override { v(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomORoleFunctional& axiom ) override { v(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomDRoleFunctional& axiom ) override { v(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { v(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleInverse& axiom ) override { v(axiom.getRole()); v(axiom.getInvRole()); }
+	void visit ( const TDLAxiomORoleSubsumption& axiom ) override { v(axiom.getRole()); v(axiom.getSubRole()); }
+	void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { v(axiom.getRole()); v(axiom.getSubRole()); }
+	void visit ( const TDLAxiomORoleDomain& axiom ) override { v(axiom.getRole()); v(axiom.getDomain()); }
+	void visit ( const TDLAxiomDRoleDomain& axiom ) override { v(axiom.getRole()); v(axiom.getDomain()); }
+	void visit ( const TDLAxiomORoleRange& axiom ) override { v(axiom.getRole()); v(axiom.getRange()); }
+	void visit ( const TDLAxiomDRoleRange& axiom ) override { v(axiom.getRole()); v(axiom.getRange()); }
+	void visit ( const TDLAxiomRoleTransitive& axiom ) override { v(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleReflexive& axiom ) override { v(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { v(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleSymmetric& axiom ) override { v(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleAsymmetric& axiom ) override { v(axiom.getRole()); }
+	void visit ( const TDLAxiomORoleFunctional& axiom ) override { v(axiom.getRole()); }
+	void visit ( const TDLAxiomDRoleFunctional& axiom ) override { v(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { v(axiom.getRole()); }
 
-	virtual void visit ( const TDLAxiomConceptInclusion& axiom ) override { v(axiom.getSubC()); v(axiom.getSupC()); }
-	virtual void visit ( const TDLAxiomInstanceOf& axiom ) override { v(axiom.getIndividual()); v(axiom.getC()); }
-	virtual void visit ( const TDLAxiomRelatedTo& axiom ) override { v(axiom.getIndividual()); v(axiom.getRelation()); v(axiom.getRelatedIndividual()); }
-	virtual void visit ( const TDLAxiomRelatedToNot& axiom ) override { v(axiom.getIndividual()); v(axiom.getRelation()); v(axiom.getRelatedIndividual()); }
-	virtual void visit ( const TDLAxiomValueOf& axiom ) override { v(axiom.getIndividual()); v(axiom.getAttribute()); }
-	virtual void visit ( const TDLAxiomValueOfNot& axiom ) override { v(axiom.getIndividual()); v(axiom.getAttribute()); }
+	void visit ( const TDLAxiomConceptInclusion& axiom ) override { v(axiom.getSubC()); v(axiom.getSupC()); }
+	void visit ( const TDLAxiomInstanceOf& axiom ) override { v(axiom.getIndividual()); v(axiom.getC()); }
+	void visit ( const TDLAxiomRelatedTo& axiom ) override { v(axiom.getIndividual()); v(axiom.getRelation()); v(axiom.getRelatedIndividual()); }
+	void visit ( const TDLAxiomRelatedToNot& axiom ) override { v(axiom.getIndividual()); v(axiom.getRelation()); v(axiom.getRelatedIndividual()); }
+	void visit ( const TDLAxiomValueOf& axiom ) override { v(axiom.getIndividual()); v(axiom.getAttribute()); }
+	void visit ( const TDLAxiomValueOfNot& axiom ) override { v(axiom.getIndividual()); v(axiom.getAttribute()); }
 
 public:		// interface
 		/// init c'tor

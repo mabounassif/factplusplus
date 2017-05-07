@@ -39,7 +39,7 @@ protected:	// types
 
 	protected:	// methods
 			/// the way to create an object by a given tail
-		virtual TDLConceptExpression* build ( const TDLIndividualExpression* tail ) override;
+		TDLConceptExpression* build ( const TDLIndividualExpression* tail ) override;
 
 	public:		// interface
 			/// empty c'tor
@@ -59,7 +59,7 @@ protected:	// types
 
 	protected:	// methods
 			/// the way to create an object by a given tail
-		virtual TDLObjectRoleExpression* build ( const TDLObjectRoleExpression* tail ) override;
+		TDLObjectRoleExpression* build ( const TDLObjectRoleExpression* tail ) override;
 
 	public:		// interface
 			/// empty c'tor

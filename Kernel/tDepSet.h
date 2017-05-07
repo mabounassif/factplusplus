@@ -103,7 +103,7 @@ protected:	// members
 
 protected:	// methods
 		/// the way to create an object by a given tail
-	virtual TDepSetElement* build ( TDepSetElement* tail ) override
+	TDepSetElement* build ( TDepSetElement* tail ) override
 	{
 		return new TDepSetElement { Manager, Level, tail };
 	}
@@ -142,7 +142,7 @@ class TDepSetManager: public growingArrayP<TDepSetCache>
 {
 protected:	// methods
 		/// create a new entry with an improved level
-	virtual TDepSetCache* createNew ( void ) override
+	TDepSetCache* createNew ( void ) override
 	{
 		return new TDepSetCache { this, (unsigned int)last++ };
 	}

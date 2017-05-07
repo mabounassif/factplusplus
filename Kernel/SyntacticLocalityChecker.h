@@ -106,53 +106,53 @@ public:		// interface
 
 public:		// visitor interface
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) override { isBotEq = false; }
-	virtual void visit ( const TDLConceptBottom& ) override { isBotEq = true; }
-	virtual void visit ( const TDLConceptName& expr ) override { isBotEq = !topCLocal() && nc(expr.getEntity()); }
-	virtual void visit ( const TDLConceptNot& expr ) override { isBotEq = isTopEquivalent(expr.getC()); }
-	virtual void visit ( const TDLConceptAnd& expr ) override
+	void visit ( const TDLConceptTop& ) override { isBotEq = false; }
+	void visit ( const TDLConceptBottom& ) override { isBotEq = true; }
+	void visit ( const TDLConceptName& expr ) override { isBotEq = !topCLocal() && nc(expr.getEntity()); }
+	void visit ( const TDLConceptNot& expr ) override { isBotEq = isTopEquivalent(expr.getC()); }
+	void visit ( const TDLConceptAnd& expr ) override
 	{
 		for ( TDLConceptAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( isBotEquivalent(*p) )	// here isBotEq is true, so just return
 				return;
 		isBotEq = false;
 	}
-	virtual void visit ( const TDLConceptOr& expr ) override
+	void visit ( const TDLConceptOr& expr ) override
 	{
 		for ( TDLConceptOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( !isBotEquivalent(*p) )	// here isBotEq is false, so just return
 				return;
 		isBotEq = true;
 	}
-	virtual void visit ( const TDLConceptOneOf& expr ) override { isBotEq = expr.empty(); }
-	virtual void visit ( const TDLConceptObjectSelf& expr ) override { isBotEq = isBotEquivalent(expr.getOR()); }
-	virtual void visit ( const TDLConceptObjectValue& expr ) override { isBotEq = isBotEquivalent(expr.getOR()); }
-	virtual void visit ( const TDLConceptObjectExists& expr ) override
+	void visit ( const TDLConceptOneOf& expr ) override { isBotEq = expr.empty(); }
+	void visit ( const TDLConceptObjectSelf& expr ) override { isBotEq = isBotEquivalent(expr.getOR()); }
+	void visit ( const TDLConceptObjectValue& expr ) override { isBotEq = isBotEquivalent(expr.getOR()); }
+	void visit ( const TDLConceptObjectExists& expr ) override
 		{ isBotEq = isMinBotEquivalent ( 1, expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectForall& expr ) override
+	void visit ( const TDLConceptObjectForall& expr ) override
 		{ isBotEq = isTopEquivalent(expr.getOR()) && isBotEquivalent(expr.getC()); }
-	virtual void visit ( const TDLConceptObjectMinCardinality& expr ) override
+	void visit ( const TDLConceptObjectMinCardinality& expr ) override
 		{ isBotEq = isMinBotEquivalent ( expr.getNumber(), expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectMaxCardinality& expr ) override
+	void visit ( const TDLConceptObjectMaxCardinality& expr ) override
 		{ isBotEq = isMaxBotEquivalent ( expr.getNumber(), expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectExactCardinality& expr ) override
+	void visit ( const TDLConceptObjectExactCardinality& expr ) override
 	{
 		unsigned int n = expr.getNumber();
 		const TDLObjectRoleExpression* R = expr.getOR();
 		const TDLConceptExpression* C = expr.getC();
 		isBotEq = isMinBotEquivalent ( n, R, C ) || isMaxBotEquivalent ( n, R, C );
 	}
-	virtual void visit ( const TDLConceptDataValue& expr ) override
+	void visit ( const TDLConceptDataValue& expr ) override
 		{ isBotEq = isBotEquivalent(expr.getDR()); }
-	virtual void visit ( const TDLConceptDataExists& expr ) override
+	void visit ( const TDLConceptDataExists& expr ) override
 		{ isBotEq = isMinBotEquivalent ( 1, expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataForall& expr ) override
+	void visit ( const TDLConceptDataForall& expr ) override
 		{ isBotEq = isTopEquivalent(expr.getDR()) && !isTopEquivalent(expr.getExpr()); }
-	virtual void visit ( const TDLConceptDataMinCardinality& expr ) override
+	void visit ( const TDLConceptDataMinCardinality& expr ) override
 		{ isBotEq = isMinBotEquivalent ( expr.getNumber(), expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataMaxCardinality& expr ) override
+	void visit ( const TDLConceptDataMaxCardinality& expr ) override
 		{ isBotEq = isMaxBotEquivalent ( expr.getNumber(), expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataExactCardinality& expr ) override
+	void visit ( const TDLConceptDataExactCardinality& expr ) override
 	{
 		unsigned int n = expr.getNumber();
 		const TDLDataRoleExpression* R = expr.getDR();
@@ -161,11 +161,11 @@ public:		// visitor interface
 	}
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) override { isBotEq = false; }
-	virtual void visit ( const TDLObjectRoleBottom& ) override { isBotEq = true; }
-	virtual void visit ( const TDLObjectRoleName& expr ) override { isBotEq = !topRLocal() && nc(expr.getEntity()); }
-	virtual void visit ( const TDLObjectRoleInverse& expr ) override { isBotEq = isBotEquivalent(expr.getOR()); }
-	virtual void visit ( const TDLObjectRoleChain& expr ) override
+	void visit ( const TDLObjectRoleTop& ) override { isBotEq = false; }
+	void visit ( const TDLObjectRoleBottom& ) override { isBotEq = true; }
+	void visit ( const TDLObjectRoleName& expr ) override { isBotEq = !topRLocal() && nc(expr.getEntity()); }
+	void visit ( const TDLObjectRoleInverse& expr ) override { isBotEq = isBotEquivalent(expr.getOR()); }
+	void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		isBotEq = true;
 		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
@@ -174,39 +174,39 @@ public:		// visitor interface
 		isBotEq = false;
 	}
 		// FaCT++ extension: equivalent to R(x,y) and C(x), so copy behaviour from ER.X
-	virtual void visit ( const TDLObjectRoleProjectionFrom& expr ) override
+	void visit ( const TDLObjectRoleProjectionFrom& expr ) override
 		{ isBotEq = isMinBotEquivalent ( 1, expr.getOR(), expr.getC() ); }
 		// FaCT++ extension: equivalent to R(x,y) and C(y), so copy behaviour from ER.X
-	virtual void visit ( const TDLObjectRoleProjectionInto& expr ) override
+	void visit ( const TDLObjectRoleProjectionInto& expr ) override
 		{ isBotEq = isMinBotEquivalent ( 1, expr.getOR(), expr.getC() ); }
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) override { isBotEq = false; }
-	virtual void visit ( const TDLDataRoleBottom& ) override { isBotEq = true; }
-	virtual void visit ( const TDLDataRoleName& expr ) override { isBotEq = !topRLocal() && nc(expr.getEntity()); }
+	void visit ( const TDLDataRoleTop& ) override { isBotEq = false; }
+	void visit ( const TDLDataRoleBottom& ) override { isBotEq = true; }
+	void visit ( const TDLDataRoleName& expr ) override { isBotEq = !topRLocal() && nc(expr.getEntity()); }
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) override { isBotEq = false; }
-	virtual void visit ( const TDLDataBottom& ) override { isBotEq = true; }
-	virtual void visit ( const TDLDataTypeName& ) override { isBotEq = false; }
-	virtual void visit ( const TDLDataTypeRestriction& ) override { isBotEq = false; }
-	virtual void visit ( const TDLDataValue& ) override { isBotEq = false; }
-	virtual void visit ( const TDLDataNot& expr ) override { isBotEq = isTopEquivalent(expr.getExpr()); }
-	virtual void visit ( const TDLDataAnd& expr ) override
+	void visit ( const TDLDataTop& ) override { isBotEq = false; }
+	void visit ( const TDLDataBottom& ) override { isBotEq = true; }
+	void visit ( const TDLDataTypeName& ) override { isBotEq = false; }
+	void visit ( const TDLDataTypeRestriction& ) override { isBotEq = false; }
+	void visit ( const TDLDataValue& ) override { isBotEq = false; }
+	void visit ( const TDLDataNot& expr ) override { isBotEq = isTopEquivalent(expr.getExpr()); }
+	void visit ( const TDLDataAnd& expr ) override
 	{
 		for ( TDLDataAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( isBotEquivalent(*p) )	// here isBotEq is true, so just return
 				return;
 		isBotEq = false;
 	}
-	virtual void visit ( const TDLDataOr& expr ) override
+	void visit ( const TDLDataOr& expr ) override
 	{
 		for ( TDLDataOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( !isBotEquivalent(*p) )	// here isBotEq is false, so just return
 				return;
 		isBotEq = true;
 	}
-	virtual void visit ( const TDLDataOneOf& expr ) override { isBotEq = expr.empty(); }
+	void visit ( const TDLDataOneOf& expr ) override { isBotEq = expr.empty(); }
 }; // BotEquivalenceEvaluator
 
 /// check whether class expressions are equivalent to top wrt given locality class
@@ -289,52 +289,52 @@ public:		// interface
 
 public:		// visitor interface
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) override { isTopEq = true; }
-	virtual void visit ( const TDLConceptBottom& ) override { isTopEq = false; }
-	virtual void visit ( const TDLConceptName& expr ) override { isTopEq = topCLocal() && nc(expr.getEntity()); }
-	virtual void visit ( const TDLConceptNot& expr ) override { isTopEq = isBotEquivalent(expr.getC()); }
-	virtual void visit ( const TDLConceptAnd& expr ) override
+	void visit ( const TDLConceptTop& ) override { isTopEq = true; }
+	void visit ( const TDLConceptBottom& ) override { isTopEq = false; }
+	void visit ( const TDLConceptName& expr ) override { isTopEq = topCLocal() && nc(expr.getEntity()); }
+	void visit ( const TDLConceptNot& expr ) override { isTopEq = isBotEquivalent(expr.getC()); }
+	void visit ( const TDLConceptAnd& expr ) override
 	{
 		for ( TDLConceptAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( !isTopEquivalent(*p) )	// here isTopEq is false, so just return
 				return;
 		isTopEq = true;
 	}
-	virtual void visit ( const TDLConceptOr& expr ) override
+	void visit ( const TDLConceptOr& expr ) override
 	{
 		for ( TDLConceptOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( isTopEquivalent(*p) )	// here isTopEq is true, so just return
 				return;
 		isTopEq = false;
 	}
-	virtual void visit ( const TDLConceptOneOf& ) override { isTopEq = false; }
-	virtual void visit ( const TDLConceptObjectSelf& expr ) override { isTopEq = isTopEquivalent(expr.getOR()); }
-	virtual void visit ( const TDLConceptObjectValue& expr ) override { isTopEq = isTopEquivalent(expr.getOR()); }
-	virtual void visit ( const TDLConceptObjectExists& expr ) override
+	void visit ( const TDLConceptOneOf& ) override { isTopEq = false; }
+	void visit ( const TDLConceptObjectSelf& expr ) override { isTopEq = isTopEquivalent(expr.getOR()); }
+	void visit ( const TDLConceptObjectValue& expr ) override { isTopEq = isTopEquivalent(expr.getOR()); }
+	void visit ( const TDLConceptObjectExists& expr ) override
 		{ isTopEq = isMinTopEquivalent ( 1, expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectForall& expr ) override
+	void visit ( const TDLConceptObjectForall& expr ) override
 		{ isTopEq = isTopEquivalent(expr.getC()) || isBotEquivalent(expr.getOR()); }
-	virtual void visit ( const TDLConceptObjectMinCardinality& expr ) override
+	void visit ( const TDLConceptObjectMinCardinality& expr ) override
 		{ isTopEq = isMinTopEquivalent ( expr.getNumber(), expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectMaxCardinality& expr ) override
+	void visit ( const TDLConceptObjectMaxCardinality& expr ) override
 		{ isTopEq = isMaxTopEquivalent ( expr.getNumber(), expr.getOR(), expr.getC() ); }
-	virtual void visit ( const TDLConceptObjectExactCardinality& expr ) override
+	void visit ( const TDLConceptObjectExactCardinality& expr ) override
 	{
 		unsigned int n = expr.getNumber();
 		const TDLObjectRoleExpression* R = expr.getOR();
 		const TDLConceptExpression* C = expr.getC();
 		isTopEq = isMinTopEquivalent ( n, R, C ) && isMaxTopEquivalent ( n, R, C );
 	}
-	virtual void visit ( const TDLConceptDataValue& expr ) override
+	void visit ( const TDLConceptDataValue& expr ) override
 		{ isTopEq = isTopEquivalent(expr.getDR()); }
-	virtual void visit ( const TDLConceptDataExists& expr ) override
+	void visit ( const TDLConceptDataExists& expr ) override
 		{ isTopEq = isMinTopEquivalent ( 1, expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataForall& expr ) override { isTopEq = isTopEquivalent(expr.getExpr()) || isBotEquivalent(expr.getDR()); }
-	virtual void visit ( const TDLConceptDataMinCardinality& expr ) override
+	void visit ( const TDLConceptDataForall& expr ) override { isTopEq = isTopEquivalent(expr.getExpr()) || isBotEquivalent(expr.getDR()); }
+	void visit ( const TDLConceptDataMinCardinality& expr ) override
 		{ isTopEq = isMinTopEquivalent ( expr.getNumber(), expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataMaxCardinality& expr ) override
+	void visit ( const TDLConceptDataMaxCardinality& expr ) override
 		{ isTopEq = isMaxTopEquivalent ( expr.getNumber(), expr.getDR(), expr.getExpr() ); }
-	virtual void visit ( const TDLConceptDataExactCardinality& expr ) override
+	void visit ( const TDLConceptDataExactCardinality& expr ) override
 	{
 		unsigned int n = expr.getNumber();
 		const TDLDataRoleExpression* R = expr.getDR();
@@ -343,11 +343,11 @@ public:		// visitor interface
 	}
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) override { isTopEq = true; }
-	virtual void visit ( const TDLObjectRoleBottom& ) override { isTopEq = false; }
-	virtual void visit ( const TDLObjectRoleName& expr ) override { isTopEq = topRLocal() && nc(expr.getEntity()); }
-	virtual void visit ( const TDLObjectRoleInverse& expr ) override { isTopEq = isTopEquivalent(expr.getOR()); }
-	virtual void visit ( const TDLObjectRoleChain& expr ) override
+	void visit ( const TDLObjectRoleTop& ) override { isTopEq = true; }
+	void visit ( const TDLObjectRoleBottom& ) override { isTopEq = false; }
+	void visit ( const TDLObjectRoleName& expr ) override { isTopEq = topRLocal() && nc(expr.getEntity()); }
+	void visit ( const TDLObjectRoleInverse& expr ) override { isTopEq = isTopEquivalent(expr.getOR()); }
+	void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		isTopEq = false;
 		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
@@ -356,39 +356,39 @@ public:		// visitor interface
 		isTopEq = true;
 	}
 		// FaCT++ extension: equivalent to R(x,y) and C(x), so copy behaviour from ER.X
-	virtual void visit ( const TDLObjectRoleProjectionFrom& expr ) override
+	void visit ( const TDLObjectRoleProjectionFrom& expr ) override
 		{ isTopEq = isMinTopEquivalent ( 1, expr.getOR(), expr.getC() ); }
 		// FaCT++ extension: equivalent to R(x,y) and C(y), so copy behaviour from ER.X
-	virtual void visit ( const TDLObjectRoleProjectionInto& expr ) override
+	void visit ( const TDLObjectRoleProjectionInto& expr ) override
 		{ isTopEq = isMinTopEquivalent ( 1, expr.getOR(), expr.getC() ); }
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) override { isTopEq = true; }
-	virtual void visit ( const TDLDataRoleBottom& ) override { isTopEq = false; }
-	virtual void visit ( const TDLDataRoleName& expr ) override { isTopEq = topRLocal() && nc(expr.getEntity()); }
+	void visit ( const TDLDataRoleTop& ) override { isTopEq = true; }
+	void visit ( const TDLDataRoleBottom& ) override { isTopEq = false; }
+	void visit ( const TDLDataRoleName& expr ) override { isTopEq = topRLocal() && nc(expr.getEntity()); }
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) override { isTopEq = true; }
-	virtual void visit ( const TDLDataBottom& ) override { isTopEq = false; }
-	virtual void visit ( const TDLDataTypeName& ) override { isTopEq = false; }
-	virtual void visit ( const TDLDataTypeRestriction& ) override { isTopEq = false; }
-	virtual void visit ( const TDLDataValue& ) override { isTopEq = false; }
-	virtual void visit ( const TDLDataNot& expr ) override { isTopEq = isBotEquivalent(expr.getExpr()); }
-	virtual void visit ( const TDLDataAnd& expr ) override
+	void visit ( const TDLDataTop& ) override { isTopEq = true; }
+	void visit ( const TDLDataBottom& ) override { isTopEq = false; }
+	void visit ( const TDLDataTypeName& ) override { isTopEq = false; }
+	void visit ( const TDLDataTypeRestriction& ) override { isTopEq = false; }
+	void visit ( const TDLDataValue& ) override { isTopEq = false; }
+	void visit ( const TDLDataNot& expr ) override { isTopEq = isBotEquivalent(expr.getExpr()); }
+	void visit ( const TDLDataAnd& expr ) override
 	{
 		for ( TDLDataAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( !isTopEquivalent(*p) )	// here isTopEq is false, so just return
 				return;
 		isTopEq = true;
 	}
-	virtual void visit ( const TDLDataOr& expr ) override
+	void visit ( const TDLDataOr& expr ) override
 	{
 		for ( TDLDataOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
 			if ( isTopEquivalent(*p) )	// here isTopEq is true, so just return
 				return;
 		isTopEq = false;
 	}
-	virtual void visit ( const TDLDataOneOf& ) override { isTopEq = false; }
+	void visit ( const TDLDataOneOf& ) override { isTopEq = false; }
 }; // TopEquivalenceEvaluator
 
 inline bool
@@ -409,9 +409,9 @@ protected:	// members
 
 protected:	// methods
 		/// @return true iff EXPR is top equivalent
-	virtual bool isTopEquivalent ( const TDLExpression* expr ) override { return TopEval.isTopEquivalent(*expr); }
+	bool isTopEquivalent ( const TDLExpression* expr ) override { return TopEval.isTopEquivalent(*expr); }
 		/// @return true iff EXPR is bottom equivalent
-	virtual bool isBotEquivalent ( const TDLExpression* expr ) override { return BotEval.isBotEquivalent(*expr); }
+	bool isBotEquivalent ( const TDLExpression* expr ) override { return BotEval.isBotEquivalent(*expr); }
 
 public:		// interface
 		/// init c'tor

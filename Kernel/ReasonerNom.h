@@ -34,9 +34,9 @@ protected:	// members
 
 protected:	// methods
 		/// prepare reasoning
-	virtual void prepareReasoner ( void ) override;
+	void prepareReasoner ( void ) override;
 		/// there are nominals
-	virtual bool hasNominals ( void ) const override { return true; }
+	bool hasNominals ( void ) const override { return true; }
 
 //-----------------------------------------------------------------------------
 //--		internal nominal reasoning interface

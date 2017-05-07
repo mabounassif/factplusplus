@@ -104,7 +104,7 @@ public:		// interface
 	virtual ~TIndividual ( void ) { delete pRelatedMap; }
 
 		/// init told subsumers of the individual by it's description
-	virtual void initToldSubsumers ( void ) override
+	void initToldSubsumers ( void ) override
 	{
 		toldSubsumers.clear();
 		clearHasSP();
@@ -154,9 +154,9 @@ public:		// interface
 	// save/load interface; implementation is in SaveLoad.cpp
 
 		/// save entry
-	virtual void Save ( SaveLoadManager& ) const override;
+	void Save ( SaveLoadManager& ) const override;
 		/// load entry
-	virtual void Load ( SaveLoadManager& ) override;
+	void Load ( SaveLoadManager& ) override;
 }; // TIndividual
 
 #endif

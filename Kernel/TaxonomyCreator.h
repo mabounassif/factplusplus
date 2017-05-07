@@ -79,13 +79,13 @@ protected:	// internal typedefs
 		// iterators
 
 			/// begin of the Sure subsumers interval
-		virtual ss_iterator s_begin ( void ) override { return beg; }
+		ss_iterator s_begin ( void ) override { return beg; }
 			/// end of the Sure subsumers interval
-		virtual ss_iterator s_end ( void ) override { return end; }
+		ss_iterator s_end ( void ) override { return end; }
 			/// begin of the Possible subsumers interval
-		virtual ss_iterator p_begin ( void ) override { return end; }
+		ss_iterator p_begin ( void ) override { return end; }
 			/// end of the Possible subsumers interval
-		virtual ss_iterator p_end ( void ) override { return end; }
+		ss_iterator p_end ( void ) override { return end; }
 	}; // ToldSubsumers
 
 protected:	// members

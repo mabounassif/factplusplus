@@ -83,11 +83,11 @@ public:		// interface
 	virtual ~GeneralSyntacticLocalityChecker ( void ) {}
 
 public:		// visitor interface
-	virtual void visit ( const TDLAxiomDeclaration& ) override { isLocal = true; }
+	void visit ( const TDLAxiomDeclaration& ) override { isLocal = true; }
 
-	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { isLocal = processEquivalentAxiom(axiom); }
-	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) override { isLocal = processDisjointAxiom(axiom); }
-	virtual void visit ( const TDLAxiomDisjointUnion& axiom ) override
+	void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { isLocal = processEquivalentAxiom(axiom); }
+	void visit ( const TDLAxiomDisjointConcepts& axiom ) override { isLocal = processDisjointAxiom(axiom); }
+	void visit ( const TDLAxiomDisjointUnion& axiom ) override
 	{
 		// DisjointUnion(A, C1,..., Cn) is local if
 		//    (1) A and all of Ci are bot-equivalent,
@@ -123,46 +123,46 @@ public:		// visitor interface
 		// it is local in the end!
 		isLocal = true;
 	}
-	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) override { isLocal = processEquivalentAxiom(axiom); }
-	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { isLocal = processEquivalentAxiom(axiom); }
-	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) override { isLocal = processDisjointAxiom(axiom); }
-	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) override { isLocal = processDisjointAxiom(axiom); }
-	virtual void visit ( const TDLAxiomSameIndividuals& ) override { isLocal = false; }
-	virtual void visit ( const TDLAxiomDifferentIndividuals& ) override { isLocal = false; }
+	void visit ( const TDLAxiomEquivalentORoles& axiom ) override { isLocal = processEquivalentAxiom(axiom); }
+	void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { isLocal = processEquivalentAxiom(axiom); }
+	void visit ( const TDLAxiomDisjointORoles& axiom ) override { isLocal = processDisjointAxiom(axiom); }
+	void visit ( const TDLAxiomDisjointDRoles& axiom ) override { isLocal = processDisjointAxiom(axiom); }
+	void visit ( const TDLAxiomSameIndividuals& ) override { isLocal = false; }
+	void visit ( const TDLAxiomDifferentIndividuals& ) override { isLocal = false; }
 		/// FaCT++ extension: there is no such axiom in OWL API, but I hope nobody would use Fairness here
-	virtual void visit ( const TDLAxiomFairnessConstraint& ) override { isLocal = true; }
+	void visit ( const TDLAxiomFairnessConstraint& ) override { isLocal = true; }
 
-	virtual void visit ( const TDLAxiomRoleInverse& axiom ) override
+	void visit ( const TDLAxiomRoleInverse& axiom ) override
 	{
 		isLocal = ( isBotEquivalent(axiom.getRole()) && isBotEquivalent(axiom.getInvRole()) ) ||
 				  ( isTopEquivalent(axiom.getRole()) && isTopEquivalent(axiom.getInvRole()) );
 	}
-	virtual void visit ( const TDLAxiomORoleSubsumption& axiom ) override { isLocal = isTopEquivalent(axiom.getRole()) || isBotEquivalent(axiom.getSubRole()); }
-	virtual void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { isLocal = isTopEquivalent(axiom.getRole()) || isBotEquivalent(axiom.getSubRole()); }
-	virtual void visit ( const TDLAxiomORoleDomain& axiom ) override
+	void visit ( const TDLAxiomORoleSubsumption& axiom ) override { isLocal = isTopEquivalent(axiom.getRole()) || isBotEquivalent(axiom.getSubRole()); }
+	void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { isLocal = isTopEquivalent(axiom.getRole()) || isBotEquivalent(axiom.getSubRole()); }
+	void visit ( const TDLAxiomORoleDomain& axiom ) override
 		{ isLocal = isTopEquivalent(axiom.getDomain()) || isBotEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomDRoleDomain& axiom ) override
+	void visit ( const TDLAxiomDRoleDomain& axiom ) override
 		{ isLocal = isTopEquivalent(axiom.getDomain()) || isBotEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomORoleRange& axiom ) override
+	void visit ( const TDLAxiomORoleRange& axiom ) override
 		{ isLocal = isTopEquivalent(axiom.getRange()) || isBotEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomDRoleRange& axiom ) override
+	void visit ( const TDLAxiomDRoleRange& axiom ) override
 		{ isLocal = isTopEquivalent(axiom.getRange()) || isBotEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleTransitive& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()) || isTopEquivalent(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleTransitive& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()) || isTopEquivalent(axiom.getRole()); }
 		/// as BotRole is irreflexive, the only local axiom is topEquivalent(R)
-	virtual void visit ( const TDLAxiomRoleReflexive& axiom ) override { isLocal = isTopEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleSymmetric& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()) || isTopEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleAsymmetric& ) override { isLocal = false; }
-	virtual void visit ( const TDLAxiomORoleFunctional& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomDRoleFunctional& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()); }
-	virtual void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleReflexive& axiom ) override { isLocal = isTopEquivalent(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleSymmetric& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()) || isTopEquivalent(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleAsymmetric& ) override { isLocal = false; }
+	void visit ( const TDLAxiomORoleFunctional& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()); }
+	void visit ( const TDLAxiomDRoleFunctional& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()); }
+	void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { isLocal = isBotEquivalent(axiom.getRole()); }
 
-	virtual void visit ( const TDLAxiomConceptInclusion& axiom ) override { isLocal = isBotEquivalent(axiom.getSubC()) || isTopEquivalent(axiom.getSupC()); }
-	virtual void visit ( const TDLAxiomInstanceOf& axiom ) override { isLocal = isTopEquivalent(axiom.getC()); }
-	virtual void visit ( const TDLAxiomRelatedTo& axiom ) override { isLocal = isTopEquivalent(axiom.getRelation()); }
-	virtual void visit ( const TDLAxiomRelatedToNot& axiom ) override { isLocal = isBotEquivalent(axiom.getRelation()); }
-	virtual void visit ( const TDLAxiomValueOf& axiom ) override { isLocal = isTopEquivalent(axiom.getAttribute()); }
-	virtual void visit ( const TDLAxiomValueOfNot& axiom ) override { isLocal = isBotEquivalent(axiom.getAttribute()); }
+	void visit ( const TDLAxiomConceptInclusion& axiom ) override { isLocal = isBotEquivalent(axiom.getSubC()) || isTopEquivalent(axiom.getSupC()); }
+	void visit ( const TDLAxiomInstanceOf& axiom ) override { isLocal = isTopEquivalent(axiom.getC()); }
+	void visit ( const TDLAxiomRelatedTo& axiom ) override { isLocal = isTopEquivalent(axiom.getRelation()); }
+	void visit ( const TDLAxiomRelatedToNot& axiom ) override { isLocal = isBotEquivalent(axiom.getRelation()); }
+	void visit ( const TDLAxiomValueOf& axiom ) override { isLocal = isTopEquivalent(axiom.getAttribute()); }
+	void visit ( const TDLAxiomValueOfNot& axiom ) override { isLocal = isBotEquivalent(axiom.getAttribute()); }
 }; // GeneralSyntacticLocalityChecker
 
 #endif

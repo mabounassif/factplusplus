@@ -228,7 +228,7 @@ protected:
 public:
 	AddRoleActor ( TRole::TRoleVec& v ) : rset(v) {}
 	virtual ~AddRoleActor ( void ) {}
-	virtual bool apply ( const TaxonomyVertex& v ) override
+	bool apply ( const TaxonomyVertex& v ) override
 	{
 		if ( v.getPrimer()->getId() == 0 )
 			return false;

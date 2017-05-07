@@ -106,41 +106,41 @@ public:		// visitor interface
 class DLAxiomVisitorEmpty: public DLAxiomVisitor
 {
 public:		// visitor interface
-	virtual void visit ( const TDLAxiomDeclaration& ) override {}
+	void visit ( const TDLAxiomDeclaration& ) override {}
 
-	virtual void visit ( const TDLAxiomEquivalentConcepts& ) override {}
-	virtual void visit ( const TDLAxiomDisjointConcepts& ) override {}
-	virtual void visit ( const TDLAxiomDisjointUnion& ) override {}
-	virtual void visit ( const TDLAxiomEquivalentORoles& ) override {}
-	virtual void visit ( const TDLAxiomEquivalentDRoles& ) override {}
-	virtual void visit ( const TDLAxiomDisjointORoles& ) override {}
-	virtual void visit ( const TDLAxiomDisjointDRoles& ) override {}
-	virtual void visit ( const TDLAxiomSameIndividuals& ) override {}
-	virtual void visit ( const TDLAxiomDifferentIndividuals& ) override {}
-	virtual void visit ( const TDLAxiomFairnessConstraint& ) override {}
+	void visit ( const TDLAxiomEquivalentConcepts& ) override {}
+	void visit ( const TDLAxiomDisjointConcepts& ) override {}
+	void visit ( const TDLAxiomDisjointUnion& ) override {}
+	void visit ( const TDLAxiomEquivalentORoles& ) override {}
+	void visit ( const TDLAxiomEquivalentDRoles& ) override {}
+	void visit ( const TDLAxiomDisjointORoles& ) override {}
+	void visit ( const TDLAxiomDisjointDRoles& ) override {}
+	void visit ( const TDLAxiomSameIndividuals& ) override {}
+	void visit ( const TDLAxiomDifferentIndividuals& ) override {}
+	void visit ( const TDLAxiomFairnessConstraint& ) override {}
 
-	virtual void visit ( const TDLAxiomRoleInverse& ) override {}
-	virtual void visit ( const TDLAxiomORoleSubsumption& ) override {}
-	virtual void visit ( const TDLAxiomDRoleSubsumption& ) override {}
-	virtual void visit ( const TDLAxiomORoleDomain& ) override {}
-	virtual void visit ( const TDLAxiomDRoleDomain& ) override {}
-	virtual void visit ( const TDLAxiomORoleRange& ) override {}
-	virtual void visit ( const TDLAxiomDRoleRange& ) override {}
-	virtual void visit ( const TDLAxiomRoleTransitive& ) override {}
-	virtual void visit ( const TDLAxiomRoleReflexive& ) override {}
-	virtual void visit ( const TDLAxiomRoleIrreflexive& ) override {}
-	virtual void visit ( const TDLAxiomRoleSymmetric& ) override {}
-	virtual void visit ( const TDLAxiomRoleAsymmetric& ) override {}
-	virtual void visit ( const TDLAxiomORoleFunctional& ) override {}
-	virtual void visit ( const TDLAxiomDRoleFunctional& ) override {}
-	virtual void visit ( const TDLAxiomRoleInverseFunctional& ) override {}
+	void visit ( const TDLAxiomRoleInverse& ) override {}
+	void visit ( const TDLAxiomORoleSubsumption& ) override {}
+	void visit ( const TDLAxiomDRoleSubsumption& ) override {}
+	void visit ( const TDLAxiomORoleDomain& ) override {}
+	void visit ( const TDLAxiomDRoleDomain& ) override {}
+	void visit ( const TDLAxiomORoleRange& ) override {}
+	void visit ( const TDLAxiomDRoleRange& ) override {}
+	void visit ( const TDLAxiomRoleTransitive& ) override {}
+	void visit ( const TDLAxiomRoleReflexive& ) override {}
+	void visit ( const TDLAxiomRoleIrreflexive& ) override {}
+	void visit ( const TDLAxiomRoleSymmetric& ) override {}
+	void visit ( const TDLAxiomRoleAsymmetric& ) override {}
+	void visit ( const TDLAxiomORoleFunctional& ) override {}
+	void visit ( const TDLAxiomDRoleFunctional& ) override {}
+	void visit ( const TDLAxiomRoleInverseFunctional& ) override {}
 
-	virtual void visit ( const TDLAxiomConceptInclusion& ) override {}
-	virtual void visit ( const TDLAxiomInstanceOf& ) override {}
-	virtual void visit ( const TDLAxiomRelatedTo& ) override {}
-	virtual void visit ( const TDLAxiomRelatedToNot& ) override {}
-	virtual void visit ( const TDLAxiomValueOf& ) override {}
-	virtual void visit ( const TDLAxiomValueOfNot& ) override {}
+	void visit ( const TDLAxiomConceptInclusion& ) override {}
+	void visit ( const TDLAxiomInstanceOf& ) override {}
+	void visit ( const TDLAxiomRelatedTo& ) override {}
+	void visit ( const TDLAxiomRelatedToNot& ) override {}
+	void visit ( const TDLAxiomValueOf& ) override {}
+	void visit ( const TDLAxiomValueOfNot& ) override {}
 
 	virtual ~DLAxiomVisitorEmpty ( void ) {}
 }; // DLAxiomVisitor

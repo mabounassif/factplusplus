@@ -35,7 +35,7 @@ protected:	// members
 
 protected:	// methods
 		/// log a particular implementation of a cache entry
-	virtual void logCacheEntryImpl ( void ) const override { LL << "\nSingleton cache: element " << getValue(); }
+	void logCacheEntryImpl ( void ) const override { LL << "\nSingleton cache: element " << getValue(); }
 
 public:		// interface
 		/// c'tor: no nominals can be here
@@ -52,7 +52,7 @@ public:		// interface
 	virtual ~modelCacheSingleton ( void ) {}
 
 		/// Check if the model contains clash
-	virtual modelCacheState getState ( void ) const override { return csValid; }
+	modelCacheState getState ( void ) const override { return csValid; }
 		/// access to internal value
 	BipolarPointer getValue ( void ) const { return Singleton; }
 

@@ -489,9 +489,9 @@ public:		// interface
 	// save/load interface; implementation is in SaveLoad.cpp
 
 		/// save entry
-	virtual void Save ( SaveLoadManager& m ) const override;
+	void Save ( SaveLoadManager& m ) const override;
 		/// load entry
-	virtual void Load ( SaveLoadManager& m ) override;
+	void Load ( SaveLoadManager& m ) override;
 }; // TRole
 
 /// @return R or -R for T in the form (inv ... (inv R)...)

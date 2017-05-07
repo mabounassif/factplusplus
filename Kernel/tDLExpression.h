@@ -168,60 +168,60 @@ class DLExpressionVisitorEmpty: public DLExpressionVisitor
 {
 public:		// visitor interface
 	// concept expressions
-	virtual void visit ( const TDLConceptTop& ) override {}
-	virtual void visit ( const TDLConceptBottom& ) override {}
-	virtual void visit ( const TDLConceptName& ) override {}
-	virtual void visit ( const TDLConceptNot& ) override {}
-	virtual void visit ( const TDLConceptAnd& ) override {}
-	virtual void visit ( const TDLConceptOr& ) override {}
-	virtual void visit ( const TDLConceptOneOf& ) override {}
-	virtual void visit ( const TDLConceptObjectSelf& ) override {}
-	virtual void visit ( const TDLConceptObjectValue& ) override {}
-	virtual void visit ( const TDLConceptObjectExists& ) override {}
-	virtual void visit ( const TDLConceptObjectForall& ) override {}
-	virtual void visit ( const TDLConceptObjectMinCardinality& ) override {}
-	virtual void visit ( const TDLConceptObjectMaxCardinality& ) override {}
-	virtual void visit ( const TDLConceptObjectExactCardinality& ) override {}
-	virtual void visit ( const TDLConceptDataValue& ) override {}
-	virtual void visit ( const TDLConceptDataExists& ) override {}
-	virtual void visit ( const TDLConceptDataForall& ) override {}
-	virtual void visit ( const TDLConceptDataMinCardinality& ) override {}
-	virtual void visit ( const TDLConceptDataMaxCardinality& ) override {}
-	virtual void visit ( const TDLConceptDataExactCardinality& ) override {}
+	void visit ( const TDLConceptTop& ) override {}
+	void visit ( const TDLConceptBottom& ) override {}
+	void visit ( const TDLConceptName& ) override {}
+	void visit ( const TDLConceptNot& ) override {}
+	void visit ( const TDLConceptAnd& ) override {}
+	void visit ( const TDLConceptOr& ) override {}
+	void visit ( const TDLConceptOneOf& ) override {}
+	void visit ( const TDLConceptObjectSelf& ) override {}
+	void visit ( const TDLConceptObjectValue& ) override {}
+	void visit ( const TDLConceptObjectExists& ) override {}
+	void visit ( const TDLConceptObjectForall& ) override {}
+	void visit ( const TDLConceptObjectMinCardinality& ) override {}
+	void visit ( const TDLConceptObjectMaxCardinality& ) override {}
+	void visit ( const TDLConceptObjectExactCardinality& ) override {}
+	void visit ( const TDLConceptDataValue& ) override {}
+	void visit ( const TDLConceptDataExists& ) override {}
+	void visit ( const TDLConceptDataForall& ) override {}
+	void visit ( const TDLConceptDataMinCardinality& ) override {}
+	void visit ( const TDLConceptDataMaxCardinality& ) override {}
+	void visit ( const TDLConceptDataExactCardinality& ) override {}
 
 	// individual expressions
-	virtual void visit ( const TDLIndividualName& ) override {}
+	void visit ( const TDLIndividualName& ) override {}
 
 	// object role expressions
-	virtual void visit ( const TDLObjectRoleTop& ) override {}
-	virtual void visit ( const TDLObjectRoleBottom& ) override {}
-	virtual void visit ( const TDLObjectRoleName& ) override {}
-	virtual void visit ( const TDLObjectRoleInverse& ) override {}
-	virtual void visit ( const TDLObjectRoleChain& ) override {}
-	virtual void visit ( const TDLObjectRoleProjectionFrom& ) override {}
-	virtual void visit ( const TDLObjectRoleProjectionInto& ) override {}
+	void visit ( const TDLObjectRoleTop& ) override {}
+	void visit ( const TDLObjectRoleBottom& ) override {}
+	void visit ( const TDLObjectRoleName& ) override {}
+	void visit ( const TDLObjectRoleInverse& ) override {}
+	void visit ( const TDLObjectRoleChain& ) override {}
+	void visit ( const TDLObjectRoleProjectionFrom& ) override {}
+	void visit ( const TDLObjectRoleProjectionInto& ) override {}
 
 	// data role expressions
-	virtual void visit ( const TDLDataRoleTop& ) override {}
-	virtual void visit ( const TDLDataRoleBottom& ) override {}
-	virtual void visit ( const TDLDataRoleName& ) override {}
+	void visit ( const TDLDataRoleTop& ) override {}
+	void visit ( const TDLDataRoleBottom& ) override {}
+	void visit ( const TDLDataRoleName& ) override {}
 
 	// data expressions
-	virtual void visit ( const TDLDataTop& ) override {}
-	virtual void visit ( const TDLDataBottom& ) override {}
-	virtual void visit ( const TDLDataTypeName& ) override {}
-	virtual void visit ( const TDLDataTypeRestriction& ) override {}
-	virtual void visit ( const TDLDataValue& ) override {}
-	virtual void visit ( const TDLDataNot& ) override {}
-	virtual void visit ( const TDLDataAnd& ) override {}
-	virtual void visit ( const TDLDataOr& ) override {}
-	virtual void visit ( const TDLDataOneOf& ) override {}
+	void visit ( const TDLDataTop& ) override {}
+	void visit ( const TDLDataBottom& ) override {}
+	void visit ( const TDLDataTypeName& ) override {}
+	void visit ( const TDLDataTypeRestriction& ) override {}
+	void visit ( const TDLDataValue& ) override {}
+	void visit ( const TDLDataNot& ) override {}
+	void visit ( const TDLDataAnd& ) override {}
+	void visit ( const TDLDataOr& ) override {}
+	void visit ( const TDLDataOneOf& ) override {}
 
 	// facets
-	virtual void visit ( const TDLFacetMinInclusive& ) override {}
-	virtual void visit ( const TDLFacetMinExclusive& ) override {}
-	virtual void visit ( const TDLFacetMaxInclusive& ) override {}
-	virtual void visit ( const TDLFacetMaxExclusive& ) override {}
+	void visit ( const TDLFacetMinInclusive& ) override {}
+	void visit ( const TDLFacetMinExclusive& ) override {}
+	void visit ( const TDLFacetMaxInclusive& ) override {}
+	void visit ( const TDLFacetMaxExclusive& ) override {}
 
 	// other methods
 	virtual ~DLExpressionVisitorEmpty ( void ) {}
@@ -1520,7 +1520,7 @@ protected:	// classes
 			/// empty d'tor
 		virtual ~DVCreator ( void ) {}
 			/// create new value of a given type
-		virtual TDLDataValue* makeEntry ( const std::string& name ) const override { return new TDLDataValue(name,type); }
+		TDLDataValue* makeEntry ( const std::string& name ) const override { return new TDLDataValue(name,type); }
 	}; // DVCreator
 
 protected:	// members

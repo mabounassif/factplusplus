@@ -62,7 +62,7 @@ protected:	// methods
 	}
 
 public:		// visitor interface
-	virtual void visit ( const TDLAxiomDeclaration& axiom ) override
+	void visit ( const TDLAxiomDeclaration& axiom ) override
 	{
 		if (!printDeclarations)
 			return;
@@ -78,43 +78,43 @@ public:		// visitor interface
 			o << "(defdatarole " << dataRole ->getName() << ")\n";
 	}
 
-	virtual void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { *this << "(equal_c" << axiom << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointConcepts& axiom ) override { *this  << "(disjoint_c" << axiom << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointUnion& axiom ) override
+	void visit ( const TDLAxiomEquivalentConcepts& axiom ) override { *this << "(equal_c" << axiom << ")\n"; }
+	void visit ( const TDLAxiomDisjointConcepts& axiom ) override { *this  << "(disjoint_c" << axiom << ")\n"; }
+	void visit ( const TDLAxiomDisjointUnion& axiom ) override
 		{ *this << "(disjoint_c" << axiom << ")\n(equal_c" << axiom.getC() << " (or" << axiom << "))\n"; }
-	virtual void visit ( const TDLAxiomEquivalentORoles& axiom ) override { *this << "(equal_r" << axiom << ")\n"; }
-	virtual void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { *this << "(equal_r" << axiom << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointORoles& axiom ) override { *this << "(disjoint_r" << axiom << ")\n"; }
-	virtual void visit ( const TDLAxiomDisjointDRoles& axiom ) override { *this << "(disjoint_r" << axiom << ")\n"; }
-	virtual void visit ( const TDLAxiomSameIndividuals& axiom ) override { *this << "(same" << axiom << ")\n"; }
-	virtual void visit ( const TDLAxiomDifferentIndividuals& axiom ) override { *this << "(different" << axiom << ")\n"; }
-	virtual void visit ( const TDLAxiomFairnessConstraint& axiom ) override { *this << "(fairness" << axiom << ")\n"; }
+	void visit ( const TDLAxiomEquivalentORoles& axiom ) override { *this << "(equal_r" << axiom << ")\n"; }
+	void visit ( const TDLAxiomEquivalentDRoles& axiom ) override { *this << "(equal_r" << axiom << ")\n"; }
+	void visit ( const TDLAxiomDisjointORoles& axiom ) override { *this << "(disjoint_r" << axiom << ")\n"; }
+	void visit ( const TDLAxiomDisjointDRoles& axiom ) override { *this << "(disjoint_r" << axiom << ")\n"; }
+	void visit ( const TDLAxiomSameIndividuals& axiom ) override { *this << "(same" << axiom << ")\n"; }
+	void visit ( const TDLAxiomDifferentIndividuals& axiom ) override { *this << "(different" << axiom << ")\n"; }
+	void visit ( const TDLAxiomFairnessConstraint& axiom ) override { *this << "(fairness" << axiom << ")\n"; }
 
-	virtual void visit ( const TDLAxiomRoleInverse& axiom ) override { *this << "(equal_r" << axiom.getRole() << " (inv" << axiom.getInvRole() << "))\n"; }
-	virtual void visit ( const TDLAxiomORoleSubsumption& axiom ) override { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomORoleDomain& axiom ) override { *this << "(domain" << axiom.getRole() << axiom.getDomain() << ")\n"; }
-	virtual void visit ( const TDLAxiomDRoleDomain& axiom ) override { *this << "(domain" << axiom.getRole() << axiom.getDomain() << ")\n"; }
-	virtual void visit ( const TDLAxiomORoleRange& axiom ) override { *this << "(range" << axiom.getRole() << axiom.getRange() << ")\n"; }
-	virtual void visit ( const TDLAxiomDRoleRange& axiom ) override { *this << "(range" << axiom.getRole() << axiom.getRange() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleTransitive& axiom ) override { *this << "(transitive" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleReflexive& axiom ) override { *this << "(reflexive" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { *this << "(irreflexive" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleSymmetric& axiom ) override { *this << "(symmetric" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleAsymmetric& axiom ) override { *this << "(asymmetric" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomORoleFunctional& axiom ) override { *this << "(functional" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomDRoleFunctional& axiom ) override { *this << "(functional" << axiom.getRole() << ")\n"; }
-	virtual void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { *this << "(functional (inv" << axiom.getRole() << "))\n"; }
+	void visit ( const TDLAxiomRoleInverse& axiom ) override { *this << "(equal_r" << axiom.getRole() << " (inv" << axiom.getInvRole() << "))\n"; }
+	void visit ( const TDLAxiomORoleSubsumption& axiom ) override { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomDRoleSubsumption& axiom ) override { *this << "(implies_r" << axiom.getSubRole() << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomORoleDomain& axiom ) override { *this << "(domain" << axiom.getRole() << axiom.getDomain() << ")\n"; }
+	void visit ( const TDLAxiomDRoleDomain& axiom ) override { *this << "(domain" << axiom.getRole() << axiom.getDomain() << ")\n"; }
+	void visit ( const TDLAxiomORoleRange& axiom ) override { *this << "(range" << axiom.getRole() << axiom.getRange() << ")\n"; }
+	void visit ( const TDLAxiomDRoleRange& axiom ) override { *this << "(range" << axiom.getRole() << axiom.getRange() << ")\n"; }
+	void visit ( const TDLAxiomRoleTransitive& axiom ) override { *this << "(transitive" << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomRoleReflexive& axiom ) override { *this << "(reflexive" << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomRoleIrreflexive& axiom ) override { *this << "(irreflexive" << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomRoleSymmetric& axiom ) override { *this << "(symmetric" << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomRoleAsymmetric& axiom ) override { *this << "(asymmetric" << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomORoleFunctional& axiom ) override { *this << "(functional" << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomDRoleFunctional& axiom ) override { *this << "(functional" << axiom.getRole() << ")\n"; }
+	void visit ( const TDLAxiomRoleInverseFunctional& axiom ) override { *this << "(functional (inv" << axiom.getRole() << "))\n"; }
 
-	virtual void visit ( const TDLAxiomConceptInclusion& axiom ) override { *this << "(implies_c" << axiom.getSubC() << axiom.getSupC() << ")\n"; }
-	virtual void visit ( const TDLAxiomInstanceOf& axiom ) override { *this << "(instance" << axiom.getIndividual()  << axiom.getC() << ")\n"; }
-	virtual void visit ( const TDLAxiomRelatedTo& axiom ) override
+	void visit ( const TDLAxiomConceptInclusion& axiom ) override { *this << "(implies_c" << axiom.getSubC() << axiom.getSupC() << ")\n"; }
+	void visit ( const TDLAxiomInstanceOf& axiom ) override { *this << "(instance" << axiom.getIndividual()  << axiom.getC() << ")\n"; }
+	void visit ( const TDLAxiomRelatedTo& axiom ) override
 		{ *this << "(related" << axiom.getIndividual() << axiom.getRelation() << axiom.getRelatedIndividual() << ")\n"; }
-	virtual void visit ( const TDLAxiomRelatedToNot& axiom ) override
+	void visit ( const TDLAxiomRelatedToNot& axiom ) override
 		{ *this<< "(instance" << axiom.getIndividual() << " (all" << axiom.getRelation() << "(not" << axiom.getRelatedIndividual() << ")))\n"; }
-	virtual void visit ( const TDLAxiomValueOf& axiom ) override
+	void visit ( const TDLAxiomValueOf& axiom ) override
 		{ *this << "(instance" << axiom.getIndividual() << " (some" << axiom.getAttribute() << axiom.getValue() << "))\n"; }
-	virtual void visit ( const TDLAxiomValueOfNot& axiom ) override
+	void visit ( const TDLAxiomValueOfNot& axiom ) override
 		{ *this << "(instance" << axiom.getIndividual() << " (all" << axiom.getAttribute() << "(not " << axiom.getValue() << ")))\n"; }
 
 public:		// interface

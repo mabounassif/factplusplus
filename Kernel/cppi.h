@@ -38,9 +38,9 @@ protected:	// members
 
 protected:	// methods
 		/// initial exposition
-	virtual void initExposure ( void ) override { std::cerr << "   0%"; }
+	void initExposure ( void ) override { std::cerr << "   0%"; }
 		/// expose current value
-	virtual void expose ( void ) override
+	void expose ( void ) override
 	{
 		curPercent = (unsigned int)(((float)uCurrent/uLimit)*100);
 

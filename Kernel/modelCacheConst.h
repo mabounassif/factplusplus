@@ -33,7 +33,7 @@ protected:	// members
 
 protected:	// methods
 		/// log a particular implementation of a cache entry
-	virtual void logCacheEntryImpl ( void ) const override
+	void logCacheEntryImpl ( void ) const override
 		{ LL << "\nConst cache: element " << (isTop ? "TOP" : "BOTTOM"); }
 
 public:
@@ -51,7 +51,7 @@ public:
 	virtual ~modelCacheConst ( void ) {}
 
 		/// Check if the model contains clash
-	virtual modelCacheState getState ( void ) const override { return isTop ? csValid : csInvalid; }
+	modelCacheState getState ( void ) const override { return isTop ? csValid : csInvalid; }
 		/// get the value of the constant
 	bool getConst ( void ) const { return isTop; }
 

@@ -67,7 +67,7 @@ protected:	// classes
 	public:
 		TCTEdgeRestorer ( DlCompletionTreeArc* q ) : p(q), r(q->Role) {}
 		virtual ~TCTEdgeRestorer ( void ) {}
-		virtual void restore ( void ) override { p->Role = r; p->Reverse->Role = r->inverse(); }
+		void restore ( void ) override { p->Role = r; p->Reverse->Role = r->inverse(); }
 	}; // TCTEdgeRestorer
 
 		/// class for restoring dep-set
@@ -79,7 +79,7 @@ protected:	// classes
 	public:
 		TCTEdgeDepRestorer ( DlCompletionTreeArc* q ) : p(q), dep(q->getDep()) {}
 		virtual ~TCTEdgeDepRestorer ( void ) {}
-		virtual void restore ( void ) override { p->depSet = dep; }
+		void restore ( void ) override { p->depSet = dep; }
 	}; // TCTEdgeDepRestorer
 
 protected:	// methods
