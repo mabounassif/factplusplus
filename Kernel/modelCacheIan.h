@@ -131,9 +131,6 @@ protected:	// methods
 		/// actual merge with an Ian's cache
 	void mergeIan ( const modelCacheIan* p );
 
-		/// log given concept set
-	void logCacheSet ( const IndexSet& s ) const;
-
 public:
 		/// Create cache model of given CompletionTree using given HEAP
 	modelCacheIan ( const DLDag& heap, const DlCompletionTree* p, bool flagNominals, unsigned int nC, unsigned int nR )

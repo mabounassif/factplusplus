@@ -544,8 +544,6 @@ protected:	// methods
 	// knowledge exploration queries
 	//----------------------------------------------------------------------------------
 
-		/// add the role R and all its supers to a set RESULT
-	void addRoleWithSupers ( const TRole* R, TCGRoleSet& Result );
 		/// @return a pointer to a modularizer according to given method
 	OntologyBasedModularizer*& getModPointer ( ModuleMethod moduleMethod )
 	{
