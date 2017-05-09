@@ -28,7 +28,7 @@ class WalkerInterface
 {
 public:		// interface
 		/// empty d'tor
-	virtual ~WalkerInterface ( void ) {}
+	virtual ~WalkerInterface() = default;
 
 		/// taxonomy walking method.
 		/// @return true if node was processed

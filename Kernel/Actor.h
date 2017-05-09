@@ -36,11 +36,9 @@ public:		// types
 
 protected:	// members
 		/// flag to look at concept-like or role-like entities
-	bool isRole;
+	bool isRole = false;
 		/// flag to look at concepts or object roles
-	bool isStandard;
-		/// flag to throw exception at the 1st found
-	bool interrupt;
+	bool isStandard = true;
 
 protected:	// methods
 		/// check whether actor is applicable to the ENTRY
@@ -57,9 +55,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	Actor ( void ) {}
-		/// empty d'tor
-	virtual ~Actor ( void ) {}
+	Actor() = default;
 
 	// flags setup
 
@@ -71,8 +67,6 @@ public:		// interface
 	void needObjectRoles ( void ) { isRole = true; isStandard = true; }
 		/// set the actor to look for individuals
 	void needDataRoles ( void ) { isRole = true; isStandard = false; }
-		/// set the interrupt parameter to VALUE
-	void setInterruptAfterFirstFound ( bool value ) { interrupt = value; }
 
 	// fill structures according to what's in the taxonomy
 

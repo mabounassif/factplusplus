@@ -40,9 +40,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	CActor ( void ) {}
-		/// empty d'tor
-	virtual ~CActor ( void ) {}
+	CActor() = default;
 
 	// return values
 		/// get 1-d NULL-terminated array of synonyms of the 1st entry(necessary for Equivalents, for example)
@@ -72,7 +70,7 @@ public:		// interface
 		getFoundData(vec);
 		return buildArray(vec);
 	}
-}; // Actor
+}; // CActor
 
 // type declarations
 

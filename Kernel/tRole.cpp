@@ -226,8 +226,7 @@ class AddRoleActor: public WalkerInterface
 protected:
 	TRole::TRoleVec& rset;
 public:
-	AddRoleActor ( TRole::TRoleVec& v ) : rset(v) {}
-	virtual ~AddRoleActor ( void ) {}
+	explicit AddRoleActor ( TRole::TRoleVec& v ) : rset(v) {}
 	bool apply ( const TaxonomyVertex& v ) override
 	{
 		if ( v.getPrimer()->getId() == 0 )

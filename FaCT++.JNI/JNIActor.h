@@ -57,9 +57,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor
-	JTaxonomyActor ( TJNICache* cache ) : J(cache) {}
-		/// d'tor
-	virtual ~JTaxonomyActor ( void ) {}
+	explicit JTaxonomyActor ( TJNICache* cache ) : J(cache) {}
 
 	void clear ( void ) { acc.clear(); plain.clear(); }
 	// return values
@@ -80,7 +78,7 @@ public:		// interface
 		/// taxonomy walking method.
 		/// @return true if node was processed, and there is no need to go further
 		/// @return false if node can not be processed in current settings
-	virtual bool apply ( const TaxonomyVertex& v ) override
+	bool apply ( const TaxonomyVertex& v ) override
 	{
 		syn.clear();
 		tryEntry(v.getPrimer());
