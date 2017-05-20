@@ -64,8 +64,6 @@ public:		// interface
 	TFastSet& operator = ( const TFastSet& ) = default;
 		/// move assignment
 	TFastSet& operator = ( TFastSet && ) = default;
-		/// empty d'tor
-	~TFastSet ( void ) = default;
 		/// reserve the set size to the SIZE elements
 	void reserve ( size_t size ) { Value.reserve(size); }
 

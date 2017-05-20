@@ -91,7 +91,7 @@ public:
 	// prevent copy
 	JString ( const JString& ) = delete;
 	JString& operator = ( const JString& ) = delete;
-	~JString ( void ) { env->ReleaseStringUTFChars(str, buf); }
+	~JString() { env->ReleaseStringUTFChars(str, buf); }
 	const char* operator() ( void ) const { return buf; }
 }; // JString
 

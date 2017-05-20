@@ -30,8 +30,6 @@ public:		// interface
 	TKBFlags ( void ) : Flags() {}
 		/// copy c'tor
 	TKBFlags ( const TKBFlags& flags ) : Flags(flags) {}
-		/// empty d'tor
-	~TKBFlags ( void ) {}
 
 		/// register flag for GCIs
 	FPP_ADD_FLAG(GCI,0x1);

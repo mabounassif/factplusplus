@@ -44,8 +44,6 @@ protected:	// types
 	public:		// interface
 			/// empty c'tor
 		TOneOfCache ( TExpressionManager* p ) : THeadTailCache<TDLConceptExpression, const TDLIndividualExpression>(), pManager(p) {}
-			/// empty d'tor
-		virtual ~TOneOfCache ( void ) {}
 
 			/// clear the cache
 		void clear ( void ) { Map.clear(); }
@@ -64,8 +62,6 @@ protected:	// types
 	public:		// interface
 			/// empty c'tor
 		TInverseRoleCache ( TExpressionManager* p ) : THeadTailCache<TDLObjectRoleExpression, const TDLObjectRoleExpression>(), pManager(p) {}
-			/// empty d'tor
-		virtual ~TInverseRoleCache ( void ) {}
 
 			/// clear the cache
 		void clear ( void ) { Map.clear(); }
@@ -120,7 +116,7 @@ public:		// interface
 		/// empty c'tor
 	TExpressionManager ( void );
 		/// d'tor
-	~TExpressionManager ( void );
+	~TExpressionManager();
 
 		/// clear the ontology
 	void clear ( void );

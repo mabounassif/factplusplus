@@ -94,7 +94,7 @@ public:		// interface
 		/// no assignment
 	RoleMaster& operator = ( const RoleMaster& ) = delete;
 		/// d'tor (delete taxonomy)
-	~RoleMaster ( void ) { delete pTax; }
+	~RoleMaster() { delete pTax; }
 
 		/// create role entry with given name
 	TRole* ensureRoleName ( const std::string& name );

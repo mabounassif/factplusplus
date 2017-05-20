@@ -566,7 +566,7 @@ public:		// interface
 		/// no assignment
 	ReasoningKernel& operator = ( const ReasoningKernel& ) = delete;
 		/// d'tor
-	~ReasoningKernel ( void );
+	~ReasoningKernel();
 
 	ifOptionSet* getOptions ( void ) { return &KernelOptions; }
 	const ifOptionSet* getOptions ( void ) const { return &KernelOptions; }

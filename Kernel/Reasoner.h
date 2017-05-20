@@ -68,7 +68,7 @@ public:		// interface
 		/// no assignment
 	AccumulatedStatistic& operator = ( const AccumulatedStatistic& ) = delete;
 		/// d'tor: remove link from the list
-	~AccumulatedStatistic ( void )
+	~AccumulatedStatistic()
 	{
 		// all statistic elements are deleted in the inverted creation order
 		if ( root == this )
@@ -172,7 +172,7 @@ protected:	// classes
 			/// empty c'tor
 		BCStack ( void ) : bcBarrier(new BCBarrier) {}
 			/// empty d'tor
-		virtual ~BCStack ( void )
+		~BCStack() override
 		{
 			// all the members will be deleted in the resp. pools
 			for ( iterator p = this->Base.begin(), p_end = this->Base.end(); p < p_end; ++p )
@@ -924,7 +924,7 @@ public:
 		/// no assignment
 	DlSatTester& operator = ( const DlSatTester& ) = delete;
 		/// d'tor
-	virtual ~DlSatTester ( void ) {}
+	virtual ~DlSatTester() = default;
 
 		/// prepare reasoner to a new run
 	virtual void prepareReasoner ( void );

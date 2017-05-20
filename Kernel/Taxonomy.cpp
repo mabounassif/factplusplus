@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 /********************************************************\
 |* 			Implementation of class Taxonomy			*|
 \********************************************************/
-Taxonomy :: ~Taxonomy ( void )
+Taxonomy :: ~Taxonomy()
 {
 	delete Current;
 	for ( TaxVertexVec::iterator p = Graph.begin(), p_end = Graph.end(); p < p_end; ++p )

@@ -37,7 +37,7 @@ DLDag :: DLDag ( const ifOptionSet* Options )
 	readConfig ( Options );
 }
 
-DLDag :: ~DLDag ( void )
+DLDag :: ~DLDag()
 {
 	for ( HeapType::iterator p = Heap.begin(), p_end = Heap.end(); p < p_end; ++p )
 		delete *p;

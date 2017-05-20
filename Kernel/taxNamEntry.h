@@ -60,8 +60,6 @@ public:		// interface
 	ClassifiableEntry ( const ClassifiableEntry& ) = delete;
 		/// no assignment
 	ClassifiableEntry& operator = ( const ClassifiableEntry& ) = delete;
-		/// D'tor
-	virtual ~ClassifiableEntry ( void ) {}
 
 	// taxonomy entry access
 

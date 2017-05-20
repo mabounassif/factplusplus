@@ -29,8 +29,6 @@ class TDataTypeManager: public TNameSet<TDLDataTypeName>
 public:		// interface
 		/// empty c'tor
 	TDataTypeManager ( void ) {}
-		/// empty d'tor
-	virtual ~TDataTypeManager ( void ) {}
 
 	// names to build/compare datatypes
 

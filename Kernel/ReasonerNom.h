@@ -81,8 +81,6 @@ public:
 	{
 		initNominalVector();
 	}
-		/// empty d'tor
-	virtual ~NominalReasoner ( void ) {}
 
 		/// check whether ontology with nominals is consistent
 	bool consistentNominalCloud ( void );

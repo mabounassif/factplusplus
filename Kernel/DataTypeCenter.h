@@ -93,7 +93,7 @@ public:		// interface
 		RegisterDataType(new TDataType(" "));
 	}
 		/// d'tor: delete all datatypes
-	~DataTypeCenter ( void );
+	~DataTypeCenter();
 
 	// iterators
 

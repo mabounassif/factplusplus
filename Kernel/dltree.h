@@ -193,7 +193,7 @@ protected:
 	DLTree* ptr;
 public:
 	TreeDeleter ( DLTree* p ) : ptr(p) {}
-	~TreeDeleter ( void ) { deleteTree(ptr); }
+	~TreeDeleter() { deleteTree(ptr); }
 	operator DLTree* ( void ) { return ptr; }
 	operator const DLTree* ( void ) const { return ptr; }
 }; // TreeDeleter

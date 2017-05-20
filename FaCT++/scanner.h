@@ -42,8 +42,6 @@ protected:	// methods
 public:		// interface
 		/// c'tor
 	TsScanner ( std::istream* inp ) : CommonScanner(inp) {}
-		/// d'tor
-	~TsScanner ( void ) {}
 
 		/// get next token from stream
 	LispToken GetLex ( void );

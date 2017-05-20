@@ -55,8 +55,6 @@ public:		// type interface
 		SaveState ( void ) : ep(0) {}
 			/// copy c'tor
 		SaveState ( const SaveState& node ) : ep(node.ep) {}
-			/// empty d'tor
-		~SaveState ( void ) {}
 	}; // SaveState
 
 		/// const iterator on label
@@ -79,8 +77,6 @@ public:		// interface
 	CWDArray ( const CWDArray& copy ) : Base(copy.Base) {}
 		/// assignment
 	CWDArray& operator = ( const CWDArray& copy ) { Base = copy.Base; return *this; }
-		/// empty d'tor
-	~CWDArray ( void ) {}
 
 
 	//----------------------------------------------

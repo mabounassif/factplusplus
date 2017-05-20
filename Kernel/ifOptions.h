@@ -64,8 +64,6 @@ public:		// interface
 	ifOption ( const ifOption& ) = delete;
 		/// no assignment
 	ifOption& operator = ( const ifOption& ) = delete;
-		/// empty d'tor
-	~ifOption (void ) {}
 
 	// write methods
 
@@ -124,7 +122,7 @@ public:		// interface
 		/// empty c'tor
 	ifOptionSet ( void ) {}
 		/// d'tor (delete all registered options)
-	~ifOptionSet ( void )
+	~ifOptionSet()
 	{
 		for ( auto& p: Base )
 			delete p.second;

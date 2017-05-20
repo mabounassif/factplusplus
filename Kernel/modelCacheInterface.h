@@ -63,7 +63,7 @@ public:		// interface
 		/// Create cache model with given presence of nominals
 	modelCacheInterface ( bool flagNominals ) : hasNominalNode{flagNominals} {}
 		/// empty d'tor
-	virtual ~modelCacheInterface ( void ) {}
+	virtual ~modelCacheInterface() = default;
 
 		/// check whether both models have nominals; in this case, merge is impossible
 	bool hasNominalClash ( const modelCacheInterface* p ) const

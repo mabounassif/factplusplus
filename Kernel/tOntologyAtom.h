@@ -81,8 +81,6 @@ protected:	// methods
 public:		// interface
 		/// empty c'tor
 	TOntologyAtom ( void ) : Id(0) {}
-		/// d'tor
-	~TOntologyAtom ( void ) {}
 
 	// fill in the sets
 

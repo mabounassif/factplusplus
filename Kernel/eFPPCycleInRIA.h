@@ -42,8 +42,6 @@ public:		// interface
 		str += "' appears in a cyclic role inclusion axioms";
 		reason = str.c_str();
 	}
-		/// empty d'tor
-	~EFPPCycleInRIA ( void ) noexcept override = default;
 
 		/// access to the role
 	const char* getRoleName ( void ) const { return roleName.c_str(); }

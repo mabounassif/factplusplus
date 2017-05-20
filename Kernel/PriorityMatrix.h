@@ -48,8 +48,6 @@ protected:	// members
 public:		// interface
 		/// empty c'tor
 	ToDoPriorMatrix ( void ) {}
-		/// empty d'tor
-	~ToDoPriorMatrix ( void ) {}
 
 		/// init priorities via given string OPTIONS
 	void initPriorities ( const std::string& options, const char* optionName );

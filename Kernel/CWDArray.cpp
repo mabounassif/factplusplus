@@ -33,7 +33,6 @@ public:
 		, offset(int(p-lab.begin()))
 		, dep(p->getDep())
 	{}
-	virtual ~UnMerge ( void ) {}
 	void restore ( void ) override
 	{
 		CWDArray::iterator p = label.Base.begin() + offset;

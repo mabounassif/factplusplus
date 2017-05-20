@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "DataTypeCenter.h"
 #include "DataReasoning.h"
 
-DataTypeCenter :: ~DataTypeCenter ( void )
+DataTypeCenter :: ~DataTypeCenter()
 {
 	for ( iterator p = begin(), p_end = end(); p < p_end; ++p )
 		delete *p;

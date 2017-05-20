@@ -54,7 +54,7 @@ public:		// interface
 #	endif
 	}
 		/// d'tor
-	~TDepSetElement ( void )
+	~TDepSetElement()
 	{
 #	ifdef TMP_DEPSET_DEBUG
 		std::cout << "Deleted DSE "; Print(std::cout); std::cout << std::endl;
@@ -119,7 +119,7 @@ public:		// interface
 		HeadDepSet = new TDepSetElement { Manager, Level, nullptr };
 	}
 		/// d'tor: delete all the cached dep-sets and the head element
-	virtual ~TDepSetCache ( void )
+	virtual ~TDepSetCache()
 	{
 		// don't delete tails as they are referenced outside
 		for ( auto& p: Map )
@@ -150,8 +150,6 @@ protected:	// methods
 public:		// interface
 		/// c'tor: init N basement elements
 	TDepSetManager ( unsigned int n ) : growingArrayP<TDepSetCache>(0) { ensureHeapSize(n); }
-		/// d'tor: delete all basement elements
-	virtual ~TDepSetManager ( void ) {}
 
 		/// ensure that size of vector is enough to keep N elements
 	void ensureLevel ( unsigned int n ) { ensureHeapSize(n); }
@@ -204,8 +202,6 @@ public:		// interface
 	TDepSet ( const TDepSet& d ) : dep(d.dep) {}
 		/// assignment
 	TDepSet& operator = ( const TDepSet& d ) { dep = d.dep; return *this; }
-		/// empty d'tor: no need to delete element as it is registered in manager
-	~TDepSet ( void ) {}
 
 	// access methods
 

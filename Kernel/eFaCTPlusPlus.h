@@ -40,8 +40,6 @@ public:
 		: exception()
 		, reason(str)
 		{}
-		/// empty d'tor
-	~EFaCTPlusPlus ( void ) noexcept override = default;
 
 		/// reason
 	const char* what ( void ) const noexcept override { return reason; }

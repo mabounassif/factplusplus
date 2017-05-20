@@ -61,8 +61,6 @@ public:		// interface
 		maxExcl = copy.maxExcl;
 		return *this;
 	}
-		/// empty d'tor
-	~TDataInterval ( void ) {}
 
 		/// clear an interval
 	void clear ( void ) { min = max = ComparableDT(); }
@@ -218,8 +216,6 @@ public:		// interface
 	TDataEntry ( const TDataEntry& ) = delete;
 		/// no assignment
 	TDataEntry& operator = ( const TDataEntry& ) = delete;
-		/// empty d'tor
-	~TDataEntry ( void ) {}
 
 	// type/value part
 

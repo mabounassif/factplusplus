@@ -59,8 +59,6 @@ protected:	// types
 	public:		// interface
 			/// init c'tor
 		TKnownValue ( bool val = false ) : value(val), known(false) {}
-			/// empty d'tor
-		~TKnownValue ( void ) {}
 
 			/// @return true iff the value is known to be set
 		bool isKnown ( void ) const { return known; }
@@ -199,7 +197,7 @@ public:		// interface
 		/// the only c'tor
 	TRole ( const std::string& name );
 		/// d'tor
-	virtual ~TRole ( void );
+	~TRole() override;
 
 		/// get (unsigned) unique index of the role
 	unsigned int getIndex ( void ) const
@@ -534,7 +532,7 @@ inline TRole :: TRole ( const std::string& name )
 	addTrivialTransition (this);
 }
 
-inline TRole :: ~TRole ( void )
+inline TRole :: ~TRole()
 {
 	deleteTree(pDomain);
 	deleteTree(pSpecialDomain);

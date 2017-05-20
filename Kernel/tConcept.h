@@ -161,7 +161,7 @@ public:		// methods
 		/// no assignment
 	TConcept& operator = ( const TConcept& ) = delete;
 		/// d'tor
-	virtual ~TConcept ( void ) { deleteTree(Description); }
+	~TConcept() override { deleteTree(Description); }
 		/// clear all info of the concept. Use it in removeConcept()
 	void clear ( void );
 

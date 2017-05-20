@@ -23,13 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #undef USE_DEBUG
 
-Configuration :: ~Configuration ( void )
+Configuration :: ~Configuration()
 {
 	for ( ConfSectBase::iterator i = Base.begin (); i != Base.end (); ++i )
 		delete *i;
 }
 
-ConfSection :: ~ConfSection ( void )
+ConfSection :: ~ConfSection()
 {
 	for ( ConfBase::iterator i = Base.begin (); i != Base.end (); ++i )
 		delete *i;

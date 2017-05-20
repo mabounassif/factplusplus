@@ -59,8 +59,6 @@ public:		// interface
 		, TransC(dag.size(),nullptr)
 		, TransD(dag.size(),nullptr)
 		{}
-		/// empty d'tor: every newly created thing will be destroyed by manager
-	~TDag2Interface ( void ) {}
 
 		/// make sure that size of expression cache is the same as the size of a DAG
 	void ensureDagSize ( void )

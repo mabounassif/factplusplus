@@ -40,7 +40,7 @@ public:		// interface
 		Modularizer->preprocessOntology(Ontology.getAxioms());
 	}
 		/// d'tor
-	~OntologyBasedModularizer ( void ) { delete Modularizer; }
+	~OntologyBasedModularizer() { delete Modularizer; }
 
 		/// get module
 	const AxiomVec& getModule ( const AxiomVec& From, const TSignature& sig, ModuleType type )

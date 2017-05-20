@@ -60,7 +60,7 @@ public:		// interface
 		Base.push_back(new DLExpressionArray);
 	}
 		/// d'tor
-	~TNAryQueue ( void )
+	~TNAryQueue()
 	{
 		for ( iterator q = Base.begin(), q_end = Base.end(); q < q_end; ++q )
 			delete *q;

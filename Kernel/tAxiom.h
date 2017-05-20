@@ -208,7 +208,7 @@ public:		// interface
 		/// assignment
 	TAxiom& operator = ( const TAxiom& ) = delete;
 		/// d'tor: delete elements if AX is not in use
-	~TAxiom ( void )
+	~TAxiom()
 	{
 		for ( auto& p: Disjuncts )
 			deleteTree(p);

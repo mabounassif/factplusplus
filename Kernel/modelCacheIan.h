@@ -184,8 +184,6 @@ public:
 		{}
 		/// create a clone of the given cache
 	modelCacheIan* clone ( void ) const { return new modelCacheIan(*this); }
-		/// empty d'tor
-	virtual ~modelCacheIan ( void ) {}
 
 	/** Check the internal state of the model cache. The check is very fast.
 		Does NOT return csUnknown

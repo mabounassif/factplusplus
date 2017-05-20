@@ -125,7 +125,6 @@ public:		// interface
 		, printDeclarations(true)
 		, printAxioms(true)
 		{}
-	virtual ~TLISPOntologyPrinter ( void ) {}
 
 		/// instruct printer whether to print/ignore declarations and axioms
 	void setPrintFlags(bool declarations, bool axioms)

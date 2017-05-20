@@ -75,7 +75,7 @@ ReasoningKernel :: ReasoningKernel ( void )
 }
 
 /// d'tor
-ReasoningKernel :: ~ReasoningKernel ( void )
+ReasoningKernel :: ~ReasoningKernel()
 {
 	clearTBox();
 	deleteTree(cachedQueryTree);

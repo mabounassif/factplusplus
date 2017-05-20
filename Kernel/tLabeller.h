@@ -52,8 +52,6 @@ public:		// interface
 		counter = copy.counter;
 		return *this;
 	}
-		/// d'tor
-	~TLabeller ( void ) {}
 
 	// operations with Labeller
 

@@ -62,8 +62,6 @@ public:		// interface
 	RATransition& operator = ( const RATransition& ) = default;
 		/// move assignment
 	RATransition& operator = ( RATransition&& ) = default;
-		/// d'tor
-	~RATransition ( void ) = default;
 
 		/// check whether transition is applicable wrt role R
 	bool applicable ( const TRole* R ) const
@@ -141,8 +139,6 @@ public:		// interface
 	RAStateTransitions& operator = ( const RAStateTransitions& ) = default;
 		/// move assignment
 	RAStateTransitions& operator = ( RAStateTransitions&& ) = default;
-		/// empty d'tor
-	~RAStateTransitions ( void ) = default;
 
 		/// set up state transitions: no more additions to the structure
 	void finalise ( RAState state, size_t nRoles, bool data );
@@ -263,8 +259,6 @@ public:		// interface
 	RoleAutomaton& operator= ( const RoleAutomaton& ) = default;
 		/// move assignment
 	RoleAutomaton& operator= ( RoleAutomaton&& ) = default;
-		/// empty d'tor
-	~RoleAutomaton ( void ) = default;
 
 	// access to states
 

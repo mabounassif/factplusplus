@@ -158,7 +158,7 @@ public:		// interface
 		, noAtomsProcessing(true)
 		{}
 		// d'tor
-	~TModularizer ( void ) { delete Checker; }
+	~TModularizer() { delete Checker; }
 
 		/// allow the checker to preprocess an ontology if necessary
 	void preprocessOntology ( const AxiomVec& vec )

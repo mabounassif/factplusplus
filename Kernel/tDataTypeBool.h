@@ -32,8 +32,6 @@ public:
 		get("true");
 		setLocked(true);
 	}
-		/// empty d'tor
-	~TDataTypeBool ( void ) {}
 }; // TDataTypeBool
 
 #endif

@@ -62,8 +62,6 @@ protected:	// types
 	public:		// interface
 			/// empty c'tor
 		SaveState ( void ) : nNodes(0), sNodes(0), nEdges(0) {}
-			/// empty d'tor
-		~SaveState ( void ) {}
 	}; // SaveState
 
 private:	// constants
@@ -280,7 +278,7 @@ public:		// interface
 		/// no assignment
 	DlCompletionGraph& operator = ( const DlCompletionGraph& ) = delete;
 		/// d'tor: delete all allocated nodes
-	~DlCompletionGraph ( void )
+	~DlCompletionGraph()
 	{
 		for ( iterator p = NodeBase.begin(); p != NodeBase.end(); ++p )
 			delete *p;

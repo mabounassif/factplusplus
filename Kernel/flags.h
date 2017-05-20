@@ -56,7 +56,7 @@ public:		// interface
 		/// assignment
 	Flags& operator = ( const Flags& f ) { flags = f.flags; return *this; }
 		/// empty d'tor
-	virtual ~Flags ( void ) {}
+	virtual ~Flags() = default;
 }; // Flags
 
 // use this macro to create a new flag

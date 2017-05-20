@@ -35,7 +35,7 @@ struct counter
 		++objects_alive;
 	}
 		/// d'tor: dec counters
-	virtual ~counter ( void )
+	virtual ~counter()
 	{
 		--objects_alive;
 	}

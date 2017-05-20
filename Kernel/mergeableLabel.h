@@ -34,8 +34,6 @@ public:		// interface
 	mergeableLabel ( mergeableLabel& p ) : pSample(p.resolve()) {}
 		/// assignment
 	mergeableLabel& operator = ( mergeableLabel& p ) { pSample = p.resolve(); return *this; }
-		/// d'tor (does nothing)
-	~mergeableLabel ( void ) {}
 
 	// general interface
 

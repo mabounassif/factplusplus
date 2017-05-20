@@ -54,7 +54,7 @@ public:		// interface
 		/// no assignment
 	BranchingContext& operator = ( const BranchingContext& ) = delete;
 		/// empty d'tor
-	virtual ~BranchingContext ( void ) {}
+	virtual ~BranchingContext() = default;
 
 		/// init indices (if necessary)
 	virtual void init ( void ) {}
@@ -80,8 +80,6 @@ public:		// members
 public:		// interface
 		/// empty c'tor
 	BCOr ( void ) : BranchingContext{}, branchIndex{0} {}
-		/// empty d'tor
-	virtual ~BCOr ( void ) {}
 		/// init branch index
 	void init ( void ) override { branchIndex = 0; }
 		/// give the next branching alternative
@@ -103,8 +101,6 @@ class BCChoose: public BranchingContext
 public:		// interface
 		/// empty c'tor
 	BCChoose ( void ) : BranchingContext{} {}
-		/// empty d'tor
-	virtual ~BCChoose ( void ) {}
 }; // BCChoose
 
 	/// branching context for the NN-rule
@@ -117,8 +113,6 @@ public:		// members
 public:		// interface
 		/// empty c'tor
 	BCNN ( void ) : BranchingContext{}, value{0} {}
-		/// empty d'tor
-	virtual ~BCNN ( void ) {}
 		/// init value
 	void init ( void ) override { value = 1; }
 		/// give the next branching alternative
@@ -152,8 +146,6 @@ public:		// members
 public:		// interface
 		/// empty c'tor
 	BCLE ( void ) : BranchingContext{}, toIndex{0}, fromIndex{0} {}
-		/// empty d'tor
-	virtual ~BCLE ( void ) {}
 		/// init indices
 	void init ( void ) override
 	{
@@ -189,8 +181,6 @@ class BCBarrier: public BranchingContext
 public:		// interface
 		/// empty c'tor
 	BCBarrier ( void ) : BranchingContext() {}
-		/// empty d'tor
-	virtual ~BCBarrier ( void ) {}
 }; // BCBarrier
 
 #endif

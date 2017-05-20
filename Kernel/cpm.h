@@ -33,8 +33,6 @@ protected:
 public:
 		/// empty c'tor
 	ConsoleProgressMonitor ( void ) {}
-		/// empty d'tor
-	virtual ~ConsoleProgressMonitor ( void ) {}
 
 	// interface
 

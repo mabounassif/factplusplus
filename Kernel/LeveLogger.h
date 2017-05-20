@@ -35,8 +35,6 @@ private:	// members
 public:		// interface
 		/// c'tor
 	LeveLogger ( void ) : allowedLevel(0) {}
-		/// d'tor: just empty
-	~LeveLogger ( void ) {}
 
 		/// sets output file and allowedLevel by given values
 	bool initLogger ( unsigned int l, const char* filename );

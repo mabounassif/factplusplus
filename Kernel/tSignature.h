@@ -80,8 +80,6 @@ public:		// interface
 		topRLocality = copy.topRLocality;
 		return *this;
 	}
-		/// empty d'tor
-	~TSignature ( void ) {}
 
 	// add names to signature
 

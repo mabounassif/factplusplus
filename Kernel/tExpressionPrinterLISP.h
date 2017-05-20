@@ -40,7 +40,7 @@ protected:	// members
 		std::ostream& o;
 	public:
 		BR ( std::ostream& o_, const char* command ) : o(o_) { o << " (" << command; }
-		~BR () { o << ")"; }
+		~BR() { o << ")"; }
 	}; // BR
 protected:	// methods
 		/// array helper
@@ -74,8 +74,6 @@ public:		// interface
 		DTNames["http://www.w3.org/2001/XMLSchema#double"] = "real";
 		DTNames["http://www.w3.org/2001/XMLSchema#real"] = "real";
 	}
-		/// empty d'tor
-	virtual ~TLISPExpressionPrinter ( void ) {}
 
 public:		// visitor interface
 	// concept expressions

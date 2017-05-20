@@ -179,7 +179,7 @@ public:		// interface
 		/// no assignment
 	DLDag& operator= ( const DLDag& ) = delete;
 		/// d'tor
-	~DLDag ( void );
+	~DLDag();
 
 	// construction methods
 

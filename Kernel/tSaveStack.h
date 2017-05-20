@@ -33,8 +33,6 @@ class TSaveStack: public growingArrayP<T>
 public:		// interface
 		/// c'tor: do nothing
 	TSaveStack ( void ) {}
-		/// d'tor: do nothing (all done in ~gaP)
-	virtual ~TSaveStack ( void ) {}
 
 	// stack operations
 

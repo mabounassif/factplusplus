@@ -64,7 +64,7 @@ public:		// interface
 		/// empty c'tor
 	TExpressionTranslator ( TBox& kb ) : tree(nullptr), KB(kb), sig(nullptr) {}
 		/// empty d'tor
-	virtual ~TExpressionTranslator ( void ) { deleteTree(tree); }
+	~TExpressionTranslator() override { deleteTree(tree); }
 
 		/// get (single) access to the tree
 	operator DLTree* ( void ) { DLTree* ret = tree; tree = nullptr; return ret; }

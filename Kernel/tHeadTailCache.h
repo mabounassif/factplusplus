@@ -44,7 +44,7 @@ public:		// interface
 		/// empty c'tor
 	THeadTailCache ( void ) = default;
 		/// empty d'tor
-	virtual ~THeadTailCache ( void ) = default;
+	virtual ~THeadTailCache() = default;
 
 		/// get an object corresponding to Head.Tail
 	HeadType* get ( TailType* tail )

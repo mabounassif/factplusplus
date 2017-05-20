@@ -45,7 +45,7 @@ public:		// interface
 		/// empty c'tor: stack will most likely be empty
 	TRareSaveStack ( void ) : curLevel(InitBranchingLevelValue) {}
 		/// d'tor
-	~TRareSaveStack ( void ) { clear(); }
+	~TRareSaveStack() { clear(); }
 
 	// stack operations
 

@@ -75,8 +75,6 @@ public:		// interface
 	LogicFeatures& operator = ( const LogicFeatures& lf ) { flags = lf.flags; return *this; }
 		/// operator add
 	LogicFeatures& operator |= ( const LogicFeatures& lf ) { flags |= lf.flags; return *this; }
-		/// d'tor
-	~LogicFeatures ( void ) {}
 
 //	bool hasInverseRole ( void ) const { return getX(lfDirectRoles) && getX(lfInverseRoles); }
 	bool hasInverseRole ( void ) const { return getX(lfBothRoles); }

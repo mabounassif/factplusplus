@@ -73,7 +73,7 @@ public:		// interface
 		, allowFresh(false)
 		{ Base.push_back(nullptr); }
 		/// empty d'tor: all elements will be deleted in other place
-	virtual ~TNECollection ( void ) {}
+	virtual ~TNECollection() = default;
 
 	// locked interface
 

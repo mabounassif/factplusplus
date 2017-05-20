@@ -66,7 +66,6 @@ protected:	// classes
 		const TRole* r;
 	public:
 		TCTEdgeRestorer ( DlCompletionTreeArc* q ) : p(q), r(q->Role) {}
-		virtual ~TCTEdgeRestorer ( void ) {}
 		void restore ( void ) override { p->Role = r; p->Reverse->Role = r->inverse(); }
 	}; // TCTEdgeRestorer
 
@@ -78,7 +77,6 @@ protected:	// classes
 		DepSet dep;
 	public:
 		TCTEdgeDepRestorer ( DlCompletionTreeArc* q ) : p(q), dep(q->getDep()) {}
-		virtual ~TCTEdgeDepRestorer ( void ) {}
 		void restore ( void ) override { p->depSet = dep; }
 	}; // TCTEdgeDepRestorer
 
@@ -98,8 +96,6 @@ public:		// interface
 	DlCompletionTreeArc ( const DlCompletionTreeArc& ) = delete;
 		/// no assignment
 	DlCompletionTreeArc& operator = ( const DlCompletionTreeArc& ) = delete;
-		/// d'tor
-	~DlCompletionTreeArc ( void ) {}
 
 		/// get label of the edge
 	const TRole* getRole ( void ) const { return Role; }

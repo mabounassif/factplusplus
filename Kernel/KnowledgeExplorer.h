@@ -56,8 +56,6 @@ protected:	// classes
 	public:		// interface
 			/// empty c'tor
 		EE2Map ( void ) {}
-			/// empty d'tor
-		~EE2Map ( void ) {}
 
 			/// @return true if the entry does not have correspondent entity
 		bool check ( const TNamedEntry* e ) const;
@@ -111,8 +109,6 @@ protected:	// methods
 public:		// interface
 		/// init c'tor
 	KnowledgeExplorer ( const TBox* box, TExpressionManager* pEM );
-		/// empty d'tor
-	~KnowledgeExplorer ( void ) {}
 
 		/// @return the set of data neighbours of a NODE
 	const TCGRoleSet& getDataRoles ( const TCGNode* node, bool onlyDet );

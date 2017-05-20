@@ -51,7 +51,7 @@ public:		// interface
 		/// empty c'tor
 	TOntology ( void ) : axiomId(0), axiomToProcess(0), changed(false) {}
 		/// d'tor
-	~TOntology ( void ) { clear(); }
+	~TOntology() { clear(); }
 
 		/// @return true iff the ontology was changed since its last load
 	bool isChanged ( void ) const { return changed; }

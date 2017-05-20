@@ -116,7 +116,7 @@ public:		// interface
 		/// no assignment
 	Taxonomy& operator = ( const Taxonomy& ) = delete;
 		/// d'tor
-	~Taxonomy ( void );
+	~Taxonomy();
 
 	//------------------------------------------------------------------------------
 	//--	Access to taxonomy entries

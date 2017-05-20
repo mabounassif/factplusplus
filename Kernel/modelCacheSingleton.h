@@ -48,8 +48,6 @@ public:		// interface
 		: modelCacheInterface{m.hasNominalNode}
 		, Singleton{m.Singleton}
 		{}
-		/// empty d'tor
-	virtual ~modelCacheSingleton ( void ) {}
 
 		/// Check if the model contains clash
 	modelCacheState getState ( void ) const override { return csValid; }

@@ -101,8 +101,6 @@ public:		// interface
 		timeValue = copy.timeValue;
 		return *this;
 	}
-		/// empty d'tor
-	~ComparableDT ( void ) {}
 
 		/// get NUMBER
 	long int getLongIntValue ( void ) const { return longIntValue; }

@@ -45,8 +45,6 @@ private:	// methods
 public:		// interface
 		/// the only c'tor
 	TsProcTimer ( void ) : startTime(0), resultTime(0.0), Started(false) {}
-		/// empty d'tor
-	~TsProcTimer ( void ) {}
 
 		/// reset timer
 	void Reset ( void );

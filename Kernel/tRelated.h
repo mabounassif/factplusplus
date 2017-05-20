@@ -46,8 +46,6 @@ public:		// interface
 		R = c.R;
 		return *this;
 	}
-		/// empty d'tor
-	~TRelated ( void ) {}
 
 		/// simplify structure wrt synonyms
 	void simplify ( void )

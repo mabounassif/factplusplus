@@ -148,8 +148,6 @@ public:		// interface
 		DataRoles.insert("*UDROLE*");
 		DataRoles.insert("*EDROLE*");
 	}
-		/// empty d'tor
-	~DLLispParser ( void ) {}
 
 		/// main parsing method
 	void Parse ( void );

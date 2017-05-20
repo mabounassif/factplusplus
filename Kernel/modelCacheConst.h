@@ -47,8 +47,6 @@ public:
 		: modelCacheInterface{m.hasNominalNode}
 		, isTop{m.isTop}
 		{}
-		/// empty d'tor
-	virtual ~modelCacheConst ( void ) {}
 
 		/// Check if the model contains clash
 	modelCacheState getState ( void ) const override { return isTop ? csValid : csInvalid; }

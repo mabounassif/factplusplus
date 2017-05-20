@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "dlTBox.h"
 
 /// d'tor
-TAxiomSet :: ~TAxiomSet ( void )
+TAxiomSet :: ~TAxiomSet()
 {
 	for ( auto& axiom: Accum )
 		delete axiom;

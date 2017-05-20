@@ -173,8 +173,6 @@ public:		// interface
 #	endif
 		, value(0)
 		{}
-		/// empty d'tor
-	virtual ~CardinalityEvaluatorBase ( void ) {}
 
 		/// set all other evaluators
 	void setEvaluators ( UpperBoundDirectEvaluator* pUD, LowerBoundDirectEvaluator* pLD, UpperBoundComplementEvaluator* pUC, LowerBoundComplementEvaluator* pLC )
@@ -303,8 +301,6 @@ protected:	// methods
 public:		// interface
 		/// init c'tor
 	UpperBoundDirectEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "UpperBoundDirect" ) {}
-		/// empty d'tor
-	virtual ~UpperBoundDirectEvaluator ( void ) {}
 
 public:		// visitor implementation
 	// make all other visit() methods from the base implementation visible
@@ -422,8 +418,6 @@ protected:	// methods
 public:		// interface
 		/// init c'tor
 	UpperBoundComplementEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "UpperBoundCompliment" ) {}
-		/// empty d'tor
-	virtual ~UpperBoundComplementEvaluator ( void ) {}
 
 public:		// visitor interface
 	// make all other visit() methods from the base implementation visible
@@ -594,8 +588,6 @@ protected:	// methods
 public:		// interface
 		/// init c'tor
 	LowerBoundDirectEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "LowerBoundDirect" ) {}
-		/// empty d'tor
-	virtual ~LowerBoundDirectEvaluator ( void ) {}
 
 public:		// visitor interface
 	// make all other visit() methods from the base implementation visible
@@ -763,8 +755,6 @@ protected:	// methods
 public:		// interface
 		/// init c'tor
 	LowerBoundComplementEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "LowerBoundComplement" ) {}
-		/// empty d'tor
-	virtual ~LowerBoundComplementEvaluator ( void ) {}
 
 public:		// visitor implementation
 	// make all other visit() methods from the base implementation visible
@@ -883,8 +873,6 @@ public:		// interface
 		UBC.setEvaluators ( &UBD, &LBD, &UBC, &LBC );
 		LBC.setEvaluators ( &UBD, &LBD, &UBC, &LBC );
 	}
-		/// empty d'tor
-	virtual ~ExtendedSyntacticLocalityChecker ( void ) {}
 }; // ExtendedSyntacticLocalityChecker
 
 #endif

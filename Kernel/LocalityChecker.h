@@ -35,7 +35,7 @@ public:		// interface
 		/// init c'tor
 	SigAccessor ( const TSignature* s ) : sig(s) {}
 		/// empty d'tor
-	virtual ~SigAccessor ( void ) {}
+	virtual ~SigAccessor() = default;
 
 	// locality flags
 
@@ -65,8 +65,6 @@ protected:	// members
 public:		// interface
 		/// init c'tor
 	LocalityChecker ( const TSignature* s ) : SigAccessor(s), isLocal(true) {}
-		/// empty d'tor
-	virtual ~LocalityChecker ( void ) {}
 
 		/// @return true iff an AXIOM is local wrt signature
 	bool local ( const TDLAxiom* axiom )

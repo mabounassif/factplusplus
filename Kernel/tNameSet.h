@@ -31,7 +31,7 @@ public:		// interface
 		/// empty c'tor
 	TNameCreator ( void ) {}
 		/// empty d'tor
-	virtual ~TNameCreator ( void ) {}
+	virtual ~TNameCreator() = default;
 
 		/// create new Named Entry
 	virtual T* makeEntry ( const std::string& name ) const { return new T(name); }
@@ -62,7 +62,7 @@ public:		// interface
 		/// no assignment
 	TNameSet& operator = ( const TNameSet& ) = delete;
 		/// d'tor (delete all entries)
-	virtual ~TNameSet ( void ) { clear(); delete Creator; }
+	virtual ~TNameSet() { clear(); delete Creator; }
 
 		/// return pointer to existing id or NULL if no such id defined
 	T* get ( const std::string& id ) const

@@ -33,7 +33,7 @@ TExpressionManager :: TExpressionManager ( void )
 {
 }
 
-TExpressionManager :: ~TExpressionManager ( void )
+TExpressionManager :: ~TExpressionManager()
 {
 	clear();
 	delete CTop;

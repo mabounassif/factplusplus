@@ -69,7 +69,7 @@ TBox :: TBox ( const ifOptionSet* Options, const std::string& TopORoleName, cons
 	setForbidUndefinedNames(false);
 }
 
-TBox :: ~TBox ( void )
+TBox :: ~TBox()
 {
 	// remove all RELATED structures
 	for ( RelatedCollection::iterator p = RelatedI.begin(), p_end = RelatedI.end(); p < p_end; ++p )

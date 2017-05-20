@@ -48,8 +48,6 @@ protected:	// members
 public:		// interface
 		/// empty c'tor
 	TRelatedMap ( void ) {}
-		/// empty d'tor
-	~TRelatedMap ( void ) {}
 
 	// access
 
@@ -101,7 +99,7 @@ public:		// interface
 		/// no assignment
 	TIndividual& operator = ( const TIndividual& ) = delete;
 		/// empty d'tor
-	virtual ~TIndividual ( void ) { delete pRelatedMap; }
+	~TIndividual() override { delete pRelatedMap; }
 
 		/// init told subsumers of the individual by it's description
 	void initToldSubsumers ( void ) override

@@ -40,7 +40,7 @@ protected:	// internal typedefs
 			/// empty c'tor
 		KnownSubsumers ( void ) {}
 			/// empty  d'tor
-		virtual ~KnownSubsumers ( void ) {}
+		virtual ~KnownSubsumers() = default;
 
 		// iterators
 
@@ -73,8 +73,6 @@ protected:	// internal typedefs
 	public:		// interface
 			/// c'tor
 		ToldSubsumers ( ss_iterator b, ss_iterator e ) : beg(b), end(e) {}
-			/// d'tor
-		virtual ~ToldSubsumers ( void ) {}
 
 		// iterators
 
@@ -257,7 +255,7 @@ public:		// interface
 		/// no assignment
 	TaxonomyCreator& operator = ( const TaxonomyCreator& ) = delete;
 		/// d'tor
-	virtual ~TaxonomyCreator ( void ) {}
+	virtual ~TaxonomyCreator() = default;
 
 	//------------------------------------------------------------------------------
 	//--	classification interface

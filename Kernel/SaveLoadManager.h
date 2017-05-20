@@ -66,8 +66,6 @@ protected:	// types
 	public:		// interface
 			/// empty c'tor
 		PointerMap ( void ) : last(0) {}
-			/// empty d'tor
-		~PointerMap ( void ) {}
 			/// clear the maps
 		void clear ( void )
 		{
@@ -116,7 +114,7 @@ public:		// methods
 		/// init c'tor: remember the S/L name
 	SaveLoadManager ( const std::string& name ) : dirname(name), ip(nullptr), op(nullptr) { filename = name+".fpp.state"; }
 		/// empty d'tor
-	~SaveLoadManager ( void )
+	~SaveLoadManager()
 	{
 		delete ip;
 		delete op;

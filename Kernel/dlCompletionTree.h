@@ -77,8 +77,6 @@ protected:	// internal classes
 		SaveState ( const SaveState& ) = default;
 			/// assignment
 		SaveState& operator = ( const SaveState& ) = default;
-			/// empty d'tor
-		virtual ~SaveState ( void ) {}	// used in SaveList => virtual
 
 			/// get level of a saved node
 		unsigned int level ( void ) const { return curLevel; }
@@ -94,7 +92,6 @@ protected:	// internal classes
 		bool pBlocked, dBlocked;
 	public:
 		UnBlock ( DlCompletionTree* q ) : p(q), Blocker(q->Blocker), dep(q->pDep), pBlocked(q->pBlocked), dBlocked(q->dBlocked) {}
-		virtual ~UnBlock ( void ) {}
 		void restore ( void ) override { p->Blocker = Blocker; p->pDep = dep; p->pBlocked = pBlocked; p->dBlocked = dBlocked; }
 	}; // UnBlock
 
@@ -106,7 +103,6 @@ protected:	// internal classes
 		bool cached;
 	public:
 		CacheRestorer ( DlCompletionTree* q ) : p(q), cached(q->cached) {}
-		virtual ~CacheRestorer ( void ) {}
 		void restore ( void ) override { p->cached = cached; }
 	}; // CacheRestorer
 
@@ -119,7 +115,6 @@ protected:	// internal classes
 		size_t n;
 	public:
 		IRRestorer ( DlCompletionTree* q ) : p(q), n(q->IR.size()) {}
-		virtual ~IRRestorer ( void ) {}
 		void restore ( void ) override { p->IR.resize(n); }
 	}; // IRRestorer
 #endif
@@ -327,7 +322,7 @@ public:		// methods
 		/// no assignment
 	DlCompletionTree& operator = ( const DlCompletionTree& ) = delete;
 		/// d'tor: delete node
-	~DlCompletionTree ( void ) { saves.clear(); }
+	~DlCompletionTree() { saves.clear(); }
 
 		/// add given arc P as a neighbour
 	void addNeighbour ( DlCompletionTreeArc* p ) { Neighbour.push_back(p); }

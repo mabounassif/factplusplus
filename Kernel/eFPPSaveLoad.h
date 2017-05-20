@@ -63,8 +63,6 @@ public:		// interface
 		str += "'";
 		reason = str.c_str();
 	}
-		/// empty d'tor
-	~EFPPSaveLoad ( void ) noexcept override = default;
 }; // EFppSaveLoad
 
 #endif

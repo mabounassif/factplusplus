@@ -53,7 +53,7 @@ public:		// interface
 		/// c'tor
 	CommonParser ( std::istream* in ) : scan ( in ) { NextLex (); }
 		/// empty d'tor
-	virtual ~CommonParser ( void ) {}
+	virtual ~CommonParser() = default;
 };	// CommonParser
 
 #endif // _COMMON_PARSER_HPP

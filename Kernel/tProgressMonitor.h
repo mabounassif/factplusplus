@@ -27,7 +27,7 @@ public:
 		/// empty c'tor
 	TProgressMonitor ( void ) {}
 		/// empty d'tor
-	virtual ~TProgressMonitor ( void ) {}
+	virtual ~TProgressMonitor() = default;
 
 	// interface
 

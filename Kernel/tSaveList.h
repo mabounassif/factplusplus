@@ -45,7 +45,7 @@ protected:	// internal types
 			/// no assignment
 		List& operator = ( const List& ) = delete;
 			/// d'tor: do nothing
-		~List ( void ) {}
+		~List() = default;
 
 			/// clone given sub-list
 		List* clone ( void ) { return new List ( *this, next ? next->clone() : nullptr ); }
@@ -70,7 +70,7 @@ public:		// interface
 		/// copy c'tor
 	TSaveList ( const TSaveList& copy ) : head ( copy.head ? copy.head->clone() : nullptr ) {}
 		/// d'tor -- clear stack
-	~TSaveList ( void ) { clear(); }
+	~TSaveList() { clear(); }
 
 	// stack operations
 

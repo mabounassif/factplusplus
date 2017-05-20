@@ -123,7 +123,7 @@ public:		// interface
 		: Host(host)
 		{}
 		/// d'tor
-	~TAxiomSet ( void );
+	~TAxiomSet();
 
 		/// init all absorption-related flags using given set of option
 	bool initAbsorptionFlags ( const std::string& flags );

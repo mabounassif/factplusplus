@@ -43,8 +43,6 @@ public:		// external classes
 		SaveState ( void ) {}
 			/// copy c'tor
 		SaveState ( const SaveState& ss ) : sc(ss.sc), cc(ss.cc) {}
-			/// empty d'tor
-		~SaveState ( void ) {}
 	}; // SaveState
 
 protected:	// members
@@ -80,9 +78,6 @@ public:		// interface
 		/// assignment
 	CGLabel& operator = ( const CGLabel& copy )
 		{ scLabel = copy.scLabel; ccLabel = copy.ccLabel; return *this; }
-
-		/// empty d'tor
-	~CGLabel ( void ) {}
 
 	//----------------------------------------------
 	// Label access interface

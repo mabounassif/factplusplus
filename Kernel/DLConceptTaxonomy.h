@@ -49,8 +49,6 @@ protected:	// types
 			, Sure(sure)
 			, Possible(possible)
 			{}
-			/// empty d'tor
-		virtual ~DerivedSubsumers ( void ) {}
 
 		// iterators
 
@@ -264,8 +262,6 @@ public:		// interface
 	DLConceptTaxonomy ( const DLConceptTaxonomy& ) = delete;
 		/// no assignment
 	DLConceptTaxonomy& operator = ( const DLConceptTaxonomy& ) = delete;
-		/// d'tor
-	virtual ~DLConceptTaxonomy ( void ) {}
 
 		/// set bottom-up flag
 	void setBottomUp ( const TKBFlags& GCIs ) { flagNeedBottomUp = (GCIs.isGCI() || (GCIs.isReflexive() && GCIs.isRnD())); }

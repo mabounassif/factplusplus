@@ -53,7 +53,7 @@ public:		// interface
 	ProgressIndicatorInterface ( unsigned long limit ) : uCurrent{0}
 		{ setLimit (limit); }
 		/// empty d'tor
-	virtual ~ProgressIndicatorInterface ( void ) {}
+	virtual ~ProgressIndicatorInterface() = default;
 
 		/// set indicator to a given VALUE
 	void setIndicator ( unsigned long value )

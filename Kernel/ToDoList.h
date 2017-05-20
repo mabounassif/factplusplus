@@ -59,8 +59,6 @@ protected:	// classes
 	public:		// methods
 			/// empty c'tor
 		QueueSaveState ( void ) {}
-			/// empty d'tor
-		~QueueSaveState ( void ) {}
 	}; // QueueSaveState
 	//--------------------------------------------------------------------------
 
@@ -88,8 +86,6 @@ protected:	// classes
 		public:		// interface
 				/// init c'tor
 			QueueRestorer ( arrayQueue* q ) : Wait(q->Wait), queue(q), sp(q->sPointer) {}
-				/// empty d'tor
-			virtual ~QueueRestorer () {}
 				/// restore: copy the queue back, adjust pointers
 			void restore () override { std::swap(queue->Wait, Wait); queue->sPointer = sp; }
 		};
@@ -101,8 +97,6 @@ protected:	// classes
 			Wait.reserve(50);	// initial size
 			Wait.clear();
 		}
-			/// empty d'tor
-		virtual ~arrayQueue() {}
 
 			/// add entry to a queue
 		virtual void add ( DlCompletionTree* node, int offset ) { Wait.emplace_back(node,offset); }
@@ -138,8 +132,6 @@ protected:	// classes
 	public:		// interface
 			/// c'tor: make an empty queue
 		queueQueue ( TRareSaveStack* s ) : arrayQueue(), stack(s) {}
-			/// empty d'tor
-		virtual ~queueQueue() {}
 
 			/// add entry to a queue
 		void add ( DlCompletionTree* Node, int offset ) override
@@ -184,8 +176,6 @@ protected:	// classes
 	public:		// methods
 			/// empty c'tor
 		SaveState ( void ) {}
-			/// empty d'tor
-		~SaveState ( void ) {}
 	}; // SaveState
 	//--------------------------------------------------------------------------
 
@@ -233,7 +223,7 @@ public:
 		/// no assignment
 	ToDoList& operator = ( ToDoList& ) = delete;
 		/// d'tor: delete all entries
-	~ToDoList ( void ) { clear(); }
+	~ToDoList() { clear(); }
 
 	// global methods
 

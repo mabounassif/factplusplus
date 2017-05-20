@@ -101,8 +101,6 @@ protected:	// methods
 public:		// interface
 		/// empty c'tor
 	SigIndex ( LocalityChecker* checker ) : Checker(checker), nRegistered(0), nUnregistered(0) {}
-		/// empty d'tor
-	~SigIndex ( void ) {}
 
 	// work with axioms
 

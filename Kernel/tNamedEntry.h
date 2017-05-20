@@ -49,8 +49,6 @@ public:		// interface
 	TNamedEntry ( const TNamedEntry& ) = delete;
 		/// no assignment
 	TNamedEntry& operator = ( const TNamedEntry& ) = delete;
-		/// empty d'tor
-	virtual ~TNamedEntry ( void ) {}
 
 		/// gets name of given entry
 	const char* getName ( void ) const { return extName.c_str(); }

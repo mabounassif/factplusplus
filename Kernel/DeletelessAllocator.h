@@ -32,8 +32,6 @@ class DeletelessAllocator: public growingArrayP<T>
 public:
 		/// c'tor: do nothing
 	DeletelessAllocator ( void ) {}
-		/// d'tor: do nothing (all done in ~gaP)
-	virtual ~DeletelessAllocator ( void ) {}
 
 		/// get a new object from the heap
 	T* get ( void )

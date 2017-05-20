@@ -102,7 +102,7 @@ public:		// interface
 		/// empty c'tor
 	DLVertexCache ( void ) : pCache(nullptr), nCache(nullptr) {}
 		/// d'tor
-	virtual ~DLVertexCache ( void ) { delete pCache; delete nCache; }
+	virtual ~DLVertexCache() { delete pCache; delete nCache; }
 
 	// cache interface
 
@@ -144,7 +144,7 @@ public:		// interface
 		/// default c'tor
 	DLVertexStatistic ( void ) { std::memset ( stat, 0, sizeof(stat) ); }
 		/// empty d'tor
-	virtual ~DLVertexStatistic ( void ) {}
+	virtual ~DLVertexStatistic() = default;
 
 	// set methods
 
@@ -214,7 +214,7 @@ public:		// interface
 		, inCycleNeg(false)
 		{}
 		/// empty d'tor
-	virtual ~DLVertexTagDFS ( void ) {}
+	virtual ~DLVertexTagDFS() = default;
 
 	// tag access
 
@@ -266,7 +266,7 @@ public:		// interface
 		/// empty c'tor
 	DLVertexUsage ( void ) : posUsage(0), negUsage(0) {}
 		/// empty d'tor
-	virtual ~DLVertexUsage ( void ) {}
+	virtual ~DLVertexUsage() = default;
 
 		/// get access to a usage wrt POS
 	UsageType getUsage ( bool pos ) const { return pos ? posUsage : negUsage; }
@@ -284,7 +284,7 @@ public:		// interface
 		/// default c'tor
 	DLVertexSort ( void ) {}
 		/// empty d'tor
-	virtual ~DLVertexSort ( void ) {}
+	virtual ~DLVertexSort() = default;
 
 	// label access methods
 
@@ -382,8 +382,6 @@ public:		// interface
 	DLVertex ( const DLVertex& ) = delete;
 		/// no assignment
 	DLVertex& operator = ( const DLVertex& ) = delete;
-		/// d'tor (empty)
-	virtual ~DLVertex ( void ) {}
 
 		/// compare 2 CEs
 	bool operator == ( const DLVertex& v ) const

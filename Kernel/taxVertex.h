@@ -146,8 +146,6 @@ public:
 	TaxonomyVertex ( const TaxonomyVertex& ) = delete;
 		/// no assignment
 	TaxonomyVertex& operator = ( const TaxonomyVertex& ) = delete;
-		/// empty d'tor
-	~TaxonomyVertex ( void ) {}
 
 		/// add P as a synonym to current vertex
 	void addSynonym ( const ClassifiableEntry* p )

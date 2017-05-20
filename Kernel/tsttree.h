@@ -43,7 +43,7 @@ public:		// interface
 		/// no assignment
 	TsTTree& operator = ( const TsTTree& ) = delete;
 		/// d'tor
-	~TsTTree ( void ) {}
+	~TsTTree() = default;
 
 	// access to members
 

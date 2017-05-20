@@ -120,7 +120,7 @@ protected:	// types
 			/// no assignment
 		TSimpleRule& operator= ( const TSimpleRule& ) = delete;
 			/// empty d'tor
-		virtual ~TSimpleRule ( void ) { deleteTree(tHead); }
+		virtual ~TSimpleRule() { deleteTree(tHead); }
 	}; // TSimpleRule
 		/// all simple rules in KB
 	typedef std::vector<TSimpleRule*> TSimpleRules;
@@ -919,7 +919,7 @@ public:
 		/// no assignment
 	TBox& operator = ( const TBox& ) = delete;
 		/// d'tor
-	~TBox ( void );
+	~TBox();
 
 		/// get RW access to used Role Master
 	RoleMaster& getORM ( void ) { return ORM; }

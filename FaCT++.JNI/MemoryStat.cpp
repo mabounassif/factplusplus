@@ -72,7 +72,7 @@ MemoryStatistics :: MemoryStatistics ( const std::string& name )
 	}
 }
 
-MemoryStatistics :: ~MemoryStatistics ( void )
+MemoryStatistics :: ~MemoryStatistics()
 {
 	if ( USE_MEMORY_LOG )
 	{

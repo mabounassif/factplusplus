@@ -47,7 +47,7 @@ public:		// interface
 		/// move assignment
 	TSetAsTree& operator= ( TSetAsTree&& ) = default;
 		/// empty d'tor
-	~TSetAsTree () = default;
+	~TSetAsTree() = default;
 
 		/// adds given index to the set
 	void insert ( unsigned int i )

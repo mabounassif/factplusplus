@@ -85,7 +85,7 @@ public:		// interface
 		/// no assignment
 	growingArrayP& operator= ( const growingArrayP& ) = delete;
 		/// d'tor: delete all allocated objects
-	virtual ~growingArrayP ( void )
+	virtual ~growingArrayP()
 	{
 		for ( auto p = Base.rbegin(), p_end = Base.rend(); p != p_end; ++p )
 			delete *p;

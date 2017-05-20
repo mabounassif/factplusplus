@@ -34,7 +34,7 @@ public:		// interface
 		/// empty c'tor
 	TRestorer ( void ) {}
 		/// empty d'tor
-	virtual ~TRestorer ( void ) {}
+	virtual ~TRestorer() = default;
 		/// restore an object based on saved information
 	virtual void restore ( void ) = 0;
 

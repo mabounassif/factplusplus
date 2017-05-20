@@ -43,7 +43,7 @@ public:		// interface
 		/// empty c'tor
 	AOStructure ( void ) {}
 		/// d'tor: delete all atoms
-	~AOStructure ( void )
+	~AOStructure()
 	{
 		for ( iterator p = Atoms.begin(), p_end = Atoms.end(); p != p_end; ++p )
 			delete *p;
@@ -112,7 +112,7 @@ public:		// interface
 		/// init c'tor; M would NOT be deleted in d'tor
 	AtomicDecomposer ( TModularizer* m ) : AOS(nullptr), pModularizer(m), PI(nullptr), rootAtom(nullptr) {}
 		/// d'tor
-	~AtomicDecomposer ( void );
+	~AtomicDecomposer();
 
 		/// get the atomic structure for given module type TYPE
 	AOStructure* getAOS ( TOntology* O, ModuleType type );

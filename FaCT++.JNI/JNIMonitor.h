@@ -53,7 +53,7 @@ public:
 			Throw ( env, "Can't get method isCancelled" );
 	}
 		/// d'tor: allow JRE to delete object
-	~JNIProgressMonitor ( void ) override { env->DeleteGlobalRef(javaMonitor); }
+	~JNIProgressMonitor() override { env->DeleteGlobalRef(javaMonitor); }
 
 		/// informs about beginning of classification with number of concepts to be classified
 	void setClassificationStarted ( unsigned int nConcepts ) override

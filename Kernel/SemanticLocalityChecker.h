@@ -70,8 +70,6 @@ public:		// interface
 			"http://www.w3.org/2002/07/owl#topDataProperty",
 			"http://www.w3.org/2002/07/owl#bottomDataProperty");
 	}
-		/// empty d'tor
-	virtual ~SemanticLocalityChecker ( void ) {}
 
 		/// init kernel with the ontology signature and init expression map
 	void preprocessOntology ( const AxiomVec& Axioms ) override

@@ -42,8 +42,6 @@ public:		// interface
 		str += "' is used as a simple one";
 		reason = str.c_str();
 	}
-		/// empty d'tor
-	~EFPPNonSimpleRole ( void ) noexcept override = default;
 
 		/// access to the role
 	const char* getRoleName ( void ) const { return roleName.c_str(); }

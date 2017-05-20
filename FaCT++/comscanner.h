@@ -58,7 +58,7 @@ public:		// interface
 		, CurLine(1)
 		{}
 		/// d'tor
-	virtual ~CommonScanner ( void ) {}
+	virtual ~CommonScanner() = default;
 
 		/// get string collected in buffer
 	const char* GetName ( void ) const { return LexBuff; }
