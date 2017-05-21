@@ -76,7 +76,7 @@ protected:	// methods
 
 public:
 		/// c'tor
-	NominalReasoner ( TBox& tbox )
+	explicit NominalReasoner ( TBox& tbox )
 		: DlSatTester(tbox)
 	{
 		initNominalVector();

@@ -61,7 +61,7 @@ protected:	// methods
 
 public:		// interface
 		/// Create cache model with given presence of nominals
-	modelCacheInterface ( bool flagNominals ) : hasNominalNode{flagNominals} {}
+	explicit modelCacheInterface ( bool flagNominals ) : hasNominalNode{flagNominals} {}
 		/// empty d'tor
 	virtual ~modelCacheInterface() = default;
 

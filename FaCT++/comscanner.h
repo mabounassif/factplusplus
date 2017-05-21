@@ -53,7 +53,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor
-	CommonScanner ( std::istream* inp )
+	explicit CommonScanner ( std::istream* inp )
 		: InFile(inp)
 		, CurLine(1)
 		{}

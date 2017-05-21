@@ -78,7 +78,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	GeneralSyntacticLocalityChecker ( const TSignature* s ) : LocalityChecker(s) {}
+	explicit GeneralSyntacticLocalityChecker ( const TSignature* s ) : LocalityChecker(s) {}
 
 public:		// visitor interface
 	void visit ( const TDLAxiomDeclaration& ) override { isLocal = true; }

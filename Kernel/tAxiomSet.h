@@ -119,7 +119,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor
-	TAxiomSet ( TBox& host )
+	explicit TAxiomSet ( TBox& host )
 		: Host(host)
 		{}
 		/// d'tor

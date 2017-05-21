@@ -243,7 +243,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	TaxonomyCreator ( Taxonomy* tax )
+	explicit TaxonomyCreator ( Taxonomy* tax )
 		: pTax(tax)
 		, curEntry(nullptr)
 		, nEntries(0)

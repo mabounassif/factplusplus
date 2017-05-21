@@ -206,7 +206,7 @@ protected:	// methods
 
 public:		// interface
 		/// create data entry with given name
-	TDataEntry ( const std::string& name )
+	explicit TDataEntry ( const std::string& name )
 		: TNamedEntry(name)
 		, Type(nullptr)
 		, pName(bpINVALID)

@@ -51,7 +51,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor
-	CommonParser ( std::istream* in ) : scan ( in ) { NextLex (); }
+	explicit CommonParser ( std::istream* in ) : scan ( in ) { NextLex (); }
 		/// empty d'tor
 	virtual ~CommonParser() = default;
 };	// CommonParser

@@ -55,7 +55,7 @@ public:		// interface
 		/// empty c'tor
 	TFastSet ( void ) = default;
 		/// c'tor with a given max set SIZE
-	TFastSet ( size_t size ) { ensureMaxSetSize(size); }
+	explicit TFastSet ( size_t size ) { ensureMaxSetSize(size); }
 		/// copy c'tor
 	TFastSet ( const TFastSet& ) = default;
 		/// move c'tor

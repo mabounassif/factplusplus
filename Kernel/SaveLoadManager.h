@@ -112,7 +112,7 @@ protected:	// members
 
 public:		// methods
 		/// init c'tor: remember the S/L name
-	SaveLoadManager ( const std::string& name ) : dirname(name), ip(nullptr), op(nullptr) { filename = name+".fpp.state"; }
+	explicit SaveLoadManager ( const std::string& name ) : dirname(name), ip(nullptr), op(nullptr) { filename = name+".fpp.state"; }
 		/// empty d'tor
 	~SaveLoadManager()
 	{

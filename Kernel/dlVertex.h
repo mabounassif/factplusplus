@@ -204,7 +204,7 @@ protected:	// members
 
 public:		// interface
 		/// default c'tor
-	DLVertexTagDFS ( DagTag op )
+	explicit DLVertexTagDFS ( DagTag op )
 		: Op(op)
 		, VisitedPos(false)
 		, ProcessedPos(false)

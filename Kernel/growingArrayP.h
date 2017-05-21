@@ -76,7 +76,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor: make SIZE objects
-	growingArrayP ( size_t size = 0 ) : Base(size), last(0)
+	explicit growingArrayP ( size_t size = 0 ) : Base(size), last(0)
 	{
 		initArray ( Base.begin(), Base.end() );
 	}

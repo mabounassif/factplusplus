@@ -61,7 +61,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	TLISPExpressionPrinter ( std::ostream& o_ ) : o(o_)
+	explicit TLISPExpressionPrinter ( std::ostream& o_ ) : o(o_)
 	{
 		DTNames["http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"] = "string";
 		DTNames["http://www.w3.org/2001/XMLSchema#string"] = "string";

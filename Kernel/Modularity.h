@@ -150,7 +150,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	TModularizer ( ModuleMethod moduleMethod )
+	explicit TModularizer ( ModuleMethod moduleMethod )
 		: Checker(createLocalityChecker(moduleMethod,&sig))
 		, sigIndex(Checker)
 		, nChecks(0)

@@ -33,7 +33,7 @@ private:	// members
 
 public:		// interface
 		/// c'tor with a given "what" string
-	EFPPSaveLoad ( const std::string& why )
+	explicit EFPPSaveLoad ( const std::string& why )
 		: EFaCTPlusPlus()
 		, str(why)
 	{

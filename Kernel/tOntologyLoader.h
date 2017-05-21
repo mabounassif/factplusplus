@@ -55,7 +55,7 @@ protected:	// methods
 	{
 		try
 		{
-			TreeDeleter i = e(I);
+			TreeDeleter i{e(I)};
 			if ( i == nullptr )
 				throw EFaCTPlusPlus(reason);
 			return static_cast<TIndividual*>(kb.getCI(i));
@@ -379,7 +379,7 @@ public:		// visitor interface
 
 public:		// interface
 		/// init c'tor
-	TOntologyLoader ( TBox& KB ) : kb(KB), ETrans(KB) {}
+	explicit TOntologyLoader ( TBox& KB ) : kb(KB), ETrans(KB) {}
 
 		/// load ontology to a given KB
 	void visitOntology ( TOntology& ontology )

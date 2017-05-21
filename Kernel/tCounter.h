@@ -40,7 +40,7 @@ public:		// interface
 	explicit TCounter ( const IntType n ) : counter(n) {}
 		/// copy c'tor
 	template <typename U>
-	TCounter ( const TCounter<U>& copy ) : counter(copy.counter) {}
+	explicit TCounter ( const TCounter<U>& copy ) : counter(copy.counter) {}
 		/// assignment
 	template <typename U>
 	TCounter& operator= ( const TCounter<U>& copy )

@@ -50,7 +50,7 @@ protected:	// members
 
 public:		// interface
 		/// C'tor
-	ClassifiableEntry ( const std::string& name )
+	explicit ClassifiableEntry ( const std::string& name )
 		: TNamedEntry ( name )
 		, taxVertex (nullptr)
 		, pSynonym (nullptr)

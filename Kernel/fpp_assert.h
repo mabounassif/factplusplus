@@ -27,7 +27,7 @@ class EFPPAssertion: public EFaCTPlusPlus
 {
 public:		// interface
 		/// the default constructor
-	EFPPAssertion ( const char* reason ) : EFaCTPlusPlus(reason) {}
+	explicit EFPPAssertion ( const char* reason ) : EFaCTPlusPlus(reason) {}
 }; // EFPPAssertion
 
 #undef fpp_assert

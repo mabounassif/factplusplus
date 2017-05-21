@@ -300,7 +300,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	UpperBoundDirectEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "UpperBoundDirect" ) {}
+	explicit UpperBoundDirectEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "UpperBoundDirect" ) {}
 
 public:		// visitor implementation
 	// make all other visit() methods from the base implementation visible
@@ -417,7 +417,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	UpperBoundComplementEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "UpperBoundCompliment" ) {}
+	explicit UpperBoundComplementEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "UpperBoundCompliment" ) {}
 
 public:		// visitor interface
 	// make all other visit() methods from the base implementation visible
@@ -587,7 +587,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	LowerBoundDirectEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "LowerBoundDirect" ) {}
+	explicit LowerBoundDirectEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "LowerBoundDirect" ) {}
 
 public:		// visitor interface
 	// make all other visit() methods from the base implementation visible
@@ -754,7 +754,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	LowerBoundComplementEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "LowerBoundComplement" ) {}
+	explicit LowerBoundComplementEvaluator ( const TSignature* s ) : CardinalityEvaluatorBase ( s, "LowerBoundComplement" ) {}
 
 public:		// visitor implementation
 	// make all other visit() methods from the base implementation visible
@@ -858,7 +858,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	ExtendedSyntacticLocalityChecker ( const TSignature* s )
+	explicit ExtendedSyntacticLocalityChecker ( const TSignature* s )
 		: GeneralSyntacticLocalityChecker(s)
 		, UBD(s)
 		, LBD(s)

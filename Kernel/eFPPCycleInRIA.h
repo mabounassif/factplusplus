@@ -33,7 +33,7 @@ private:	// members
 
 public:		// interface
 		/// c'tor: create an output string
-	EFPPCycleInRIA ( const std::string& name )
+	explicit EFPPCycleInRIA ( const std::string& name )
 		: EFaCTPlusPlus()
 		, roleName(name)
 	{

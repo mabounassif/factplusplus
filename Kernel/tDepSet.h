@@ -149,7 +149,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor: init N basement elements
-	TDepSetManager ( unsigned int n ) : growingArrayP<TDepSetCache>(0) { ensureHeapSize(n); }
+	explicit TDepSetManager ( unsigned int n ) : growingArrayP<TDepSetCache>(0) { ensureHeapSize(n); }
 
 		/// ensure that size of vector is enough to keep N elements
 	void ensureLevel ( unsigned int n ) { ensureHeapSize(n); }

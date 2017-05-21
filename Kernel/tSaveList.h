@@ -37,7 +37,7 @@ protected:	// internal types
 
 	public:		// interface
 			/// empty c'tor
-		List ( List* n = nullptr ) : next(n) {}
+		explicit List ( List* n = nullptr ) : next(n) {}
 			/// create object from given one and from given next
 		List ( const T& obj, List* n ) : T(obj), next(n) {}
 			/// no copy c'tor

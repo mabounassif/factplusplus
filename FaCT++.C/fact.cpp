@@ -75,7 +75,7 @@ public:		// interface
 // type declarations
 
 #define DECLARE_STRUCT(name,type)	\
-struct name ## _st { type* p; name ## _st(type* q) : p(q) {} }
+struct name ## _st { type* p; explicit name ## _st(type* q) : p(q) {} }
 // FaCT++ kernel
 DECLARE_STRUCT(fact_reasoning_kernel,ReasoningKernel);
 // progress monitor

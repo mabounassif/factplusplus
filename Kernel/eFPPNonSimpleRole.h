@@ -33,7 +33,7 @@ private:	// members
 
 public:		// interface
 		/// c'tor: create an output string
-	EFPPNonSimpleRole ( const std::string& name )
+	explicit EFPPNonSimpleRole ( const std::string& name )
 		: EFaCTPlusPlus()
 		, roleName(name)
 	{

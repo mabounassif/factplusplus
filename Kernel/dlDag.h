@@ -173,7 +173,7 @@ protected:	// methods
 
 public:		// interface
 		/// the only c'tor
-	DLDag ( const ifOptionSet* Options );
+	explicit DLDag ( const ifOptionSet* Options );
 		/// no copy c'tor
 	DLDag ( const DLDag& ) = delete;
 		/// no assignment

@@ -119,7 +119,7 @@ public:		// visitor interface
 
 public:		// interface
 		/// init c'tor
-	TLISPOntologyPrinter ( std::ostream& o_ )
+	explicit TLISPOntologyPrinter ( std::ostream& o_ )
 		: o(o_)
 		, LEP(o_)
 		, printDeclarations(true)

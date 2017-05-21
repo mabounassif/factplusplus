@@ -39,7 +39,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor: no nominals can be here
-	modelCacheSingleton ( BipolarPointer bp )
+	explicit modelCacheSingleton ( BipolarPointer bp )
 		: modelCacheInterface{/*flagNominals=*/false}
 		, Singleton{bp}
 		{}

@@ -143,7 +143,7 @@ protected:	// methods
 
 public:		// methods
 		/// empty c'tor
-	DataTypeAppearance ( DepSet& dep ) : PType(nullptr), NType(nullptr), clashDep(dep) {}
+	explicit DataTypeAppearance ( DepSet& dep ) : PType(nullptr), NType(nullptr), clashDep(dep) {}
 		/// empty d'tor
 	~DataTypeAppearance() { delete PType; delete NType; }
 
@@ -289,7 +289,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor: save DAG
-	DataTypeReasoner ( const DLDag& dag ) : DLHeap(dag), posType(nullptr) {}
+	explicit DataTypeReasoner ( const DLDag& dag ) : DLHeap(dag), posType(nullptr) {}
 		/// empty d'tor
 	~DataTypeReasoner()
 	{

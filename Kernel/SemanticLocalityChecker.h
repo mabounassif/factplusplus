@@ -60,7 +60,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	SemanticLocalityChecker ( const TSignature* sig ) : LocalityChecker(sig)
+	explicit SemanticLocalityChecker ( const TSignature* sig ) : LocalityChecker(sig)
 	{
 		pEM = Kernel.getExpressionManager();
 		// for tests we will need TB names to be from the OWL 2 namespace

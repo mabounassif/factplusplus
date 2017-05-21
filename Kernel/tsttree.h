@@ -33,7 +33,7 @@ private:	// members
 
 public:		// interface
 		/// default c'tor
-	TsTTree ( const T& Init, TsTTree *l = nullptr, TsTTree *r = nullptr )
+	explicit TsTTree ( const T& Init, TsTTree *l = nullptr, TsTTree *r = nullptr )
 		: elem(Init)
 		, left(l)
 		, right(r)

@@ -258,7 +258,7 @@ protected:	// members
 
 public:		// interface
 		/// c'tor: initialise name
-	TNamedEntity ( const std::string& name ) : Name(name), entry(nullptr) {}
+	explicit TNamedEntity ( const std::string& name ) : Name(name), entry(nullptr) {}
 		/// empty d'tor
 	virtual ~TNamedEntity() = default;
 
@@ -284,7 +284,7 @@ protected:	// members
 
 public:		// interface
 		/// init c'tor
-	TConceptArg ( const TDLConceptExpression* c ) : C(c) {}
+	explicit TConceptArg ( const TDLConceptExpression* c ) : C(c) {}
 		/// empty d'tor
 	virtual ~TConceptArg() = default;
 
@@ -303,7 +303,7 @@ protected:	// members
 
 public:		// interface
 		/// init c'tor
-	TIndividualArg ( const TDLIndividualExpression* i ) : I(i) {}
+	explicit TIndividualArg ( const TDLIndividualExpression* i ) : I(i) {}
 		/// empty d'tor
 	virtual ~TIndividualArg() = default;
 
@@ -322,7 +322,7 @@ protected:	// members
 
 public:		// interface
 		/// init c'tor
-	TNumberArg ( unsigned int n ) : N(n) {}
+	explicit TNumberArg ( unsigned int n ) : N(n) {}
 		/// empty d'tor
 	virtual ~TNumberArg() = default;
 
@@ -341,7 +341,7 @@ protected:	// members
 
 public:		// interface
 		/// init c'tor
-	TObjectRoleArg ( const TDLObjectRoleExpression* oR ) : OR(oR) {}
+	explicit TObjectRoleArg ( const TDLObjectRoleExpression* oR ) : OR(oR) {}
 		/// empty d'tor
 	virtual ~TObjectRoleArg() = default;
 
@@ -360,7 +360,7 @@ protected:	// members
 
 public:		// interface
 		/// init c'tor
-	TDataRoleArg ( const TDLDataRoleExpression* dR ) : DR(dR) {}
+	explicit TDataRoleArg ( const TDLDataRoleExpression* dR ) : DR(dR) {}
 		/// empty d'tor
 	virtual ~TDataRoleArg() = default;
 
@@ -380,7 +380,7 @@ protected:	// members
 
 public:		// interface
 		/// init c'tor
-	TDataExpressionArg ( const TExpression* expr ) : Expr(expr) {}
+	explicit TDataExpressionArg ( const TExpression* expr ) : Expr(expr) {}
 		/// empty d'tor
 	virtual ~TDataExpressionArg() = default;
 
@@ -511,7 +511,7 @@ class TDLConceptName: public TDLConceptExpression, public TNamedEntity
 {
 public:		// interface
 		/// init c'tor
-	TDLConceptName ( const std::string& name ) : TDLConceptExpression(), TNamedEntity(name) {}
+	explicit TDLConceptName ( const std::string& name ) : TDLConceptExpression(), TNamedEntity(name) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
@@ -524,7 +524,7 @@ class TDLConceptNot: public TDLConceptExpression, public TConceptArg
 {
 public:		// interface
 		/// init c'tor
-	TDLConceptNot ( const TDLConceptExpression* C )
+	explicit TDLConceptNot ( const TDLConceptExpression* C )
 		: TDLConceptExpression()
 		, TConceptArg(C)
 		{}
@@ -540,7 +540,7 @@ class TDLConceptAnd: public TDLConceptExpression, public TDLNAryExpression<TDLCo
 {
 public:		// interface
 		/// init c'tor: create AND of expressions from the given array
-	TDLConceptAnd ( const ExpressionArray& v )
+	explicit TDLConceptAnd ( const ExpressionArray& v )
 		: TDLConceptExpression()
 		, TDLNAryExpression<TDLConceptExpression>("concept expression","AND")
 	{
@@ -568,7 +568,7 @@ class TDLConceptOr: public TDLConceptExpression, public TDLNAryExpression<TDLCon
 {
 public:		// interface
 		/// init c'tor: create OR of expressions from the given array
-	TDLConceptOr ( const ExpressionArray& v )
+	explicit TDLConceptOr ( const ExpressionArray& v )
 		: TDLConceptExpression()
 		, TDLNAryExpression<TDLConceptExpression>("concept expression","OR")
 	{
@@ -586,7 +586,7 @@ class TDLConceptOneOf: public TDLConceptExpression, public TDLNAryExpression<TDL
 {
 public:		// interface
 		/// init c'tor: create one-of from individuals in the given array
-	TDLConceptOneOf ( const ExpressionArray& v )
+	explicit TDLConceptOneOf ( const ExpressionArray& v )
 		: TDLConceptExpression()
 		, TDLNAryExpression<TDLIndividualName>("individual name","OneOf")
 	{
@@ -604,7 +604,7 @@ class TDLConceptObjectRoleExpression: public TDLConceptExpression, public TObjec
 {
 public:		// interface
 		/// init c'tor
-	TDLConceptObjectRoleExpression ( const TDLObjectRoleExpression* R )
+	explicit TDLConceptObjectRoleExpression ( const TDLObjectRoleExpression* R )
 		: TDLConceptExpression()
 		, TObjectRoleArg(R)
 		{}
@@ -620,7 +620,7 @@ class TDLConceptObjectSelf: public TDLConceptObjectRoleExpression
 {
 public:		// interface
 		/// init c'tor
-	TDLConceptObjectSelf ( const TDLObjectRoleExpression* R )
+	explicit TDLConceptObjectSelf ( const TDLObjectRoleExpression* R )
 		: TDLConceptObjectRoleExpression(R)
 		{}
 
@@ -758,7 +758,7 @@ class TDLConceptDataRoleExpression: public TDLConceptExpression, public TDataRol
 {
 public:		// interface
 		/// init c'tor
-	TDLConceptDataRoleExpression ( const TDLDataRoleExpression* R )
+	explicit TDLConceptDataRoleExpression ( const TDLDataRoleExpression* R )
 		: TDLConceptExpression()
 		, TDataRoleArg(R)
 		{}
@@ -916,7 +916,7 @@ class TDLIndividualName: public TDLIndividualExpression, public TNamedEntity
 {
 public:		// interface
 		/// init c'tor
-	TDLIndividualName ( const std::string& name ) : TDLIndividualExpression(), TNamedEntity(name) {}
+	explicit TDLIndividualName ( const std::string& name ) : TDLIndividualExpression(), TNamedEntity(name) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
@@ -1006,7 +1006,7 @@ class TDLObjectRoleName: public TDLObjectRoleExpression, public TNamedEntity
 {
 public:		// interface
 		/// init c'tor
-	TDLObjectRoleName ( const std::string& name ) : TDLObjectRoleExpression(), TNamedEntity(name) {}
+	explicit TDLObjectRoleName ( const std::string& name ) : TDLObjectRoleExpression(), TNamedEntity(name) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
@@ -1019,7 +1019,7 @@ class TDLObjectRoleInverse: public TDLObjectRoleExpression, public TObjectRoleAr
 {
 public:		// interface
 		/// init c'tor
-	TDLObjectRoleInverse ( const TDLObjectRoleExpression* R )
+	explicit TDLObjectRoleInverse ( const TDLObjectRoleExpression* R )
 		: TDLObjectRoleExpression()
 		, TObjectRoleArg(R)
 		{}
@@ -1035,7 +1035,7 @@ class TDLObjectRoleChain: public TDLObjectRoleComplexExpression, public TDLNAryE
 {
 public:		// interface
 		/// init c'tor: create role chain from given array
-	TDLObjectRoleChain ( const ExpressionArray& v )
+	explicit TDLObjectRoleChain ( const ExpressionArray& v )
 		: TDLObjectRoleComplexExpression()
 		, TDLNAryExpression<TDLObjectRoleExpression>("object role expression","role chain")
 	{
@@ -1138,7 +1138,7 @@ class TDLDataRoleName: public TDLDataRoleExpression, public TNamedEntity
 {
 public:		// interface
 		/// init c'tor
-	TDLDataRoleName ( const std::string& name ) : TDLDataRoleExpression(), TNamedEntity(name) {}
+	explicit TDLDataRoleName ( const std::string& name ) : TDLDataRoleExpression(), TNamedEntity(name) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
@@ -1209,7 +1209,7 @@ class TDLDataTypeRestriction: public TDLDataTypeExpression, public TDataExpressi
 {
 public:		// interface
 		/// init c'tor
-	TDLDataTypeRestriction ( const TDLDataTypeName* T )
+	explicit TDLDataTypeRestriction ( const TDLDataTypeName* T )
 		: TDLDataTypeExpression()
 		, TDataExpressionArg<TDLDataTypeName>(T)
 		, TDLNAryExpression<TDLFacetExpression>("facet expression","Datatype restriction")
@@ -1226,7 +1226,7 @@ class TDLDataValue: public TDLDataExpression, public TNamedEntity, public TDataE
 {
 public:		// interface
 		/// fake c'tor (to make TNameSet happy); shouldn't be called
-	TDLDataValue ( const std::string& value )
+	explicit TDLDataValue ( const std::string& value )
 		: TDLDataExpression()
 		, TNamedEntity(value)
 		, TDataExpressionArg<TDLDataTypeExpression>(nullptr)
@@ -1249,7 +1249,7 @@ class TDLDataNot: public TDLDataExpression, public TDataExpressionArg<TDLDataExp
 {
 public:		// interface
 		/// init c'tor
-	TDLDataNot ( const TDLDataExpression* E )
+	explicit TDLDataNot ( const TDLDataExpression* E )
 		: TDLDataExpression()
 		, TDataExpressionArg<TDLDataExpression>(E)
 		{}
@@ -1265,7 +1265,7 @@ class TDLDataAnd: public TDLDataExpression, public TDLNAryExpression<TDLDataExpr
 {
 public:		// interface
 		/// init c'tor: create AND of expressions from the given array
-	TDLDataAnd ( const ExpressionArray& v )
+	explicit TDLDataAnd ( const ExpressionArray& v )
 		: TDLDataExpression()
 		, TDLNAryExpression<TDLDataExpression>("data expression","data AND")
 	{
@@ -1283,7 +1283,7 @@ class TDLDataOr: public TDLDataExpression, public TDLNAryExpression<TDLDataExpre
 {
 public:		// interface
 		/// init c'tor: create OR of expressions from the given array
-	TDLDataOr ( const ExpressionArray& v )
+	explicit TDLDataOr ( const ExpressionArray& v )
 		: TDLDataExpression()
 		, TDLNAryExpression<TDLDataExpression>("data expression","data OR")
 	{
@@ -1301,7 +1301,7 @@ class TDLDataOneOf: public TDLDataExpression, public TDLNAryExpression<TDLDataVa
 {
 public:		// interface
 		/// init c'tor: create one-of from individuals in the given array
-	TDLDataOneOf ( const ExpressionArray& v )
+	explicit TDLDataOneOf ( const ExpressionArray& v )
 		: TDLDataExpression()
 		, TDLNAryExpression<TDLDataValue>("data value","data OneOf")
 	{
@@ -1319,7 +1319,7 @@ class TDLFacetExpression: public TDLDataExpression, public TDataExpressionArg<TD
 {
 public:		// interface
 		/// init c'tor: create facet from a given value V
-	TDLFacetExpression ( const TDLDataValue* V )
+	explicit TDLFacetExpression ( const TDLDataValue* V )
 		: TDLDataExpression()
 		, TDataExpressionArg<TDLDataValue>(V)
 		{}
@@ -1335,7 +1335,7 @@ class TDLFacetMinInclusive: public TDLFacetExpression
 {
 public:		// interface
 		/// init c'tor
-	TDLFacetMinInclusive ( const TDLDataValue* V ) : TDLFacetExpression(V) {}
+	explicit TDLFacetMinInclusive ( const TDLDataValue* V ) : TDLFacetExpression(V) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
@@ -1348,7 +1348,7 @@ class TDLFacetMinExclusive: public TDLFacetExpression
 {
 public:		// interface
 		/// init c'tor
-	TDLFacetMinExclusive ( const TDLDataValue* V ) : TDLFacetExpression(V) {}
+	explicit TDLFacetMinExclusive ( const TDLDataValue* V ) : TDLFacetExpression(V) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
@@ -1361,7 +1361,7 @@ class TDLFacetMaxInclusive: public TDLFacetExpression
 {
 public:		// interface
 		/// init c'tor
-	TDLFacetMaxInclusive ( const TDLDataValue* V ) : TDLFacetExpression(V) {}
+	explicit TDLFacetMaxInclusive ( const TDLDataValue* V ) : TDLFacetExpression(V) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
@@ -1374,7 +1374,7 @@ class TDLFacetMaxExclusive: public TDLFacetExpression
 {
 public:		// interface
 		/// init c'tor
-	TDLFacetMaxExclusive ( const TDLDataValue* V ) : TDLFacetExpression(V) {}
+	explicit TDLFacetMaxExclusive ( const TDLDataValue* V ) : TDLFacetExpression(V) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }
@@ -1397,7 +1397,7 @@ protected:	// classes
 		const TDLDataTypeExpression* type;
 	public:		// interface
 			/// init c'tor
-		DVCreator ( const TDLDataTypeExpression* t ) : type(t) {}
+		explicit DVCreator ( const TDLDataTypeExpression* t ) : type(t) {}
 			/// create new value of a given type
 		TDLDataValue* makeEntry ( const std::string& name ) const override { return new TDLDataValue(name,type); }
 	}; // DVCreator
@@ -1408,7 +1408,7 @@ protected:	// members
 
 public:		// interface
 		/// empty c'tor
-	TDLDataType ( const TDLDataTypeExpression* type ) : Values(new DVCreator(type)) {}
+	explicit TDLDataType ( const TDLDataTypeExpression* type ) : Values(new DVCreator(type)) {}
 		/// empty d'tor
 	virtual ~TDLDataType() = default;
 
@@ -1424,7 +1424,7 @@ class TDLDataTypeName: public TDLDataTypeExpression, public TDLDataType, public 
 {
 public:		// interface
 		/// init c'tor
-	TDLDataTypeName ( const std::string& name ) : TDLDataTypeExpression(), TDLDataType(this), TNamedEntity(name) {}
+	explicit TDLDataTypeName ( const std::string& name ) : TDLDataTypeExpression(), TDLDataType(this), TNamedEntity(name) {}
 
 		/// accept method for the visitor pattern
 	void accept ( DLExpressionVisitor& visitor ) const override { visitor.visit(*this); }

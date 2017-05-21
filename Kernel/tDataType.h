@@ -38,7 +38,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor: create the TYPE entry
-	TDataType ( const std::string& name )
+	explicit TDataType ( const std::string& name )
 		: TNECollection<TDataEntry>(name)
 		{ Type = new TDataEntry(name); }
 		/// no copy c'tor

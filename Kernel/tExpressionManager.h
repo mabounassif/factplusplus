@@ -43,7 +43,7 @@ protected:	// types
 
 	public:		// interface
 			/// empty c'tor
-		TOneOfCache ( TExpressionManager* p ) : THeadTailCache<TDLConceptExpression, const TDLIndividualExpression>(), pManager(p) {}
+		explicit TOneOfCache ( TExpressionManager* p ) : THeadTailCache<TDLConceptExpression, const TDLIndividualExpression>(), pManager(p) {}
 
 			/// clear the cache
 		void clear ( void ) { Map.clear(); }
@@ -61,7 +61,7 @@ protected:	// types
 
 	public:		// interface
 			/// empty c'tor
-		TInverseRoleCache ( TExpressionManager* p ) : THeadTailCache<TDLObjectRoleExpression, const TDLObjectRoleExpression>(), pManager(p) {}
+		explicit TInverseRoleCache ( TExpressionManager* p ) : THeadTailCache<TDLObjectRoleExpression, const TDLObjectRoleExpression>(), pManager(p) {}
 
 			/// clear the cache
 		void clear ( void ) { Map.clear(); }

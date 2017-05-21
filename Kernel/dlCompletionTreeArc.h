@@ -65,7 +65,7 @@ protected:	// classes
 		DlCompletionTreeArc* p;
 		const TRole* r;
 	public:
-		TCTEdgeRestorer ( DlCompletionTreeArc* q ) : p(q), r(q->Role) {}
+		explicit TCTEdgeRestorer ( DlCompletionTreeArc* q ) : p(q), r(q->Role) {}
 		void restore ( void ) override { p->Role = r; p->Reverse->Role = r->inverse(); }
 	}; // TCTEdgeRestorer
 
@@ -76,7 +76,7 @@ protected:	// classes
 		DlCompletionTreeArc* p;
 		DepSet dep;
 	public:
-		TCTEdgeDepRestorer ( DlCompletionTreeArc* q ) : p(q), dep(q->getDep()) {}
+		explicit TCTEdgeDepRestorer ( DlCompletionTreeArc* q ) : p(q), dep(q->getDep()) {}
 		void restore ( void ) override { p->depSet = dep; }
 	}; // TCTEdgeDepRestorer
 

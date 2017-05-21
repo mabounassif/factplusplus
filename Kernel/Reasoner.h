@@ -918,7 +918,7 @@ public:		// blocking support
 
 public:
 		/// c'tor
-	DlSatTester ( TBox& tbox );
+	explicit DlSatTester ( TBox& tbox );
 		/// no copy c'tor
 	DlSatTester ( const DlSatTester& ) = delete;
 		/// no assignment

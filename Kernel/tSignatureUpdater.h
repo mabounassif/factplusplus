@@ -51,7 +51,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	TExpressionSignatureUpdater ( TSignature& s ) : sig(s) {}
+	explicit TExpressionSignatureUpdater ( TSignature& s ) : sig(s) {}
 
 public:		// visitor interface
 	// concept expressions
@@ -168,7 +168,7 @@ public:		// visitor interface
 
 public:		// interface
 		/// init c'tor
-	TSignatureUpdater ( TSignature& sig ) : Updater(sig) {}
+	explicit TSignatureUpdater ( TSignature& sig ) : Updater(sig) {}
 }; // TSignatureUpdater
 
 #endif

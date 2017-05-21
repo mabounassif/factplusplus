@@ -62,7 +62,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	TExpressionTranslator ( TBox& kb ) : tree(nullptr), KB(kb), sig(nullptr) {}
+	explicit TExpressionTranslator ( TBox& kb ) : tree(nullptr), KB(kb), sig(nullptr) {}
 		/// empty d'tor
 	~TExpressionTranslator() override { deleteTree(tree); }
 

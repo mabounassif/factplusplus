@@ -87,7 +87,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	BotEquivalenceEvaluator ( const TSignature* s ) : SigAccessor(s), isBotEq(false) {}
+	explicit BotEquivalenceEvaluator ( const TSignature* s ) : SigAccessor(s), isBotEq(false) {}
 
 	// set fields
 
@@ -268,7 +268,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	TopEquivalenceEvaluator ( const TSignature* s ) : SigAccessor(s), isTopEq(false) {}
+	explicit TopEquivalenceEvaluator ( const TSignature* s ) : SigAccessor(s), isTopEq(false) {}
 
 	// set fields
 
@@ -411,7 +411,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	SyntacticLocalityChecker ( const TSignature* s )
+	explicit SyntacticLocalityChecker ( const TSignature* s )
 		: GeneralSyntacticLocalityChecker(s)
 		, TopEval(s)
 		, BotEval(s)

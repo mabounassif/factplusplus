@@ -56,7 +56,7 @@ public:		// interface
 		/// c'tor (empty)
 	TNameSet ( void ) : Creator(new TNameCreator<T>) {}
 		/// c'tor (with given Name Creating class)
-	TNameSet ( TNameCreator<T>* p ) : Creator(p) {}
+	explicit TNameSet ( TNameCreator<T>* p ) : Creator(p) {}
 		/// no copy c'tor
 	TNameSet ( const TNameSet& ) = delete;
 		/// no assignment

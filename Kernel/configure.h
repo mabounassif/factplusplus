@@ -63,7 +63,7 @@ protected:
 	ConfBase Base;
 
 public:
-	ConfSection ( const std::string& pc ) : Name ( pc ) {}
+	explicit ConfSection ( const std::string& pc ) : Name ( pc ) {}
 	~ConfSection();
 
 	bool operator == ( const std::string& pc ) const { return ( Name == pc ); }

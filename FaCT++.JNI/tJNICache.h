@@ -45,7 +45,7 @@ public:		// members
 
 public:		// interface
 		/// c'tor: init class name
-	TClassFieldMethodIDs ( const char* arrayClassName )
+	explicit TClassFieldMethodIDs ( const char* arrayClassName )
 		: ArrayClassName(arrayClassName)
 		, ClassID(nullptr)
 		, ArrayClassID(nullptr)
@@ -167,7 +167,7 @@ protected:	// methods
 
 public:		// members
 		/// ctor: init all the IDs
-	TJNICache ( JNIEnv* e )
+	explicit TJNICache ( JNIEnv* e )
 		: env(e)
 		, ClassPointer("[Luk/ac/manchester/cs/factplusplus/ClassPointer;")
 		, IndividualPointer("[Luk/ac/manchester/cs/factplusplus/IndividualPointer;")

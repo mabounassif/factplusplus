@@ -110,7 +110,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor; M would NOT be deleted in d'tor
-	AtomicDecomposer ( TModularizer* m ) : AOS(nullptr), pModularizer(m), PI(nullptr), rootAtom(nullptr) {}
+	explicit AtomicDecomposer ( TModularizer* m ) : AOS(nullptr), pModularizer(m), PI(nullptr), rootAtom(nullptr) {}
 		/// d'tor
 	~AtomicDecomposer();
 

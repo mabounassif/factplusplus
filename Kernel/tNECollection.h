@@ -67,7 +67,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor: clear 0-th element
-	TNECollection ( const std::string& name )
+	explicit TNECollection ( const std::string& name )
 		: TypeName(name)
 		, locked(false)
 		, allowFresh(false)

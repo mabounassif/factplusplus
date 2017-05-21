@@ -28,7 +28,7 @@ class dumpLisp : public dumpInterface
 {
 public:		// interface
 		/// the only c'tor -- empty
-	dumpLisp ( std::ostream& oo ) : dumpInterface(oo) {}
+	explicit dumpLisp ( std::ostream& oo ) : dumpInterface(oo) {}
 
 	// global prologue/epilogue
 	void prologue ( void ) override {}

@@ -202,7 +202,7 @@ protected:	// methods
 
 public:		// interface
 		/// create an empty GCI
-	TAxiom ( const TAxiom* parent ) : origin(parent) {}
+	explicit TAxiom ( const TAxiom* parent ) : origin(parent) {}
 		/// copy c'tor
 	TAxiom ( const TAxiom& ) = delete;
 		/// assignment

@@ -140,7 +140,7 @@ public:
 		initFlags();
 	}
 		/// init c'tor; use it only for Top/Bot initialisations
-	TaxonomyVertex ( const ClassifiableEntry* p ) : TaxonomyVertex()
+	explicit TaxonomyVertex ( const ClassifiableEntry* p ) : TaxonomyVertex()
 		{ setSample(p); }
 		/// no copy
 	TaxonomyVertex ( const TaxonomyVertex& ) = delete;

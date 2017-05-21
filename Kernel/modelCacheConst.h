@@ -38,7 +38,7 @@ protected:	// methods
 
 public:
 		/// c'tor: no nominals can be here
-	modelCacheConst ( bool top )
+	explicit modelCacheConst ( bool top )
 		: modelCacheInterface{/*flagNominals=*/false}
 		, isTop{top}
 		{}

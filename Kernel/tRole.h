@@ -58,7 +58,7 @@ protected:	// types
 
 	public:		// interface
 			/// init c'tor
-		TKnownValue ( bool val = false ) : value(val), known(false) {}
+		explicit TKnownValue ( bool val = false ) : value(val), known(false) {}
 
 			/// @return true iff the value is known to be set
 		bool isKnown ( void ) const { return known; }
@@ -195,7 +195,7 @@ public:		// interface
 		/// no assignment
 	TRole& operator = ( const TRole& ) = delete;
 		/// the only c'tor
-	TRole ( const std::string& name );
+	explicit TRole ( const std::string& name );
 		/// d'tor
 	~TRole() override;
 

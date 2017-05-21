@@ -85,7 +85,7 @@ protected:	// classes
 
 		public:		// interface
 				/// init c'tor
-			QueueRestorer ( arrayQueue* q ) : Wait(q->Wait), queue(q), sp(q->sPointer) {}
+			explicit QueueRestorer ( arrayQueue* q ) : Wait(q->Wait), queue(q), sp(q->sPointer) {}
 				/// restore: copy the queue back, adjust pointers
 			void restore () override { std::swap(queue->Wait, Wait); queue->sPointer = sp; }
 		};
@@ -131,7 +131,7 @@ protected:	// classes
 
 	public:		// interface
 			/// c'tor: make an empty queue
-		queueQueue ( TRareSaveStack* s ) : arrayQueue(), stack(s) {}
+		explicit queueQueue ( TRareSaveStack* s ) : arrayQueue(), stack(s) {}
 
 			/// add entry to a queue
 		void add ( DlCompletionTree* Node, int offset ) override
