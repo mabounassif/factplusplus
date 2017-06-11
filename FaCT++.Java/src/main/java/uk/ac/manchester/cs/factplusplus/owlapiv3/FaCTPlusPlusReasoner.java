@@ -772,7 +772,7 @@ public class FaCTPlusPlusReasoner implements OWLReasoner,
         checkConsistency();
         return classExpressionTranslator.getNodeSetFromPointers(kernel
                 .askObjectPropertyDomain(
-                        objectPropertyTranslator.createPointerForEntity(pe),
+                        objectPropertyTranslator.getPointerFromEntity(pe),
                         direct));
     }
 
@@ -847,7 +847,7 @@ public class FaCTPlusPlusReasoner implements OWLReasoner,
         checkConsistency();
         return classExpressionTranslator.getNodeSetFromPointers(kernel
                 .askDataPropertyDomain(
-                        dataPropertyTranslator.createPointerForEntity(pe),
+                        dataPropertyTranslator.getPointerFromEntity(pe),
                         direct));
     }
 
@@ -1034,16 +1034,7 @@ public class FaCTPlusPlusReasoner implements OWLReasoner,
 
     protected ObjectPropertyPointer toObjectPropertyPointer(
             OWLObjectPropertyExpression propertyExpression) {
-        OWLObjectPropertyExpression simp = propertyExpression.getSimplified();
-        if (simp.isAnonymous()) {
-            OWLObjectInverseOf inv = (OWLObjectInverseOf) simp;
-            return kernel.getInverseProperty(objectPropertyTranslator
-                    .getPointerFromEntity(inv.getInverse()
-                            .asOWLObjectProperty()));
-        } else {
-            return objectPropertyTranslator.getPointerFromEntity(simp
-                    .asOWLObjectProperty());
-        }
+        return objectPropertyTranslator.getPointerFromEntity(propertyExpression);
     }
 
     protected DataPropertyPointer toDataPropertyPointer(
@@ -1494,13 +1485,12 @@ public class FaCTPlusPlusReasoner implements OWLReasoner,
             return kernel.getBottomObjectProperty();
         }
 
-        // TODO: add implementation of registerNewEntity
         @Override
         protected ObjectPropertyPointer registerNewEntity(
                 OWLObjectPropertyExpression entity) {
             ObjectPropertyPointer pointer = createPointerForEntity(entity);
             fillEntityPointerMaps(entity, pointer);
-            entity = entity.getInverseProperty().getSimplified();
+            entity = entity.getInverseProperty();
             fillEntityPointerMaps(entity, createPointerForEntity(entity));
             return pointer;
         }
@@ -1508,7 +1498,6 @@ public class FaCTPlusPlusReasoner implements OWLReasoner,
         @Override
         protected ObjectPropertyPointer createPointerForEntity(
                 OWLObjectPropertyExpression entity) {
-            // FIXME!! think later!!
             ObjectPropertyPointer p = kernel.getObjectProperty(entity
                     .getNamedProperty().toStringID());
             if (entity.isAnonymous()) {
