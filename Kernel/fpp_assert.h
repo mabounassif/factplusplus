@@ -41,7 +41,7 @@ public:		// interface
 #define fpp_assert_(e,f,l) fpp_assert__(#e,f,l)
 
 #ifdef NDEBUG
-#	define fpp_assert(e) ((void)(0 && (e)))
+#	define fpp_assert(e) ((void)(false && (e)))
 #else
 #	define fpp_assert(e) ((void)((e) ? 0 : fpp_assert_ ( e, __FILE__, __LINE__ )))
 #endif
