@@ -420,7 +420,7 @@ DLLispParser :: getComplexConceptExpression ( void )
 	case L_LE:
 		n = (unsigned int)scan.GetNumber();
 		NextLex ();
-		// hack: throughout
+		// fallthrough
 	case L_FORALL:
 	case L_EXISTS:
 		// first argument -- role name
