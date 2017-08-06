@@ -15,10 +15,11 @@ public class FaCTPlusPlus {
     static {
         if (!initDone.getAndSet(true)) {
             // Load the FaCT++ JNI library
-            if (System.getProperty("factpp.jni.path", "nope") == "nope") {
+            String jniPath = System.getProperty("factpp.jni.path", "nope");
+            if (jniPath.equals("nope")) {
                 System.loadLibrary("FaCTPlusPlusJNI");
             } else {
-                System.load(System.getProperty("factpp.jni.path"));
+                System.load(jniPath);
             }
             // init all the IDs used
             initMethodsFieldsIDs();

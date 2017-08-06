@@ -307,7 +307,7 @@ public class FaCTPlusPlusReasoner implements OWLReasoner,
 
     /**
      * Flushes the pending changes from the pending change list. The changes
-     * will be analysed to dermine which axioms have actually been added and
+     * will be analysed to determine which axioms have actually been added and
      * removed from the imports closure of the root ontology and then the
      * reasoner will be asked to handle these changes via the
      * {@link #handleChanges(java.util.Set, java.util.Set)} method.
@@ -2602,7 +2602,7 @@ public class FaCTPlusPlusReasoner implements OWLReasoner,
         return axiomsToSet(axioms);
     }
 
-    /**
+    /*
      * Save/load support
      */
     /**
