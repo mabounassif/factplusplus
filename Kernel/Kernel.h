@@ -1288,8 +1288,10 @@ public:
 	void getRelatedRoles ( const TIndividualExpr* I, NamesVector& Rs, bool data, bool needI );
 		/// set RESULT into set of J's such that R(I,J)
 	void getRoleFillers ( const TIndividualExpr* I, const TORoleExpr* R, IndividualSet& Result );
-		/// set RESULT into set of J's such that R(I,J)
+		/// @return true iff R(I,J) holds
 	bool isRelated ( const TIndividualExpr* I, const TORoleExpr* R, const TIndividualExpr* J );
+		/// @return true iff A(I,V) holds
+	bool isRelated ( const TIndividualExpr* I, const TDRoleExpr* A, const TDataValueExpr* V );
 
 		/// set RESULT into set of individuals such that they do have data roles R and S, and R op S
 	void getDataRelatedIndividuals ( TDRoleExpr* R, TDRoleExpr* S, int op, IndividualSet& Result );

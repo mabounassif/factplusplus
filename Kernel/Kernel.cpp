@@ -538,7 +538,7 @@ ReasoningKernel :: getRoleFillers ( const TIndividualExpr* I, const TORoleExpr* 
 		Result.push_back(const_cast<TIndividual*>(*p));
 }
 
-/// set RESULT into set of J's such that R(I,J)
+/// @return true iff R(I,J) holds
 bool
 ReasoningKernel :: isRelated ( const TIndividualExpr* I, const TORoleExpr* R, const TIndividualExpr* J )
 {
@@ -555,6 +555,14 @@ ReasoningKernel :: isRelated ( const TIndividualExpr* I, const TORoleExpr* R, co
 			return true;
 
 	return false;
+}
+
+/// @return true iff A(I,V) holds
+bool
+ReasoningKernel :: isRelated ( const TIndividualExpr* I, const TDRoleExpr* A, const TDataValueExpr* V )
+{
+	TDLConceptDataValue exists(A, V);
+	return isInstance(I, &exists);
 }
 
 //----------------------------------------------------------------------------------

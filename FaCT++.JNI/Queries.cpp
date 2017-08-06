@@ -709,13 +709,9 @@ JNIEXPORT jboolean JNICALL Java_uk_ac_manchester_cs_factplusplus_FaCTPlusPlus_ha
 	TRACE_ARG(env,obj,arg1);
 	TRACE_ARG(env,obj,arg2);
 	TRACE_ARG(env,obj,arg3);
-	Throw ( env, "FaCT++ Kernel: unsupported operation 'hasDataPropertyRelationship'" );
-	return NULL;
-#if 0
 	bool ret = false;
-	PROCESS_SIMPLE_QUERY ( ret=J->K->isRelated ( getROIndividualExpr(env,arg1), getRODRoleExpr(env,arg2), getROIndividualExpr(env,arg3) ) );
+	PROCESS_SIMPLE_QUERY ( ret=J->K->isRelated ( getROIndividualExpr(env,arg1), getRODRoleExpr(env,arg2), getRODataValueExpr(env,arg3) ) );
 	return ret;
-#endif
 }
 
 /*
