@@ -211,7 +211,7 @@ JNIEXPORT void JNICALL Java_uk_ac_manchester_cs_factplusplus_FaCTPlusPlus_startC
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_uk_ac_manchester_cs_factplusplus_FaCTPlusPlus_endChanges
-  (JNIEnv *, jobject)
+  (JNIEnv * env ATTR_UNUSED, jobject obj ATTR_UNUSED)
 {
 	TRACE_JNI("endChanges");
 	// do nothing
