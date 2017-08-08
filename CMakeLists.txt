@@ -12,6 +12,8 @@ if (NOT MSVC)
 	# Additional warnings (from GCC 6.2)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wpedantic -Wsuggest-override")
 else()
+	# Set exception handling in VC++
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
 	# Disable warning about treating int as bool in VC++
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4800")
 endif()
