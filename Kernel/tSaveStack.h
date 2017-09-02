@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *	Template stack for Saving/Restoring internal state of template parameter.
  *  Implemented as a growing array of pointers with more ops
  */
-template <class T>
+template <typename T>
 class TSaveStack: public growingArrayP<T>
 {
 public:		// interface

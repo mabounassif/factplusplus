@@ -131,7 +131,7 @@ public:		// interface
 }; // BCNN
 
 	/// branching context for the LE operations
-template<class T>
+template <typename T>
 class BCLE: public BranchingContext
 {
 public:		// types

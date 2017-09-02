@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // template class for stack with opportunity of search duplicate elements
 #include <vector>
 
-template <class T>
+template <typename T>
 class SearchableStack
 {
 protected:

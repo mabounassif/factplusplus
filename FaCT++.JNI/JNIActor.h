@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "tJNICache.h"
 
 /// class for acting with concept taxonomy
-template<class AccessPolicy>
+template <typename AccessPolicy>
 class JTaxonomyActor: public WalkerInterface
 {
 protected:	// types

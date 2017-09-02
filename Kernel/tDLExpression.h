@@ -374,7 +374,7 @@ public:		// interface
 //------------------------------------------------------------------
 ///	data expression argument (templated with the exact type)
 //------------------------------------------------------------------
-template<class TExpression>
+template <typename TExpression>
 class TDataExpressionArg
 {
 protected:	// members
@@ -394,7 +394,7 @@ public:		// interface
 //------------------------------------------------------------------
 ///	general n-argument expression
 //------------------------------------------------------------------
-template<class Argument>
+template <typename Argument>
 class TDLNAryExpression
 {
 public:		// types

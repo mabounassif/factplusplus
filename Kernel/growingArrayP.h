@@ -28,7 +28,7 @@ using std::size_t;
  *	Generic class for structures which creates elements (by pointers) and re-use
  *	them (does not delete things).  Derived types may add operations.
  */
-template<class T>
+template <typename T>
 class growingArrayP
 {
 protected:	// typedefs

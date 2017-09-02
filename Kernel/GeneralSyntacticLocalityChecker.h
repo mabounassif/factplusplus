@@ -33,7 +33,7 @@ protected:	// methods
 
 protected:	// methods
 		/// processing method for all Equivalent axioms; @return true if axiom is local
-	template<class Entity>
+	template <typename Entity>
 	bool processEquivalentAxiom ( const TDLNAryExpression<Entity>& axiom )
 	{
 		// 1 element => local
@@ -60,7 +60,7 @@ protected:	// methods
 		return true;
 	}
 		/// processing method for all Disjoint axioms; @return true if axiom is local
-	template<class Entity>
+	template <typename Entity>
 	bool processDisjointAxiom ( const TDLNAryExpression<Entity>& axiom )
 	{
 		// local iff at most 1 element is not bot-equiv

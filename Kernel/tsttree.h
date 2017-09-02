@@ -68,7 +68,7 @@ public:		// interface
 }; // TsTTree
 
 /// delete the whole tree
-template <class T>
+template <typename T>
 void deleteTree ( TsTTree<T>* t )
 {
 	if ( t )

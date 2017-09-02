@@ -44,7 +44,7 @@ protected:	// members
 	}; // BR
 protected:	// methods
 		/// array helper
-	template <class Argument>
+	template <typename Argument>
 	void printArray ( const TDLNAryExpression<Argument>& expr )
 	{
 		for ( typename TDLNAryExpression<Argument>::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )

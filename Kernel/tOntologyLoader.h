@@ -71,7 +71,7 @@ protected:	// methods
 		fpp_assert ( Expr != nullptr );	// FORNOW
 	}
 		/// prepare arguments for the [begin,end) interval
-	template<class Collection>
+	template <typename Collection>
 	void prepareArgList ( Collection argList )
 	{
 		ArgList.clear();

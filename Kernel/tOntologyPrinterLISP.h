@@ -38,7 +38,7 @@ protected:	// members
 
 protected:	// methods
 		/// helper to print several expressions in a row
-	template<class Expression>
+	template <typename Expression>
 	TLISPOntologyPrinter& operator << ( const TDLNAryExpression<Expression>& c )
 	{
 		if (printAxioms)

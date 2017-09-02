@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *  access (i.e. get value, increment and reset). This is useful when
  *  integral value used as a static var of some class
  */
-template<typename T>
+template <typename T>
 class TCounter
 {
 public:		// type interface
@@ -39,10 +39,10 @@ public:		// interface
 		/// init c'tor
 	explicit TCounter ( const IntType n ) : counter(n) {}
 		/// copy c'tor
-	template<typename U>
+	template <typename U>
 	TCounter ( const TCounter<U>& copy ) : counter(copy.counter) {}
 		/// assignment
-	template<typename U>
+	template <typename U>
 	TCounter& operator= ( const TCounter<U>& copy )
 	{
 		counter = copy.counter;

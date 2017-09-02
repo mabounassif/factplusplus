@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 typedef TDepSet DepSet;
 
 // common operations with the dep-set
-template <class O>
+template <typename O>
 inline O& operator << ( O& o, const DepSet& s )
 { return s.print(o); }
 

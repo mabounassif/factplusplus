@@ -68,7 +68,7 @@ public:		// interface
 		/// merge this element with ELEM; use Manager for this
 	TDepSetElement* merge ( TDepSetElement* elem );
 		/// Print given dep-set to a standard stream
-	template <class O>
+	template <typename O>
 	O& print ( O& o ) const
 	{
 		if ( Tail )	// print the rest of dep-set, then current element
@@ -83,7 +83,7 @@ public:		// interface
 }; // TDepSetElement
 
 // helper to simplify prints
-template <class O>
+template <typename O>
 inline O& operator << ( O& o, const TDepSetElement* element )
 {
 	return element->print(o);
@@ -257,7 +257,7 @@ public:		// interface
 	}
 
 		/// Print given dep-set to a standard stream
-	template <class O>
+	template <typename O>
 	O& print ( O& o ) const
 	{
 		if ( !empty() )

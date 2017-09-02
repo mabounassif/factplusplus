@@ -394,7 +394,7 @@ protected:	// methods
 //-----------------------------------------------------------------------------
 
 		/// build a construction in the form AND (\neg q_i)
-	template<class Iterator>
+	template <typename Iterator>
 	DLTree* buildDisjAux ( Iterator beg, Iterator end )
 	{
 		DLTree* t = createTop();
@@ -403,7 +403,7 @@ protected:	// methods
 		return t;
 	}
 		/// process a disjoint set [beg,end) in a usual manner
-	template<class Iterator>
+	template <typename Iterator>
 	void processDisjoint ( Iterator beg, Iterator end )
 	{
 		for ( Iterator i = beg; i < end; ++i )
@@ -691,7 +691,7 @@ protected:	// methods
 		/// creating taxonomy for given TBox; include individuals if necessary
 	void createTaxonomy ( bool needIndividuals );
 		/// distribute all elements in [begin,end) range wtr theif tags
-	template<class Iterator>
+	template <typename Iterator>
 	unsigned int fillArrays ( Iterator begin, Iterator end )
 	{
 		unsigned int n = 0;

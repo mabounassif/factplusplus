@@ -1436,7 +1436,7 @@ public:
 }; // EdgeCompare
 
 /// aux method to check whether edge ended to NODE should be added to EdgesToMerge
-template<class Iterator>
+template <typename Iterator>
 bool isNewEdge ( const DlCompletionTree* node, Iterator begin, Iterator end )
 {
 	for ( Iterator q = begin; q != end; ++q )

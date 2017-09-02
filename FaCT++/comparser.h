@@ -23,7 +23,7 @@ Foundation, 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include "comscanner.h"
 
 /// generic class for parsing with usage of scanner derived from CommonScanner
-template<class Scanner>
+template <typename Scanner>
 class CommonParser
 {
 protected:	// members

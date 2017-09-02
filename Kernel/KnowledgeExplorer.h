@@ -42,7 +42,7 @@ public:		// types
 
 protected:	// classes
 		/// class that maps named entity to a set of ENTITIES
-	template<class Entity>
+	template <typename Entity>
 	class EE2Map
 	{
 	public:		// type interface
@@ -98,7 +98,7 @@ protected:	// members
 
 protected:	// methods
 		/// adds an entity as a synonym to a map MAP
-	template<class Entity>
+	template <typename Entity>
 	void addE ( EE2Map<Entity>& map, const ClassifiableEntry* entry )
 	{
 		map.add(entry,entry);

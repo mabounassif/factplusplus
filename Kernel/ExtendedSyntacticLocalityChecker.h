@@ -275,7 +275,7 @@ protected:	// methods
 	}
 
 		/// helper for And
-	template<class C>
+	template <typename C>
 	int getAndValue ( const TDLNAryExpression<C>& expr )
 	{
 		// noUpperValue is a maximal element
@@ -286,7 +286,7 @@ protected:	// methods
 		return min;
 	}
 		/// helper for Or
-	template<class C>
+	template <typename C>
 	int getOrValue ( const TDLNAryExpression<C>& expr )
 	{
 		int sum = 0;
@@ -394,7 +394,7 @@ protected:	// methods
 	}
 
 		/// helper for And
-	template<class C>
+	template <typename C>
 	int getAndValue ( const TDLNAryExpression<C>& expr )
 	{
 		int sum = 0;
@@ -408,7 +408,7 @@ protected:	// methods
 		return sum;
 	}
 		/// helper for Or
-	template<class C>
+	template <typename C>
 	int getOrValue ( const TDLNAryExpression<C>& expr )
 	{
 		// noUpperValue is a maximal element
@@ -520,7 +520,7 @@ protected:	// methods
 
 		/// helper for And
 		// FIXME!! not done yet
-	template<class C>
+	template <typename C>
 	int getAndValue ( const TDLNAryExpression<C>& expr )
 	{
 		// return m - sumK, where
@@ -576,7 +576,7 @@ protected:	// methods
 		}
 	}
 		/// helper for Or
-	template<class C>
+	template <typename C>
 	int getOrValue ( const TDLNAryExpression<C>& expr )
 	{
 		int max = noLowerValue();
@@ -689,7 +689,7 @@ protected:	// methods
 	}
 
 		/// helper for And
-	template<class C>
+	template <typename C>
 	int getAndValue ( const TDLNAryExpression<C>& expr )
 	{
 		int max = noLowerValue();
@@ -704,7 +704,7 @@ protected:	// methods
 		return max;
 	}
 		/// helper for Or
-	template<class C>
+	template <typename C>
 	int getOrValue ( const TDLNAryExpression<C>& expr )
 	{
 		// return m - sumK, where

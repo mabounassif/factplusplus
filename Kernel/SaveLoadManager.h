@@ -36,7 +36,7 @@ class SaveLoadManager
 {
 protected:	// types
 		// maps pointers and numbers
-	template<class T>
+	template <typename T>
 	class PointerMap
 	{
 	protected:	// types

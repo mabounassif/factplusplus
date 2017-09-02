@@ -64,7 +64,7 @@ public:		// methods
 	void addDep ( const DepSet& d ) { depSet.add(d); }
 
 		/// print concept and a dep-set
-	template<class O>
+	template <typename O>
 	friend O& operator << ( O& o, const ConceptWDep& c ) { o << c.Concept << c.getDep(); return o; }
 }; // ConceptWDep
 

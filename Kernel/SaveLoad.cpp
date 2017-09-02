@@ -199,7 +199,7 @@ ReasoningKernel :: LoadKB ( SaveLoadManager& m )
 //----------------------------------------------------------
 
 /// Save all the objects in the collection
-template<class T>
+template <typename T>
 static void
 SaveTNECollection ( const TNECollection<T>& collection, SaveLoadManager& m, const std::set<const TNamedEntry*>& excluded )
 {
@@ -235,7 +235,7 @@ SaveTNECollection ( const TNECollection<T>& collection, SaveLoadManager& m, cons
 //		(*p)->Save(o);
 }
 /// Load all the objects into the collection
-template<class T>
+template <typename T>
 static void
 LoadTNECollection ( TNECollection<T>& collection, SaveLoadManager& m )
 {

@@ -93,7 +93,7 @@ public:		// interface
 		/// add told subsumer if doesn't already recorded
 	void addParentIfNew ( ClassifiableEntry* parent );
 		/// add all parents (with duplicates) from given container to current node
-	template<class Container>
+	template <typename Container>
 	void addParents ( const Container& parents )
 	{
 		for ( auto& parent: parents )
@@ -133,7 +133,7 @@ public:		// interface
 }; // ClassifiableEntry
 
 /// general RW resolving synonym operator
-template<class T>
+template <typename T>
 inline T*
 resolveSynonym ( T* p )
 {
@@ -141,7 +141,7 @@ resolveSynonym ( T* p )
 }
 
 /// general RO resolving synonym operator
-template<class T>
+template <typename T>
 inline const T*
 resolveSynonym ( const T* p )
 {

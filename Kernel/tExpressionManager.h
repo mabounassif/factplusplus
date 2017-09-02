@@ -113,7 +113,7 @@ protected:	// members
 
 protected:	// methods
 		/// record the reference; @return the argument
-	template<class T>
+	template <typename T>
 	T* record ( T* arg ) { RefRecorder.push_back(arg); return arg; }
 
 public:		// interface

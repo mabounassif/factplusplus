@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <vector>
 
 /// the implementation of the set with constant-time "in" check
-template<class T>
+template <typename T>
 class TFastSet
 {
 protected:	// internal types

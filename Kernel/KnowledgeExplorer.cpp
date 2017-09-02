@@ -50,7 +50,7 @@ KnowledgeExplorer :: KnowledgeExplorer ( const TBox* box, TExpressionManager* pE
 }
 
 /// @return true if the entry does not have correspondent entity
-template<class Entity>
+template <typename Entity>
 bool
 KnowledgeExplorer::EE2Map<Entity> :: check ( const TNamedEntry* e ) const
 {

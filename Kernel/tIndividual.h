@@ -124,7 +124,7 @@ public:		// interface
 	// related things
 
 		/// update told subsumers from the RELATED axioms in a given range
-	template<class Iterator>
+	template <typename Iterator>
 	void updateTold ( Iterator begin, Iterator end, RoleSSet& RolesProcessed )
 	{
 		for ( Iterator p = begin; p < end; ++p )

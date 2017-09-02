@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 /// Template class for the cache element. Assumes that new elements of a HEADTYPE
 /// are constructed using a single argument of a TAILTYPE. Uniqueness of a tails
 /// leads to the uniqueness of a constructed object
-template<class HeadType, class TailType>
+template <typename HeadType, typename TailType>
 class THeadTailCache
 {
 protected:	// types

@@ -100,7 +100,7 @@ void DLVertex :: sortEntry ( const DLDag& dag )
 
 /*
 // sortirovka vstavkami s minimumom (na budushhee)
-template<class T>
+template <typename T>
 inline void insertSortGuarded(T a[], long size) {
   T x;
   long i, j;

@@ -1097,7 +1097,7 @@ public:
 	// concept hierarchy
 
 		/// apply actor::apply() to all DIRECT super-concepts of [complex] C
-	template<class Actor>
+	template <typename Actor>
 	void getSupConcepts ( const TConceptExpr* C, bool direct, Actor& actor )
 	{
 		classifyKB();	// ensure KB is ready to answer the query
@@ -1110,7 +1110,7 @@ public:
 			tax->getRelativesInfo</*needCurrent=*/false, /*onlyDirect=*/false, /*upDirection=*/true> ( cachedVertex, actor );
 	}
 		/// apply actor::apply() to all DIRECT sub-concepts of [complex] C
-	template<class Actor>
+	template <typename Actor>
 	void getSubConcepts ( const TConceptExpr* C, bool direct, Actor& actor )
 	{
 		classifyKB();	// ensure KB is ready to answer the query
@@ -1123,7 +1123,7 @@ public:
 			tax->getRelativesInfo</*needCurrent=*/false, /*onlyDirect=*/false, /*upDirection=*/false> ( cachedVertex, actor );
 	}
 		/// apply actor::apply() to all synonyms of [complex] C
-	template<class Actor>
+	template <typename Actor>
 	void getEquivalentConcepts ( const TConceptExpr* C, Actor& actor )
 	{
 		classifyKB();	// ensure KB is ready to answer the query
@@ -1132,7 +1132,7 @@ public:
 		actor.apply(*cachedVertex);
 	}
 		/// apply actor::apply() to all named concepts disjoint with [complex] C
-	template<class Actor>
+	template <typename Actor>
 	void getDisjointConcepts ( const TConceptExpr* C, Actor& actor )
 	{
 		classifyKB();	// ensure KB is ready to answer the query
@@ -1146,7 +1146,7 @@ public:
 	// role hierarchy
 
 		/// apply actor::apply() to all DIRECT super-roles of [complex] R
-	template<class Actor>
+	template <typename Actor>
 	void getSupRoles ( const TRoleExpr* r, bool direct, Actor& actor )
 	{
 		preprocessKB();	// ensure KB is ready to answer the query
@@ -1159,7 +1159,7 @@ public:
 			tax->getRelativesInfo</*needCurrent=*/false, /*onlyDirect=*/false, /*upDirection=*/true> ( getTaxVertex(R), actor );
 	}
 		/// apply actor::apply() to all DIRECT sub-roles of [complex] R
-	template<class Actor>
+	template <typename Actor>
 	void getSubRoles ( const TRoleExpr* r, bool direct, Actor& actor )
 	{
 		preprocessKB();	// ensure KB is ready to answer the query
@@ -1172,7 +1172,7 @@ public:
 			tax->getRelativesInfo</*needCurrent=*/false, /*onlyDirect=*/false, /*upDirection=*/false> ( getTaxVertex(R), actor );
 	}
 		/// apply actor::apply() to all synonyms of [complex] R
-	template<class Actor>
+	template <typename Actor>
 	void getEquivalentRoles ( const TRoleExpr* r, Actor& actor )
 	{
 		preprocessKB();	// ensure KB is ready to answer the query
@@ -1184,7 +1184,7 @@ public:
 	// domain and range as a set of named concepts
 
 		/// apply actor::apply() to all DIRECT NC that are in the domain of [complex] object role R
-	template<class Actor>
+	template <typename Actor>
 	void getORoleDomain ( const TORoleExpr* r, bool direct, Actor& actor )
 	{
 		classifyKB();	// ensure KB is ready to answer the query
@@ -1197,7 +1197,7 @@ public:
 			tax->getRelativesInfo</*needCurrent=*/true, /*onlyDirect=*/false, /*upDirection=*/true> ( cachedVertex, actor );
 	}
 		/// apply actor::apply() to all DIRECT NC that are in the domain of data role R
-	template<class Actor>
+	template <typename Actor>
 	void getDRoleDomain ( const TDRoleExpr* r, bool direct, Actor& actor )
 	{
 		classifyKB();	// ensure KB is ready to answer the query
@@ -1210,14 +1210,14 @@ public:
 			tax->getRelativesInfo</*needCurrent=*/true, /*onlyDirect=*/false, /*upDirection=*/true> ( cachedVertex, actor );
 	}
 		/// apply actor::apply() to all DIRECT NC that are in the range of [complex] R
-	template<class Actor>
+	template <typename Actor>
 	void getRoleRange ( const TORoleExpr* r, bool direct, Actor& actor )
 		{ getORoleDomain ( getExpressionManager()->Inverse(r), direct, actor ); }
 
 	// instances
 
 		/// apply actor::apply() to all direct instances of given [complex] C
-	template<class Actor>
+	template <typename Actor>
 	void getDirectInstances ( const TConceptExpr* C, Actor& actor )
 	{
 		realiseKB();	// ensure KB is ready to answer the query
@@ -1238,7 +1238,7 @@ public:
 	}
 
 		/// apply actor::apply() to all instances of given [complex] C
-	template<class Actor>
+	template <typename Actor>
 	void getInstances ( const TConceptExpr* C, Actor& actor )
 	{	// FIXME!! check for Racer's/IS approach
 		realiseKB();	// ensure KB is ready to answer the query
@@ -1249,7 +1249,7 @@ public:
 	}
 
 		/// apply actor::apply() to all DIRECT concepts that are types of an individual I
-	template<class Actor>
+	template <typename Actor>
 	void getTypes ( const TIndividualExpr* I, bool direct, Actor& actor )
 	{
 		realiseKB();	// ensure KB is ready to answer the query
@@ -1262,7 +1262,7 @@ public:
 			tax->getRelativesInfo</*needCurrent=*/true, /*onlyDirect=*/false, /*upDirection=*/true> ( cachedVertex, actor );
 	}
 		/// apply actor::apply() to all synonyms of an individual I
-	template<class Actor>
+	template <typename Actor>
 	void getSameAs ( const TIndividualExpr* I, Actor& actor )
 	{
 		realiseKB();	// ensure KB is ready to answer the query

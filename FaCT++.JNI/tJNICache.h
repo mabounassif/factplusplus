@@ -206,7 +206,7 @@ public:		// members
 	jobject Axiom ( TDLAxiom* axiom ) { return retObject ( axiom, AxiomPointer ); }
 
 		/// create vector of Java objects defined by ID from given VEC
-	template<class T>
+	template <typename T>
 	jobjectArray buildArray ( const std::vector<T*>& vec, const TClassFieldMethodIDs& ID )
 	{
 		jobjectArray ret = env->NewObjectArray ( (jsize)vec.size(), ID.ClassID, nullptr );

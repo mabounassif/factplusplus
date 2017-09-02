@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *	template list for Saving/Restoring internal state (saving class is template parameter).
  *  template class should define empty/copy c'tors, member function level()
  */
-template <class T>
+template <typename T>
 class TSaveList
 {
 protected:	// internal types
