@@ -129,7 +129,7 @@ void DLConceptTaxonomy :: print ( std::ostream& o ) const
 
 	unsigned long n = ( nTries ? nTries : 1 );
 
-	o << nPositives << " (" << (unsigned long)(nPositives*100/n) << "%) successfull\n";
+	o << nPositives << " (" << nPositives*100/n << "%) successfull\n";
 	o << "Besides that " << nCachedPositive << " successfull and " << nCachedNegative
 	  << " unsuccessfull subsumption tests were cached\n";
 	if ( nSortedNegative )

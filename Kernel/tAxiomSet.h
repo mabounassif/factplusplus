@@ -153,8 +153,6 @@ public:		// interface
 		return ret;
 	}
 
-		/// print (not absorbed) GCIs
-	void Print ( std::ostream& o ) const;
 		/// print absorption statistics
 	void PrintStatistics ( void ) const;
 }; // TAxiomSet

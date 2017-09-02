@@ -43,7 +43,6 @@ checkDataRelation ( const DataTypeReasoner& Op1, const DataTypeReasoner& Op2, in
 	default:
 		throw new EFaCTPlusPlus("Illegal operation in checkDataRelation()");
 	}
-	return false;
 }
 
 static bool

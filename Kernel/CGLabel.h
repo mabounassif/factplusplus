@@ -141,7 +141,6 @@ public:		// interface
 				return getCCOffset(p);
 		// BP should appear in the label
 		fpp_unreachable();
-		return 0;
 	}
 
 	// check if node is labelled by given concept

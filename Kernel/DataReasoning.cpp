@@ -41,7 +41,6 @@ bool DataTypeReasoner :: addDataEntry ( BipolarPointer p, const DepSet& dep )
 		return false;
 	default:
 		fpp_unreachable();
-		return true;
 	}
 }
 

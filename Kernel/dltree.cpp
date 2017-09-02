@@ -331,7 +331,6 @@ const char* TokenName ( Token t )
 	case PROJFROM:	return "project_from";
 	default:		std::cerr << "token " << t << "has no name";
 					fpp_unreachable();
-					return nullptr;
 	};
 }
 

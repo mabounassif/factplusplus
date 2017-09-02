@@ -561,11 +561,10 @@ protected:	// methods
 		/// set told TOP concept whether necessary
 	void setToldTop ( void )
 	{
-		TConcept* top = const_cast<TConcept*>(pTop);
 		for ( c_iterator pc = c_begin(); pc != c_end(); ++pc )
-			(*pc)->setToldTop(top);
+			(*pc)->setToldTop(pTop);
 		for ( i_iterator pi = i_begin(); pi != i_end(); ++pi )
-			(*pi)->setToldTop(top);
+			(*pi)->setToldTop(pTop);
 	}
 		/// calculate TS depth for all concepts
 	void calculateTSDepth ( void )

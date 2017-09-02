@@ -458,7 +458,6 @@ TBox :: isReferenced ( TConcept* C, DLTree* tree, ConceptSet& processed ) const
 	default:	// just for safety: all possible options were checked
 		fpp_unreachable();
 	}
-	return false;
 }
 
 /// transform C [= E with C = D into GCIs

@@ -48,7 +48,6 @@ void modelCacheIan :: processConcept ( const DLVertex& cur, bool pos, bool det )
 		case dtDataValue:
 		case dtDataExpr:
 			fpp_unreachable();
-			break;
 
 		case dtNConcept:	// add concepts to Concepts
 		case dtPConcept:

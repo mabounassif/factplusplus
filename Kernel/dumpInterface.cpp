@@ -189,7 +189,6 @@ void TBox :: dumpExpression ( dumpInterface* dump, BipolarPointer p ) const
 	default:
 		std::cerr << "Error dumping vertex of type " << v.getTagName() << "(" << v.Type () << ")";
 		fpp_unreachable();
-		return;	// invalid value
 	}
 }
 

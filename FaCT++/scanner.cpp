@@ -130,7 +130,7 @@ LispToken TsScanner :: GetLex ( void )
 			return ID;
 		}
 
-		if ( isdigit ( c ) )	//number
+		if ( isdigit ( c ) )	// number
 		{
 			FillBuffer ( c );
 			return NUM;
@@ -140,9 +140,6 @@ LispToken TsScanner :: GetLex ( void )
 			FillBuffer ( c );
 			return ID;
 		}
-
-		// all alternates was checked => error
-		return BAD_LEX;
 	}
 	// read EOF - end of lex
 
