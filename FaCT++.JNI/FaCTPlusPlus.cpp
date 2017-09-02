@@ -47,7 +47,7 @@ JNIEXPORT void JNICALL Java_uk_ac_manchester_cs_factplusplus_FaCTPlusPlus_initMe
 {
 	KernelFID = env->GetFieldID ( cls, "KernelId", "J" );
 
-	if ( KernelFID == 0 )
+	if ( KernelFID == nullptr )
 	{
 		Throw ( env, "Can't get 'KernelId' field" );
 		return;

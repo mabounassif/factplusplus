@@ -41,7 +41,7 @@ public:
 		, reason(str)
 		{}
 		/// empty d'tor
-	virtual ~EFaCTPlusPlus ( void ) noexcept {}
+	~EFaCTPlusPlus ( void ) noexcept override = default;
 
 		/// reason
 	const char* what ( void ) const noexcept override { return reason; }

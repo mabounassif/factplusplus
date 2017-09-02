@@ -81,16 +81,17 @@ typedef const ReasoningKernel::TCGNode TCGNode;
 // class for easy dealing with Java strings
 class JString
 {
-private:	// prevent copy
-	JString ( const JString& );
-	JString& operator = ( const JString& );
-protected:
+private:
 	JNIEnv* env;
 	jstring str;
 	const char* buf;
+
 public:
-	JString ( JNIEnv* e, jstring s ) : env(e), str(s) { buf = env->GetStringUTFChars(str,0); }
-	~JString ( void ) { env->ReleaseStringUTFChars(str,buf); }
+	JString ( JNIEnv* e, jstring s ) : env(e), str(s) { buf = env->GetStringUTFChars(str, nullptr); }
+	// prevent copy
+	JString ( const JString& ) = delete;
+	JString& operator = ( const JString& ) = delete;
+	~JString ( void ) { env->ReleaseStringUTFChars(str, buf); }
 	const char* operator() ( void ) const { return buf; }
 }; // JString
 

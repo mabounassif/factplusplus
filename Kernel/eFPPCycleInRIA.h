@@ -43,7 +43,7 @@ public:		// interface
 		reason = str.c_str();
 	}
 		/// empty d'tor
-	virtual ~EFPPCycleInRIA ( void ) noexcept {}
+	~EFPPCycleInRIA ( void ) noexcept override = default;
 
 		/// access to the role
 	const char* getRoleName ( void ) const { return roleName.c_str(); }

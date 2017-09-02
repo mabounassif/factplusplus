@@ -64,7 +64,7 @@ public:		// interface
 		reason = str.c_str();
 	}
 		/// empty d'tor
-	virtual ~EFPPSaveLoad ( void ) noexcept {}
+	~EFPPSaveLoad ( void ) noexcept override = default;
 }; // EFppSaveLoad
 
 #endif

@@ -47,16 +47,16 @@ public:		// interface
 		/// c'tor: init class name
 	TClassFieldMethodIDs ( const char* arrayClassName )
 		: ArrayClassName(arrayClassName)
-		, ClassID(0)
-		, ArrayClassID(0)
-		, CtorID(0)
-		, NodeFID(0)
+		, ClassID(nullptr)
+		, ArrayClassID(nullptr)
+		, CtorID(nullptr)
+		, NodeFID(nullptr)
 		{}
 		/// init values by class name
 	void init ( JNIEnv* env )
 	{
 		jclass id = env->FindClass(ArrayClassName+1);
-		if ( id == 0 )
+		if ( id == nullptr )
 		{
 			Throw ( env, "Can't get class for Pointer" );
 			return;
@@ -64,7 +64,7 @@ public:		// interface
 		ClassID = reinterpret_cast<jclass>(env->NewGlobalRef(id));
 
 		id = env->FindClass(ArrayClassName);
-		if ( id == 0 )
+		if ( id == nullptr )
 		{
 			Throw ( env, "Can't get class for [Pointer" );
 			return;
@@ -72,14 +72,14 @@ public:		// interface
 		ArrayClassID = reinterpret_cast<jclass>(env->NewGlobalRef(id));
 
 		CtorID = env->GetMethodID ( ClassID, "<init>", "()V" );
-		if ( CtorID == 0 )
+		if ( CtorID == nullptr )
 		{
 			Throw ( env, "Can't get c'tor for Pointer" );
 			return;
 		}
 
 		NodeFID = env->GetFieldID ( ClassID, "node", "J" );
-		if ( NodeFID == 0 )
+		if ( NodeFID == nullptr )
 		{
 			Throw ( env, "Can't get 'node' field" );
 			return;
@@ -151,13 +151,13 @@ protected:	// methods
 		if ( unlikely(pointer == nullptr) )
 		{
 			Throw ( env, "Incorrect operand by FaCT++ Kernel" );
-			return (jobject)0;
+			return nullptr;
 		}
 
 		// create an object to return
 		jobject obj = env->NewObject ( ID.ClassID, ID.CtorID );
 
-		if ( unlikely(obj == 0) )
+		if ( unlikely(obj == nullptr) )
 			Throw ( env, "Can't create Pointer object" );
 		else	// set the return value
 			env->SetLongField ( obj, ID.NodeFID, (jlong)pointer );

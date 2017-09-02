@@ -37,33 +37,33 @@ public:
 	{
 		javaMonitor = env->NewGlobalRef(obj);
 		jclass cls = env->GetObjectClass(obj);
-		if ( cls == 0 )
+		if ( cls == nullptr )
 			Throw ( env, "Can't get class of ProgressMonitor object" );
 		sCS = env->GetMethodID ( cls, "setClassificationStarted", "(I)V" );
-		if ( sCS == 0 )
+		if ( sCS == nullptr )
 			Throw ( env, "Can't get method setClassificationStarted" );
 		nC = env->GetMethodID ( cls, "nextClass", "()V" );
-		if ( nC == 0 )
+		if ( nC == nullptr )
 			Throw ( env, "Can't get method nextClass" );
 		sF = env->GetMethodID ( cls, "setFinished", "()V" );
-		if ( sF == 0 )
+		if ( sF == nullptr )
 			Throw ( env, "Can't get method setFinished" );
 		iC = env->GetMethodID ( cls, "isCancelled", "()Z" );
-		if ( iC == 0 )
+		if ( iC == nullptr )
 			Throw ( env, "Can't get method isCancelled" );
 	}
 		/// d'tor: allow JRE to delete object
-	virtual ~JNIProgressMonitor ( void ) { env->DeleteGlobalRef(javaMonitor); }
+	~JNIProgressMonitor ( void ) override { env->DeleteGlobalRef(javaMonitor); }
 
 		/// informs about beginning of classification with number of concepts to be classified
-	virtual void setClassificationStarted ( unsigned int nConcepts ) override
+	void setClassificationStarted ( unsigned int nConcepts ) override
 		{ env->CallVoidMethod ( javaMonitor, sCS, nConcepts ); }
 		/// informs about beginning of classification of a given CONCEPT
-	virtual void nextClass ( void ) override { env->CallVoidMethod ( javaMonitor, nC ); }
+	void nextClass ( void ) override { env->CallVoidMethod ( javaMonitor, nC ); }
 		/// informs that the reasoning is done
-	virtual void setFinished ( void ) override { env->CallVoidMethod ( javaMonitor, sF ); }
+	void setFinished ( void ) override { env->CallVoidMethod ( javaMonitor, sF ); }
 		/// @return true iff reasoner have to be stopped
-	virtual bool isCancelled ( void ) override { return env->CallBooleanMethod ( javaMonitor, iC ); }
+	bool isCancelled ( void ) override { return env->CallBooleanMethod ( javaMonitor, iC ); }
 }; // JNIProgressMonitor
 
 #endif
