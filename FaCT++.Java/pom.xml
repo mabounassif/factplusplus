@@ -124,16 +124,16 @@
 							org.semanticweb.owlapi.*, uk.ac.manchester.cs.owl.owlapi.*,
 							com.google.common.collect, gnu.trove, gnu.trove.*</Import-Package>
 					</instructions>
-					<executions>
-						<execution>
-							<id>bundle-manifest</id>
-							<phase>install</phase>
-							<goals>
-								<goal>manifest</goal>
-							</goals>
-						</execution>
-					</executions>
 				</configuration>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>install</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- In the Compiler Plugin we specify the encoding and the compiler version. -->
