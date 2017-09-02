@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "globaldef.h"
 #include "BiPointer.h"
 #include "modelCacheInterface.h"
-#include "mergableLabel.h"	// for sort inferences
+#include "mergeableLabel.h"    // for sort inferences
 
 class DLDag;
 class TRole;
@@ -278,7 +278,7 @@ class DLVertexSort
 {
 protected:	// members
 		/// maximal depth, size and frequency of reference of the expression
-	mergableLabel Sort;
+	mergeableLabel Sort;
 
 public:		// interface
 		/// default c'tor
@@ -289,11 +289,11 @@ public:		// interface
 	// label access methods
 
 		/// get RW access to the label
-	mergableLabel& getSort ( void ) { return Sort; }
+	mergeableLabel& getSort ( void ) { return Sort; }
 		/// get RO access to the label
-	const mergableLabel& getSort ( void ) const { return Sort; }
+	const mergeableLabel& getSort ( void ) const { return Sort; }
 		/// merge local label to label LABEL
-	void merge ( mergableLabel& label ) { Sort.merge(label); }
+	void merge ( mergeableLabel& label ) { Sort.merge(label); }
 }; // DLVertexSort
 
 /// Class for normalised Concept Expressions

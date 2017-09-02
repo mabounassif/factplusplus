@@ -71,7 +71,7 @@ public:		// interface
 		/// update knowledge about nominals in the model after merging
 	void updateNominalStatus ( const modelCacheInterface* p ) { hasNominalNode |= p->hasNominalNode; }
 
-	// mergable part
+	// mergeable part
 
 		/// Check the model cache internal state.
 	virtual modelCacheState getState ( void ) const = 0;

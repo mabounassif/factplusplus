@@ -481,7 +481,7 @@ public:		// interface
 	void finiIR ( void );
 
 		/// check if P and Q are in IR; if so, put the clash-set to DEP
-	bool nonMergable ( const DlCompletionTree* p, const DlCompletionTree* q, DepSet& dep ) const;
+	bool nonMergeable ( const DlCompletionTree* p, const DlCompletionTree* q, DepSet& dep ) const;
 
 	//----------------------------------------------
 	// save/restore
@@ -528,9 +528,9 @@ public:		// interface
 
 #if defined(RKG_IR_IN_NODE_LABEL)
 inline bool
-DlCompletionGraph :: nonMergable ( const DlCompletionTree* p, const DlCompletionTree* q, DepSet& dep ) const
+DlCompletionGraph :: nonMergeable ( const DlCompletionTree* p, const DlCompletionTree* q, DepSet& dep ) const
 {
-	return p->nonMergable ( q, dep );
+	return p->nonMergeable ( q, dep );
 }
 
 inline void

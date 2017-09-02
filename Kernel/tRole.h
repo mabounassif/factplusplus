@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "eFPPCycleInRIA.h"
 
 #ifdef RKG_USE_SORTED_REASONING
-#	include "mergableLabel.h"
+#	include "mergeableLabel.h"
 #endif
 
 class TBox;
@@ -99,7 +99,7 @@ protected:	// members
 
 #ifdef RKG_USE_SORTED_REASONING
 		/// label of a domain (inverse role is used for a range label)
-	mergableLabel domLabel;
+	mergeableLabel domLabel;
 #endif
 
 	// for later filling
@@ -326,9 +326,9 @@ public:		// interface
 	// Sorted reasoning interface
 
 		/// get label of the role's domain
-	mergableLabel& getDomainLabel ( void ) { return domLabel; }
+	mergeableLabel& getDomainLabel ( void ) { return domLabel; }
 		/// get label of the role's range
-	mergableLabel& getRangeLabel ( void ) { return inverse()->getDomainLabel(); }
+	mergeableLabel& getRangeLabel ( void ) { return inverse()->getDomainLabel(); }
 		/// merge label of given role and all its super-roles
 	void mergeSupersDomain ( void );
 #endif

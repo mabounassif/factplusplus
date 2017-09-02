@@ -326,7 +326,7 @@ DlSatTester :: doCacheNode ( DlCompletionTree* node )
 		}
 	}
 
-	// all concepts in label are mergable; now try to add input arc
+	// all concepts in label are mergeable; now try to add input arc
 	newNodeEdges.clear();
 	newNodeEdges.initRolesFromArcs(node);
 	newNodeCache.merge(&newNodeEdges);

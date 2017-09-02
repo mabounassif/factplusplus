@@ -120,7 +120,7 @@ void DLDag :: determineSorts ( RoleMaster& ORM, RoleMaster& DRM )
 	unsigned int sum = 0;
 	for ( i = Heap.begin()+2; i < i_end; ++i )
 	{
-		mergableLabel& lab = (*i)->getSort();
+		mergeableLabel& lab = (*i)->getSort();
 		lab.resolve();
 		if ( lab.isSample() )
 			++sum;
@@ -129,7 +129,7 @@ void DLDag :: determineSorts ( RoleMaster& ORM, RoleMaster& DRM )
 	for ( p = ORM.begin(), p_end = ORM.end(); p < p_end; ++p )
 		if ( !(*p)->isSynonym() )
 		{
-			mergableLabel& lab = const_cast<TRole*>(*p)->getDomainLabel();
+			mergeableLabel& lab = const_cast<TRole*>(*p)->getDomainLabel();
 			lab.resolve();
 			if ( lab.isSample() )
 				++sum;
@@ -137,7 +137,7 @@ void DLDag :: determineSorts ( RoleMaster& ORM, RoleMaster& DRM )
 	for ( p = DRM.begin(), p_end = DRM.end(); p < p_end; ++p )
 		if ( !(*p)->isSynonym() )
 		{
-			mergableLabel& lab = const_cast<TRole*>(*p)->getDomainLabel();
+			mergeableLabel& lab = const_cast<TRole*>(*p)->getDomainLabel();
 			lab.resolve();
 			if ( lab.isSample() )
 				++sum;

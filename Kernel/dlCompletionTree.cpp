@@ -119,7 +119,7 @@ bool DlCompletionTree :: inIRwithC ( const ConceptWDep& C, DepSet& dep ) const
 }
 
 // check if the NODE's and current node's IR are labeled with the same level
-bool DlCompletionTree :: nonMergable ( const DlCompletionTree* node, DepSet& dep ) const
+bool DlCompletionTree :: nonMergeable ( const DlCompletionTree* node, DepSet& dep ) const
 {
 	if ( IR.empty() || node->IR.empty() )
 		return false;

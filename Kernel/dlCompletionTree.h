@@ -589,7 +589,7 @@ public:		// methods
 		return false;
 	}
 		/// check if the current node is in IR with NODE; if so, write the clash-set to DEP
-	bool nonMergable ( const DlCompletionTree* node, DepSet& dep ) const;
+	bool nonMergeable ( const DlCompletionTree* node, DepSet& dep ) const;
 		/// update IR of the current node with IR from NODE and additional dep-set; @return restorer
 	TRestorer* updateIR ( const DlCompletionTree* node, const DepSet& toAdd );
 #endif

@@ -56,7 +56,7 @@ public:		// interface
 		/// access to internal value
 	BipolarPointer getValue ( void ) const { return Singleton; }
 
-	// mergable part
+	// mergeable part
 
 		/// check whether two caches can be merged; @return state of "merged" model
 	modelCacheState canMerge ( const modelCacheInterface* cache ) const override

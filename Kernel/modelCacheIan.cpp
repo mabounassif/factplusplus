@@ -99,9 +99,9 @@ modelCacheState modelCacheIan :: canMerge ( const modelCacheInterface* cache ) c
 	// here both models are valid;
 
 	if ( auto cacheIan = dynamic_cast<const modelCacheIan*>(cache) )
-		return isMergableIan(cacheIan);
+		return isMergeableIan(cacheIan);
 	if ( auto cacheSingleton = dynamic_cast<const modelCacheSingleton*>(cache) )
-		return isMergableSingleton(cacheSingleton->getValue());
+		return isMergeableSingleton(cacheSingleton->getValue());
 	if ( dynamic_cast<const modelCacheConst*>(cache) )
 		return csValid;	// as we checked for the invalid
 	// something unexpected
@@ -109,7 +109,7 @@ modelCacheState modelCacheIan :: canMerge ( const modelCacheInterface* cache ) c
 }
 
 modelCacheState
-modelCacheIan :: isMergableSingleton ( BipolarPointer bp ) const
+modelCacheIan :: isMergeableSingleton ( BipolarPointer bp ) const
 {
 	fpp_assert ( isValid(bp) );
 	auto pos = isPositive(bp);
@@ -125,7 +125,7 @@ modelCacheIan :: isMergableSingleton ( BipolarPointer bp ) const
 	return csValid;
 }
 
-modelCacheState modelCacheIan :: isMergableIan ( const modelCacheIan* cache ) const
+modelCacheState modelCacheIan :: isMergeableIan ( const modelCacheIan* cache ) const
 {
 	if ( posDConcepts.intersects(cache->negDConcepts)
 		 || cache->posDConcepts.intersects(negDConcepts)
@@ -181,7 +181,7 @@ modelCacheState modelCacheIan :: merge ( const modelCacheInterface* cache )
 void
 modelCacheIan :: mergeSingleton ( BipolarPointer bp )
 {
-	modelCacheState newState = isMergableSingleton(bp);
+	modelCacheState newState = isMergeableSingleton(bp);
 
 	if ( newState != csValid )	// some clash occurred: adjust state
 		curState = mergeStatus ( getState(), newState );
@@ -194,7 +194,7 @@ void
 modelCacheIan :: mergeIan ( const modelCacheIan* cache )
 {
 	// setup curState
-	curState = isMergableIan(cache);
+	curState = isMergeableIan(cache);
 
 	// merge all sets:
 	posDConcepts |= cache->posDConcepts;

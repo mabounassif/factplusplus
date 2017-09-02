@@ -509,7 +509,7 @@ void TBox :: determineSorts ( void )
 	// simple rules needs the same treatment
 	for ( const auto& rule: SimpleRules )
 	{
-		mergableLabel& lab = DLHeap[rule->bpHead].getSort();
+		mergeableLabel& lab = DLHeap[rule->bpHead].getSort();
 		for ( const auto& atom: rule->Body )
 			DLHeap.merge ( lab, atom->pName );
 	}

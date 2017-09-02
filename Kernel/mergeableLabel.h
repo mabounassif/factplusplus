@@ -17,42 +17,42 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _MERGABLE_LABEL
-#define _MERGABLE_LABEL
+#ifndef MERGEABLE_LABEL_H
+#define MERGEABLE_LABEL_H
 
 /// implementation of labels that could be compared and merged to each other
-class mergableLabel
+class mergeableLabel
 {
 protected:	// members
 		/// sample for all equivalent labels
-	mergableLabel* pSample;
+	mergeableLabel* pSample;
 
 public:		// interface
 		/// empty c'tor
-	mergableLabel ( void ) : pSample(this) {}
+	mergeableLabel ( void ) : pSample(this) {}
 		/// copy c'tor
-	mergableLabel ( mergableLabel& p ) : pSample(p.resolve()) {}
+	mergeableLabel ( mergeableLabel& p ) : pSample(p.resolve()) {}
 		/// assignment
-	mergableLabel& operator = ( mergableLabel& p ) { pSample = p.resolve(); return *this; }
+	mergeableLabel& operator = ( mergeableLabel& p ) { pSample = p.resolve(); return *this; }
 		/// d'tor (does nothing)
-	~mergableLabel ( void ) {}
+	~mergeableLabel ( void ) {}
 
 	// general interface
 
 		/// are 2 labels equal; works only for normalised labels
-	bool operator == ( const mergableLabel& p ) const { return (pSample == p.pSample); }
+	bool operator == ( const mergeableLabel& p ) const { return (pSample == p.pSample); }
 		/// are 2 labels different; works only for normalised labels
-	bool operator != ( const mergableLabel& p ) const { return (pSample != p.pSample); }
+	bool operator != ( const mergeableLabel& p ) const { return (pSample != p.pSample); }
 		/// make 2 labels equal
-	void merge ( mergableLabel& p )
+	void merge ( mergeableLabel& p )
 	{
-		mergableLabel* sample = p.resolve();
+		mergeableLabel* sample = p.resolve();
 		resolve();
 		if ( pSample != sample )
 			pSample->pSample = sample;
 	}
 		/// make label's depth <= 2; @return sample of the label
-	mergableLabel* resolve ( void )
+	mergeableLabel* resolve ( void )
 	{
 		// check if current node is itself sample
 		if ( !isSample() )
@@ -62,6 +62,6 @@ public:		// interface
 	}
 		/// is given label a sample label
 	bool isSample ( void ) const { return (pSample == this); }
-}; // mergableLabel
+}; // mergeableLabel
 
 #endif

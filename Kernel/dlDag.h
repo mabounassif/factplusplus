@@ -274,7 +274,7 @@ public:		// interface
 
 #ifdef RKG_USE_SORTED_REASONING
 		/// merge two given DAG entries
-	void merge ( mergableLabel& ml, BipolarPointer p )
+	void merge ( mergeableLabel& ml, BipolarPointer p )
 	{
 		if ( p != bpINVALID && p != bpTOP && p != bpBOTTOM )
 			(*this)[p].merge(ml);

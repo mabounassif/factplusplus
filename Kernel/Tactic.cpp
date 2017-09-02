@@ -993,7 +993,7 @@ bool DlSatTester :: commonTacticBodyLE ( const DLVertex& cur )	// for <=nR.C con
 
 		DepSet dep;	// empty dep-set
 		// fast check for FROM =/= TO
-		if ( CGraph.nonMergable ( from, to, dep ) )
+		if ( CGraph.nonMergeable ( from, to, dep ) )
 		{
 			// need this for merging two nominal nodes
 			dep.add(fromArc->getDep());
@@ -1172,7 +1172,7 @@ DlSatTester :: processTopRoleLE ( const DLVertex& cur )	// for <=nR.C concepts
 
 		DepSet dep;	// empty dep-set
 		// fast check for FROM =/= TO
-		if ( CGraph.nonMergable ( from, to, dep ) )
+		if ( CGraph.nonMergeable ( from, to, dep ) )
 		{
 			// add dep-set from labels
 			if ( C == bpTOP )	// dep-set is known now
@@ -1380,7 +1380,7 @@ bool DlSatTester :: Merge ( DlCompletionTree* from, DlCompletionTree* to, const 
 
 	// can't merge 2 nodes which are in inequality relation
 	DepSet dep(depF);
-	if ( CGraph.nonMergable ( from, to, dep ) )
+	if ( CGraph.nonMergeable ( from, to, dep ) )
 	{
 		setClashSet(dep);
 		return true;

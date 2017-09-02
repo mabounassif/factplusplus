@@ -123,9 +123,9 @@ protected:	// methods
 	// merge support
 
 		/// implementation of merging with Singleton cache type
-	modelCacheState isMergableSingleton ( BipolarPointer bp ) const;
+	modelCacheState isMergeableSingleton ( BipolarPointer bp ) const;
 		/// implementation of merging with Ian's cache type
-	modelCacheState isMergableIan ( const modelCacheIan* p ) const;
+	modelCacheState isMergeableIan ( const modelCacheIan* p ) const;
 		/// actual merge with a singleton cache
 	void mergeSingleton ( BipolarPointer bp );
 		/// actual merge with an Ian's cache

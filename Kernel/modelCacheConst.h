@@ -55,7 +55,7 @@ public:
 		/// get the value of the constant
 	bool getConst ( void ) const { return isTop; }
 
-	// mergable part
+	// mergeable part
 
 		/// check whether two caches can be merged; @return state of "merged" model
 	modelCacheState canMerge ( const modelCacheInterface* cache ) const override

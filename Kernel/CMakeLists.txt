@@ -77,7 +77,7 @@ set(SOURCE_FILES
 	logging.h
 	LogicFeature.cpp
 	LogicFeature.h
-	mergableLabel.h
+	mergeableLabel.h
 	modelCacheConst.h
 	modelCacheIan.cpp
 	modelCacheIan.h
