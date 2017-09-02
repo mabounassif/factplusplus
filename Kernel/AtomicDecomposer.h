@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 class ProgressIndicatorInterface;
 
-/// atomical ontology structure
+/// atomic ontology structure
 class AOStructure
 {
 public:		// types
@@ -77,7 +77,7 @@ public:		// interface
 	size_t size ( void ) const { return Atoms.size(); }
 }; // AOStructure
 
-/// atomical decomposer of the ontology
+/// atomic decomposer of the ontology
 class AtomicDecomposer
 {
 protected:	// members
@@ -122,7 +122,7 @@ public:		// interface
 		/// set progress indicator to be PI
 	void setProgressIndicator ( ProgressIndicatorInterface* pi ) { PI = pi; }
 		/// get number of performed locality checks
-	unsigned long long getLocChekNumber ( void ) const { return pModularizer->getNChecks(); }
+	unsigned long long getLocCheckNumber(void) const { return pModularizer->getNChecks(); }
 }; // AtomicDecomposer
 
 #endif

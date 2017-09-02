@@ -33,7 +33,7 @@ bool TaxonomyVertex :: removeLink ( bool upDirection, TaxonomyVertex* p )
 	// for all neighbours of current vertex...
 	auto& neighbours = neigh(upDirection);
 	auto exists = std::find(neighbours.begin(), neighbours.end(), p);
-	// Vertex P is not a negighbour -- nothing to do
+	// Vertex P is not a neighbour -- nothing to do
 	if ( exists == neighbours.end() )
 		return false;
 	// replace P with the last entry

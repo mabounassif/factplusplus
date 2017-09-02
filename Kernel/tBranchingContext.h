@@ -36,7 +36,7 @@ public:		// members
 	size_t pUsedIndex, nUsedIndex;
 		/// size of a session GCIs vector
 	size_t SGsize;
-		/// dependences for branching clashes
+		/// dependencies for branching clashes
 	DepSet branchDep;
 
 public:		// interface

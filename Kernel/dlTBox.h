@@ -260,7 +260,7 @@ protected:	// members
 	bool useBackjumping;
 		/// whether or not check blocking status as late as possible
 	bool useLazyBlocking;
-		/// flag for switching between Anywhere and Ancestor blockings
+		/// flag for switching between Anywhere and Ancestor blocking
 	bool useAnywhereBlocking;
 		/// flag to use caching during completion tree construction
 	bool useNodeCache;
@@ -436,7 +436,7 @@ protected:	// methods
 	}
 		/// create node for AND expression T
 	BipolarPointer and2dag ( const DLTree* t );
-		/// add elements of T to and-like vertex V; @return true if clash occures
+		/// add elements of T to and-like vertex V; @return true if clash occurs
 	bool fillANDVertex ( DLVertex* v, const DLTree* t );
 		/// create forall node for data role
 	BipolarPointer dataForall2dag ( const TRole* R, BipolarPointer C )
@@ -689,7 +689,7 @@ protected:	// methods
 	void setNameSigMap ( NameSigMap* p ) { pName2Sig = p; }
 		/// creating taxonomy for given TBox; include individuals if necessary
 	void createTaxonomy ( bool needIndividuals );
-		/// distribute all elements in [begin,end) range wtr theif tags
+		/// partition all elements in [begin,end) range wtr their tags
 	template <typename Iterator>
 	unsigned int fillArrays ( Iterator begin, Iterator end )
 	{

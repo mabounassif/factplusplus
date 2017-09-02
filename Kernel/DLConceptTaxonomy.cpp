@@ -129,9 +129,9 @@ void DLConceptTaxonomy :: print ( std::ostream& o ) const
 
 	unsigned long n = ( nTries ? nTries : 1 );
 
-	o << nPositives << " (" << nPositives*100/n << "%) successfull\n";
-	o << "Besides that " << nCachedPositive << " successfull and " << nCachedNegative
-	  << " unsuccessfull subsumption tests were cached\n";
+	o << nPositives << " (" << nPositives*100/n << "%) successful\n";
+	o << "Besides that " << nCachedPositive << " successful and " << nCachedNegative
+	  << " unsuccessful subsumption tests were cached\n";
 	if ( nSortedNegative )
 		o << "Sorted reasoning deals with " << nSortedNegative << " non-subsumptions\n";
 	if ( nModuleNegative )
@@ -163,7 +163,7 @@ DLConceptTaxonomy :: searchBaader ( TaxonomyVertex* cur )
 			noPosSucc = false;
 		}
 
-	// in case current node is unchecked (no BOTTOM node) -- check it explicitely
+	// in case current node is unchecked (no BOTTOM node) -- check it explicitly
 	if ( !isValued(cur) )
 		setValue ( cur, testSubsumption(cur) );
 
@@ -222,7 +222,7 @@ bool DLConceptTaxonomy :: propagateUp ( void )
 	TaxonomyVertex::iterator p = Current->begin(/*upDirection=*/true), p_end = Current->end(/*upDirection=*/true);
 	fpp_assert ( p != p_end );	// there is at least one parent (TOP)
 
-	TaxVertexVec aux;	// aux set for the verteces in ...
+	TaxVertexVec aux;	// aux set for the vertices in ...
 	nCommon = 1;	// number of common parents
 	clearCommon();
 

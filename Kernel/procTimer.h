@@ -74,7 +74,7 @@ inline float TsProcTimer :: calcDelta ( void ) const
 {
 	clock_t finishTime = clock();
 
-	// calculate difference between cuttent time and start time
+	// calculate difference between current time and start time
 	float realProcTime = float(finishTime>=startTime ?
 		finishTime-startTime :
 		((clock_t)-1)-startTime+finishTime ) / CLOCKS_PER_SEC;

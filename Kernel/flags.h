@@ -31,7 +31,7 @@ private:	// members
 		/// variable to keep all the flags
 	IntType flags;
 
-protected:	// methods for flags maintainance
+protected:	// methods for flags maintenance
 		/// get given flag value
 	bool getFlag ( IntType mask ) const { return (flags & mask) != 0; }
 		/// set given flag to 1

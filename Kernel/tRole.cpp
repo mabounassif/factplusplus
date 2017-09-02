@@ -290,7 +290,7 @@ void TRole :: initTopFunc ( void )
 	if ( isRealTopFunc() )	// TF already set up -- nothing to do
 		return;
 
-	if ( isTopFunc() )		// sefl-proclaimed TF but not real -- need to be updated
+	if ( isTopFunc() )		// self-proclaimed TF but not real -- need to be updated
 		TopFunc.clear();
 
 	// register all real TFs

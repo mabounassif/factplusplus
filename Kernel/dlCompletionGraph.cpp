@@ -186,7 +186,7 @@ void DlCompletionGraph :: Print ( std::ostream& o )
 	const_iterator p = begin(), p_end = end();
 	unsigned int i = 1;	// node id
 
-	// mark all nominals as already printed: they full subtries will be output with a nominal cloud
+	// mark all nominals as already printed: they full subtrees will be output with a nominal cloud
 	for ( ++p; p < p_end && (*p)->isNominalNode(); ++p, ++i )
 		CGPFlag[i] = true;
 

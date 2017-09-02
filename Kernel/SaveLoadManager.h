@@ -207,7 +207,7 @@ public:		// methods
 	TNamedEntry* loadEntry ( void ) { return neMap.getP(loadUInt()); }
 		/// load Entity pointer
 	TNamedEntity* loadEntity ( void ) { return eMap.getP(loadUInt()); }
-		/// load Vetrex pointer
+		/// load Vertex pointer
 	TaxonomyVertex* loadVertex ( void ) { return tvMap.getP(loadUInt()); }
 }; // SaveLoadManager
 

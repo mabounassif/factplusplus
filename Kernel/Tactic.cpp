@@ -35,7 +35,7 @@ do { if (unlikely(expr)) return true; } while(0)
   *
   * Each tactic returns:
   * - true		- if expansion of CUR lead to clash
-  * - false		- overwise
+  * - false		- otherwise
   *
   ******************************************************************************/
 
@@ -578,7 +578,7 @@ bool DlSatTester :: commonTacticBodySome ( const DLVertex& cur )	// for ER.C con
 
 			DlCompletionTree* succ = functionalArc->getArcEnd();
 
-			// add current dependences (from processed entry)
+			// add current dependencies (from processed entry)
 			DepSet newDep = { functionalArc->getDep() };
 			newDep.add(dep);
 
@@ -1029,7 +1029,7 @@ bool DlSatTester :: commonTacticBodyLE ( const DLVertex& cur )	// for <=nR.C con
 		curDep.add(fromArc->getDep());
 
 		switchResult ( Merge ( from, to, curDep ) );
-		// it might be the case (see bIssue28) that after the merge there is an R-neigbour
+		// it might be the case (see bIssue28) that after the merge there is an R-neighbour
 		// that have neither C or ~C in its label (it was far in the nominal cloud)
 		if ( C != bpTOP )
 			switchResult ( commonTacticBodyChoose ( R, C ) );
@@ -1557,7 +1557,7 @@ bool DlSatTester :: commonTacticBodyNN ( const DLVertex& cur )	// NN-rule
 
 	// check whether we did all possible tries
 	if ( bcNN->noMoreNNOptions(cur.getNumberLE()) )
-	{	// set global clashset to cummulative one from previous branch failures
+	{	// set global clashset to cumulative one from previous branch failures
 		useBranchDep();
 		return true;
 	}
@@ -1658,7 +1658,7 @@ bool DlSatTester :: commonTacticBodyProj ( const TRole* R, BipolarPointer C, con
 	if ( curNode->isLabelledBy(inverse(C)) )
 		return false;
 
-	// checkProjection() might change curNode's edge vector and thusly invalidate iterators
+	// checkProjection() might change curNode's edge vector and thus invalidate iterators
 	DlCompletionTree::const_edge_iterator p = curNode->begin(), p_end = curNode->end();
 
 	for ( std::ptrdiff_t i = 0, n = p_end - p; i < n; ++i )

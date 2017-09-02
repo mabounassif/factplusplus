@@ -42,7 +42,7 @@ DlCompletionTree :: isTSuccLabelled ( const TRole* R, BipolarPointer C ) const
 	return nullptr;
 }
 
-/// check if transitive R-predcessor of the NODE labelled with C; skip FROM node
+/// check if transitive R-predecessor of the NODE labelled with C; skip FROM node
 const DlCompletionTree*
 DlCompletionTree :: isTPredLabelled ( const TRole* R, BipolarPointer C, const DlCompletionTree* from ) const
 {

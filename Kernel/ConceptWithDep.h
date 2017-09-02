@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "BiPointer.h"
 #include "DepSet.h"
 
-/// Concept with dependence: bipolar pointer to concept and a set of dependences
+/// Concept with dependence: bipolar pointer to concept and a set of dependencies
 class ConceptWDep
 {
 protected:	// members
@@ -58,7 +58,7 @@ public:		// methods
 		/// get dep-set part
 	const DepSet& getDep ( void ) const { return depSet; }
 
-		/// create CWD with inversed body and the same dep-set
+		/// create CWD with inverted body and the same dep-set
 	ConceptWDep inverse ( void ) const { return ConceptWDep ( ::inverse(Concept), getDep () ); }
 		/// add dep-set to a CWD
 	void addDep ( const DepSet& d ) { depSet.add(d); }

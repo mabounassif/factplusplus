@@ -61,7 +61,7 @@ DlSatTester :: DlSatTester ( TBox& tbox )
 	resetSessionFlags();
 }
 
-/// prerpare Nominal Reasoner to a new job
+/// prepare Nominal Reasoner to a new job
 void
 DlSatTester :: prepareReasoner ( void )
 {

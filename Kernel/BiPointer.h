@@ -40,4 +40,4 @@ const BipolarPointer bpINVALID = 0;
 const BipolarPointer bpTOP = 1;
 const BipolarPointer bpBOTTOM = -1;
 
-#endif // _BIPOINTER_H
+#endif // BIPOINTER_H

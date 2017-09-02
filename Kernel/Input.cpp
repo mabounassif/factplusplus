@@ -258,7 +258,7 @@ TBox :: addNonprimitiveDefinition ( TConcept* C, DLTree* rhs )
 bool
 TBox :: switchToNonprimitive ( TConcept* C, DLTree* rhs )
 {
-	// make sure that we avoid making an individual equals to smth-else
+	// make sure that we avoid making an individual equals to something else
 	TConcept* D = resolveSynonym(getCI(rhs));
 	if ( C->isSingleton() && D && !D->isSingleton() )
 		return false;

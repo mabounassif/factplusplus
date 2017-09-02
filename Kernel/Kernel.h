@@ -577,7 +577,7 @@ public:		// interface
 	bool isKBPreprocessed ( void ) const { return getStatus() >= kbCChecked; }
 		/// return classification status of KB
 	bool isKBClassified ( void ) const { return getStatus() >= kbClassified; }
-		/// return realistion status of KB
+		/// return realisation status of KB
 	bool isKBRealised ( void ) const { return getStatus() >= kbRealised; }
 
 		/// set Progress monitor to control the classification process
@@ -630,7 +630,7 @@ public:		// interface
 	}
 		/// choose whether TExpr cache should be ignored
 	void setIgnoreExprCache ( bool value ) { ignoreExprCache = value; }
-		/// choose whether inctemental reasoning should be used
+		/// choose whether incremental reasoning should be used
 	void setUseIncrementalReasoning ( bool value ) { useIncrementalReasoning = value; }
 		/// set the signature of the expression translator
 	void setSignature ( const TSignature* sig ) { if ( pET != nullptr ) pET->setSignature(sig); }

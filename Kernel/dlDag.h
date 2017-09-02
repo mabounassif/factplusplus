@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 class RoleMaster;
 class TConcept;
 
-/** DAG of DL Verteces used in FaCT++ reasoner */
+/** DAG of DL Vertices used in FaCT++ reasoner */
 class DLDag
 {
 public:		// types

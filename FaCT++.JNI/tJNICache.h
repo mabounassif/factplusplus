@@ -130,7 +130,7 @@ protected:	// methods
 		NodePointer.init(env);
 		AxiomPointer.init(env);
 	}
-		/// finilise all the IDs
+		/// finalise all the IDs
 	void fini ( void )
 	{
 		ClassPointer.fini(env);

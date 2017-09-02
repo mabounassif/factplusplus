@@ -321,7 +321,7 @@ public:		// visitor implementation
 	void visit ( const TDLConceptDataValue& expr ) override { value = getAllNoneUpper(isBotEquivalent(expr.getDR())); }
 
 	// object role expressions
-	// TODO!! properly process roles that are isTop/isot
+	// TODO!! properly process roles that are isTop/isBot
 	void visit ( const TDLObjectRoleTop& ) override { value = noUpperValue(); }
 	void visit ( const TDLObjectRoleBottom& ) override { value = anyUpperValue(); }
 	void visit ( const TDLObjectRoleInverse& expr ) override { value = getUpperBoundDirect(expr.getOR()); }

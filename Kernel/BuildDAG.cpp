@@ -160,7 +160,7 @@ void TBox :: addConceptToHeap ( TConcept* pConcept )
 	// translate body of a concept
 	if ( pConcept->Description != nullptr )	// complex concept
 		desc = tree2dag(pConcept->Description);
-	else			// only primivive concepts here
+	else			// only primitive concepts here
 		fpp_assert ( pConcept->isPrimitive() );
 
 	// update concept's entry
@@ -269,7 +269,7 @@ BipolarPointer TBox :: forall2dag ( const TRole* R, BipolarPointer C )
 	if ( !DLHeap.isLast(ret) )
 		return ret;		// all sub-roles were added before
 
-	// have appropriate concepts for all the automata states
+	// have appropriate concepts for all the automaton states
 	for ( unsigned int i = 1; i < R->getAutomaton().size(); ++i )
 		DLHeap.directAddAndCache ( new DLVertex ( dtForall, i, R, C ) );
 

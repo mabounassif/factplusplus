@@ -29,7 +29,7 @@ class JTaxonomyActor: public WalkerInterface
 protected:	// types
 		/// array of TNEs
 	typedef std::vector<TExpr*> SynVector;
-		/// array for a set of taxonomy verteces
+		/// array for a set of taxonomy vertices
 	typedef std::vector<SynVector> SetOfNodes;
 
 protected:	// members

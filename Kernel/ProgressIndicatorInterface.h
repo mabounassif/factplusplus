@@ -30,7 +30,7 @@ protected:	// members
 	unsigned long uCurrent;
 
 protected:	// methods
-		/// initial exposure method: can be overriden in derived classes
+		/// initial exposure method: can be overridden in derived classes
 	virtual void initExposure ( void ) {}
 		/// indicate current value somehow
 	virtual void expose ( void ) = 0;

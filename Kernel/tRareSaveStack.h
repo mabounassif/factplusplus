@@ -49,7 +49,7 @@ public:		// interface
 
 	// stack operations
 
-		/// inclrement current level
+		/// increment current level
 	void incLevel ( void ) { ++curLevel; }
 		/// check that stack is empty
 	bool empty ( void ) const { return Base.empty(); }

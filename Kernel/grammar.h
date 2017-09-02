@@ -45,7 +45,7 @@ enum Token {
 	LE,
 //	ATMOST = LE,
 
-	// common metasymbols
+	// common meta-symbols
 	DATAEXPR,	// any data expression: data value, [constrained] datatype
 
 	// more precise ID's discretion

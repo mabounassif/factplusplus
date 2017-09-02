@@ -70,7 +70,7 @@ public:		// interface
 		/// d'tor: remove link from the list
 	~AccumulatedStatistic ( void )
 	{
-		// all statistic elements are deleted in the inversed creation order
+		// all statistic elements are deleted in the inverted creation order
 		if ( root == this )
 		{
 			root = next;
@@ -232,7 +232,7 @@ protected:	// members
 	TFastSet<unsigned int> pUsed, nUsed;
 		/// cache for testing whether it's possible to non-expand newly created node
 	modelCacheIan newNodeCache;
-		/// auxilliary cache that is built from the edges of newly created node
+		/// auxiliary cache that is built from the edges of newly created node
 	modelCacheIan newNodeEdges;
 
 		/// GCI-related KB flags
@@ -500,7 +500,7 @@ protected:	// methods
 	 *
 	 * Each tactic returns:
 	 * - true		- if expansion of CUR lead to clash
-	 * - false		- overwise
+	 * - false		- otherwise
 	 */
 
 		/// main calling method; wrapper for Body
@@ -541,7 +541,7 @@ protected:	// methods
 	bool commonTacticBodyFunc ( const DLVertex& cur );
 		/// expansion rule for at-most restriction in nominal node (NN-rule)
 	bool commonTacticBodyNN ( const DLVertex& cur );
-		/// expansion rule for auxilliary projection-construction
+		/// expansion rule for auxiliary projection-construction
 	bool commonTacticBodyProj ( const TRole* R, BipolarPointer C, const TRole* ProjR );
 
 		/// expansion rule for the functional restriction with top role
@@ -582,7 +582,7 @@ protected:	// methods
 	void applyAllGeneratingRules ( DlCompletionTree* node );
 		/// add C and T_G with given DEP-set to a NODE; @return DONE/CLASH
 	bool initNewNode ( DlCompletionTree* node, const DepSet& dep, BipolarPointer C );
-		/// apply reflexive roles to the (newly created) NODE with apropriate DEP; @return true for clash
+		/// apply reflexive roles to the (newly created) NODE with appropriate DEP; @return true for clash
 	bool applyReflexiveRoles ( DlCompletionTree* node, const DepSet& dep );
 		/// add necessary concepts to the NODE of the new edge, labelled with R
 	bool initHeadOfNewEdge ( DlCompletionTree* node, const TRole* R, const DepSet& dep, const char* reason );
@@ -721,14 +721,14 @@ protected:	// methods
 	void findCLabelledNodes ( BipolarPointer C, DepSet& Dep );
 		/// aux method that checks whether clash occurs during the merge of labels
 	bool checkMergeClash ( const CGLabel& from, const CGLabel& to, const DepSet& dep, unsigned int nodeId );
-		/// aux method that merge FROM label to the TO node with an appropriadte dep-set
+		/// aux method that merge FROM label to the TO node with an appropriate dep-set
 	bool mergeLabels ( const CGLabel& from, DlCompletionTree* to, const DepSet& dep );
 		/// merge FROM node into TO node with additional dep-set DEPF
 	bool Merge ( DlCompletionTree* from, DlCompletionTree* to, const DepSet& depF );
-		/// check whether clash occures due to new edge from FROM to TO labelled with R
+		/// check whether clash occurs due to new edge from FROM to TO labelled with R
 	bool checkDisjointRoleClash ( const DlCompletionTree* from, const DlCompletionTree* to,
 										 const TRole* R, const DepSet& dep );
-		/// check whether clash occures EDGE to TO labelled with S disjoint with R
+		/// check whether clash occurs EDGE to TO labelled with S disjoint with R
 	bool checkDisjointRoleClash ( const DlCompletionTreeArc* edge, const DlCompletionTree* to,
 								  const TRole* R, const DepSet& dep )
 	{	// clash found
@@ -874,7 +874,7 @@ protected:	// methods
 	const DepSet& getBranchDep ( void ) const { return bContext->branchDep; }
 		/// prepare cumulative dep-set to usage
 	void prepareBranchDep ( void ) { getBranchDep().restrict(getCurLevel()); }
-		/// prepare cumulative dep-set and copy itto general clash-set
+		/// prepare cumulative dep-set and copy it to the general clash-set
 	void useBranchDep ( void )
 	{
 		prepareBranchDep();
@@ -904,7 +904,7 @@ public:		// rule's support
 	bool applicable ( const TBox::TSimpleRule& rule );
 
 public:		// blocking support
-		/// re-apply all the relevant expantion rules to a given unblocked NODE
+		/// re-apply all the relevant expansion rules to a given unblocked NODE
 	void repeatUnblockedNode ( DlCompletionTree* node, bool direct )
 	{
 		if ( direct )		// not blocked -- clear blocked cache
@@ -1120,7 +1120,7 @@ inline bool DlSatTester :: commonTacticBodyAll ( const DLVertex& cur )
 }
 
 //-----------------------------------------------------------------------------
-//--		implemenation of reasoner-related parts of TBox
+//--		implementation of reasoner-related parts of TBox
 //-----------------------------------------------------------------------------
 
 inline const modelCacheInterface*

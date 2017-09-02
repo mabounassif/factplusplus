@@ -57,7 +57,7 @@ TBox :: TBox ( const ifOptionSet* Options, const std::string& TopORoleName, cons
 	, testTimeout(0)
 	, useNodeCache(true)
 	, useSortedReasoning(true)
-	, isLikeGALEN(false)	// just in case Relevance part would be omited
+	, isLikeGALEN(false)	// just in case Relevance part would be omitted
 	, isLikeWINE(false)
 	, Consistent(true)
 	, preprocTime(0)

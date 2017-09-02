@@ -60,7 +60,7 @@ public:		// interface
 
 		return pSample;
 	}
-		/// is given lable a sample label
+		/// is given label a sample label
 	bool isSample ( void ) const { return (pSample == this); }
 }; // mergableLabel
 

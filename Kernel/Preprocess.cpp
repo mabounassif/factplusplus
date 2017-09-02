@@ -232,7 +232,7 @@ void TBox :: transformToldCycles ( void )
 			checkToldCycle(*pi);
 	clearRelevanceInfo();
 
-	// update nymber of synonyms
+	// update number of synonyms
 	nSynonyms = countSynonyms() - nSynonyms;
 	if ( nSynonyms )
 	{
@@ -367,7 +367,7 @@ TBox :: transformSingletonHierarchy ( void )
 			}
 	} while ( changed );
 
-	// update nymber of synonyms
+	// update number of synonyms
 	nSynonyms = countSynonyms() - nSynonyms;
 	if ( nSynonyms )
 		replaceAllSynonyms();
@@ -470,7 +470,7 @@ TBox :: TransformExtraSubsumptions ( void )
 	{
 		TConcept* C = p->first;
 		DLTree* E = p->second;
-		// for every C here we have C = D in KB and C [= E in ExtraDefs
+		// for every C here we have C = D in KB and C [= E in ExtraConceptDefs
 		// if there is a cycle for C
 		if ( isCyclic(C) )
 		{

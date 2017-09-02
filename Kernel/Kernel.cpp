@@ -603,7 +603,7 @@ ReasoningKernel :: getAtomDependents ( unsigned int index ) const
 unsigned long long
 ReasoningKernel :: getLocCheckNumber ( void ) const
 {
-	return AD->getLocChekNumber();
+	return AD->getLocCheckNumber();
 }
 
 OntologyBasedModularizer*
@@ -731,7 +731,7 @@ bool ReasoningKernel :: initOptions ( void )
 	if ( KernelOptions.RegisterOption (
 		"alwaysPreferEquals",
 		"Option 'alwaysPreferEquals' allows user to enforce usage of C=D definition instead of C[=D "
-		"during absorption, even if implication appeares earlier in stream of axioms.",
+		"during absorption, even if implication appeared earlier in stream of axioms.",
 		ifOption::iotBool,
 		"true"
 		) )
@@ -755,7 +755,7 @@ bool ReasoningKernel :: initOptions ( void )
 		"Option 'orSortSub' define the sorting order of OR vertices in the DAG used in subsumption tests. "
 		"Option has form of string 'Mop', where 'M' is a sort field (could be 'D' for depth, 'S' for size, 'F' "
 		"for frequency, and '0' for no sorting), 'o' is a order field (could be 'a' for ascending and 'd' "
-		"for descending mode), and 'p' is a preference field (could be 'p' for preferencing non-generating "
+		"for descending mode), and 'p' is a preference field (could be 'p' for preferring non-generating "
 		"rules and 'n' for not doing so).",
 		ifOption::iotText,
 		"0"

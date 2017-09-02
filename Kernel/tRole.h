@@ -253,7 +253,7 @@ public:		// interface
 	bool isFunctionalityKnown ( void ) const { return Functionality.isKnown(); }
 		/// check if the role is topmost-functional (ie, has no functional ancestors).
 	bool isTopFunc ( void ) const
-	{	// check for emptyness is here due to case where a role is determined to be a functional
+	{	// check for emptiness is here due to case where a role is determined to be a functional
 		return !TopFunc.empty() && *TopFunc.begin() == this;
 	}
 		/// set role functionality value

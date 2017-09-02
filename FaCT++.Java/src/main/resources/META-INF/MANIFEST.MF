@@ -49,7 +49,7 @@ Bundle-NativeCode: lib/native/64bit/FaCTPlusPlusJNI.dll;
  osname=Windows NT ;
  osname=WinNT ;
  osname=WindowsCE ;
- osname=Winndows CE ;
+ osname=Windows CE ;
  osname=WinCE ;
  osname=WindowsXP ;
  osname=Windows XP ;

@@ -1277,7 +1277,7 @@ public class FaCTPlusPlus {
      *        pointer
      * @param d
      *        pointer
-     * @return true if subsuned
+     * @return true if subsumed
      * @throws FaCTPlusPlusException
      *         fact exception
      */

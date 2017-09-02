@@ -254,7 +254,7 @@ public:		// interface
 
 	// BP part
 
-		/// get pointer to DAG entry correstonding to the data entry
+		/// get pointer to DAG entry corresponding to the data entry
 	BipolarPointer getBP ( void ) const { return pName; }
 		/// set DAG index of the data entry
 	void setBP ( BipolarPointer p ) { pName = p; }

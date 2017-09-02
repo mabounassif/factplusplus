@@ -169,7 +169,7 @@ protected:	// methods
 	//--	General classification methods
 	//-----------------------------------------------------------------
 
-		/// Common pre- and post-action to setup 2-phase algo
+		/// Common pre- and post-action to setup 2-phase algorithm
 	void performClassification ( void );
 		/// fills parents and children of Current using tunable general approach
 	void generalTwoPhaseClassification ( void );

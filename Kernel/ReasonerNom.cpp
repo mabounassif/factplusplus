@@ -34,7 +34,7 @@ NominalReasoner :: initNominalVector ( void )
 			Nominals.push_back(*pi);
 }
 
-/// prerpare Nominal Reasoner to a new job
+/// prepare Nominal Reasoner to a new job
 void
 NominalReasoner :: prepareReasoner ( void )
 {
@@ -150,7 +150,7 @@ NominalReasoner :: initRelatedNominals ( const TRelated* rel )
 	DlCompletionTreeArc* pA =
 		CGraph.addRoleLabel ( from, to, /*isPredEdge=*/false, R, dep );
 
-	// return OK iff setup new enge didn't lead to clash
+	// return OK iff setup new edge didn't lead to clash
 	// do NOT need to re-check anything: nothing was processed yet
 	return setupEdge ( pA, dep );
 }

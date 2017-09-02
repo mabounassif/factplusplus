@@ -41,7 +41,7 @@ public:		// type definitions
 protected:	// members
 		/// link to taxonomy entry for current entry
 	TaxonomyVertex* taxVertex;
-		/// links to 'told subsumers' (entryes that are direct super-entries for current)
+		/// links to 'told subsumers' (entries that are direct super-entries for current)
 	linkSet toldSubsumers;
 		/// pointer to synonym (entry which contains whole information the same as current)
 	ClassifiableEntry* pSynonym;
@@ -86,7 +86,7 @@ public:		// interface
 		/// RO access to the told subsumers
 	const linkSet& told ( void ) const { return toldSubsumers; }
 
-		/// check whether entry ihas any TS
+		/// check whether the entry has any TS
 	bool hasToldSubsumers ( void ) const { return !toldSubsumers.empty(); }
 		/// add told subsumer of entry (duplications possible)
 	void addParent ( ClassifiableEntry* parent ) { toldSubsumers.push_back (parent); }

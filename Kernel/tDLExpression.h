@@ -372,7 +372,7 @@ public:		// interface
 }; // TDataRoleArg
 
 //------------------------------------------------------------------
-///	data expression argument (templated with the exact type)
+///	data expression argument (parameterised with the exact type)
 //------------------------------------------------------------------
 template <typename TExpression>
 class TDataExpressionArg

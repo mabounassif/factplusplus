@@ -193,7 +193,7 @@ void DLLispParser :: parseCommand ( void )
 		{
 			TIndividualExpr* id1 = getSingleton();
 			TORoleExpr* R = getORoleExpression();
-			MustBe (ID);	// second indiv.
+			MustBe (ID);	// second individual
 			TIndividualExpr* id2 = getSingleton();
 			Kernel->relatedTo ( id1, R, id2 );
 		}

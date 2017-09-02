@@ -89,7 +89,7 @@ public:
 }; // NominalReasoner
 
 //-----------------------------------------------------------------------------
-//--	implemenation of nominal reasoner-related parts of TBox
+//--	implementation of nominal reasoner-related parts of TBox
 //-----------------------------------------------------------------------------
 
 inline void

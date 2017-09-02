@@ -220,13 +220,13 @@ DLDag :: computeVertexFreq ( BipolarPointer p )
 	if ( v.isVisited(pos) )	// avoid cycles
 		return;
 
-	v.incFreqValue(pos);	// increment frequence of current vertex
+	v.incFreqValue(pos);	// increment frequency of current vertex
 	v.setVisited(pos);
 
 	if ( v.omitStat(pos) )	// negation of primitive concept-like
 		return;
 
-	// increment frequence of all subvertex
+	// increment frequency of all sub-vertices
 	if ( isValid(v.getC()) )
 		computeVertexFreq ( v.getC(), pos );
 	else
@@ -267,7 +267,7 @@ DLDag :: gatherStatistic ( void )
 //  and 'l' means "always last" entries, like looped concepts
 
 // note that the statistics is given for disjunctions,
-// so inversed (neg) values are taken into account
+// so inverted (neg) values are taken into account
 bool DLDag :: less ( BipolarPointer p1, BipolarPointer p2 ) const
 {
 #	ifdef ENABLE_CHECKING

@@ -111,7 +111,7 @@ void LogicFeatures :: writeState ( void ) const
 	LL << "top role expressions\nKB contains ";
 	if ( !hasSomeAll () )
 		LL << "NO ";
-	LL << "quanitifier(s)\nKB contains ";
+	LL << "quantifier(s)\nKB contains ";
 	if ( !hasFunctionalRestriction () )
 		LL << "NO ";
 	LL << "functional restriction(s)\nKB contains ";

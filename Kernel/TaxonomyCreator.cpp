@@ -67,7 +67,7 @@ void TaxonomyCreator :: generalTwoPhaseClassification ( void )
 	if ( needTopDown() )
 	{
 		setValue ( pTax->getTopVertex(), true );		// C [= TOP == true
-		setValue ( pTax->getBottomVertex(), false );	// C [= BOT == false (catched by UNSAT)
+		setValue ( pTax->getBottomVertex(), false );	// C [= BOT == false (caught by UNSAT)
 		upDirection = false;
 		runTopDown();
 	}
@@ -145,7 +145,7 @@ TaxonomyCreator :: propagateTrueUp ( TaxonomyVertex* node )
 		return;
 	}
 
-	// overwise -- value it...
+	// otherwise -- value it...
 	setValue ( node, true );
 
 	// ... and value all parents
@@ -164,7 +164,7 @@ TaxonomyCreator :: propagateFalseDown ( TaxonomyVertex* node )
 		return;
 	}
 
-	// overwise -- value it...
+	// otherwise -- value it...
 	setValue ( node, false );
 
 	// ... and value all children

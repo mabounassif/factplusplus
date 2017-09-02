@@ -31,9 +31,9 @@ void printBlockingStat1 ( std::ostream& o )
 	if ( *tries == 0 )	// nothing to inform
 		return;
 
-	// else -- print precize statistics
+	// else -- print precise statistics
 	o << "\nThere were made " << *tries << " blocking tests of which "
-	  << nSucc << " successfull.\nBlocking rules failure statistic:";
+	  << nSucc << " successful.\nBlocking rules failure statistic:";
 	for ( int i = 0; i < 6; ++i )
 	{
 		if ( i != 0 )
@@ -433,7 +433,7 @@ void DlCompletionGraph :: findDAnywhereBlocker ( DlCompletionTree* node )
 	{
 		const DlCompletionTree* p = *q;
 
-		// node was merge to smth with the larger ID or is cached or blocked itself
+		// node was merge to the one with the larger ID or is cached or blocked itself
 		if ( p->isBlocked() || p->isPBlocked() || p->isNominalNode() || p->isCached() )
 			continue;
 

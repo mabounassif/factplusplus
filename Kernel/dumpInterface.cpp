@@ -95,7 +95,7 @@ void TBox :: dumpRole ( dumpInterface* dump, const TRole* p ) const
 		}
 	}
 
-	// dump transitility
+	// dump transitivity
 	if ( p->isTransitive() )
 	{
 		dump->startAx (diTransitiveR);

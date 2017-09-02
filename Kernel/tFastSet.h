@@ -42,7 +42,7 @@ public:		// type interface
 protected:	// members
 		/// values to be kept in the set
 	ValArray Value;
-		/// indeces of the used values
+		/// indices of the used values
 	std::vector<indexType> Index;
 
 protected:	// methods

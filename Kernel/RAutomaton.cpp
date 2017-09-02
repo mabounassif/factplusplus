@@ -109,7 +109,7 @@ RoleAutomaton :: initMap ( size_t RASize, RAState fRA )
 	// new state in the automaton
 	RAState newState = (RAState) size()-1;
 
-	// fill initial state; it is always known in the automata
+	// fill initial state; it is always known in the automaton
 	map[0] = iRA;
 
 	// fills the final state; if it is not known -- adjust newState
@@ -140,7 +140,7 @@ RoleAutomaton :: addToChain ( const RoleAutomaton& RA, bool oSafe, RAState fRA )
 {
 	fpp_assert(!isCompleted());
 	bool needFinalTrans = ( fRA < size() && !RA.isOSafe() );
-	// we can skip transition if chaining automata are i- and o-safe
+	// we can skip transition if chaining automaton are i- and o-safe
 	if ( !oSafe && !RA.isISafe() )
 		nextChainTransition(newState());
 	// check whether we need an output transition

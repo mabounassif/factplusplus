@@ -251,7 +251,7 @@ public:		// interface
 	void setInCycle ( bool pos ) { if ( pos ) inCyclePos = true; else inCycleNeg = true; }
 }; // DLVertexTagDFS
 
-/// usage of the particulare vertex during reasoning
+/// usage of the particular vertex during reasoning
 class DLVertexUsage
 {
 public:		// types
@@ -259,7 +259,7 @@ public:		// types
 	typedef unsigned long UsageType;
 
 protected:	// members
-		/// usage statistic for pos- and neg occurences of a vertex
+		/// usage statistic for pos- and neg occurrences of a vertex
 	UsageType posUsage, negUsage;
 
 public:		// interface
@@ -397,7 +397,7 @@ public:		// interface
 	}
 		/// compare 2 CEs
 	bool operator != ( const DLVertex& v ) const { return !(*this == v); }
-		/// return C for concepts/quantifiers/NR verteces
+		/// return C for concepts/quantifiers/NR vertices
 	BipolarPointer getC ( void ) const { return C; }
 		/// return N for the (<= n R) vertex
 	unsigned int getNumberLE ( void ) const { return n; }
@@ -416,9 +416,9 @@ public:		// interface
 		/// return pointer before the first concept name of the entry; WARNING!! works for AND only
 	const_reverse_iterator rend ( void ) const { return Child.rend(); }
 
-		/// return pointer to Role for the Role-like verteces
+		/// return pointer to Role for the Role-like vertices
 	const TRole* getRole ( void ) const { return Role; }
-		/// return pointer to Projection Role for the Projection verteces
+		/// return pointer to Projection Role for the Projection vertices
 	const TRole* getProjRole ( void ) const { return ProjRole; }
 		/// get (RW) TConcept for concept-like fields
 	TNamedEntry* getConcept ( void ) { return Concept; }
