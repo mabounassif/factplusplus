@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 		TExpr* expr=getROExpr(env,arg);	\
 		const TNamedEntity* ne = dynamic_cast<const TNamedEntity*>(expr); \
 		if ( ne != nullptr ) std::cerr << ne->getName();	\
-		std::cerr << "\n"; } while(0)
+		std::cerr << "\n"; } while (false)
 #	define TRACE_STR(env,str) std::cerr << " string arg " << JString(env,str)() << "\n"
 #else
 #	define TRACE_JNI(func) (void)NULL

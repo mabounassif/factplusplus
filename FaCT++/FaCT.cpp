@@ -136,7 +136,7 @@ getConceptName ( ReasoningKernel::TConceptExpr* C )
 		{ std::cerr << "WARNING: KB is incorrect: " 		\
 			<< cir.what() << ". Query is NOT processed\n";	\
 		  exit(0); }					\
-	} while (0)
+	} while (false)
 
 static void
 testSat ( const std::string& names, ReasoningKernel& Kernel )

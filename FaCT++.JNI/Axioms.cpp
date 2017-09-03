@@ -45,7 +45,7 @@ extern "C" {
 	{ Throw ( J->env, fpp.what() ); }			\
 	catch ( const std::exception& ex )			\
 	{ Throw ( J->env, ex.what() ); }			\
-		return nullptr;  } while(false)
+		return nullptr;  } while (false)
 //	Throw ( env, "FaCT++ Kernel: error during " Name " processing" )
 
 /*

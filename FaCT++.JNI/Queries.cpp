@@ -47,7 +47,7 @@ extern "C" {
 	catch ( const EFaCTPlusPlus& fpp )			\
 	{ Throw ( env, fpp.what() ); }				\
 	catch ( const std::exception& ex )			\
-	{ Throw ( env, ex.what() ); }  } while(false)
+	{ Throw ( env, ex.what() ); }  } while (false)
 
 #define PROCESS_QUERY(Action) ASK_START Action; ASK_END
 #define PROCESS_SIMPLE_QUERY(Action) ASK_START TJNICache* J = getJ(env,obj); Action; ASK_END

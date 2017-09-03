@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "logging.h"
 
 #define switchResult(expr)\
-do { if (unlikely(expr)) return true; } while(0)
+do { if (unlikely(expr)) return true; } while (false)
 
 /********************************************************************************
   * Tactics section;
@@ -971,7 +971,7 @@ bool DlSatTester :: commonTacticBodyLE ( const DLVertex& cur )	// for <=nR.C con
 	}
 
 	// we need to repeat merge until there will be necessary amount of edges
-	while (1)
+	for (;;)
 	{
 		if ( isFirstBranchCall() )
 			if ( initLEProcessing(cur) )
@@ -1152,7 +1152,7 @@ DlSatTester :: processTopRoleLE ( const DLVertex& cur )	// for <=nR.C concepts
 	}
 
 	// we need to repeat merge until there will be necessary amount of edges
-	while (1)
+	for (;;)
 	{
 		if ( isFirstBranchCall() )
 			if ( initTopLEProcessing(cur) )

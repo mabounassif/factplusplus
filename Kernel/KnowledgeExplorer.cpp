@@ -90,7 +90,7 @@ KnowledgeExplorer :: addC ( const TDLExpression* e )
 }
 
 // couldn't get it as a method, so
-#define addAll(S) do { Roles.insert(S.begin(),S.end()); } while(0)
+#define addAll(S) do { Roles.insert(S.begin(),S.end()); } while (false)
 
 const KnowledgeExplorer::TCGRoleSet&
 KnowledgeExplorer :: getDataRoles ( const TCGNode* node, bool onlyDet )
