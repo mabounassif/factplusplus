@@ -37,12 +37,6 @@ public:		// external classes
 	public:
 			/// states for simple-, complex- and extra labels
 		CWDArray::SaveState sc, cc;
-
-	public:		// interface
-			/// empty c'tor
-		SaveState ( void ) {}
-			/// copy c'tor
-		SaveState ( const SaveState& ss ) : sc(ss.sc), cc(ss.cc) {}
 	}; // SaveState
 
 protected:	// members
@@ -71,13 +65,6 @@ public:	// static methods
 public:		// interface
 		/// init newly created node
 	void init ( void );
-		/// empty c'tor
-	CGLabel ( void ) {}
-		/// copy c'tor
-	CGLabel ( const CGLabel& copy ) : scLabel(copy.scLabel), ccLabel(copy.ccLabel) {}
-		/// assignment
-	CGLabel& operator = ( const CGLabel& copy )
-		{ scLabel = copy.scLabel; ccLabel = copy.ccLabel; return *this; }
 
 	//----------------------------------------------
 	// Label access interface

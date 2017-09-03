@@ -43,7 +43,7 @@ protected:	// members
 		/// heap itself
 	baseType Base;
 		/// index of the next unallocated entry
-	size_t last;
+	size_t last = 0;
 
 protected:	// methods
 		/// tunable method for creating new object
@@ -76,7 +76,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor: make SIZE objects
-	explicit growingArrayP ( size_t size = 0 ) : Base(size), last(0)
+	explicit growingArrayP ( size_t size = 0 ) : Base(size)
 	{
 		initArray ( Base.begin(), Base.end() );
 	}

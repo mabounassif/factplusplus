@@ -76,9 +76,9 @@ protected:	// members
 		/// output stream
 	std::ostream& o;
 		/// indentation level
-	unsigned int indent;
+	unsigned int indent = 0;
 		/// print every axiom on a single line (need for sorting, for example)
-	bool oneliner;
+	bool oneliner = false;
 
 protected:	// methods
 		/// write necessary amount of TABs
@@ -90,7 +90,7 @@ protected:	// methods
 
 public:		// interface
 		/// the only c'tor -- empty
-	explicit dumpInterface ( std::ostream& oo ) : o(oo), indent(0), oneliner(false) {}
+	explicit dumpInterface ( std::ostream& oo ) : o(oo) {}
 		/// empty d'tor
 	virtual ~dumpInterface() = default;
 

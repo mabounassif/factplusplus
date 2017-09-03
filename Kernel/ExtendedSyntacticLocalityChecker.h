@@ -48,13 +48,13 @@ protected:	// members
 	const char* name;
 #endif
 
-	UpperBoundDirectEvaluator* UBD;
-	LowerBoundDirectEvaluator* LBD;
-	UpperBoundComplementEvaluator* UBC;
-	LowerBoundComplementEvaluator* LBC;
+	UpperBoundDirectEvaluator* UBD = nullptr;
+	LowerBoundDirectEvaluator* LBD = nullptr;
+	UpperBoundComplementEvaluator* UBC = nullptr;
+	LowerBoundComplementEvaluator* LBC = nullptr;
 
 		/// keep the value here
-	int value;
+	int value = 0;
 
 protected:	// methods to
 		/// main method to use
@@ -171,7 +171,6 @@ public:		// interface
 		, lp(std::cout)
 		, name(n)
 #	endif
-		, value(0)
 		{}
 
 		/// set all other evaluators

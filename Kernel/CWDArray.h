@@ -48,13 +48,7 @@ public:		// type interface
 	{
 	public:
 			/// end pointer of the label
-		size_t ep;
-
-	public:		// interface
-			/// empty c'tor
-		SaveState ( void ) : ep(0) {}
-			/// copy c'tor
-		SaveState ( const SaveState& node ) : ep(node.ep) {}
+		size_t ep = 0;
 	}; // SaveState
 
 		/// const iterator on label
@@ -71,13 +65,6 @@ public:		// interface
 		Base.reserve(size);
 		Base.clear();
 	}
-		/// empty c'tor
-	CWDArray ( void ) {}
-		/// copy c'tor
-	CWDArray ( const CWDArray& copy ) : Base(copy.Base) {}
-		/// assignment
-	CWDArray& operator = ( const CWDArray& copy ) { Base = copy.Base; return *this; }
-
 
 	//----------------------------------------------
 	// Label access interface

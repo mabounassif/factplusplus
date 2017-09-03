@@ -82,15 +82,15 @@ class AtomicDecomposer
 {
 protected:	// members
 		/// atomic structure to build
-	AOStructure* AOS;
+	AOStructure* AOS = nullptr;
 		/// modularizer to build modules
-	TModularizer* pModularizer;
+	TModularizer* pModularizer = nullptr;
 		/// tautologies of the ontology
 	AxiomVec Tautologies;
 		/// progress indicator
-	ProgressIndicatorInterface* PI;
+	ProgressIndicatorInterface* PI = nullptr;
 		/// fake atom that represents the whole ontology
-	TOntologyAtom* rootAtom;
+	TOntologyAtom* rootAtom = nullptr;
 		/// module type for current AOS creation
 	ModuleType type;
 
@@ -110,7 +110,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor; M would NOT be deleted in d'tor
-	explicit AtomicDecomposer ( TModularizer* m ) : AOS(nullptr), pModularizer(m), PI(nullptr), rootAtom(nullptr) {}
+	explicit AtomicDecomposer ( TModularizer* m ) : pModularizer(m) {}
 		/// d'tor
 	~AtomicDecomposer();
 

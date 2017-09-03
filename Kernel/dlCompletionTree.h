@@ -66,18 +66,11 @@ protected:	// internal classes
 			/// saving status of the label
 		CGLabel::SaveState lab;
 			/// curLevel of the Node structure
-		unsigned int curLevel;
+		unsigned int curLevel = 0;
 			/// amount of neighbours
-		size_t nNeighbours;
+		size_t nNeighbours = 0;
 
 	public:		// interface
-			/// empty c'tor
-		SaveState ( void ) {}
-			/// copy c'tor
-		SaveState ( const SaveState& ) = default;
-			/// assignment
-		SaveState& operator = ( const SaveState& ) = default;
-
 			/// get level of a saved node
 		unsigned int level ( void ) const { return curLevel; }
 	}; // SaveState
@@ -148,17 +141,17 @@ protected:	// members
 		/// pointer to last saved node
 	TSaveList<SaveState> saves;
 		/// ID of node (used in print)
-	unsigned int id;
+	unsigned int id = 0;
 		/// concept that init the newly created node
-	BipolarPointer Init;
+	BipolarPointer Init = bpINVALID;
 
 		/// blocker of a node
-	const DlCompletionTree* Blocker;
+	const DlCompletionTree* Blocker = nullptr;
 		/// dep-set for Purge op
 	DepSet pDep;
 
 	// save state information
-	unsigned int curLevel;	// current level
+	unsigned int curLevel = 0;	// current level
 		/// level of a nominal node; 0 means blockable one
 	CTNominalLevel nominalLevel;
 

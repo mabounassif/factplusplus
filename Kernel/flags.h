@@ -29,7 +29,7 @@ public:		// types
 
 private:	// members
 		/// variable to keep all the flags
-	IntType flags;
+	IntType flags = 0;
 
 protected:	// methods for flags maintenance
 		/// get given flag value
@@ -48,13 +48,13 @@ protected:	// methods for flags maintenance
 
 public:		// interface
 		/// empty c'tor
-	Flags ( void ) : flags(0) {}
+	Flags() = default;
 		/// init flags with given set of flags
 	explicit Flags ( IntType init ) : flags(init) {}
 		/// copy c'tor
-	Flags ( const Flags& f ) : flags(f.flags) {}
+	Flags ( const Flags& f ) = default;
 		/// assignment
-	Flags& operator = ( const Flags& f ) { flags = f.flags; return *this; }
+	Flags& operator = ( const Flags& f ) = default;
 		/// empty d'tor
 	virtual ~Flags() = default;
 }; // Flags

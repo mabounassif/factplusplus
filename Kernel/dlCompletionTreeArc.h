@@ -37,15 +37,15 @@ public:		// external type definitions
 
 protected:	// members
 		/// pointer to "to" node
-	DlCompletionTree* Node;
+	DlCompletionTree* Node = nullptr;
 		/// role, labelling given arc
-	const TRole* Role;
+	const TRole* Role = nullptr;
 		/// dep-set of the arc
 	DepSet depSet;
 		/// pointer to reverse arc
-	DlCompletionTreeArc* Reverse;
+	DlCompletionTreeArc* Reverse = nullptr;
 		/// true if the edge going from a predecessor to a successor
-	bool SuccEdge;
+	bool SuccEdge = true;
 
 private:	// methods
 		/// init an arc with R as a label and NODE on given LEVEL; use it inside MAKEARCS only
@@ -91,7 +91,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	DlCompletionTreeArc ( void ) : SuccEdge(true) {}
+	DlCompletionTreeArc() = default;
 		/// no copy c'tor
 	DlCompletionTreeArc ( const DlCompletionTreeArc& ) = delete;
 		/// no assignment

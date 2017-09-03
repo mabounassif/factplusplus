@@ -28,19 +28,19 @@ class ConceptWDep
 {
 protected:	// members
 		/// "pointer" to a concept in DAG
-	BipolarPointer Concept;
+	BipolarPointer Concept = bpINVALID;
 		/// dep-set for a concept
 	DepSet depSet;
 
 public:		// methods
 		/// empty c'tor
-	ConceptWDep ( void ) : Concept (bpINVALID) {}
+	ConceptWDep() = default;
 		/// c'tor with empty dep-set
 	explicit ConceptWDep ( BipolarPointer p ) : Concept(p) {}
 		/// usual c'tor
 	ConceptWDep ( BipolarPointer p, const DepSet& dep ) : Concept(p), depSet(dep) {}
 		/// copy c'tor
-	ConceptWDep ( const ConceptWDep& c ) : Concept(c.Concept), depSet(c.depSet) {}
+	ConceptWDep ( const ConceptWDep& c ) = default;
 		/// copy c'tor with additional dep-set
 	ConceptWDep ( const ConceptWDep& c, const DepSet& dep ) : Concept(c.Concept), depSet(c.depSet) { depSet.add(dep); }
 

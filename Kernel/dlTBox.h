@@ -106,14 +106,13 @@ protected:	// types
 			/// head of the rule as a DLTree
 		DLTree* tHead;
 			/// head of the rule as a BP
-		BipolarPointer bpHead;
+		BipolarPointer bpHead = bpINVALID;
 
 	public:		// interface
 			/// init c'tor
 		TSimpleRule ( const TRuleBody& body, DLTree* head )
 			: Body(body)
 			, tHead(head)
-			, bpHead(bpINVALID)
 			{}
 			/// no copy c'tor
 		TSimpleRule ( const TSimpleRule& ) = delete;
@@ -148,27 +147,27 @@ protected:	// members
 	DLDag DLHeap;
 
 		/// reasoner for TBox-related queries w/o nominals
-	DlSatTester* stdReasoner;
+	DlSatTester* stdReasoner = nullptr;
 		/// reasoner for TBox-related queries with nominals
-	DlSatTester* nomReasoner;
+	DlSatTester* nomReasoner = nullptr;
 
 		/// progress monitor
-	TProgressMonitor* pMonitor;
+	TProgressMonitor* pMonitor = nullptr;
 
 		/// vectors for Completely defined, Non-CD and Non-primitive concepts
 	ConceptVector arrayCD, arrayNoCD, arrayNP;
 		/// taxonomy structure of a TBox
-	Taxonomy* pTax;
+	Taxonomy* pTax = nullptr;
 		/// classifier
-	DLConceptTaxonomy* pTaxCreator;
+	DLConceptTaxonomy* pTaxCreator = nullptr;
 		/// name-signature map
-	NameSigMap* pName2Sig;
+	NameSigMap* pName2Sig = nullptr;
 		/// DataType center
 	DataTypeCenter DTCenter;
 		/// set of reasoning options
 	const ifOptionSet* pOptions;
 		/// status of the KB
-	KBStatus Status;
+	KBStatus Status = kbLoading;
 
 		/// global KB features
 	LogicFeatures KBFeatures;
@@ -179,7 +178,7 @@ protected:	// members
 		/// aux features
 	LogicFeatures auxFeatures;
 		/// pointer to current feature (in case of local ones)
-	LogicFeatures* curFeature;
+	LogicFeatures* curFeature = nullptr;
 
 	// auxiliary concepts for Taxonomy
 
@@ -190,7 +189,7 @@ protected:	// members
 		/// concept representing temporary one that can not be used anywhere in the ontology
 	TConcept* pTemp;
 		/// temporary concept that represents query
-	TConcept* pQuery;
+	TConcept* pQuery = nullptr;
 
 		/// all named concepts
 	ConceptCollection Concepts;
@@ -214,7 +213,7 @@ protected:	// members
 	ConceptDefMap ExtraConceptDefs;
 
 		/// internalisation of a general axioms
-	BipolarPointer T_G;
+	BipolarPointer T_G = bpTOP;
 		/// KB flags about GCIs
 	TKBFlags GCIs;
 
@@ -225,17 +224,17 @@ protected:	// members
 	ConceptVector ConceptMap;
 
 		/// number of concepts and individuals; used to set index for modelCache
-	unsigned int nC;
+	unsigned int nC = 0;
 		/// number of all distinct roles; used to set index for modelCache
-	unsigned int nR;
+	unsigned int nR = 0;
 		/// current aux concept's ID
-	unsigned int auxConceptID;
+	unsigned int auxConceptID = 0;
 		/// how many times nominals were found during translation to DAG; local to BuildDAG
-	unsigned int nNominalReferences;
+	unsigned int nNominalReferences = 0;
 		/// number of relevant calls to named concepts; local to relevance
-	unsigned long nRelevantCCalls;
+	unsigned long nRelevantCCalls = 0;
 		/// number of relevant calls to concept expressions; local to relevance
-	unsigned long nRelevantBCalls;
+	unsigned long nRelevantBCalls = 0;
 
 		/// searchable stack for the told subsumers
 	std::set<TConcept*> CInProcess;
@@ -248,60 +247,60 @@ protected:	// members
 		/// priority matrix for To-Do lists
 	ToDoPriorMatrix PriorityMatrix;
 		/// single SAT/SUB test timeout in milliseconds
-	unsigned long testTimeout;
+	unsigned long testTimeout = 0;
 
 	//---------------------------------------------------------------------------
 	// Reasoner's members: there are many reasoner classes, some members are shared
 	//---------------------------------------------------------------------------
 
 		/// flag for switching semantic branching
-	bool useSemanticBranching;
+	bool useSemanticBranching = true;
 		/// flag for switching backjumping
-	bool useBackjumping;
+	bool useBackjumping = true;
 		/// whether or not check blocking status as late as possible
-	bool useLazyBlocking;
+	bool useLazyBlocking = true;
 		/// flag for switching between Anywhere and Ancestor blocking
-	bool useAnywhereBlocking;
+	bool useAnywhereBlocking = true;
 		/// flag to use caching during completion tree construction
-	bool useNodeCache;
+	bool useNodeCache = true;
 		/// how many nodes skip before block; work only with FAIRNESS
-	int nSkipBeforeBlock;
+	int nSkipBeforeBlock = 0;
 
 	//---------------------------------------------------------------------------
 	// User-defined flags
 	//---------------------------------------------------------------------------
 
 		/// flag for creating taxonomy
-	bool useCompletelyDefined;
+	bool useCompletelyDefined = true;
 		/// flag for dumping TBox relevant to query
-	bool dumpQuery;
+	bool dumpQuery = false;
 		/// whether or not we need classification. Set up in checkQueryNames()
-	bool needClassification;
+	bool needClassification = true;
 		/// shall we prefer C=D axioms to C[=E in definition of concepts
-	bool alwaysPreferEquals;
+	bool alwaysPreferEquals = true;
 		/// use special domains as GCIs
-	bool useSpecialDomains;
+	bool useSpecialDomains = false;
 		/// shall verbose output be used
-	bool verboseOutput;
+	bool verboseOutput = false;
 
 	//---------------------------------------------------------------------------
 	// Internally defined flags
 	//---------------------------------------------------------------------------
 
 		/// whether we use sorted reasoning; depends on some simplifications
-	bool useSortedReasoning;
+	bool useSortedReasoning = true;
 		/// flag whether TBox is GALEN-like
-	bool isLikeGALEN;
+	bool isLikeGALEN = false;
 		/// flag whether TBox is WINE-like
-	bool isLikeWINE;
+	bool isLikeWINE = false;
 
 		/// whether KB is consistent
-	bool Consistent;
+	bool Consistent = true;
 
 		/// time spend for preprocessing
-	float preprocTime;
+	float preprocTime = 0.0;
 		/// time spend for consistency checking
-	float consistTime;
+	float consistTime = 0.0;
 
 protected:	// methods
 		/// init all flags using given set of options

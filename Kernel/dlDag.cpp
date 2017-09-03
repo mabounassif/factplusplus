@@ -27,9 +27,6 @@ DLDag :: DLDag ( const ifOptionSet* Options )
 	: indexAnd(*this)
 	, indexAll(*this)
 	, indexLE(*this)
-	, finalDagSize(0)
-	, nCacheHits(0)
-	, useDLVCache(true)
 {
 	Heap.push_back ( new DLVertex (dtBad) );	// empty vertex -- bpINVALID
 	Heap.push_back ( new DLVertex (dtTop) );

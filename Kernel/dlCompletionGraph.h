@@ -53,15 +53,11 @@ protected:	// types
 	{
 	public:		// members
 			/// number of valid nodes
-		size_t nNodes;
+		size_t nNodes = 0;
 			/// end pointer of saved nodes
-		size_t sNodes;
+		size_t sNodes = 0;
 			/// number of used edges
-		size_t nEdges;
-
-	public:		// interface
-			/// empty c'tor
-		SaveState ( void ) : nNodes(0), sNodes(0), nEdges(0) {}
+		size_t nEdges = 0;
 	}; // SaveState
 
 private:	// constants
@@ -80,9 +76,9 @@ protected:	// members
 		/// host reasoner
 	DlSatTester* pReasoner;
 		/// remember the last generated ID for the node
-	unsigned int nodeId;
+	unsigned int nodeId = 0;
 		/// index of the next unallocated entry
-	size_t endUsed;
+	size_t endUsed = 0;
 		/// current branching level (synchronised with reasoner's one)
 	unsigned int branchingLevel;
 		/// current IR level (should be valid BP)
@@ -97,30 +93,30 @@ protected:	// members
 		/// bitmap to remember which node was printed
 	std::vector<bool> CGPFlag;
 		/// indent to print CGraph nodes
-	unsigned int CGPIndent;
+	unsigned int CGPIndent = 0;
 
 	// statistical members
 
 		/// number of node' saves
-	unsigned int nNodeSaves;
+	unsigned int nNodeSaves = 0;
 		/// number of node' saves
-	unsigned int nNodeRestores;
+	unsigned int nNodeRestores = 0;
 		/// maximal size of the graph
-	size_t maxGraphSize;
+	size_t maxGraphSize = 0;
 
 	// flags
 
 		/// how many nodes skip before block; work only with FAIRNESS
-	int nSkipBeforeBlock;
+	int nSkipBeforeBlock = 0;
 		/// use or not lazy blocking (ie test blocking only expanding exists)
-	bool useLazyBlocking;
+	bool useLazyBlocking = true;
 		/// whether to use Anywhere blocking as opposed to an ancestor one
-	bool useAnywhereBlocking;
+	bool useAnywhereBlocking = true;
 
 		/// check if session has inverse roles
-	bool sessionHasInverseRoles;
+	bool sessionHasInverseRoles = false;
 		/// check if session has number restrictions
-	bool sessionHasNumberRestrictions;
+	bool sessionHasNumberRestrictions = false;
 
 protected:	// methods
 		/// init vector [B,E) with new objects T
@@ -263,11 +259,8 @@ public:		// interface
 	DlCompletionGraph ( unsigned int initSize, DlSatTester* p )
 		: NodeBase(initSize)
 		, pReasoner(p)
-		, nodeId(0)
-		, endUsed(0)
 		, branchingLevel(InitBranchingLevelValue)
 		, IRLevel(initIRLevel)
-		, maxGraphSize(0)
 	{
 		initNodeArray ( NodeBase.begin(), NodeBase.end() );
 		clearStatistics();

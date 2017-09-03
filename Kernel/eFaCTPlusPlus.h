@@ -27,14 +27,11 @@ class EFaCTPlusPlus: public std::exception
 {
 protected:
 		/// reason of the exception
-	const char* reason;
+	const char* reason = "FaCT++.Kernel: General exception";
 
 public:
 		/// empty c'tor
-	EFaCTPlusPlus ( void )
-		: exception()
-		, reason("FaCT++.Kernel: General exception")
-		{}
+	EFaCTPlusPlus() = default;
 		/// init c'tor
 	explicit EFaCTPlusPlus ( const char* str )
 		: exception()

@@ -35,33 +35,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 TBox :: TBox ( const ifOptionSet* Options, const std::string& TopORoleName, const std::string& BotORoleName, const std::string& TopDRoleName, const std::string& BotDRoleName )
 	: DLHeap(Options)
-	, stdReasoner(nullptr)
-	, nomReasoner(nullptr)
-	, pMonitor(nullptr)
-	, pTax(nullptr)
-	, pTaxCreator(nullptr)
-	, pName2Sig(nullptr)
 	, pOptions (Options)
-	, Status(kbLoading)
-	, curFeature(nullptr)
-	, pQuery(nullptr)
 	, Concepts("concept")
 	, Individuals("individual")
 	, ORM ( /*data=*/false, TopORoleName, BotORoleName )
 	, DRM ( /*data=*/true, TopDRoleName, BotDRoleName )
 	, Axioms(*this)
-	, T_G(bpTOP)	// initialise GCA's concept with Top
-	, nC(0)
-	, nR(0)
-	, auxConceptID(0)
-	, testTimeout(0)
-	, useNodeCache(true)
-	, useSortedReasoning(true)
-	, isLikeGALEN(false)	// just in case Relevance part would be omitted
-	, isLikeWINE(false)
-	, Consistent(true)
-	, preprocTime(0)
-	, consistTime(0)
 {
 	readConfig ( Options );
 	initTopBottom ();

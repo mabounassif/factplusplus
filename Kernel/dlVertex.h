@@ -94,13 +94,11 @@ class DLVertexCache
 {
 protected:	// members
 		/// cache for the positive entry
-	const modelCacheInterface* pCache;
+	const modelCacheInterface* pCache = nullptr;
 		/// cache for the negative entry
-	const modelCacheInterface* nCache;
+	const modelCacheInterface* nCache = nullptr;
 
 public:		// interface
-		/// empty c'tor
-	DLVertexCache ( void ) : pCache(nullptr), nCache(nullptr) {}
 		/// d'tor
 	virtual ~DLVertexCache() { delete pCache; delete nCache; }
 
@@ -260,11 +258,10 @@ public:		// types
 
 protected:	// members
 		/// usage statistic for pos- and neg occurrences of a vertex
-	UsageType posUsage, negUsage;
+	UsageType posUsage = 0;
+	UsageType negUsage = 0;
 
 public:		// interface
-		/// empty c'tor
-	DLVertexUsage ( void ) : posUsage(0), negUsage(0) {}
 		/// empty d'tor
 	virtual ~DLVertexUsage() = default;
 
@@ -281,8 +278,6 @@ protected:	// members
 	mergeableLabel Sort;
 
 public:		// interface
-		/// default c'tor
-	DLVertexSort ( void ) {}
 		/// empty d'tor
 	virtual ~DLVertexSort() = default;
 
@@ -322,61 +317,44 @@ protected:	// members
 		/// set of arguments (CEs, numbers for NR)
 	BaseType Child;
 		/// pointer to concept-like entry (for PConcept, etc)
-	TNamedEntry* Concept;
+	TNamedEntry* Concept = nullptr;
 		/// pointer to role (for E\A, NR)
-	const TRole* Role;
+	const TRole* Role = nullptr;
 		/// projection role (used for projection op only)
-	const TRole* ProjRole;
+	const TRole* ProjRole = nullptr;
 		/// C if available
-	BipolarPointer C;
+	BipolarPointer C = bpINVALID;
 		/// n if available
-	unsigned int n;
+	unsigned int n = 0;
 
 public:		// interface
 		/// c'tor for Top/CN/And (before adding any operands)
 	explicit DLVertex ( DagTag op )
 		: DLVertexTagDFS(op)
-		, Concept(nullptr)
-		, Role(nullptr)
-		, ProjRole(nullptr)
-		, C(bpINVALID)
-		, n(0)
 		{}
 		/// c'tor for Refl/Irr
 	DLVertex ( DagTag op, const TRole* R )
 		: DLVertexTagDFS(op)
-		, Concept(nullptr)
 		, Role(R)
-		, ProjRole(nullptr)
-		, C(bpINVALID)
-		, n(0)
 		{}
 		/// c'tor for CN/DE; C is an operand
 	DLVertex ( DagTag op, BipolarPointer c )
 		: DLVertexTagDFS(op)
-		, Concept(nullptr)
-		, Role(nullptr)
-		, ProjRole(nullptr)
 		, C(c)
-		, n(0)
 		{}
 		/// c'tor for <= n R_C; and for \A R{n}_C; Note order C, n, R->pointer
 	DLVertex ( DagTag op, unsigned int m, const TRole* R, BipolarPointer c )
 		: DLVertexTagDFS(op)
-		, Concept(nullptr)
 		, Role(R)
-		, ProjRole(nullptr)
 		, C(c)
 		, n(m)
 		{}
 		/// c'tor for ProjFrom R C ProjR
 	DLVertex ( const TRole* R, BipolarPointer c, const TRole* ProjR )
 		: DLVertexTagDFS(dtProj)
-		, Concept(nullptr)
 		, Role(R)
 		, ProjRole(ProjR)
 		, C(c)
-		, n(0)
 		{}
 		/// no copy c'tor
 	DLVertex ( const DLVertex& ) = delete;

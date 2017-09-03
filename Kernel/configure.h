@@ -40,7 +40,7 @@ public:		// members
 
 public:		// interface
 		/// empty c'tor
-	ConfElem () {}
+	ConfElem() = default;
 		/// init c'tor
 	ConfElem ( const std::string& n, const std::string& v ) : Name (n), Value (v) {}
 
@@ -83,7 +83,8 @@ class Configuration
 protected:	// parsing part
 	std::string fileName;	// fileName
 	char Line [MaxConfLineLen+1];	// \0
-	bool isLoaded, isSaved;	// flags
+	bool isLoaded = false;	// flags
+	bool isSaved = false;
 
 	// parser methods
 	void loadString ( std::istream& );
@@ -97,20 +98,15 @@ protected:	// parsing part
 protected:	// logic part
 	typedef std::vector <ConfSection*> ConfSectBase;
 	ConfSectBase Base;
-	ConfSection* Section;
-	ConfElem* Element;
+	ConfSection* Section = nullptr;
+	ConfElem* Element = nullptr;
 
 	// navigation methods
 	ConfSection* FindSection ( const std::string& pc ) const;
 
 public:		// interface
 		/// init c'tor
-	Configuration ( void )
-		: isLoaded(false)
-		, isSaved(false)
-		, Section(nullptr)
-		, Element(nullptr)
-		{}
+	Configuration() = default;
 		/// no copy c'tor
 	Configuration ( const Configuration& ) = delete;
 		/// no assignment

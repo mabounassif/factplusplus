@@ -34,73 +34,41 @@ private:	// members
 		/// value as a string
 	std::string strValue;
 		/// value as a number
-	long longIntValue;
+	long longIntValue = 0;
 		/// value as a float
-	float floatValue;
+	float floatValue = 0.0;
 		/// value as a date
-	long timeValue;	// FIXME!! FORNOW
+	long timeValue = 0;	// FIXME!! FORNOW
 		/// tag of a value
-	enum ValueType { UNUSED = 0, INT, STR, FLOAT, TIME } vType;
+	enum ValueType { UNUSED = 0, INT, STR, FLOAT, TIME } vType = UNUSED;
 
 public:		// interface
 		/// create empty dt
-	ComparableDT ( void )
-		: strValue("")
-		, longIntValue(0)
-		, floatValue(0.0)
-		, timeValue(0)
-		, vType(UNUSED)
-		{}
+	ComparableDT() = default;
 		/// create NUMBER's dt
 	explicit ComparableDT ( long int value )
-		: strValue("")
-		, longIntValue(value)
-		, floatValue(0.0)
-		, timeValue(0)
+		: longIntValue(value)
 		, vType(INT)
 		{}
 		/// create STRING's dt
 	explicit ComparableDT ( const char* value )
 		: strValue(value)
-		, longIntValue(0)
-		, floatValue(0.0)
-		, timeValue(0)
 		, vType(STR)
 		{}
 		/// create FLOAT's dt
 	explicit ComparableDT ( float value )
-		: strValue("")
-		, longIntValue(0)
-		, floatValue(value)
-		, timeValue(0)
+		: floatValue(value)
 		, vType(FLOAT)
 		{}
 		/// create dateTime's dt; use dummy parameter to distinguish it from INT one
 	explicit ComparableDT ( long value, int )
-		: strValue("")
-		, longIntValue(0)
-		, floatValue(0.0)
-		, timeValue(value)
+		: timeValue(value)
 		, vType(TIME)
 		{}
 		/// copy c'tor
-	ComparableDT ( const ComparableDT& copy )
-		: strValue(copy.strValue)
-		, longIntValue(copy.longIntValue)
-		, floatValue(copy.floatValue)
-		, timeValue(copy.timeValue)
-		, vType(copy.vType)
-		{}
+	ComparableDT ( const ComparableDT& copy ) = default;
 		/// assignment
-	ComparableDT& operator= ( const ComparableDT& copy )
-	{
-		vType = copy.vType;
-		strValue = copy.strValue;
-		longIntValue = copy.longIntValue;
-		floatValue = copy.floatValue;
-		timeValue = copy.timeValue;
-		return *this;
-	}
+	ComparableDT& operator= ( const ComparableDT& copy ) = default;
 
 		/// get NUMBER
 	long int getLongIntValue ( void ) const { return longIntValue; }

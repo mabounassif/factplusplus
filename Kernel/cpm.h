@@ -31,9 +31,6 @@ protected:
 	CPPI ind;
 
 public:
-		/// empty c'tor
-	ConsoleProgressMonitor ( void ) {}
-
 	// interface
 
 		/// informs about beginning of classification with number of concepts to be classified

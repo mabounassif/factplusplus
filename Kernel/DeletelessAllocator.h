@@ -30,9 +30,6 @@ template <typename T>
 class DeletelessAllocator: public growingArrayP<T>
 {
 public:
-		/// c'tor: do nothing
-	DeletelessAllocator ( void ) {}
-
 		/// get a new object from the heap
 	T* get ( void )
 	{

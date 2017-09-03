@@ -53,29 +53,29 @@ protected:	// members
 	HashTable indexAnd, indexAll, indexLE;
 
 		/// DAG size after the whole ontology is loaded
-	size_t finalDagSize;
+	size_t finalDagSize = 0;
 		/// cache efficiency -- statistic purposes
-	unsigned int nCacheHits;
+	unsigned int nCacheHits = 0;
 
 #ifdef RKG_USE_SORTED_REASONING
 		/// size of sort array
-	size_t sortArraySize;
+	size_t sortArraySize = 0;
 #endif
 
 	// tunable flags (set by readConfig)
 
 		/// sort strings: option[0] for SAT/cache tests, option[1] for SUB/classify tests
-	const char* orSortSat;
-	const char* orSortSub;
+	const char* orSortSat = nullptr;
+	const char* orSortSub = nullptr;
 		/// sort index (if necessary). Possible values are Size, Depth, Freq
-	unsigned int iSort;
+	unsigned int iSort = 0;
 		/// whether or not sorting order is ascending
-	bool sortAscend;
+	bool sortAscend = false;
 		/// prefer non-generating rules in OR orderings
-	bool preferNonGen;
+	bool preferNonGen = false;
 
 		/// flag whether cache should be used
-	bool useDLVCache;
+	bool useDLVCache = true;
 
 protected:	// methods
 		/// setup flags by given option set

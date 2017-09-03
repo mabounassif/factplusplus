@@ -42,9 +42,6 @@ protected:	// classes
 			/// local dep-set
 		DepSet locDep;
 	public:		// interface
-			/// empty c'tor
-		DepInterval ( void ) {}
-
 			/// get RO access to the base data interval
 		const TDataInterval& getDataInterval ( void ) const { return Constraints; }
 			/// update MIN border of an TYPE's interval with VALUE wrt EXCL
@@ -76,9 +73,9 @@ protected:	// classes
 
 public:		// members
 		/// dep-set for positive type appearance
-	DepSet* PType;
+	DepSet* PType = nullptr;
 		/// dep-set for negative type appearance
-	DepSet* NType;
+	DepSet* NType = nullptr;
 
 protected:	// members
 		/// interval of possible values
@@ -91,9 +88,9 @@ protected:	// members
 	// local values for the updating
 
 		/// local value for the min/max flag
-	bool localMin;
+	bool localMin = false;
 		/// local value for the incl/excl flag
-	bool localExcl;
+	bool localExcl = false;
 		/// local value for the added value
 	ComparableDT localValue;
 		/// local dep-set for the update
@@ -143,7 +140,7 @@ protected:	// methods
 
 public:		// methods
 		/// empty c'tor
-	explicit DataTypeAppearance ( DepSet& dep ) : PType(nullptr), NType(nullptr), clashDep(dep) {}
+	explicit DataTypeAppearance ( DepSet& dep ) : clashDep(dep) {}
 		/// empty d'tor
 	~DataTypeAppearance() { delete PType; delete NType; }
 
@@ -212,7 +209,7 @@ protected:	// members
 		/// external DAG
 	const DLDag& DLHeap;
 		/// type that has pos-entry
-	DataTypeAppearance* posType;
+	DataTypeAppearance* posType = nullptr;
 		/// dep-set for the clash for *all* the types
 	DepSet clashDep;
 
@@ -289,7 +286,7 @@ protected:	// methods
 
 public:		// interface
 		/// c'tor: save DAG
-	explicit DataTypeReasoner ( const DLDag& dag ) : DLHeap(dag), posType(nullptr) {}
+	explicit DataTypeReasoner ( const DLDag& dag ) : DLHeap(dag) {}
 		/// empty d'tor
 	~DataTypeReasoner()
 	{

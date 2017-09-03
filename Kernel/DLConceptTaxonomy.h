@@ -70,37 +70,37 @@ protected:	// members
 		/// set of possible parents
 	std::set<TaxonomyVertex*> candidates;
 		/// whether look into it
-	bool useCandidates;
+	bool useCandidates = false;
 		/// common descendants of all parents of currently classified concept
 	TaxVertexVec Common;
 		/// number of processed common parents
-	unsigned int nCommon;
+	unsigned int nCommon = 0;
 
 	// statistic counters
-	unsigned long nConcepts;
-	unsigned long nTries;
-	unsigned long nPositives;
-	unsigned long nNegatives;
-	unsigned long nSearchCalls;
-	unsigned long nSubCalls;
-	unsigned long nNonTrivialSubCalls;
+	unsigned long nConcepts = 0;
+	unsigned long nTries = 0;
+	unsigned long nPositives = 0;
+	unsigned long nNegatives = 0;
+	unsigned long nSearchCalls = 0;
+	unsigned long nSubCalls = 0;
+	unsigned long nNonTrivialSubCalls = 0;
 
 		/// number of positive cached subsumptions
-	unsigned long nCachedPositive;
+	unsigned long nCachedPositive = 0;
 		/// number of negative cached subsumptions
-	unsigned long nCachedNegative;
+	unsigned long nCachedNegative = 0;
 		/// number of non-subsumptions detected by a sorted reasoning
-	unsigned long nSortedNegative;
+	unsigned long nSortedNegative = 0;
 		/// number of non-subsumptions because of module reasons
-	unsigned long nModuleNegative;
+	unsigned long nModuleNegative = 0;
 
 		/// indicator of taxonomy creation progress
-	TProgressMonitor* pTaxProgress;
+	TProgressMonitor* pTaxProgress = nullptr;
 
 	// flags
 
 		/// flag to use Bottom-Up search
-	bool flagNeedBottomUp;
+	bool flagNeedBottomUp = false;
 
 protected:	// methods
 	//-----------------------------------------------------------------
@@ -245,19 +245,7 @@ public:		// interface
 	DLConceptTaxonomy ( Taxonomy* tax, TBox& kb )
 		: TaxonomyCreator(tax)
 		, tBox(kb)
-		, useCandidates(false)
-		, nCommon(0)
-		, nConcepts (0), nTries (0), nPositives (0), nNegatives (0)
-		, nSearchCalls(0)
-		, nSubCalls(0)
-		, nNonTrivialSubCalls(0)
-		, nCachedPositive(0)
-		, nCachedNegative(0)
-		, nSortedNegative(0)
-		, nModuleNegative(0)
-		, pTaxProgress(nullptr)
-	{
-	}
+		{}
 		/// no copy c'tor
 	DLConceptTaxonomy ( const DLConceptTaxonomy& ) = delete;
 		/// no assignment
