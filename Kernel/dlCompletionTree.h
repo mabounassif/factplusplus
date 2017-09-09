@@ -159,24 +159,21 @@ protected:	// members
 
 	// save state information
 	unsigned int curLevel;	// current level
+		/// level of a nominal node; 0 means blockable one
+	CTNominalLevel nominalLevel;
 
 		/// is given node a data node
-	unsigned int flagDataNode : 1;
+	bool flagDataNode : 1;
 		/// flag if node is Cached
-	unsigned int cached : 1;
+	bool cached : 1;
 		/// flag whether node is permanently/temporarily blocked
-	unsigned int pBlocked : 1;
+	bool pBlocked : 1;
 		/// flag whether node is directly/indirectly blocked
-	unsigned int dBlocked : 1;
+	bool dBlocked : 1;
 		/** Whether node is affected by change of some potential blocker.
 			This flag may be viewed as a cache for a 'blocked' status
 		*/
-	unsigned int affected : 1;
-		/// the rest
-	unsigned int unused : 27;
-
-		/// level of a nominal node; 0 means blockable one
-	CTNominalLevel nominalLevel;
+	bool affected : 1;
 
 protected:	// methods
 

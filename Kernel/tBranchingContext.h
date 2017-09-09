@@ -153,7 +153,7 @@ public:		// interface
 		fromIndex = 0;
 	}
 		/// correct fromIndex after changing
-	void resetMCI ( void ) { fromIndex = (CRIndex)ItemsToMerge.size()-1; }
+	void resetMCI ( void ) { fromIndex = static_cast<CRIndex>(ItemsToMerge.size() - 1); }
 		/// give the next branching alternative
 	void nextOption ( void ) override
 	{
