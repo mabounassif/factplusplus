@@ -217,11 +217,11 @@ protected:	// methods
 
 public:
 		/// init c'tor
-	ToDoList ( const ToDoPriorMatrix& matrix, TRareSaveStack* stack ) : queueNN(stack), Matrix(matrix), noe(0) {}
+	ToDoList( const ToDoPriorMatrix& matrix, TRareSaveStack* stack ) : queueNN(stack), Matrix(matrix), noe(0) {}
 		/// no copy c'tor
-	ToDoList ( ToDoList& ) = delete;
+	ToDoList( const ToDoList& ) = delete;
 		/// no assignment
-	ToDoList& operator = ( ToDoList& ) = delete;
+	ToDoList& operator = ( const ToDoList& ) = delete;
 		/// d'tor: delete all entries
 	~ToDoList() { clear(); }
 
