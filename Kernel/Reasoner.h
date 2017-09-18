@@ -253,11 +253,11 @@ protected:	// members
 		/// stack for the local reasoner's state
 	BCStack Stack;
 		/// context from the restored branching rule
-	BranchingContext* bContext;
+	BranchingContext* bContext = nullptr;
 		/// index of last non-det situation
-	unsigned int tryLevel;
+	unsigned int tryLevel = InitBranchingLevelValue;
 		/// shift in order to determine the 1st non-det application
-	unsigned int nonDetShift;
+	unsigned int nonDetShift = 0;
 
 	// statistic elements
 
@@ -307,14 +307,14 @@ protected:	// members
 	// current values
 
 		/// currently processed CTree node
-	DlCompletionTree* curNode;
+	DlCompletionTree* curNode = nullptr;
 		/// currently processed Concept
 	ConceptWDep curConcept;
 		/// GCIs local to session
 	std::vector<BipolarPointer> SessionGCIs;
 
 		/// size of the DAG with some extra space
-	size_t dagSize;
+	size_t dagSize = 0;
 
 		/// temporary array used in OR operation
 	BCOr::OrIndex OrConceptsToTest;
@@ -328,9 +328,9 @@ protected:	// members
 	// session status flags:
 
 		/// true if nominal-related expansion rule was fired during reasoning
-	bool encounterNominal;
+	bool encounterNominal = false;
 		/// flag to show if it is necessary to produce DT reasoning immediately
-	bool checkDataNode;
+	bool checkDataNode = true;
 
 protected:	// methods
 

@@ -43,11 +43,6 @@ DlSatTester :: DlSatTester ( TBox& tbox )
 	, newNodeCache ( true, tBox.nC, tBox.nR )
 	, newNodeEdges ( false, tBox.nC, tBox.nR )
 	, GCIs(tbox.GCIs)
-	, bContext(nullptr)
-	, tryLevel(InitBranchingLevelValue)
-	, nonDetShift(0)
-	, curNode(nullptr)
-	, dagSize(0)
 {
 	// init static part of CTree
 	CGraph.initContext ( tBox.nSkipBeforeBlock, tBox.useLazyBlocking, tBox.useAnywhereBlocking );

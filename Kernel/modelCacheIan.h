@@ -67,7 +67,7 @@ protected:	// members
 	IndexSet funcRoles;
 
 		/// current state of cache model; recalculates on every change
-	modelCacheState curState;
+	modelCacheState curState = csValid;
 
 protected:	// methods
 		/// log a particular implementation of a cache entry
@@ -164,7 +164,6 @@ public:
 		, existsRoles(nR)
 		, forallRoles(nR)
 		, funcRoles(nR)
-		, curState(csValid)
 		{}
 		/// copy c'tor
 	modelCacheIan ( const modelCacheIan& m )

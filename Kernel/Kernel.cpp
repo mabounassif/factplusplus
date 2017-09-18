@@ -38,26 +38,6 @@ static bool KernelFirstRun = true;
 //#define FPP_DEBUG_PRINT_RELATED_PROGRESS
 
 ReasoningKernel :: ReasoningKernel ( void )
-	: pTBox(nullptr)
-	, pET(nullptr)
-	, KE(nullptr)
-	, AD(nullptr)
-	, ModSyn(nullptr)
-	, ModSynCount(nullptr)
-	, ModSem(nullptr)
-	, JNICache(nullptr)
-	, pSLManager(nullptr)
-	, pMonitor(nullptr)
-	, OpTimeout(0)
-	, verboseOutput(false)
-	, useUndefinedNames(true)
-	, cachedQuery(nullptr)
-	, cachedQueryTree(nullptr)
-	, reasoningFailed(false)
-	, NeedTracing(false)
-	, ignoreExprCache(false)
-	, useIncrementalReasoning(false)
-	, dumpOntology(false)
 {
 	// Intro
 	if ( KernelFirstRun )
@@ -66,8 +46,6 @@ ReasoningKernel :: ReasoningKernel ( void )
 				  << Copyright << ". Version " << Version << " (" << ReleaseDate << ")\n";
 		KernelFirstRun = false;
 	}
-
-	initCacheAndFlags();
 
 	// init option set (fill with options):
 	if ( initOptions () )

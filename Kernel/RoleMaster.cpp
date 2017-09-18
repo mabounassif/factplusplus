@@ -22,13 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "TaxonomyCreator.h"
 
 RoleMaster :: RoleMaster ( bool dataRoles, const std::string& TopRoleName, const std::string& BotRoleName )
-	: newRoleId(1)
-	, emptyRole(BotRoleName == "" ? "emptyRole" : BotRoleName)
+	: emptyRole(BotRoleName == "" ? "emptyRole" : BotRoleName)
 	, universalRole(TopRoleName == "" ? "universalRole" : TopRoleName)
 	, roleNS()
-	, pTax(nullptr)
 	, DataRoles(dataRoles)
-	, useUndefinedNames(true)
 {
 	// no zero-named roles allowed
 	Roles.push_back(nullptr);

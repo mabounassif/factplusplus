@@ -122,15 +122,15 @@ protected:	// members
 		/// state from which all the transition starts
 	RAState from;
 		/// check whether there is an empty transition going from this state
-	bool EmptyTransition;
+	bool EmptyTransition = false;
 		/// true iff there is a top transition going from this state
-	bool TopTransition;
+	bool TopTransition = false;
 		/// flag whether the role is data or not (valid only for simple automata)
 	bool DataRole;
 
 public:		// interface
 		/// empty c'tor
-	RAStateTransitions ( void ) : EmptyTransition(false), TopTransition(false) {}
+	RAStateTransitions()= default;
 		/// copy c'tor
 	RAStateTransitions ( const RAStateTransitions& ) = default;
 		/// move c'tor
@@ -194,13 +194,13 @@ protected:	// members
 		/// maps original automata state into the new ones (used in copyRA)
 	std::vector<unsigned int> map;
 		/// initial state of the next automaton in chain
-	RAState iRA;
+	RAState iRA = 0;
 		/// flag whether automaton is input safe
-	bool ISafe;
+	bool ISafe = true;
 		/// flag whether automaton is output safe
-	bool OSafe;
+	bool OSafe = true;
 		/// flag for the automaton to be completed
-	bool Complete;
+	bool Complete = false;
 
 protected:	// methods
 		/// make sure that STATE exists in the automaton (update ton's size)
@@ -243,14 +243,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	RoleAutomaton ( void )
-		: iRA(0)
-		, ISafe(true)
-		, OSafe(true)
-		, Complete(false)
-	{
-		ensureState(1);
-	}
+	RoleAutomaton() { ensureState(1); }
 		/// copy c'tor
 	RoleAutomaton ( const RoleAutomaton& ) = default;
 		/// move c'tor

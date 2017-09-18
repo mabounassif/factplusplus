@@ -69,6 +69,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define RKG_IR_IN_NODE_LABEL
 
 // this value is used in classes Reasoner, CGraph and RareSaveStack
-const unsigned int InitBranchingLevelValue = 1;
+constexpr unsigned int InitBranchingLevelValue = 1;
 
 #endif

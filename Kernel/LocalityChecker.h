@@ -60,11 +60,11 @@ class LocalityChecker: protected SigAccessor, public DLAxiomVisitor
 {
 protected:	// members
 		/// remember the axiom locality value here
-	bool isLocal;
+	bool isLocal = true;
 
 public:		// interface
 		/// init c'tor
-	explicit LocalityChecker ( const TSignature* s ) : SigAccessor(s), isLocal(true) {}
+	explicit LocalityChecker ( const TSignature* s ) : SigAccessor(s) {}
 
 		/// @return true iff an AXIOM is local wrt signature
 	bool local ( const TDLAxiom* axiom )

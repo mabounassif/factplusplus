@@ -51,7 +51,7 @@ protected:	// types
 			/// map pointer -> i
 		P2IMap p2i;
 			/// ID of the last recorded NE
-		unsigned int last;
+		unsigned int last = 0;
 
 	protected:	// methods
 			/// @return true if given pointer present in the map
@@ -64,8 +64,6 @@ protected:	// types
 		void ensure ( unsigned int i ) const { if ( !in(i) ) throw EFPPSaveLoad("Cannot load unregistered index"); }
 
 	public:		// interface
-			/// empty c'tor
-		PointerMap ( void ) : last(0) {}
 			/// clear the maps
 		void clear ( void )
 		{
@@ -99,9 +97,9 @@ protected:	// members
 		/// file name
 	std::string filename;
 		/// input stream pointer
-	std::istream* ip;
+	std::istream* ip = nullptr;
 		/// output stream pointer
-	std::ostream* op;
+	std::ostream* op = nullptr;
 
 		// uint <-> named entity map for the current taxonomy
 	PointerMap<TNamedEntity> eMap;
@@ -112,7 +110,7 @@ protected:	// members
 
 public:		// methods
 		/// init c'tor: remember the S/L name
-	explicit SaveLoadManager ( const std::string& name ) : dirname(name), ip(nullptr), op(nullptr) { filename = name+".fpp.state"; }
+	explicit SaveLoadManager ( const std::string& name ) : dirname(name) { filename = name+".fpp.state"; }
 		/// empty d'tor
 	~SaveLoadManager()
 	{

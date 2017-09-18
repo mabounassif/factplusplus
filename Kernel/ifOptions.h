@@ -51,9 +51,9 @@ protected:	// members
 		/// type of value: bool, int or text
 	ioType type;
 		/// integer value [relevant iff (type == iotInt)]
-	int iValue;
+	int iValue = 0;
 		/// boolean value [relevant iff (type == iotBool)]
-	bool bValue;
+	bool bValue = 0;
 
 public:		// interface
 		/// c'tor (init all values including proper ?Value)
@@ -120,7 +120,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	ifOptionSet ( void ) {}
+	ifOptionSet() = default;
 		/// d'tor (delete all registered options)
 	~ifOptionSet()
 	{

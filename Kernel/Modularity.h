@@ -54,11 +54,11 @@ protected:	// members
 		/// queue of unprocessed entities
 	std::queue<const TNamedEntity*> WorkQueue;
 		/// number of locality check calls
-	unsigned long long nChecks;
+	unsigned long long nChecks = 0;
 		/// number of non-local axioms
-	unsigned long long nNonLocal;
+	unsigned long long nNonLocal = 0;
 		/// true if no atoms are processed ATM
-	bool noAtomsProcessing;
+	bool noAtomsProcessing = true;
 
 protected:	// methods
 		/// update SIG wrt the axiom signature
@@ -153,9 +153,6 @@ public:		// interface
 	explicit TModularizer ( ModuleMethod moduleMethod )
 		: Checker(createLocalityChecker(moduleMethod,&sig))
 		, sigIndex(Checker)
-		, nChecks(0)
-		, nNonLocal(0)
-		, noAtomsProcessing(true)
 		{}
 		// d'tor
 	~TModularizer() { delete Checker; }

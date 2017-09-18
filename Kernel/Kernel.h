@@ -129,11 +129,11 @@ protected:	// types
 
 protected:	// members
 		/// local TBox (to be created)
-	TBox* pTBox;
+	TBox* pTBox = nullptr;
 		/// set of axioms
 	TOntology Ontology;
 		/// expression translator to work with queries
-	TExpressionTranslator* pET;
+	TExpressionTranslator* pET = nullptr;
 		/// name-signature map
 	NameSigMap Name2Sig;
 		/// ontology signature (used in incremental)
@@ -141,21 +141,21 @@ protected:	// members
 		/// trace vector for the last operation (set from the TBox trace-sets)
 	AxiomVec TraceVec;
 		/// knowledge exploration support
-	KnowledgeExplorer* KE;
+	KnowledgeExplorer* KE = nullptr;
 		/// atomic decomposer
-	AtomicDecomposer* AD;
+	AtomicDecomposer* AD = nullptr;
 		/// syntactic locality based module extractor
-	OntologyBasedModularizer* ModSyn;
+	OntologyBasedModularizer* ModSyn = nullptr;
 		/// syntactic with counting locality based module extractor
-	OntologyBasedModularizer* ModSynCount;
+	OntologyBasedModularizer* ModSynCount = nullptr;
 		/// semantic locality based module extractor
-	OntologyBasedModularizer* ModSem;
+	OntologyBasedModularizer* ModSem = nullptr;
 		/// set to return by the locality checking procedure
 	AxiomVec Result;
 		/// JNI cache corresponding to a kernel. External, created and deleted outside
-	TJNICache* JNICache;
+	TJNICache* JNICache = nullptr;
 		/// name of an S/L context. do nothing if empty
-	SaveLoadManager* pSLManager;
+	SaveLoadManager* pSLManager = nullptr;
 
 	// Top/Bottom role names: if set, they will appear in all hierarchy-related output
 
@@ -171,39 +171,39 @@ protected:	// members
 	// values to propagate to the new KB in case of clearance
 
 		/// progress monitor (if any)
-	TProgressMonitor* pMonitor;
+	TProgressMonitor* pMonitor = nullptr;
 		/// timeout value
-	unsigned long OpTimeout;
+	unsigned long OpTimeout = 0;
 		/// tell reasoner to use verbose output
-	bool verboseOutput;
+	bool verboseOutput = false;
 		/// allow reasoner to use undefined names in queries
-	bool useUndefinedNames;
+	bool useUndefinedNames = true;
 
 	// reasoning cache
 
 		/// cache level
-	enum cacheStatus cacheLevel;
+	enum cacheStatus cacheLevel = csEmpty;
 		/// cached query input description
-	TConceptExpr* cachedQuery;
+	TConceptExpr* cachedQuery = nullptr;
 		/// cached query concept description
-	DLTree* cachedQueryTree;
+	DLTree* cachedQueryTree = nullptr;
 		/// cached concept (either defConcept or existing one)
-	TConcept* cachedConcept;
+	TConcept* cachedConcept = nullptr;
 		/// cached query result (taxonomy position)
-	TaxonomyVertex* cachedVertex;
+	TaxonomyVertex* cachedVertex = nullptr;
 
 	// internal flags
 
 		/// set if TBox throws an exception during preprocessing/classification
-	bool reasoningFailed;
+	bool reasoningFailed = false;
 		/// flag to gather trace information for the next reasoner's call
-	bool NeedTracing;
+	bool NeedTracing = false;
 		/// ignore cache for the TExpr* (useful for semantic AD)
-	bool ignoreExprCache;
+	bool ignoreExprCache = false;
 		/// use incremental reasoning
-	bool useIncrementalReasoning;
+	bool useIncrementalReasoning = false;
 		/// flag to dump LISP-like ontology
-	bool dumpOntology;
+	bool dumpOntology = false;
 
 protected:	// methods
 

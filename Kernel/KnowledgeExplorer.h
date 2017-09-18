@@ -54,9 +54,6 @@ protected:	// classes
 			/// the map itself
 		std::map<const TNamedEntity*, ESet> Base;
 	public:		// interface
-			/// empty c'tor
-		EE2Map ( void ) {}
-
 			/// @return true if the entry does not have correspondent entity
 		bool check ( const TNamedEntry* e ) const;
 			/// add an entity corresponding E to a map corresponding to E0

@@ -27,28 +27,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 typedef unsigned short int ToDoListIndex;
 
 /// number of regular options (o- and NN-rules are not included)
-const ToDoListIndex nRegularOps = 7;
+constexpr ToDoListIndex nRegularOps = 7;
 /// priority index for o- and ID operations (note that these ops have the highest priority)
-const ToDoListIndex iId = nRegularOps+1;
+constexpr ToDoListIndex iId = nRegularOps+1;
 /// priority index for <= operation in nominal node
-const ToDoListIndex iNN = nRegularOps+2;
+constexpr ToDoListIndex iNN = nRegularOps+2;
 
 /// Auxiliary class to get priorities on operations
 class ToDoPriorMatrix
 {
 protected:	// members
 	// regular operation indexes
-	ToDoListIndex iAnd,
-				  iOr,
-				  iExists,
-				  iForall,
-				  iLE,
-				  iGE;
+	ToDoListIndex iAnd = nRegularOps,
+				  iOr = nRegularOps,
+				  iExists = nRegularOps,
+				  iForall = nRegularOps,
+				  iLE = nRegularOps,
+				  iGE = nRegularOps;
 
 public:		// interface
-		/// empty c'tor
-	ToDoPriorMatrix ( void ) {}
-
 		/// init priorities via given string OPTIONS
 	void initPriorities ( const std::string& options, const char* optionName );
 		/// get an index corresponding given Op, Sign and NominalNode

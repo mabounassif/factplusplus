@@ -30,12 +30,9 @@ class LeveLogger
 {
 private:	// members
 		/// the allowed logging level; init it once for the whole session
-	unsigned int allowedLevel;
+	unsigned int allowedLevel = 0;
 
 public:		// interface
-		/// c'tor
-	LeveLogger ( void ) : allowedLevel(0) {}
-
 		/// sets output file and allowedLevel by given values
 	bool initLogger ( unsigned int l, const char* filename );
 		/** sets output file and allowedLevel by config file.

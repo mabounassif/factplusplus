@@ -56,23 +56,21 @@ protected:	// types
 
 protected:	// members
 		/// all flags in one long
-	unsigned long flags;
+	unsigned long flags = 0;
 
 protected:	// methods
 		/// set any flag
 	void setX ( lfEnum val ) { flags |= val; }
 		/// get value of any flag
-	bool getX ( lfEnum val ) const { return !!(flags&val); }
+	bool getX ( lfEnum val ) const { return (flags & val) != 0; }
 
 public:		// interface
 		/// default c'tor
-	LogicFeatures ( void )
-		: flags(0)
-		{}
+	LogicFeatures() = default;
 		/// copy c'tor
-	LogicFeatures ( const LogicFeatures& lf ) : flags(lf.flags) {}
+	LogicFeatures(const LogicFeatures&) = default;
 		/// assignment
-	LogicFeatures& operator = ( const LogicFeatures& lf ) { flags = lf.flags; return *this; }
+	LogicFeatures& operator = (const LogicFeatures&)  = default;
 		/// operator add
 	LogicFeatures& operator |= ( const LogicFeatures& lf ) { flags |= lf.flags; return *this; }
 

@@ -33,7 +33,7 @@ protected:	// members
 		/// corresponding top evaluator
 	TopEquivalenceEvaluator* TopEval;
 		/// keep the value here
-	bool isBotEq;
+	bool isBotEq = false;
 
 protected:	// methods
 		/// check whether the expression is top-equivalent
@@ -87,7 +87,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	explicit BotEquivalenceEvaluator ( const TSignature* s ) : SigAccessor(s), isBotEq(false) {}
+	explicit BotEquivalenceEvaluator ( const TSignature* s ) : SigAccessor(s) {}
 
 	// set fields
 
@@ -214,7 +214,7 @@ protected:	// members
 		/// corresponding bottom evaluator
 	BotEquivalenceEvaluator* BotEval;
 		/// keep the value here
-	bool isTopEq;
+	bool isTopEq = false;
 
 protected:	// methods
 		/// check whether the expression is top-equivalent
@@ -268,7 +268,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	explicit TopEquivalenceEvaluator ( const TSignature* s ) : SigAccessor(s), isTopEq(false) {}
+	explicit TopEquivalenceEvaluator ( const TSignature* s ) : SigAccessor(s) {}
 
 	// set fields
 

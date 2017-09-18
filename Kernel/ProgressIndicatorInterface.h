@@ -25,9 +25,9 @@ class ProgressIndicatorInterface
 {
 protected:	// members
 		/// limit of the progress: indicate [0..uLimit]
-	unsigned long uLimit;
+	unsigned long uLimit = 0;
 		/// current value of an indicator
-	unsigned long uCurrent;
+	unsigned long uCurrent = 0;
 
 protected:	// methods
 		/// initial exposure method: can be overridden in derived classes
@@ -48,10 +48,9 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	ProgressIndicatorInterface ( void ) : uLimit{0}, uCurrent{0} {}
+	ProgressIndicatorInterface() = default;
 		/// init c'tor
-	explicit ProgressIndicatorInterface ( unsigned long limit ) : uCurrent{0}
-		{ setLimit (limit); }
+	explicit ProgressIndicatorInterface ( unsigned long limit ) { setLimit (limit); }
 		/// empty d'tor
 	virtual ~ProgressIndicatorInterface() = default;
 

@@ -48,9 +48,9 @@ protected:	// members
 		/// empty signature to test the non-locality
 	TSignature emptySig;
 		/// number of registered axioms
-	unsigned int nRegistered;
+	unsigned int nRegistered = 0;
 		/// number of registered axioms
-	unsigned int nUnregistered;
+	unsigned int nUnregistered = 0;
 
 protected:	// methods
 		/// add an axiom AX to an axiom set AXIOMS
@@ -100,7 +100,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	explicit SigIndex ( LocalityChecker* checker ) : Checker(checker), nRegistered(0), nUnregistered(0) {}
+	explicit SigIndex ( LocalityChecker* checker ) : Checker(checker) {}
 
 	// work with axioms
 

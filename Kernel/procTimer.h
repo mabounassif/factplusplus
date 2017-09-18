@@ -32,20 +32,17 @@ class TsProcTimer
 {
 private:	// members
 		/// save the starting time of the timer
-	clock_t startTime;
+	clock_t startTime = 0;
 		/// calculated time between Start() and Stop() calls
-	float resultTime;
+	float resultTime = 0.0f;
 		/// flag to show timer is started
-	bool Started;
+	bool Started = false;
 
 private:	// methods
 		/// get time interval between startTime and current time
 	float calcDelta ( void ) const;
 
 public:		// interface
-		/// the only c'tor
-	TsProcTimer ( void ) : startTime(0), resultTime(0.0), Started(false) {}
-
 		/// reset timer
 	void Reset ( void );
 

@@ -38,7 +38,7 @@ public:		// types
 
 protected:	// members
 		/// number of the last registered role
-	int newRoleId;
+	int newRoleId = 1;
 
 		/// all registered roles
 	TRoleVec Roles;
@@ -50,7 +50,7 @@ protected:	// members
 		/// roles nameset
 	TNameSet<TRole> roleNS;
 		/// Taxonomy of roles
-	Taxonomy* pTax;
+	Taxonomy* pTax = nullptr;
 
 		/// two halves of disjoint roles axioms
 	TRoleVec DJRolesA, DJRolesB;
@@ -59,7 +59,7 @@ protected:	// members
 	bool DataRoles;
 
 		/// flag if it is possible to introduce new names
-	bool useUndefinedNames;
+	bool useUndefinedNames = true;
 
 private:	// methods
 		/// constant defining first user role in the RBox
