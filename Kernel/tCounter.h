@@ -17,8 +17,8 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _TCOUNTER_H
-#define _TCOUNTER_H
+#ifndef TCOUNTER_H
+#define TCOUNTER_H
 
 /** define class that allows user to have an integer with restricted
  *  access (i.e. get value, increment and reset). This is useful when

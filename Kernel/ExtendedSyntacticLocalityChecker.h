@@ -17,8 +17,8 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef EXTENDEDSYNLOCCHECKER_H
-#define EXTENDEDSYNLOCCHECKER_H
+#ifndef EXTENDEDSYNTACTICLOCALITYCHECKER_H
+#define EXTENDEDSYNTACTICLOCALITYCHECKER_H
 
 // uncomment the following line to debug the locality checker
 //#define FPP_DEBUG_EXTENDED_LOCALITY

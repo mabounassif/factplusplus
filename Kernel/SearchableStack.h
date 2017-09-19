@@ -17,8 +17,8 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _SEARCHABLESTACK_H
-#define _SEARCHABLESTACK_H
+#ifndef SEARCHABLESTACK_H
+#define SEARCHABLESTACK_H
 
 // template class for stack with opportunity of search duplicate elements
 #include <vector>

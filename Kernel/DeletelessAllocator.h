@@ -17,8 +17,8 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _DELETELESSALLOCATOR_H
-#define _DELETELESSALLOCATOR_H
+#ifndef DELETELESSALLOCATOR_H
+#define DELETELESSALLOCATOR_H
 
 #include "growingArrayP.h"
 

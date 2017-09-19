@@ -17,8 +17,8 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef MERGEABLE_LABEL_H
-#define MERGEABLE_LABEL_H
+#ifndef MERGEABLELABEL_H
+#define MERGEABLELABEL_H
 
 /// implementation of labels that could be compared and merged to each other
 class mergeableLabel

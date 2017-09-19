@@ -17,8 +17,8 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef JNICACHE_H
-#define JNICACHE_H
+#ifndef TJNICACHE_H
+#define TJNICACHE_H
 
 #include "JNISupport.h"
 
