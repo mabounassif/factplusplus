@@ -28,11 +28,9 @@ class TRestorer
 {
 protected:	// members
 		/// restore level
-	unsigned int lev;
+	unsigned int lev = 0;
 
 public:		// interface
-		/// empty c'tor
-	TRestorer ( void ) {}
 		/// empty d'tor
 	virtual ~TRestorer() = default;
 		/// restore an object based on saved information

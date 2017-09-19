@@ -34,16 +34,14 @@ protected:	// members
 		/// name of the entry
 	std::string extName;
 		/// entry identifier
-	int extId;
+	int extId = 0;
 		/// original entity
-	const TNamedEntity* entity;
+	const TNamedEntity* entity = nullptr;
 
 public:		// interface
 		/// the only c'tor
 	explicit TNamedEntry ( const std::string& name )
 		: extName (name)		// copy name
-		, extId (0)				// sets local id
-		, entity(nullptr)
 		{}
 		/// no copy c'tor
 	TNamedEntry ( const TNamedEntry& ) = delete;

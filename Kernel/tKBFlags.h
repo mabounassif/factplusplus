@@ -27,9 +27,9 @@ class TKBFlags: public Flags
 {
 public:		// interface
 		/// empty c'tor
-	TKBFlags ( void ) : Flags() {}
+	TKBFlags() = default;
 		/// copy c'tor
-	TKBFlags ( const TKBFlags& flags ) : Flags(flags) {}
+	TKBFlags ( const TKBFlags& flags ) = default;
 
 		/// register flag for GCIs
 	FPP_ADD_FLAG(GCI,0x1);

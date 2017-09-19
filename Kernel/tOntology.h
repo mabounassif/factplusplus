@@ -41,15 +41,15 @@ protected:	// members
 		/// expression manager that builds all the expressions for the axioms
 	TExpressionManager EManager;
 		/// id to be given to the next axiom
-	unsigned int axiomId;
+	unsigned int axiomId = 0;
 		/// index of the 1st unprocessed axiom
-	size_t axiomToProcess;
+	size_t axiomToProcess = 0;
 		/// true iff ontology was changed
-	bool changed;
+	bool changed = false;
 
 public:		// interface
 		/// empty c'tor
-	TOntology ( void ) : axiomId(0), axiomToProcess(0), changed(false) {}
+	TOntology() = default;
 		/// d'tor
 	~TOntology() { clear(); }
 

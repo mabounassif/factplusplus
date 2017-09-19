@@ -29,7 +29,7 @@ class TNameCreator
 {
 public:		// interface
 		/// empty c'tor
-	TNameCreator ( void ) {}
+	TNameCreator() = default;
 		/// empty d'tor
 	virtual ~TNameCreator() = default;
 
@@ -54,7 +54,7 @@ protected:	// members
 
 public:		// interface
 		/// c'tor (empty)
-	TNameSet ( void ) : Creator(new TNameCreator<T>) {}
+	TNameSet() : Creator(new TNameCreator<T>) {}
 		/// c'tor (with given Name Creating class)
 	explicit TNameSet ( TNameCreator<T>* p ) : Creator(p) {}
 		/// no copy c'tor

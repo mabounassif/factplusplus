@@ -47,7 +47,7 @@ protected:	// members
 
 public:		// interface
 		/// empty c'tor
-	TRelatedMap ( void ) {}
+	TRelatedMap() = default;
 
 	// access
 
@@ -78,7 +78,7 @@ public:		// types
 
 public:		// members
 		/// pointer to nominal node (works for singletons only)
-	DlCompletionTree* node;
+	DlCompletionTree* node = nullptr;
 
 		/// index for axioms <this,C>:R
 	RelatedSet RelatedIndex;
@@ -89,7 +89,6 @@ public:		// interface
 		/// the only c'tor
 	explicit TIndividual ( const std::string& name )
 		: TConcept(name)
-		, node(nullptr)
 		, pRelatedMap(new TRelatedMap())
 	{
 		setSingleton(true);

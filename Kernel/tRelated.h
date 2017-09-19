@@ -27,13 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 class TRelated
 {
 public:		// members
-	TIndividual* a;
-	TIndividual* b;
-	TRole* R;
+	TIndividual* a = nullptr;
+	TIndividual* b = nullptr;
+	TRole* R = nullptr;
 
 public:		// interface
 		/// empty c'tor
-	TRelated ( void ) : a(nullptr), b(nullptr), R(nullptr) {}
+	TRelated() = default;
 		/// init c'tor
 	TRelated ( TIndividual* a_, TIndividual* b_, TRole* R_ ) : a(a_), b(b_), R(R_) {}
 		/// copy c'tor

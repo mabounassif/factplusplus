@@ -39,11 +39,11 @@ public:		// type interface
 
 protected:	// members
 		/// counter
-	LabelCounter counter;
+	LabelCounter counter{1};
 
 public:		// interface
 		/// init c'tor
-	TLabeller ( void ) : counter(1) {}
+	TLabeller() = default;
 		/// copy c'tor
 	TLabeller ( const TLabeller& copy ) : counter(copy.counter) {}
 		/// assignment

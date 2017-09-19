@@ -42,7 +42,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	THeadTailCache ( void ) = default;
+	THeadTailCache() = default;
 		/// empty d'tor
 	virtual ~THeadTailCache() = default;
 

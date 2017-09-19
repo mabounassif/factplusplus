@@ -71,7 +71,7 @@ class TConcept: public ClassifiableEntry
 {
 private:	// members
 		/// label to use in relevant-only checks
-	TLabeller::LabelType rel;
+	TLabeller::LabelType rel = 0;
 
 protected:	// types
 		/// set of extra rules
@@ -85,16 +85,16 @@ public:		// type interface
 
 public:		// members
 		/// description of a concept
-	DLTree* Description;
+	DLTree* Description = nullptr;
 		/// classification type of concept: completely defined (true- or like-), no TS, other
-	CTTag classTag;
+	CTTag classTag = cttUnspecified;
 		/// depth of the concept wrt told subsumers
-	unsigned int tsDepth;
+	unsigned int tsDepth = 0;
 
 		/// pointer to the entry in DAG with concept name
-	BipolarPointer pName;
+	BipolarPointer pName = bpINVALID;
 		/// pointer to the entry in DAG with concept definition
-	BipolarPointer pBody;
+	BipolarPointer pBody = bpINVALID;
 
 		/// features for C
 	LogicFeatures posFeatures;
@@ -147,12 +147,6 @@ public:		// methods
 		/// the only c'tor
 	explicit TConcept ( const std::string& name )
 		: ClassifiableEntry (name)
-		, rel(0)
-		, Description(nullptr)
-		, classTag(cttUnspecified)
-		, tsDepth(0)
-		, pName (bpINVALID)
-		, pBody (bpINVALID)
 	{
 		setPrimitive();
 	}

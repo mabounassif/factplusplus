@@ -45,7 +45,7 @@ protected:	// members
 	TaxonomyVertex* Current;
 
 		/// behaviour flag: if true, insert temporary vertex into taxonomy
-	bool willInsertIntoTaxonomy;
+	bool willInsertIntoTaxonomy = true;
 
 public:		// classification interface
 
@@ -103,7 +103,6 @@ public:		// interface
 		/// init c'tor
 	Taxonomy ( const ClassifiableEntry* pTop, const ClassifiableEntry* pBottom )
 		: Current(new TaxonomyVertex())
-		, willInsertIntoTaxonomy (true)
 	{
 		Graph.push_back (new TaxonomyVertex(pBottom));	// bottom
 		Graph.push_back (new TaxonomyVertex(pTop));		// top

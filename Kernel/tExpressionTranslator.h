@@ -28,11 +28,11 @@ class TExpressionTranslator: public DLExpressionVisitor
 {
 protected:	// members
 		/// tree corresponding to a processing expression
-	DLTree* tree;
+	DLTree* tree = nullptr;
 		/// TBox to get access to the named entities
 	TBox& KB;
 		/// signature of non-trivial entities; used in semantic locality checkers only
-	const TSignature* sig;
+	const TSignature* sig = nullptr;
 
 #define THROW_UNSUPPORTED(name) \
 	throw EFaCTPlusPlus("Unsupported expression '" name "' in transformation")
@@ -62,7 +62,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	explicit TExpressionTranslator ( TBox& kb ) : tree(nullptr), KB(kb), sig(nullptr) {}
+	explicit TExpressionTranslator ( TBox& kb ) : KB(kb) {}
 		/// empty d'tor
 	~TExpressionTranslator() override { deleteTree(tree); }
 

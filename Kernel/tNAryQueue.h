@@ -40,7 +40,7 @@ private:	// members
 		/// all lists of arguments for n-ary predicates/commands
 	BaseType Base;
 		/// pre-current index of n-ary statement
-	size_t level;
+	size_t level = 0;
 
 private:	// methods
 		/// increase size of internal AUX array
@@ -54,7 +54,7 @@ private:	// methods
 
 public:		// interface
 		/// empty c'tor
-	TNAryQueue ( void ) : level(0)
+	TNAryQueue()
 	{
 		Base.push_back(nullptr);	// corresponds to level 0 -- never used
 		Base.push_back(new DLExpressionArray);

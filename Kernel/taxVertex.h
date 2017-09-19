@@ -52,7 +52,7 @@ private:	// members
 
 protected:	// members
 		/// entry corresponding to current tax vertex
-	const ClassifiableEntry* sample;
+	const ClassifiableEntry* sample = nullptr;
 		/// synonyms of the sample entry
 	EqualNames Synonyms;
 
@@ -63,11 +63,11 @@ protected:	// members
 		/// flag if given vertex has value; connected with valuedLab
 	TLabeller::LabelType theValued;
 		/// number of common parents of a node
-	unsigned int common;
+	unsigned int common = 0;
 		/// satisfiability value of a valued vertex
-	bool checkValue;
+	bool checkValue = false;
 		/// flag to check whether the vertex is in use
-	bool inUse;
+	bool inUse = true;
 
 protected:	// methods
 		/// indirect RW access to Links
@@ -133,12 +133,7 @@ public:		// flags interface
 
 public:
 		/// empty c'tor
-	TaxonomyVertex ( void )
-		: sample(nullptr)
-		, inUse(true)
-	{
-		initFlags();
-	}
+	TaxonomyVertex() { initFlags(); }
 		/// init c'tor; use it only for Top/Bot initialisations
 	explicit TaxonomyVertex ( const ClassifiableEntry* p ) : TaxonomyVertex()
 		{ setSample(p); }

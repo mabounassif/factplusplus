@@ -40,22 +40,17 @@ public:		// type definitions
 
 protected:	// members
 		/// link to taxonomy entry for current entry
-	TaxonomyVertex* taxVertex;
+	TaxonomyVertex* taxVertex = nullptr;
 		/// links to 'told subsumers' (entries that are direct super-entries for current)
 	linkSet toldSubsumers;
 		/// pointer to synonym (entry which contains whole information the same as current)
-	ClassifiableEntry* pSynonym;
+	ClassifiableEntry* pSynonym = nullptr;
 		/// index as a vertex in the SubsumptionMap/model cache
-	unsigned int Index;
+	unsigned int Index = 0;
 
 public:		// interface
 		/// C'tor
-	explicit ClassifiableEntry ( const std::string& name )
-		: TNamedEntry ( name )
-		, taxVertex (nullptr)
-		, pSynonym (nullptr)
-		, Index(0)
-		{}
+	explicit ClassifiableEntry ( const std::string& name ) : TNamedEntry(name) {}
 		/// no copy c'tor
 	ClassifiableEntry ( const ClassifiableEntry& ) = delete;
 		/// no assignment

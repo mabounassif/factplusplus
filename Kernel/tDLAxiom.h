@@ -153,17 +153,17 @@ class TDLAxiom
 {
 protected:	// members
 		/// id of the axiom
-	unsigned int id;
+	unsigned int id = 0;
 		/// signature (built lazily on demand)
-	TSignature* sig;
+	TSignature* sig = nullptr;
 		/// atom of the ontology (build lazily on demand)
-	const TOntologyAtom* Atom;
+	const TOntologyAtom* Atom = nullptr;
 		/// flag to show whether it is used (to support retraction)
-	bool used;
+	bool used = true;
 		/// flag to show whether or not the axiom is in the module
-	bool inModule;
+	bool inModule = false;
 		/// flag to show whether or not the axiom is in the search space for the optimised modularization algorithm
-	bool inSearchSpace;
+	bool inSearchSpace = false;
 
 protected:	// methods
 		/// build signature of an axiom
@@ -171,13 +171,7 @@ protected:	// methods
 
 public:		// interface
 		/// empty c'tor
-	TDLAxiom ( void )
-		: sig(nullptr)
-		, Atom(nullptr)
-		, used(true)
-		, inModule(false)
-		, inSearchSpace(false)
-		{}
+	TDLAxiom() = default;
 		/// d'tor: delete signature if it was created
 	virtual ~TDLAxiom();
 

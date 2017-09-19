@@ -49,9 +49,9 @@ protected:	// members
 		/// name of the type
 	std::string TypeName;
 		/// flag to lock the nameset (ie, prohibit to add new names there)
-	bool locked;
+	bool locked = false;
 		/// if true, allow fresh entities even when locked. treat them as System in this case
-	bool allowFresh;
+	bool allowFresh = false;
 
 protected:	// methods
 		/// virtual method for additional tuning of newly created element
@@ -69,8 +69,6 @@ public:		// interface
 		/// c'tor: clear 0-th element
 	explicit TNECollection ( const std::string& name )
 		: TypeName(name)
-		, locked(false)
-		, allowFresh(false)
 		{ Base.push_back(nullptr); }
 		/// empty d'tor: all elements will be deleted in other place
 	virtual ~TNECollection() = default;

@@ -37,8 +37,6 @@ protected:	// internal typedefs
 	class KnownSubsumers
 	{
 	public:		// interface
-			/// empty c'tor
-		KnownSubsumers ( void ) {}
 			/// empty  d'tor
 		virtual ~KnownSubsumers() = default;
 
@@ -95,17 +93,17 @@ protected:	// members
 		/// labeller for marking nodes with a label wrt classification
 	TLabeller valueLabel;
 		/// pointer to currently classified entry
-	const ClassifiableEntry* curEntry;
+	const ClassifiableEntry* curEntry= nullptr;
 
 		/// number of tested entries
-	unsigned int nEntries;
+	unsigned int nEntries = 0;
 		/// number of completely-defined entries
-	unsigned long nCDEntries;
+	unsigned long nCDEntries = 0;
 
 		/// session flag: shows the direction of the search
-	bool upDirection;
+	bool upDirection = false;
 		/// optimisation flag: if entry is completely defined by it's told subsumers, no other classification required
-	bool useCompletelyDefined;
+	bool useCompletelyDefined = false;
 
 		/// stack for Taxonomy creation
 	SearchableStack <ClassifiableEntry*> waitStack;
@@ -243,13 +241,7 @@ protected:	// methods
 
 public:		// interface
 		/// init c'tor
-	explicit TaxonomyCreator ( Taxonomy* tax )
-		: pTax(tax)
-		, curEntry(nullptr)
-		, nEntries(0)
-		, nCDEntries(0)
-		, useCompletelyDefined(false)
-		{}
+	explicit TaxonomyCreator ( Taxonomy* tax ) : pTax(tax) {}
 		/// no copy c'tor
 	TaxonomyCreator ( const TaxonomyCreator& ) = delete;
 		/// no assignment

@@ -39,11 +39,11 @@ protected:	// members
 		/// heap of saved objects
 	TBaseType Base;
 		/// current level
-	unsigned int curLevel;
+	unsigned int curLevel = InitBranchingLevelValue;
 
 public:		// interface
 		/// empty c'tor: stack will most likely be empty
-	TRareSaveStack ( void ) : curLevel(InitBranchingLevelValue) {}
+	TRareSaveStack() = default;
 		/// d'tor
 	~TRareSaveStack() { clear(); }
 

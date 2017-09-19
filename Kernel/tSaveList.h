@@ -62,11 +62,11 @@ protected:	// internal types
 
 protected:	// members
 		/// pointer to head of list
-	List* head;
+	List* head = nullptr;
 
 public:		// interface
 		/// empty c'tor
-	TSaveList ( void ) : head(nullptr) {}
+	TSaveList() = default;
 		/// copy c'tor
 	TSaveList ( const TSaveList& copy ) : head ( copy.head ? copy.head->clone() : nullptr ) {}
 		/// d'tor -- clear stack

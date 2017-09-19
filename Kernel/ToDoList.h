@@ -38,7 +38,7 @@ struct ToDoEntry
 	int offset = 0;
 
 		/// empty c'tor
-	ToDoEntry () {}
+	ToDoEntry() = default;
 		/// init c'tor
 	ToDoEntry ( DlCompletionTree* n, int off ) : Node(n), offset(off) {}
 }; // ToDoEntry
@@ -52,13 +52,9 @@ protected:	// classes
 	{
 	public:		// members
 			/// save start point of queue of entries
-		size_t sp;
+		size_t sp = 0;
 			/// save end point of queue of entries
-		size_t ep;
-
-	public:		// methods
-			/// empty c'tor
-		QueueSaveState ( void ) {}
+		size_t ep = 0;
 	}; // QueueSaveState
 	//--------------------------------------------------------------------------
 
@@ -171,11 +167,7 @@ protected:	// classes
 			/// save state of all regular queues
 		QueueSaveState backup[nRegularOps];
 			/// save number-of-entries to do
-		unsigned int noe;
-
-	public:		// methods
-			/// empty c'tor
-		SaveState ( void ) {}
+		unsigned int noe = 0;
 	}; // SaveState
 	//--------------------------------------------------------------------------
 
@@ -191,7 +183,7 @@ protected:	// members
 		/// priority matrix
 	const ToDoPriorMatrix& Matrix;
 		/// number of un-processed entries
-	unsigned int noe;
+	unsigned int noe = 0;
 
 protected:	// methods
 		/// save current TODO table content to given saveState entry
@@ -217,7 +209,7 @@ protected:	// methods
 
 public:
 		/// init c'tor
-	ToDoList( const ToDoPriorMatrix& matrix, TRareSaveStack* stack ) : queueNN(stack), Matrix(matrix), noe(0) {}
+	ToDoList( const ToDoPriorMatrix& matrix, TRareSaveStack* stack ) : queueNN(stack), Matrix(matrix) {}
 		/// no copy c'tor
 	ToDoList( const ToDoList& ) = delete;
 		/// no assignment

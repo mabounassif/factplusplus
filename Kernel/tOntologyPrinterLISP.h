@@ -32,9 +32,9 @@ protected:	// members
 		/// printer for the expressions
 	TLISPExpressionPrinter LEP;
 		/// if true, print declarations
-	bool printDeclarations;
+	bool printDeclarations = true;
 		/// if true, print logical axioms
-	bool printAxioms;
+	bool printAxioms = true;
 
 protected:	// methods
 		/// helper to print several expressions in a row
@@ -122,8 +122,6 @@ public:		// interface
 	explicit TLISPOntologyPrinter ( std::ostream& o_ )
 		: o(o_)
 		, LEP(o_)
-		, printDeclarations(true)
-		, printAxioms(true)
 		{}
 
 		/// instruct printer whether to print/ignore declarations and axioms

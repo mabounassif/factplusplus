@@ -39,9 +39,9 @@ protected:	// members
 		/// set to keep all the elements in signature
 	BaseType Set;
 		/// true if concept TOP-locality; false if concept BOTTOM-locality
-	bool topCLocality;
+	bool topCLocality = false;
 		/// true if role TOP-locality; false if role BOTTOM-locality
-	bool topRLocality;
+	bool topRLocality = false;
 
 protected:	// methods
 		/// @return true if *THIS \subseteq SIG (\subset if IMPROPER = false )
@@ -68,19 +68,6 @@ protected:	// methods
 	}
 
 public:		// interface
-		/// empty c'tor
-	TSignature ( void ) : topCLocality(false), topRLocality(false) {}
-		/// copy c'tor
-	TSignature ( const TSignature& copy ) : Set(copy.Set), topCLocality(copy.topCLocality), topRLocality(copy.topRLocality) {}
-		/// assignment
-	TSignature& operator= ( const TSignature& copy )
-	{
-		Set = copy.Set;
-		topCLocality = copy.topCLocality;
-		topRLocality = copy.topRLocality;
-		return *this;
-	}
-
 	// add names to signature
 
 		/// add pointer to named object to signature

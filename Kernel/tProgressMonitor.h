@@ -25,7 +25,7 @@ class TProgressMonitor
 {
 public:
 		/// empty c'tor
-	TProgressMonitor ( void ) {}
+	TProgressMonitor() = default;
 		/// empty d'tor
 	virtual ~TProgressMonitor() = default;
 

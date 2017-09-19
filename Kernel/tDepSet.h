@@ -97,7 +97,7 @@ protected:	// members
 		/// reference to the containing manager
 	TDepSetManager* Manager;
 		/// element head.NULL
-	TDepSetElement* HeadDepSet;
+	TDepSetElement* HeadDepSet = nullptr;
 		/// head element of the given cache
 	unsigned int Level;
 
@@ -119,7 +119,7 @@ public:		// interface
 		HeadDepSet = new TDepSetElement { Manager, Level, nullptr };
 	}
 		/// d'tor: delete all the cached dep-sets and the head element
-	virtual ~TDepSetCache()
+	~TDepSetCache() override
 	{
 		// don't delete tails as they are referenced outside
 		for ( auto& p: Map )

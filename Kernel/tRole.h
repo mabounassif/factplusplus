@@ -54,11 +54,11 @@ protected:	// types
 			/// flag value
 		bool value;
 			/// whether flag set or not
-		bool known;
+		bool known = false;
 
 	public:		// interface
 			/// init c'tor
-		explicit TKnownValue ( bool val = false ) : value(val), known(false) {}
+		explicit TKnownValue ( bool val = false ) : value(val) {}
 
 			/// @return true iff the value is known to be set
 		bool isKnown ( void ) const { return known; }
@@ -78,22 +78,22 @@ public:		// types
 
 protected:	// members
 		/// role that are inverse of given one
-	TRole* Inverse;
+	TRole* Inverse = nullptr;
 
 		/// Domain of role as a concept description; default NULL
-	DLTree* pDomain;
+	DLTree* pDomain = nullptr;
 		/// Domain of role as a concept description; default NULL
-	DLTree* pSpecialDomain;
+	DLTree* pSpecialDomain = nullptr;
 		/// Domain of role as a pointer to DAG entry
-	BipolarPointer bpDomain;
+	BipolarPointer bpDomain = bpINVALID;
 		/// domain in the form AR.Range for the complex roles
-	BipolarPointer bpSpecialDomain;
+	BipolarPointer bpSpecialDomain = bpINVALID;
 
 		/// pointer to role's functional definition DAG entry (or just TOP)
-	BipolarPointer Functional;
+	BipolarPointer Functional = bpINVALID;
 
 		/// is role relevant to current query
-	TLabeller::LabelType rel;
+	TLabeller::LabelType rel = 0;
 
 #ifdef RKG_USE_SORTED_REASONING
 		/// label of a domain (inverse role is used for a range label)
@@ -131,7 +131,7 @@ protected:	// members
 		/// value for reflexivity
 	TKnownValue Irreflexivity;
 		/// flag to show that this role needs special R&D processing
-	bool SpecialDomain;
+	bool SpecialDomain = false;
 
 protected:	// methods
 	// support for Anc/Desc filling and such
@@ -519,14 +519,6 @@ inline TRole* resolveRole ( const DLTree* t ) { return resolveSynonym(resolveRol
 //--------------------------------------------------
 inline TRole :: TRole ( const std::string& name )
 	: ClassifiableEntry(name)
-	, Inverse(nullptr)
-	, pDomain(nullptr)
-	, pSpecialDomain(nullptr)
-	, bpDomain(bpINVALID)
-	, bpSpecialDomain(bpINVALID)
-	, Functional(bpINVALID)
-	, rel(0)
-	, SpecialDomain(false)
 {
 	setCompletelyDefined (true);	// role hierarchy is completely defined by it's parents
 	addTrivialTransition (this);

@@ -52,7 +52,7 @@ protected:	// members
 		/// set of all atoms current one depends on
 	AtomSet AllDepAtoms;
 		/// unique atom's identifier
-	size_t Id;
+	size_t Id = 0;
 
 protected:	// methods
 		/// remove all atoms in AllDepAtoms from DepAtoms
@@ -79,11 +79,6 @@ protected:	// methods
 	}
 
 public:		// interface
-		/// empty c'tor
-	TOntologyAtom ( void ) : Id(0) {}
-
-	// fill in the sets
-
 		/// set the module axioms
 	void setModule ( const AxiomSet& module ) { ModuleAxioms = module; }
 		/// add axiom AX to an atom

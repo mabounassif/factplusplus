@@ -29,26 +29,19 @@ class BranchingContext
 {
 public:		// members
 		/// currently processed node
-	DlCompletionTree* curNode;
+	DlCompletionTree* curNode = nullptr;
 		/// currently processed concept
-	ConceptWDep curConcept;
+	ConceptWDep curConcept {bpINVALID};
 		/// positions of the Used members
-	size_t pUsedIndex, nUsedIndex;
+	size_t pUsedIndex = 0, nUsedIndex = 0;
 		/// size of a session GCIs vector
-	size_t SGsize;
+	size_t SGsize = 0;
 		/// dependencies for branching clashes
 	DepSet branchDep;
 
 public:		// interface
 		/// empty c'tor
-	BranchingContext ( void )
-		: curNode{nullptr}
-		, curConcept{bpINVALID}
-		, pUsedIndex{0}
-		, nUsedIndex{0}
-		, SGsize{0}
-		, branchDep{}
-		{}
+	BranchingContext() = default;
 		/// no copy c'tor
 	BranchingContext ( const BranchingContext& ) = delete;
 		/// no assignment
@@ -75,11 +68,9 @@ public:		// members
 		/// relevant disjuncts (ready to add)
 	OrIndex applicableOrEntries;
 		/// current branching index
-	size_t branchIndex;
+	size_t branchIndex = 0;
 
 public:		// interface
-		/// empty c'tor
-	BCOr ( void ) : BranchingContext{}, branchIndex{0} {}
 		/// init branch index
 	void init ( void ) override { branchIndex = 0; }
 		/// give the next branching alternative
@@ -98,9 +89,6 @@ public:		// interface
 	/// branching context for the Choose-rule
 class BCChoose: public BranchingContext
 {
-public:		// interface
-		/// empty c'tor
-	BCChoose ( void ) : BranchingContext{} {}
 }; // BCChoose
 
 	/// branching context for the NN-rule
@@ -108,11 +96,9 @@ class BCNN: public BranchingContext
 {
 public:		// members
 		/// the value of M used in the NN rule
-	unsigned int value;
+	unsigned int value = 0;
 
 public:		// interface
-		/// empty c'tor
-	BCNN ( void ) : BranchingContext{}, value{0} {}
 		/// init value
 	void init ( void ) override { value = 1; }
 		/// give the next branching alternative
@@ -139,13 +125,11 @@ public:		// members
 		/// vector of edges to be merged
 	EdgeVector ItemsToMerge;
 		/// index of a edge into which the merge is performing
-	CRIndex toIndex;
+	CRIndex toIndex = 0;
 		/// index of a merge candidate
-	CRIndex fromIndex;
+	CRIndex fromIndex = 0;
 
 public:		// interface
-		/// empty c'tor
-	BCLE ( void ) : BranchingContext{}, toIndex{0}, fromIndex{0} {}
 		/// init indices
 	void init ( void ) override
 	{
@@ -178,9 +162,6 @@ public:		// interface
 	/// branching context for the barrier
 class BCBarrier: public BranchingContext
 {
-public:		// interface
-		/// empty c'tor
-	BCBarrier ( void ) : BranchingContext() {}
 }; // BCBarrier
 
 #endif

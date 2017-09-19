@@ -31,9 +31,6 @@ template <typename T>
 class TSaveStack: public growingArrayP<T>
 {
 public:		// interface
-		/// c'tor: do nothing
-	TSaveStack ( void ) {}
-
 	// stack operations
 
 		/// get a new object from the stack;it will be filled by caller
