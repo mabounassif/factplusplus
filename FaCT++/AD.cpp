@@ -37,8 +37,8 @@ printAtomAxioms ( const TOntologyAtom::AxiomSet& Axioms )
 	// do cycle via set to keep the order
 	typedef std::set<TDLAxiom*> AxSet;
 	const AxSet M ( Axioms.begin(), Axioms.end() );
-	for ( AxSet::const_iterator p = M.begin(); p != M.end(); ++p )
-		(*p)->accept(LP);
+	for ( const TDLAxiom* axiom : M )
+		axiom->accept(LP);
 }
 
 /// print dependencies of an atom
@@ -49,14 +49,14 @@ printAtomDeps ( const TOntologyAtom::AtomSet& Dep )
 		Out << "Ground";
 	else
 		Out << "Depends on:";
-	for ( TOntologyAtom::AtomSet::const_iterator q = Dep.begin(), q_end = Dep.end(); q != q_end; ++q )
-		Out << " " << (*q)->getId();
+	for ( const TOntologyAtom* atom : Dep )
+		Out << " " << atom->getId();
 	Out << "\n";
 }
 
 /// print the atom with an index INDEX of the AD
 static void
-printADAtom ( TOntologyAtom* atom )
+printADAtom ( const TOntologyAtom* atom )
 {
 	const TOntologyAtom::AxiomSet& Axioms = atom->getAtomAxioms();
 	Out << "Atom " << atom->getId() << " (size " << Axioms.size() << ", module size " << atom->getModule().size() << "):\n";
@@ -69,8 +69,8 @@ static size_t
 sizeAD ( AOStructure* AOS )
 {
 	size_t ret = 0;
-	for ( AOStructure::iterator p = AOS->begin(), p_end = AOS->end(); p != p_end; ++p )
-		ret += (*p)->getAtomAxioms().size();
+	for ( const TOntologyAtom* atom : *AOS )
+		ret += atom->getAtomAxioms().size();
 	return ret;
 }
 
@@ -89,7 +89,7 @@ CreateAD ( TOntology* Ontology, ModuleMethod moduleMethod )
 	Out << "Atomic structure built in " << timer << " seconds\n";
 	size_t sz = sizeAD(AOS);
 	Out << "Atomic structure (" << sz << " axioms in " << AOS->size() << " atoms; " << Ontology->size()-sz << " tautologies):\n";
-	for ( AOStructure::iterator p = AOS->begin(), p_end = AOS->end(); p != p_end; ++p )
-		printADAtom(*p);
+	for ( const TOntologyAtom* atom : *AOS )
+		printADAtom(atom);
 	delete AD;
 }

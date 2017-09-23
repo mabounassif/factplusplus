@@ -58,16 +58,16 @@ protected:	// methods
 		/// remove all atoms in AllDepAtoms from DepAtoms
 	void filterDep ( void )
 	{
-		for ( AtomSet::iterator p = AllDepAtoms.begin(), p_end = AllDepAtoms.end(); p != p_end; ++p )
-			DepAtoms.erase(*p);
+		for ( TOntologyAtom* atom : AllDepAtoms )
+			DepAtoms.erase(atom);
 	}
 		/// build all dep atoms; filter them from DepAtoms
 	void buildAllDepAtoms ( AtomSet& checked )
 	{
 		// first gather all dep atoms from all known dep atoms
-		for ( AtomSet::iterator p = DepAtoms.begin(), p_end = DepAtoms.end(); p != p_end; ++p )
+		for ( TOntologyAtom* atom : DepAtoms )
 		{
-			const AtomSet& Dep = (*p)->getAllDepAtoms(checked);
+			const AtomSet& Dep = atom->getAllDepAtoms(checked);
 			AllDepAtoms.insert ( Dep.begin(), Dep.end() );
 		}
 		// now filter them out from known dep atoms

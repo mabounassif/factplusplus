@@ -43,8 +43,8 @@ public:		// interface
 		/// d'tor: delete all atoms
 	~AOStructure()
 	{
-		for ( iterator p = Atoms.begin(), p_end = Atoms.end(); p != p_end; ++p )
-			delete *p;
+		for ( TOntologyAtom* atom : Atoms )
+			delete atom;
 	}
 
 		/// create a new atom and get a pointer to it
@@ -59,8 +59,8 @@ public:		// interface
 	void reduceGraph ( void )
 	{
 		TOntologyAtom::AtomSet checked;
-		for ( iterator p = Atoms.begin(), p_end = Atoms.end(); p != p_end; ++p )
-			(*p)->getAllDepAtoms(checked);
+		for ( TOntologyAtom* atom : Atoms )
+			atom->getAllDepAtoms(checked);
 	}
 
 		/// RW iterator begin
@@ -98,8 +98,8 @@ protected:	// methods
 		/// restore all tautologies back
 	void restoreTautologies ( void )
 	{
-		for ( AxiomVec::iterator p = Tautologies.begin(), p_end = Tautologies.end(); p != p_end; ++p )
-			(*p)->setUsed(true);
+		for ( TDLAxiom* axiom : Tautologies )
+			axiom->setUsed(true);
 	}
 		/// build a module for given signature SIG; use parent atom's module as a base for the module search
 	TOntologyAtom* buildModule ( const TSignature& sig, TOntologyAtom* parent );

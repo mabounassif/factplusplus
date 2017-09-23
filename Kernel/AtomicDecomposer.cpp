@@ -39,13 +39,13 @@ AtomicDecomposer :: removeTautologies ( TOntology* O )
 	// we might use it for another decomposition
 	Tautologies.clear();
 	unsigned long nAx = 0;
-	for ( TOntology::iterator p = O->begin(), p_end = O->end(); p != p_end; ++p )
-		if ( likely((*p)->isUsed()) )
+	for ( TDLAxiom* axiom : *O )
+		if ( likely(axiom->isUsed()) )
 		{
-			if ( unlikely(pModularizer->isTautology(*p,type)) )
+			if ( unlikely(pModularizer->isTautology(axiom, type)) )
 			{
-				Tautologies.push_back(*p);
-				(*p)->setUsed(false);
+				Tautologies.push_back(axiom);
+				axiom->setUsed(false);
 			}
 			else
 				++nAx;
@@ -134,9 +134,9 @@ AtomicDecomposer :: getAOS ( TOntology* O, ModuleType t )
 			BottomAtom->addAxiom(axiom);
 
 	// create atoms for all the axioms in the ontology
-	for ( TOntology::iterator p = O->begin(), p_end = O->end(); p != p_end; ++p )
-		if ( (*p)->isUsed() && (*p)->getAtom() == nullptr )
-			createAtom ( *p, rootAtom );
+	for ( TDLAxiom* axiom : *O )
+		if ( axiom->isUsed() && axiom->getAtom() == nullptr )
+			createAtom ( axiom, rootAtom );
 
 	// restore tautologies in the ontology
 	restoreTautologies();
