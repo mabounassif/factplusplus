@@ -92,9 +92,9 @@ public:		// visitor interface
 	{
 		DLTree* acc = createTop();
 
-		for ( TDLConceptAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
+		for ( const auto* arg : expr )
 		{
-			(*p)->accept(*this);
+			arg->accept(*this);
 			acc = createSNFAnd ( acc, *this );
 		}
 
@@ -104,9 +104,9 @@ public:		// visitor interface
 	{
 		DLTree* acc = createBottom();
 
-		for ( TDLConceptOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
+		for ( const auto* arg : expr )
 		{
-			(*p)->accept(*this);
+			arg->accept(*this);
 			acc = createSNFOr ( acc, *this );
 		}
 
@@ -116,9 +116,9 @@ public:		// visitor interface
 	{
 		DLTree* acc = createBottom();
 
-		for ( TDLConceptOneOf::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
+		for ( const auto* arg : expr )
 		{
-			(*p)->accept(*this);
+			arg->accept(*this);
 			acc = createSNFOr ( acc, *this );
 		}
 
@@ -304,9 +304,9 @@ public:		// visitor interface
 	{
 		DLTree* acc = createTop();
 
-		for ( TDLDataTypeRestriction::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
+		for ( const auto* arg : expr )
 		{
-			(*p)->accept(*this);
+			arg->accept(*this);
 			acc = createSNFAnd ( acc, *this );
 		}
 
@@ -324,9 +324,9 @@ public:		// visitor interface
 	{
 		DLTree* acc = createTop();
 
-		for ( TDLDataAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
+		for ( const auto* arg : expr )
 		{
-			(*p)->accept(*this);
+			arg->accept(*this);
 			acc = createSNFAnd ( acc, *this );
 		}
 
@@ -336,9 +336,9 @@ public:		// visitor interface
 	{
 		DLTree* acc = createBottom();
 
-		for ( TDLDataOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
+		for ( const auto* arg : expr )
 		{
-			(*p)->accept(*this);
+			arg->accept(*this);
 			acc = createSNFOr ( acc, *this );
 		}
 
@@ -348,9 +348,9 @@ public:		// visitor interface
 	{
 		DLTree* acc = createBottom();
 
-		for ( TDLDataOneOf::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
+		for ( const auto* arg : expr )
 		{
-			(*p)->accept(*this);
+			arg->accept(*this);
 			acc = createSNFOr ( acc, *this );
 		}
 

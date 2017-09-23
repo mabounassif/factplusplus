@@ -329,8 +329,8 @@ void TRole :: checkHierarchicalDisjoint ( TRole* R )
 void TRole :: initDJMap ( void )
 {
 	// role R is disjoint with every role S' [= S such that R != S
-	for ( TRoleSet::iterator q = Disjoint.begin(), q_end = Disjoint.end(); q != q_end; ++q )
-		DJRoles[(*q)->getIndex()] = true;
+	for ( const TRole* role : Disjoint )
+		DJRoles[role->getIndex()] = true;
 }
 
 // automaton-related implementation

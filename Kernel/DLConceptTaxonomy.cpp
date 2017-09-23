@@ -347,10 +347,10 @@ DLConceptTaxonomy :: reclassify ( const std::set<const TNamedEntity*>& plus, con
 //	std::cout << "Add/Del names Taxonomy:\n";
 //	pTax->print(std::cout);
 
-	for ( std::vector<const ClassifiableEntry*>::iterator p = toProcess.begin(), p_end = toProcess.end(); p != p_end; ++p )
+	for ( const ClassifiableEntry* entry : toProcess )
 	{
-		TaxonomyVertex* node = (*p)->getTaxVertex();
-		const TNamedEntity* entity = (*p)->getEntity();
+		TaxonomyVertex* node = entry->getTaxVertex();
+		const TNamedEntity* entity = entry->getEntity();
 		std::cout << "Reclassify " << entity->getName() << " (" << (MPlus.count(entity) > 0 ?"Added":"") << (MMinus.count(entity) > 0 ?" Removed":"") << ")";
 
 		TsProcTimer timer;
@@ -414,8 +414,8 @@ DLConceptTaxonomy :: reclassify ( TaxonomyVertex* node, const TSignature* s )
 //		for ( TVArray::iterator q = pos.begin(), q_end = pos.end(); q != q_end; ++q )
 //			node->addNeighbour(true, *q);
 		if ( useCandidates )
-			for ( TVArray::iterator q = neg.begin(), q_end = neg.end(); q != q_end; ++q )
-				fillCandidates(*q);
+			for ( TaxonomyVertex* vertex : neg )
+				fillCandidates(vertex);
 	}
 	else	// all parents are there
 	{

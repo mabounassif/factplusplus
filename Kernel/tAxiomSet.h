@@ -63,8 +63,8 @@ protected:	// methods
 		/// @return true iff axiom Q is a copy of already existing axiom
 	bool copyOfExisting ( const TAxiom* q ) const
 	{
-		for ( auto p = Accum.begin(), p_end = Accum.end(); p != p_end; ++p )
-			if ( *q == **p )
+		for ( const TAxiom* axiom : Accum )
+			if ( *q == *axiom )
 			{
 #			ifdef RKG_DEBUG_ABSORPTION
 				std::cout << " same as (" << p-Accum.begin() << "); skip";

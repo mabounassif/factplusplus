@@ -165,8 +165,8 @@ public:		// interface
 			return;
 		o << type << " Roles (" << size() << "):\n";
 		emptyRole.Print(o);
-		for ( const_iterator p = begin(); p != end(); ++p )
-			(*p)->Print(o);
+		for ( const TRole* role : *this )
+			role->Print(o);
 	}
 }; // RoleMaster
 

@@ -78,9 +78,9 @@ ReasoningKernel :: getDataRelatedIndividuals ( TDRoleExpr* R, TDRoleExpr* S, int
 	typedef TDLNAryExpression<TDLIndividualExpression> IndVec;
 	IndVec Individuals ("individual expression","data related individuals");
 	Individuals.add(getExpressionManager()->getArgList());
-	for ( IndVec::iterator q = Individuals.begin(), q_end = Individuals.end(); q != q_end; ++q )
+	for ( const TIndividualExpr* individual : Individuals )
 	{
-		const TIndividual* ind = getIndividual ( *q, "individual name expected in getDataRelatedIndividuals()" );
+		const TIndividual* ind = getIndividual ( individual, "individual name expected in getDataRelatedIndividuals()" );
 		const DlCompletionTree* vR = nullptr;
 		const DlCompletionTree* vS = nullptr;
 		for ( DlCompletionTree::const_edge_iterator p = ind->node->begin(), p_end = ind->node->end(); p != p_end; ++p )

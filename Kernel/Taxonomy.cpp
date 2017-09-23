@@ -41,9 +41,9 @@ void Taxonomy :: print ( std::ostream& o ) const
 	TVSet sorted(Graph.begin()+2, Graph.end());
 
 	getTopVertex()->print(o);
-	for ( TVSet::const_iterator p = sorted.begin(), p_end = sorted.end(); p != p_end; ++p )
-		if ( likely((*p)->isInUse()) )
-			(*p)->print(o);
+	for ( const TaxonomyVertex* vertex : sorted )
+		if ( likely(vertex->isInUse()) )
+			vertex->print(o);
 	getBottomVertex()->print(o);
 }
 

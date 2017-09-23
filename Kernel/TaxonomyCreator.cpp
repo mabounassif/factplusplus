@@ -221,11 +221,11 @@ TaxonomyCreator :: prepareTS ( ClassifiableEntry* cur )
 	if ( cycleFound )
 	{
 		TaxonomyVertex* syn = cur->getTaxVertex();
-		for ( std::vector<ClassifiableEntry*>::iterator q = Syns.begin(), q_end = Syns.end(); q != q_end; ++q )
-			syn->addSynonym(*q);
+		for ( const ClassifiableEntry* entry : Syns )
+			syn->addSynonym(entry);
 		Syns.clear();
 	}
-	// here the cycle is gone
+	// here the cycle is done
 	return nullptr;
 }
 

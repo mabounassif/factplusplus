@@ -379,9 +379,9 @@ ReasoningKernel :: isDisjointRoles ( void )
 	Roles.reserve(Disj.size());
 	unsigned int nTopRoles = 0;
 
-	for ( TExprVec::const_iterator p = Disj.begin(), p_end = Disj.end(); p != p_end; ++p )
+	for ( auto* arg : Disj )
 	{
-		if ( TORoleExpr* ORole = dynamic_cast<TORoleExpr*>(*p) )
+		if ( TORoleExpr* ORole = dynamic_cast<TORoleExpr*>(arg) )
 		{
 			TRole* R = getRole ( ORole, "Role expression expected in isDisjointRoles()" );
 			if ( R->isBottom() )
@@ -391,7 +391,7 @@ ReasoningKernel :: isDisjointRoles ( void )
 			else
 				Roles.push_back(R);
 		}
-		else if ( TDRoleExpr* DRole = dynamic_cast<TDRoleExpr*>(*p) )
+		else if ( TDRoleExpr* DRole = dynamic_cast<TDRoleExpr*>(arg) )
 		{
 			TRole* R = getRole ( DRole, "Role expression expected in isDisjointRoles()" );
 			if ( R->isBottom() )

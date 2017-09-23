@@ -111,8 +111,8 @@ public:		// visitor interface
 		ensureNames(axiom.getC());
 		ArgList.push_back(e(axiom.getC()));
 		DLTree* acc = createBottom();
-		for ( TDLAxiomDisjointUnion::iterator p = axiom.begin(), p_end = axiom.end(); p != p_end; ++p )
-			acc = createSNFOr ( acc, e(*p) );
+		for ( const auto* arg : axiom )
+			acc = createSNFOr ( acc, e(arg) );
 		ArgList.push_back(acc);
 		kb.processEquivalentC(ArgList.begin(),ArgList.end());
 	}

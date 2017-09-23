@@ -229,8 +229,8 @@ protected:	// methods
 		/// check if all parent arcs are blocked
 	bool isParentArcIBlocked ( void ) const
 	{
-		for ( const_edge_iterator p = begin(); p != end(); ++p )
-			if ( (*p)->isPredEdge() && !(*p)->isIBlocked() )
+		for ( const DlCompletionTreeArc* edge : *this )
+			if ( edge->isPredEdge() && !edge->isIBlocked() )
 				return false;
 		return true;
 	}

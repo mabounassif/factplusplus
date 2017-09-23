@@ -392,9 +392,9 @@ protected:	// methods
 		/// re-do every BP or inverse(BP) in labels of CGraph
 	void updateName ( BipolarPointer bp )
 	{
-		for ( DlCompletionGraph::iterator p = CGraph.begin(), p_end = CGraph.end(); p != p_end; ++p )
-			if ( isNodeGloballyUsed(*p) )
-				updateName ( *p, bp );
+		for ( DlCompletionTree* node : CGraph )
+			if ( isNodeGloballyUsed(node) )
+				updateName ( node, bp );
 	}
 
 	// label access interface

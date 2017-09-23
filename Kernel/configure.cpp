@@ -25,21 +25,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 Configuration :: ~Configuration()
 {
-	for ( ConfSectBase::iterator i = Base.begin (); i != Base.end (); ++i )
-		delete *i;
+	 for ( auto* elem : Base )
+		delete elem;
 }
 
 ConfSection :: ~ConfSection()
 {
-	for ( ConfBase::iterator i = Base.begin (); i != Base.end (); ++i )
-		delete *i;
+	for ( auto* elem : Base )
+		delete elem;
 }
 
 ConfSection* Configuration :: FindSection ( const std::string& pc ) const
 {
-	for ( ConfSectBase::const_iterator i = Base.begin (); i != Base.end (); ++i )
-		if ( **i == pc )
-			return *i;
+	for ( ConfSection* section : Base )
+		if ( *section == pc )
+			return section;
 
 	// can not find section
 	return nullptr;
@@ -47,9 +47,9 @@ ConfSection* Configuration :: FindSection ( const std::string& pc ) const
 
 ConfElem* ConfSection :: FindByName ( const std::string& name ) const
 {
-	for ( ConfBase::const_iterator i = Base.begin (); i != Base.end (); ++i )
-		if ( (*i)->Name == name )
-			return *i;
+	for ( ConfElem* elem : Base )
+		if ( elem->Name == name )
+			return elem;
 
 	// can not find element in section
 	return nullptr;
@@ -239,8 +239,8 @@ void ConfSection :: Save ( std::ostream& o ) const
 {
 	o << "[" << Name << "]\n";
 
-	for ( ConfBase::const_iterator i = Base.begin (); i != Base.end (); ++i )
-		(*i)->Save (o);
+	for ( const ConfElem* elem : Base )
+		elem->Save(o);
 
 	o << std::endl;
 }
@@ -251,8 +251,8 @@ bool Configuration :: Save ( const char* Filename )
 	if ( o.bad () )
 		return true;
 
-	for ( ConfSectBase::iterator i = Base.begin (); i != Base.end (); ++i )
-		(*i)->Save (o);
+	for ( ConfSection* section : Base )
+		section->Save(o);
 
 	isLoaded = isSaved = true;
 	return false;

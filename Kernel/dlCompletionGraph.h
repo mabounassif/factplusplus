@@ -273,8 +273,8 @@ public:		// interface
 		/// d'tor: delete all allocated nodes
 	~DlCompletionGraph()
 	{
-		for ( iterator p = NodeBase.begin(); p != NodeBase.end(); ++p )
-			delete *p;
+		for ( DlCompletionTree* node : NodeBase )
+			delete node;
 	}
 
 	// flag setting
