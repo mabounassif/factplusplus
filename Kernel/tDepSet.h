@@ -191,17 +191,17 @@ class TDepSet
 {
 protected:	// members
 		/// pointer to the appropriate dep-set element
-	TDepSetElement* dep;
+	TDepSetElement* dep = nullptr;
 
 public:		// interface
 		/// default c'tor: create empty dep-set
-	TDepSet ( void ) : dep(nullptr) {}
+	TDepSet() = default;
 		/// main c'tor
-	explicit TDepSet ( TDepSetElement* depp ) { dep = depp; }
+	explicit TDepSet ( TDepSetElement* depp ) : dep(depp) {}
 		/// copy c'tor
-	TDepSet ( const TDepSet& d ) : dep(d.dep) {}
+	TDepSet ( const TDepSet& ) = default;
 		/// assignment
-	TDepSet& operator = ( const TDepSet& d ) { dep = d.dep; return *this; }
+	TDepSet& operator = ( const TDepSet& ) = default;
 
 	// access methods
 

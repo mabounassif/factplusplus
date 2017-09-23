@@ -152,7 +152,7 @@ public:		// methods
 		delete NType;
 		NType = nullptr;
 		Constraints.clear();
-		Constraints.push_back(DepInterval());
+		Constraints.emplace_back();
 		accDep.clear();
 	}
 

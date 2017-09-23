@@ -42,16 +42,6 @@ protected:	// members
 	LabelCounter counter{1};
 
 public:		// interface
-		/// init c'tor
-	TLabeller() = default;
-		/// copy c'tor
-	TLabeller ( const TLabeller& copy ) : counter(copy.counter) {}
-		/// assignment
-	TLabeller& operator= ( const TLabeller& copy )
-	{
-		counter = copy.counter;
-		return *this;
-	}
 
 	// operations with Labeller
 

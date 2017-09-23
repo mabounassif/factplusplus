@@ -46,7 +46,7 @@ public:		// interface
 		/// no assignment
 	TDataType& operator = ( const TDataType& ) = delete;
 		/// d'tor: delete data type entry and all the expressions
-	virtual ~TDataType()
+	~TDataType() override
 	{
 		for ( auto& p: Expr )
 			delete p;

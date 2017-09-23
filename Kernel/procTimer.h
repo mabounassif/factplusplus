@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef PROCTIMER_H
 #define PROCTIMER_H
 
-#include <time.h>
+#include <ctime>
 
 /**
   * Class TsProcTimer definition & implementation

@@ -42,14 +42,9 @@ public:		// interface
 		/// default c'tor for numbers
 	TLexeme ( Token tok, unsigned int val ) : token(tok) { value.data = val; }
 		/// Copy c'tor
-	TLexeme ( const TLexeme& lex ) : token(lex.token), value(lex.value) {}
+	TLexeme ( const TLexeme& ) = default;
 		/// Assignment
-	TLexeme& operator = ( const TLexeme& lex )
-	{
-		token = lex.token;
-		value = lex.value;
-		return *this;
-	}
+	TLexeme& operator = ( const TLexeme& ) = default;
 
 	// access
 

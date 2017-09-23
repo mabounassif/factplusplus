@@ -43,24 +43,6 @@ public:		// members
 	bool maxExcl;
 
 public:		// interface
-		/// empty c'tor
-	TDataInterval ( void ) {}
-		/// copy c'tor
-	TDataInterval ( const TDataInterval& copy )
-		: min(copy.min)
-		, max(copy.max)
-		, minExcl(copy.minExcl)
-		, maxExcl(copy.maxExcl)
-		{}
-		/// assignment
-	TDataInterval& operator = ( const TDataInterval& copy )
-	{
-		min = copy.min;
-		max = copy.max;
-		minExcl = copy.minExcl;
-		maxExcl = copy.maxExcl;
-		return *this;
-	}
 
 		/// clear an interval
 	void clear ( void ) { min = max = ComparableDT(); }

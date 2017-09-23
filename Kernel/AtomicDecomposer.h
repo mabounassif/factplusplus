@@ -40,8 +40,6 @@ protected:	// members
 	AtomVec Atoms;
 
 public:		// interface
-		/// empty c'tor
-	AOStructure ( void ) {}
 		/// d'tor: delete all atoms
 	~AOStructure()
 	{
