@@ -35,22 +35,18 @@ protected:	// members
 
 public:		// members
 		/// class name
-	jclass ClassID;
+	jclass ClassID = nullptr;
 		/// array class type
-	jclass ArrayClassID;
+	jclass ArrayClassID = nullptr;
 		/// c'tor type
-	jmethodID CtorID;
+	jmethodID CtorID = nullptr;
 		/// 'node' field
-	jfieldID NodeFID;
+	jfieldID NodeFID = nullptr;
 
 public:		// interface
 		/// c'tor: init class name
 	explicit TClassFieldMethodIDs ( const char* arrayClassName )
 		: ArrayClassName(arrayClassName)
-		, ClassID(nullptr)
-		, ArrayClassID(nullptr)
-		, CtorID(nullptr)
-		, NodeFID(nullptr)
 		{}
 		/// init values by class name
 	void init ( JNIEnv* env )
@@ -99,9 +95,9 @@ public:		// members
 		/// copy of an ENV to work with a given kernel
 	JNIEnv* env;
 		/// link to the owned kernel
-	ReasoningKernel* K;
+	ReasoningKernel* K = nullptr;
 		/// attached Expression Manager
-	TExpressionManager* EM;
+	TExpressionManager* EM = nullptr;
 		/// cached IDs for known classes
 	TClassFieldMethodIDs
 		ClassPointer,
