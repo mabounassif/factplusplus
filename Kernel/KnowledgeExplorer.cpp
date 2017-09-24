@@ -96,9 +96,9 @@ const KnowledgeExplorer::TCGRoleSet&
 KnowledgeExplorer :: getDataRoles ( const TCGNode* node, bool onlyDet )
 {
 	Roles.clear();
-	for ( DlCompletionTree::const_edge_iterator p = node->begin(), p_end = node->end(); p != p_end; ++p )
-		if ( likely(!(*p)->isIBlocked()) && (*p)->getArcEnd()->isDataNode() && (!onlyDet || (*p)->getDep().empty()) )
-			addAll(DRs.get((*p)->getRole()->getEntity()));
+	for ( const DlCompletionTreeArc* edge : *node )
+		if ( likely(!edge->isIBlocked()) && edge->getArcEnd()->isDataNode() && (!onlyDet || edge->getDep().empty()) )
+			addAll(DRs.get(edge->getRole()->getEntity()));
 	return Roles;
 }
 /// build the set of object neighbours of a NODE; incoming edges are counted iff NEEDINCOMING is true
@@ -106,9 +106,9 @@ const KnowledgeExplorer::TCGRoleSet&
 KnowledgeExplorer :: getObjectRoles ( const TCGNode* node, bool onlyDet, bool needIncoming )
 {
 	Roles.clear();
-	for ( DlCompletionTree::const_edge_iterator p = node->begin(), p_end = node->end(); p != p_end; ++p )
-		if ( likely(!(*p)->isIBlocked()) && !(*p)->getArcEnd()->isDataNode() && (!onlyDet || (*p)->getDep().empty()) && (needIncoming || (*p)->isSuccEdge() ) )
-			addAll(ORs.get((*p)->getRole()->getEntity()));
+	for ( const DlCompletionTreeArc* edge : *node )
+		if ( likely(!edge->isIBlocked()) && !edge->getArcEnd()->isDataNode() && (!onlyDet || edge->getDep().empty()) && (needIncoming || edge->isSuccEdge() ) )
+			addAll(ORs.get(edge->getRole()->getEntity()));
 	return Roles;
 }
 /// build the set of neighbours of a NODE via role ROLE; put the resulting list into RESULT
@@ -116,9 +116,9 @@ const KnowledgeExplorer::TCGNodeVec&
 KnowledgeExplorer :: getNeighbours ( const TCGNode* node, const TRole* R )
 {
 	Nodes.clear();
-	for ( DlCompletionTree::const_edge_iterator p = node->begin(), p_end = node->end(); p != p_end; ++p )
-		if ( likely(!(*p)->isIBlocked()) && (*p)->isNeighbour(R) )
-			Nodes.push_back((*p)->getArcEnd());
+	for ( const DlCompletionTreeArc* edge : *node )
+		if ( likely(!edge->isIBlocked()) && edge->isNeighbour(R) )
+			Nodes.push_back(edge->getArcEnd());
 	return Nodes;
 }
 /// put into RESULT all the data expressions from the NODE label

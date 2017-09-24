@@ -55,8 +55,8 @@ JNIEXPORT jobjectArray JNICALL Java_uk_ac_manchester_cs_factplusplus_FaCTPlusPlu
 	ReasoningKernel::TCGRoleSet Set;
 	J->K->getObjectRoles ( getRONode(env,arg), Set, /*onlyDet=*/flag, /*needIncoming=*/false );
 	std::vector<TORoleExpr*> ret;
-	for ( ReasoningKernel::TCGRoleSet::const_iterator p = Set.begin(), p_end = Set.end(); p != p_end; ++p )
-		ret.push_back(dynamic_cast<TORoleExpr*>(*p));
+	for (const TDLRoleExpression* role : Set)
+		ret.push_back(dynamic_cast<TORoleExpr*>(role));
 	return J->buildArray ( ret, J->ObjectPropertyPointer );
 }
 
@@ -74,8 +74,8 @@ JNIEXPORT jobjectArray JNICALL Java_uk_ac_manchester_cs_factplusplus_FaCTPlusPlu
 	ReasoningKernel::TCGRoleSet Set;
 	J->K->getDataRoles ( getRONode(env,arg), Set, /*onlyDet=*/flag );
 	std::vector<TDRoleExpr*> ret;
-	for ( ReasoningKernel::TCGRoleSet::const_iterator p = Set.begin(), p_end = Set.end(); p != p_end; ++p )
-		ret.push_back(dynamic_cast<TDRoleExpr*>(*p));
+	for (const TDLRoleExpression* role : Set)
+		ret.push_back(dynamic_cast<TDRoleExpr*>(role));
 	return J->buildArray ( ret, J->DataPropertyPointer );
 }
 
