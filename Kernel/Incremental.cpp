@@ -66,10 +66,9 @@ ReasoningKernel :: buildSignature ( const TNamedEntity* entity, const AxiomVec& 
 	if ( Module.size() == NewModule.size() )	// the same module
 		return;
 	// smaller module: recurse
-	TSignature ModSig = getModExtractor(SYN_LOC_STD)->getModularizer()->getSignature();
-	for ( TSignature::iterator p = ModSig.begin(), p_end = ModSig.end(); p != p_end; ++p )
-		if ( toProcess.count(*p) > 0 )	// need to process
-			buildSignature ( *p, NewModule, toProcess );
+	for ( const TNamedEntity* e : getModExtractor(SYN_LOC_STD)->getModularizer()->getSignature() )
+		if ( toProcess.count(e) > 0 )	// need to process
+			buildSignature ( e, NewModule, toProcess );
 }
 
 /// initialise the incremental bits on full reload
@@ -252,8 +251,8 @@ std::ostream&
 operator << ( std::ostream& o, const TSignature& sig )
 {
 	o << "[";
-	for ( TSignature::iterator p = sig.begin(), p_end = sig.end(); p != p_end; ++p )
-		o << (*p)->getName() << " ";
+	for ( const TNamedEntity* entity : sig )
+		o << entity->getName() << " ";
 	o << "]" << std::endl;
 	return o;
 }

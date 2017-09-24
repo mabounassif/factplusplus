@@ -322,8 +322,8 @@ public:		// visitor implementation
 	void visit ( const TDLObjectRoleInverse& expr ) override { value = getUpperBoundDirect(expr.getOR()); }
 	void visit ( const TDLObjectRoleChain& expr ) override
 	{
-		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( isBotEquivalent(*p) )
+		for ( const auto* arg : expr )
+			if ( isBotEquivalent(arg) )
 			{
 				value = anyUpperValue();
 				return;
@@ -438,8 +438,8 @@ public:		// visitor interface
 	void visit ( const TDLObjectRoleInverse& expr ) override { value = getUpperBoundComplement(expr.getOR()); }
 	void visit ( const TDLObjectRoleChain& expr ) override
 	{
-		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( !isTopEquivalent(*p) )
+		for ( const auto* arg : expr )
+			if ( !isTopEquivalent(arg) )
 			{
 				value = noUpperValue();
 				return;
@@ -609,8 +609,8 @@ public:		// visitor interface
 	void visit ( const TDLObjectRoleInverse& expr ) override { value = getLowerBoundDirect(expr.getOR()); }
 	void visit ( const TDLObjectRoleChain& expr ) override
 	{
-		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( !isTopEquivalent(*p) )
+		for ( const auto* arg : expr )
+			if ( !isTopEquivalent(arg) )
 			{
 				value = noLowerValue();
 				return;
@@ -775,8 +775,8 @@ public:		// visitor implementation
 	void visit ( const TDLObjectRoleInverse& expr ) override { value = getLowerBoundComplement(expr.getOR()); }
 	void visit ( const TDLObjectRoleChain& expr ) override
 	{
-		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( isBotEquivalent(*p) )
+		for ( const auto* arg : expr )
+			if ( isBotEquivalent(arg) )
 			{
 				value = anyLowerValue();
 				return;

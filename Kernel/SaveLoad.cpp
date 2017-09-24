@@ -646,8 +646,8 @@ ReasoningKernel :: SaveIncremental ( SaveLoadManager& m ) const
 		m.savePointer(p->first);
 		m.saveUInt(p->second->size());
 
-		for ( TSignature::iterator q = p->second->begin(), q_end = p->second->end(); q != q_end; ++q )
-			m.savePointer(*q);
+		for ( const TNamedEntity* entity : *p->second )
+			m.savePointer(entity);
 	}
 }
 

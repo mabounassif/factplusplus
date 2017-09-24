@@ -110,15 +110,15 @@ public:		// visitor interface
 	void visit ( const TDLConceptNot& expr ) override { isBotEq = isTopEquivalent(expr.getC()); }
 	void visit ( const TDLConceptAnd& expr ) override
 	{
-		for ( TDLConceptAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( isBotEquivalent(*p) )	// here isBotEq is true, so just return
+		for ( const auto* arg : expr )
+			if ( isBotEquivalent(arg) )	// here isBotEq is true, so just return
 				return;
 		isBotEq = false;
 	}
 	void visit ( const TDLConceptOr& expr ) override
 	{
-		for ( TDLConceptOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( !isBotEquivalent(*p) )	// here isBotEq is false, so just return
+		for ( const auto* arg : expr )
+			if ( !isBotEquivalent(arg) )	// here isBotEq is false, so just return
 				return;
 		isBotEq = true;
 	}
@@ -166,8 +166,8 @@ public:		// visitor interface
 	void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		isBotEq = true;
-		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( isBotEquivalent(*p) )	// isBotEq is true here
+		for ( const auto* arg : expr )
+			if ( isBotEquivalent(arg) )	// isBotEq is true here
 				return;
 		isBotEq = false;
 	}
@@ -192,15 +192,15 @@ public:		// visitor interface
 	void visit ( const TDLDataNot& expr ) override { isBotEq = isTopEquivalent(expr.getExpr()); }
 	void visit ( const TDLDataAnd& expr ) override
 	{
-		for ( TDLDataAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( isBotEquivalent(*p) )	// here isBotEq is true, so just return
+		for ( const auto* arg : expr )
+			if ( isBotEquivalent(arg) )	// here isBotEq is true, so just return
 				return;
 		isBotEq = false;
 	}
 	void visit ( const TDLDataOr& expr ) override
 	{
-		for ( TDLDataOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( !isBotEquivalent(*p) )	// here isBotEq is false, so just return
+		for ( const auto* arg : expr )
+			if ( !isBotEquivalent(arg) )	// here isBotEq is false, so just return
 				return;
 		isBotEq = true;
 	}
@@ -291,15 +291,15 @@ public:		// visitor interface
 	void visit ( const TDLConceptNot& expr ) override { isTopEq = isBotEquivalent(expr.getC()); }
 	void visit ( const TDLConceptAnd& expr ) override
 	{
-		for ( TDLConceptAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( !isTopEquivalent(*p) )	// here isTopEq is false, so just return
+		for ( const auto* arg : expr )
+			if ( !isTopEquivalent(arg) )	// here isTopEq is false, so just return
 				return;
 		isTopEq = true;
 	}
 	void visit ( const TDLConceptOr& expr ) override
 	{
-		for ( TDLConceptOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( isTopEquivalent(*p) )	// here isTopEq is true, so just return
+		for ( const auto* arg : expr )
+			if ( isTopEquivalent(arg) )	// here isTopEq is true, so just return
 				return;
 		isTopEq = false;
 	}
@@ -346,8 +346,8 @@ public:		// visitor interface
 	void visit ( const TDLObjectRoleChain& expr ) override
 	{
 		isTopEq = false;
-		for ( TDLObjectRoleChain::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( !isTopEquivalent(*p) )	// isTopEq is false here
+		for ( const auto* arg : expr )
+			if ( !isTopEquivalent(arg) )	// isTopEq is false here
 				return;
 		isTopEq = true;
 	}
@@ -372,15 +372,15 @@ public:		// visitor interface
 	void visit ( const TDLDataNot& expr ) override { isTopEq = isBotEquivalent(expr.getExpr()); }
 	void visit ( const TDLDataAnd& expr ) override
 	{
-		for ( TDLDataAnd::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( !isTopEquivalent(*p) )	// here isTopEq is false, so just return
+		for ( const auto* arg : expr )
+			if ( !isTopEquivalent(arg) )	// here isTopEq is false, so just return
 				return;
 		isTopEq = true;
 	}
 	void visit ( const TDLDataOr& expr ) override
 	{
-		for ( TDLDataOr::iterator p = expr.begin(), p_end = expr.end(); p != p_end; ++p )
-			if ( isTopEquivalent(*p) )	// here isTopEq is true, so just return
+		for ( const auto* arg : expr )
+			if ( isTopEquivalent(arg) )	// here isTopEq is true, so just return
 				return;
 		isTopEq = false;
 	}

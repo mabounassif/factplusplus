@@ -602,9 +602,8 @@ ReasoningKernel :: getModule ( ModuleMethod moduleMethod, ModuleType moduleType 
 	TSignature Sig;
 	// NB: we don't care about locality type here as modularizer will change it
 	Sig.setLocality(false);
-	const std::vector<const TDLExpression*> signature = getExpressionManager()->getArgList();
-	for ( std::vector<const TDLExpression*>::const_iterator q = signature.begin(), q_end = signature.end(); q != q_end; ++q )
-		if ( const TNamedEntity* entity = dynamic_cast<const TNamedEntity*>(*q) )
+	for ( const TDLExpression* expr : getExpressionManager()->getArgList() )
+		if ( const TNamedEntity* entity = dynamic_cast<const TNamedEntity*>(expr) )
 			Sig.add(entity);
 	return getModExtractor(moduleMethod)->getModule ( Sig, moduleType );
 }
@@ -616,9 +615,8 @@ ReasoningKernel :: getNonLocal ( ModuleMethod moduleMethod, ModuleType moduleTyp
 	// init signature
 	TSignature Sig;
 	Sig.setLocality(moduleType == M_TOP);	// true for TOP, false for BOT/STAR
-	const std::vector<const TDLExpression*> signature = getExpressionManager()->getArgList();
-	for ( std::vector<const TDLExpression*>::const_iterator q = signature.begin(), q_end = signature.end(); q != q_end; ++q )
-		if ( const TNamedEntity* entity = dynamic_cast<const TNamedEntity*>(*q) )
+	for ( const TDLExpression* expr : getExpressionManager()->getArgList() )
+		if ( const TNamedEntity* entity = dynamic_cast<const TNamedEntity*>(expr) )
 			Sig.add(entity);
 
 //	TLISPOntologyPrinter lp(std::cout);
@@ -626,14 +624,14 @@ ReasoningKernel :: getNonLocal ( ModuleMethod moduleMethod, ModuleType moduleTyp
 	LocalityChecker* LC = getModExtractor(moduleMethod)->getModularizer()->getLocalityChecker();
 	LC->setSignatureValue(Sig);
 	Result.clear();
-	for ( TOntology::iterator p = getOntology().begin(), p_end = getOntology().end(); p != p_end; ++p )
+	for ( TDLAxiom* axiom : getOntology() )
 	{
 //		std::cout << "Checking locality of ";
-//		(*p)->accept(lp);
-		if ( !LC->local(*p) )
+//		axiom->accept(lp);
+		if ( !LC->local(axiom) )
 		{
 //			std::cout << "AX non-local" << std::endl;
-			Result.push_back(*p);
+			Result.push_back(axiom);
 		}
 //		else
 //			std::cout << "AX local" << std::endl;

@@ -64,11 +64,11 @@ protected:	// methods
 		/// update SIG wrt the axiom signature
 	void addAxiomSig ( const TSignature& axiomSig )
 	{
-		for ( TSignature::iterator p = axiomSig.begin(), p_end = axiomSig.end(); p != p_end; ++p )
-			if ( !sig.contains(*p) )	// new one
+		for ( const TNamedEntity* entity : axiomSig )
+			if ( !sig.contains(entity) )	// new one
 			{
-				WorkQueue.push(*p);
-				sig.add(*p);
+				WorkQueue.push(entity);
+				sig.add(entity);
 			}
 	}
 		/// add an axiom to a module
@@ -109,16 +109,16 @@ protected:	// methods
 		/// add all the non-local axioms from given axiom-set AxSet
 	void addNonLocal ( const AxiomVec& AxSet, bool noCheck )
 	{
-		for ( SigIndex::const_iterator q = AxSet.begin(), q_end = AxSet.end(); q != q_end; ++q )
-			if ( !(*q)->isInModule() && (*q)->isInSS() ) // in the given range but not in module yet
-				addNonLocal ( *q, noCheck );
+		for ( TDLAxiom* axiom : AxSet )
+			if ( !axiom->isInModule() && axiom->isInSS() ) // in the given range but not in module yet
+				addNonLocal ( axiom, noCheck );
 	}
 		/// build a module traversing axioms by a signature
 	void extractModuleQueue ( void )
 	{
 		// init queue with a sig
-		for ( TSignature::iterator p = sig.begin(), p_end = sig.end(); p != p_end; ++p )
-			WorkQueue.push(*p);
+		for ( const TNamedEntity* entity : sig )
+			WorkQueue.push(entity);
 		// add all the axioms that are non-local wrt given value of a top-locality
 		addNonLocal ( sigIndex.getNonLocal(sig.topCLocal()), /*noCheck=*/true );
 		// main cycle

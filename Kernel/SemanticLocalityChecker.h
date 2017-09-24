@@ -76,16 +76,16 @@ public:		// interface
 	{
 		TSignature s;
 		ExprMap.clear();
-		for ( AxiomVec::const_iterator q = Axioms.begin(), q_end = Axioms.end(); q != q_end; ++q )
+		for ( TDLAxiom* axiom : Axioms )
 		{
-			ExprMap[*q] = getExpr(*q);
-			s.add((*q)->getSignature());
+			ExprMap[axiom] = getExpr(axiom);
+			s.add(axiom->getSignature());
 		}
 
 		Kernel.clearKB();
 		// register all the objects in the ontology signature
-		for ( TSignature::iterator p = s.begin(), p_end = s.end(); p != p_end; ++p )
-			Kernel.declare(dynamic_cast<const TDLExpression*>(*p));
+		for (const TNamedEntity* entity : s)
+			Kernel.declare(dynamic_cast<const TDLExpression*>(entity));
 		// prepare the reasoner to check tautologies
 		Kernel.realiseKB();
 		// after TBox appears there, set signature to translate
@@ -157,15 +157,15 @@ public:		// visitor interface
 	void visit ( const TDLAxiomDisjointORoles& axiom ) override
 	{
 		pEM->newArgList();
-		for ( TDLAxiomDisjointORoles::iterator p = axiom.begin(), p_end = axiom.end(); p != p_end; ++p )
-			pEM->addArg(*p);
+		for (const auto* arg : axiom)
+			pEM->addArg(arg);
 		isLocal = Kernel.isDisjointRoles();
 	}
 	void visit ( const TDLAxiomDisjointDRoles& axiom ) override
 	{
 		pEM->newArgList();
-		for ( TDLAxiomDisjointDRoles::iterator p = axiom.begin(), p_end = axiom.end(); p != p_end; ++p )
-			pEM->addArg(*p);
+		for (const auto* arg : axiom)
+			pEM->addArg(arg);
 		isLocal = Kernel.isDisjointRoles();
 	}
 		// never local
@@ -187,8 +187,8 @@ public:		// visitor interface
 		if ( const TDLObjectRoleChain* Chain = dynamic_cast<const TDLObjectRoleChain*>(axiom.getSubRole()) )
 		{
 			pEM->newArgList();
-			for ( TDLObjectRoleChain::iterator p = Chain->begin(), p_end = Chain->end(); p != p_end; ++p )
-				pEM->addArg(*p);
+			for (const auto* arg : *Chain)
+				pEM->addArg(arg);
 			isLocal = Kernel.isSubChain(axiom.getRole());
 		}
 		// check whether the LHS is a plain role or inverse

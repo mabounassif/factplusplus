@@ -115,8 +115,8 @@ public:		// interface
 		/// preprocess given set of axioms
 	void preprocessOntology ( const AxiomVec& axioms )
 	{
-		for ( const_iterator p = axioms.begin(), p_end = axioms.end(); p != p_end; ++p )
-			processAx(*p);
+		for (TDLAxiom* axiom : axioms)
+			processAx(axiom);
 	}
 		/// clear internal structures
 	void clear ( void )

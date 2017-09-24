@@ -100,10 +100,10 @@ public:		// visitor interface
 			return;				// neither (1) nor (2)
 
 		bool topEqDesc = false;
-		for ( TDLAxiomDisjointUnion::iterator p = axiom.begin(), p_end = axiom.end(); p != p_end; ++p )
-			if ( !isBotEquivalent(*p) )
+		for ( const auto* arg : axiom )
+			if ( !isBotEquivalent(arg) )
 			{
-				if ( lhsIsTopEq && isTopEquivalent(*p) )
+				if ( lhsIsTopEq && isTopEquivalent(arg) )
 				{
 					if ( topEqDesc )
 						return;	// 2nd top in there -- violate (2) -- non-local
