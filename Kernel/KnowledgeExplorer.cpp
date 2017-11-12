@@ -89,16 +89,14 @@ KnowledgeExplorer :: addC ( const TDLExpression* e )
 	Concepts.push_back(e);
 }
 
-// couldn't get it as a method, so
-#define addAll(S) do { Roles.insert(S.begin(),S.end()); } while (false)
-
 const KnowledgeExplorer::TCGRoleSet&
 KnowledgeExplorer :: getDataRoles ( const TCGNode* node, bool onlyDet )
 {
 	Roles.clear();
 	for ( const DlCompletionTreeArc* edge : *node )
 		if ( likely(!edge->isIBlocked()) && edge->getArcEnd()->isDataNode() && (!onlyDet || edge->getDep().empty()) )
-			addAll(DRs.get(edge->getRole()->getEntity()));
+			for (const auto* role: DRs.get(edge->getRole()->getEntity()))
+				Roles.insert(role);
 	return Roles;
 }
 /// build the set of object neighbours of a NODE; incoming edges are counted iff NEEDINCOMING is true
@@ -108,7 +106,8 @@ KnowledgeExplorer :: getObjectRoles ( const TCGNode* node, bool onlyDet, bool ne
 	Roles.clear();
 	for ( const DlCompletionTreeArc* edge : *node )
 		if ( likely(!edge->isIBlocked()) && !edge->getArcEnd()->isDataNode() && (!onlyDet || edge->getDep().empty()) && (needIncoming || edge->isSuccEdge() ) )
-			addAll(ORs.get(edge->getRole()->getEntity()));
+			for (const auto* role: ORs.get(edge->getRole()->getEntity()))
+				Roles.insert(role);
 	return Roles;
 }
 /// build the set of neighbours of a NODE via role ROLE; put the resulting list into RESULT
