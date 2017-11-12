@@ -171,7 +171,8 @@ set(SOURCE_FILES
 )
 
 # Kernel
-add_library(Kernel STATIC ${SOURCE_FILES})
+add_library(Kernel ${SOURCE_FILES})
+SET(BUILD_SHARED_LIBS OFF)
 
 # allow library users to find headers
 target_include_directories(Kernel PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
