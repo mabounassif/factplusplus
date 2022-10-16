@@ -1,5 +1,5 @@
-#ifndef OWL_SCANNER_H
-#define OWL_SCANNER_H
+#ifndef XML_SCANNER_H
+#define XML_SCANNER_H
 
 #include "xmlgrammar.h"
 #include "comscanner.h"

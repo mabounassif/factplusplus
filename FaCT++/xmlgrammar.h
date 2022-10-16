@@ -1,5 +1,5 @@
-#ifndef RDF_GRAMMAR_H
-#define RDF_GRAMMAR_H
+#ifndef XML_GRAMMAR_H
+#define XML_GRAMMAR_H
 
 namespace Xml
 {
