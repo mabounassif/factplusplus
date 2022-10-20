@@ -10,6 +10,15 @@ namespace Xml
         UNUSED, // never used one
 
         LEXEOF,
+
+        TAG_START,
+        TAG_END,
+
+        DECLARATION_START,
+        DECLARATION_END,
+
+        DOCTYPE_START,
+        DOCTYPE_END
     };
 }
 #endif
