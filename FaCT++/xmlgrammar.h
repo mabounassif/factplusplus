@@ -18,6 +18,7 @@ namespace Xml
         DECLARATION_END,
 
         DOCTYPE_START,
+        DOCTYPE_DATA,
         DOCTYPE_END
     };
 }

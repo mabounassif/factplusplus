@@ -38,6 +38,8 @@ private:
     Xml::Token scan_xml_declaration();
     Xml::Token scan_doctype();
 
+    inline bool equal(const char* s, const char* s1, size_t length);
+
 }; // XmlScanner
 
 #endif
